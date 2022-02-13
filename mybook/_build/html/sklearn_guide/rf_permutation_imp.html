@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. Permutation Importance vs Random Forest Feature Importance (MDI) &#8212; My sample book</title>
+    <title>6. Permutation Importance vs Random Forest Feature Importance (MDI) &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="4. Supervised Learning with scikit-learn" href="../datacamp_su/datacamp_su.html" />
+    <link rel="prev" title="5. Classification Trees" href="../statquest_trees/classification_tree.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -142,9 +142,14 @@
    4. Supervised Learning with scikit-learn
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statquest_trees/classification_tree.html">
+   5. Classification Trees
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. Permutation Importance vs Random Forest Feature Importance (MDI)
+   6. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -253,17 +258,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-loading-and-feature-engineering">
-   5.1. Data Loading and Feature Engineering
+   6.1. Data Loading and Feature Engineering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accuracy-of-the-model">
-   5.2. Accuracy of the Model
+   6.2. Accuracy of the Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tree-s-feature-importance-from-mean-decrease-in-impurity-mdi">
-   5.3. Tree’s Feature Importance from Mean Decrease in Impurity (MDI)
+   6.3. Tree’s Feature Importance from Mean Decrease in Impurity (MDI)
   </a>
  </li>
 </ul>
@@ -288,17 +293,17 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-loading-and-feature-engineering">
-   5.1. Data Loading and Feature Engineering
+   6.1. Data Loading and Feature Engineering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accuracy-of-the-model">
-   5.2. Accuracy of the Model
+   6.2. Accuracy of the Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tree-s-feature-importance-from-mean-decrease-in-impurity-mdi">
-   5.3. Tree’s Feature Importance from Mean Decrease in Impurity (MDI)
+   6.3. Tree’s Feature Importance from Mean Decrease in Impurity (MDI)
   </a>
  </li>
 </ul>
@@ -318,7 +323,7 @@
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="permutation-importance-vs-random-forest-feature-importance-mdi">
-<h1><span class="section-number">5. </span>Permutation Importance vs Random Forest Feature Importance (MDI)<a class="headerlink" href="#permutation-importance-vs-random-forest-feature-importance-mdi" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6. </span>Permutation Importance vs Random Forest Feature Importance (MDI)<a class="headerlink" href="#permutation-importance-vs-random-forest-feature-importance-mdi" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>在這個範例中，我們要比較以下這兩種方法，在 <code class="docutils literal notranslate"><span class="pre">titanic</span></code> dataset 這個分類問題中的變數重要性結果：</p>
 <ul>
@@ -362,7 +367,7 @@
 </div>
 </div>
 <div class="section" id="data-loading-and-feature-engineering">
-<h2><span class="section-number">5.1. </span>Data Loading and Feature Engineering<a class="headerlink" href="#data-loading-and-feature-engineering" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.1. </span>Data Loading and Feature Engineering<a class="headerlink" href="#data-loading-and-feature-engineering" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>我們先 load 資料集</p></li>
 </ul>
@@ -575,7 +580,7 @@ Name: random_cat, dtype: int64
 </div>
 </div>
 <div class="section" id="accuracy-of-the-model">
-<h2><span class="section-number">5.2. </span>Accuracy of the Model<a class="headerlink" href="#accuracy-of-the-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2. </span>Accuracy of the Model<a class="headerlink" href="#accuracy-of-the-model" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>在檢查變數重要性前，我們要先確認 model 夠準了。因為如果不準的話，我們對於變數重要性的探索是沒啥興趣的。</p></li>
 </ul>
@@ -600,7 +605,7 @@ RF test accuracy: 0.8170731707317073
 </ul>
 </div>
 <div class="section" id="tree-s-feature-importance-from-mean-decrease-in-impurity-mdi">
-<h2><span class="section-number">5.3. </span>Tree’s Feature Importance from Mean Decrease in Impurity (MDI)<a class="headerlink" href="#tree-s-feature-importance-from-mean-decrease-in-impurity-mdi" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3. </span>Tree’s Feature Importance from Mean Decrease in Impurity (MDI)<a class="headerlink" href="#tree-s-feature-importance-from-mean-decrease-in-impurity-mdi" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ohe</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;preprocess&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">]</span> <span class="c1"># 取出 one-hot encoding 的 transformer</span>
@@ -714,11 +719,11 @@ RF test accuracy: 0.8170731707317073
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../datacamp_su/datacamp_su.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../statquest_trees/classification_tree.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4. </span>Supervised Learning with scikit-learn</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Classification Trees</p>
         </div>
     </a>
 </div>

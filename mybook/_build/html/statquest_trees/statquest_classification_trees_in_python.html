@@ -1,0 +1,2187 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StatQuest! &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
+   3. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_su/datacamp_su.html">
+   4. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classification_tree.html">
+   5. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
+   15. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/statquest_trees/statquest_classification_trees_in_python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fstatquest_trees/statquest_classification_trees_in_python.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/statquest_trees/statquest_classification_trees_in_python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   StatQuest!
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification-trees-in-python-from-start-to-finish">
+   Classification Trees in Python, From Start to Finish
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#note">
+     NOTE:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#also-note">
+     Also Note:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-the-modules-that-will-do-all-the-work">
+   Import the modules that will do all the work
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-the-data">
+   Import the data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#missing-data-part-1-identifying-missing-data">
+   Missing Data Part 1: Identifying Missing Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#missing-data-part-2-dealing-with-missing-data">
+   Missing Data Part 2: Dealing With Missing Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#format-data-part-1-split-the-data-into-dependent-and-independent-variables">
+   Format Data Part 1: Split the Data into Dependent and Independent Variables
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#format-the-data-part-2-one-hot-encoding">
+   Format the Data Part 2: One-Hot Encoding
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bam">
+   BAM!!!
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#double-bam">
+   Double BAM!!!
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-preliminary-classification-tree">
+   Build A Preliminary Classification Tree
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cost-complexity-pruning-part-1-visualize-alpha">
+   Cost Complexity Pruning Part 1: Visualize alpha
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cost-complexity-pruning-part-2-cross-validation-for-finding-the-best-alpha">
+   Cost Complexity Pruning Part 2: Cross Validation For Finding the Best Alpha
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-evaluating-drawing-and-interpreting-the-final-classification-tree">
+   Building, Evaluating, Drawing, and Interpreting the Final Classification Tree
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-conclusion-we">
+   In conclusion we…
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#triple-bam">
+   TRIPLE BAM!!!
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>StatQuest!</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   StatQuest!
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification-trees-in-python-from-start-to-finish">
+   Classification Trees in Python, From Start to Finish
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#note">
+     NOTE:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#also-note">
+     Also Note:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-the-modules-that-will-do-all-the-work">
+   Import the modules that will do all the work
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-the-data">
+   Import the data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#missing-data-part-1-identifying-missing-data">
+   Missing Data Part 1: Identifying Missing Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#missing-data-part-2-dealing-with-missing-data">
+   Missing Data Part 2: Dealing With Missing Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#format-data-part-1-split-the-data-into-dependent-and-independent-variables">
+   Format Data Part 1: Split the Data into Dependent and Independent Variables
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#format-the-data-part-2-one-hot-encoding">
+   Format the Data Part 2: One-Hot Encoding
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bam">
+   BAM!!!
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#double-bam">
+   Double BAM!!!
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-preliminary-classification-tree">
+   Build A Preliminary Classification Tree
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cost-complexity-pruning-part-1-visualize-alpha">
+   Cost Complexity Pruning Part 1: Visualize alpha
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cost-complexity-pruning-part-2-cross-validation-for-finding-the-best-alpha">
+   Cost Complexity Pruning Part 2: Cross Validation For Finding the Best Alpha
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-evaluating-drawing-and-interpreting-the-final-classification-tree">
+   Building, Evaluating, Drawing, and Interpreting the Final Classification Tree
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-conclusion-we">
+   In conclusion we…
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#triple-bam">
+   TRIPLE BAM!!!
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="statquest">
+<h1>StatQuest!<a class="headerlink" href="#statquest" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="classification-trees-in-python-from-start-to-finish">
+<h1>Classification Trees in Python, From Start to Finish<a class="headerlink" href="#classification-trees-in-python-from-start-to-finish" title="Permalink to this headline">¶</a></h1>
+<p>Copyright 2020, Joshua Starmer</p>
+<hr class="docutils" />
+<p>In this lesson we will use <strong>scikit-learn</strong> and <strong>Cost Complexity Pruning</strong> to build this <strong>Classification Tree</strong> (below), which uses continuous and categorical data from the <strong><a class="reference external" href="https://archive.ics.uci.edu/ml/index.php">UCI Machine Learning Repository</a></strong> to predict whether or not a patient has <strong><a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Heart+Disease">heart disease</a></strong>:</p>
+<img src="tree.png" alt="A Classification Tree" style="width: 600px;">
+<!-- The **Classification Tree** will use continuous and categorical data from the **[UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)** to predict whether or not a patient has **[heart disease](https://archive.ics.uci.edu/ml/datasets/Heart+Disease)**
+ -->
+<!-- If you are not already familiary with these terms, check out the **StatQuests:** **[Decision Trees Part 1: Building and Using](https://youtu.be/7VeUPuFGJHk)**, **[Part 2: Feature Selection and Missing Data](https://youtu.be/wpNl-JwwplA)** and **[How to Prune Regression Trees](https://youtu.be/D0efHEJsfHo)**. -->
+<p><strong>Classification Trees</strong> are an exceptionally useful machine learning method when you need to to know how the decisions are being made. For example, if you have to justify the predictions to your boss, <strong>Classification Trees</strong> are a good method because each step in the decision making process is easy to understand.</p>
+<p>In this lesson you will learn about…</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="#download-the-data">Importing Data</a></strong></p></li>
+<li><p><strong><a class="reference external" href="#identify-and-deal-with-missing-data">Missing Data</a></strong></p>
+<ul>
+<li><p>Identifying Missing Data</p></li>
+<li><p>Dealing with Missing Data</p></li>
+</ul>
+</li>
+<li><p><strong><a class="reference external" href="#format-the-data">Formatting the Data for Decision Trees</a></strong></p>
+<ul>
+<li><p>Splitting data into Dependent and Independent Variables</p></li>
+<li><p>One-Hot-Encoding</p></li>
+</ul>
+</li>
+<li><p><strong><a class="reference external" href="#build-tree">Building a Preliminary Classification Tree</a></strong></p></li>
+<li><p><strong><a class="reference external" href="#prune-tree">Optimzing the tree with Cost Complexity Pruning</a></strong></p>
+<ul>
+<li><p>Visualizing Alpha</p></li>
+<li><p>Using Cross Validation to find the best value for Alpha</p></li>
+</ul>
+</li>
+<li><p><strong><a class="reference external" href="#draw-tree">Building, Drawing, Interpreting and Evaluating the Final Classification Tree</a></strong></p></li>
+</ul>
+<div class="section" id="note">
+<h2>NOTE:<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial assumes that you are already know the basics of coding in <strong>Python</strong> and are familiar with the theory behind <strong><a class="reference external" href="https://youtu.be/7VeUPuFGJHk">Classification Trees</a></strong>, <strong><a class="reference external" href="https://youtu.be/D0efHEJsfHo">Cost Complexity Pruning</a></strong>, <strong><a class="reference external" href="https://youtu.be/fSytzGwwBVw">Cross Validation</a></strong>, <strong><a class="reference external" href="https://youtu.be/Kdsp6soqA7o">Confusion Matrices</a></strong> and <strong><a class="reference external" href="https://youtu.be/EuBBz3bI-aA">Bias and Variance</a></strong>. If not, check out the <strong>StatQuests</strong> by clicking on the links for each topic.</p>
+</div>
+<div class="section" id="also-note">
+<h2>Also Note:<a class="headerlink" href="#also-note" title="Permalink to this headline">¶</a></h2>
+<p>I strongly encourage you to play around with the code. Playing with the code is the best way to learn from it.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="import-the-modules-that-will-do-all-the-work">
+<h1>Import the modules that will do all the work<a class="headerlink" href="#import-the-modules-that-will-do-all-the-work" title="Permalink to this headline">¶</a></h1>
+<p>The very first thing we do is load in a bunch of python modules. Python, itself, just gives us a basic programming language. These modules give us extra functionality to import the data, clean it up and format it, and then build, evaluate and draw the classification tree.</p>
+<p><strong>NOTE:</strong> You will need <strong>Python 3</strong> and have at least these versions for each of the following modules:</p>
+<ul class="simple">
+<li><p>pandas &gt;= 0.25.1</p></li>
+<li><p>numpy &gt;= 1.17.2</p></li>
+<li><p>sklearn &gt;= 0.22.1</p></li>
+</ul>
+<p>If you installed <strong>Python 3</strong> with <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>, you can check which version you have with the command: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code>. If, for example, your version of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> is older than 0.22.1, then the easiest thing to do is just update all of your <strong>Anaconda</strong> packages with the following command: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">update</span> <span class="pre">--all</span></code>. However, if you only want to update <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, then you can run this command: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">scikit-learn=0.22.1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># to load and manipulate data and for One-Hot Encoding</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># to calculate the mean and standard deviation</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># to draw graphs</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span> <span class="c1"># to build a classification tree</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span> <span class="c1"># to draw a classification tree</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> <span class="c1"># to split data into training and testing sets</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span> <span class="c1"># for cross validation</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span> <span class="c1"># to create a confusion matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span> <span class="c1"># to draw a confusion matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id="download-the-data"></a></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="import-the-data">
+<h1>Import the data<a class="headerlink" href="#import-the-data" title="Permalink to this headline">¶</a></h1>
+<p>Now we load in a dataset from the <strong><a class="reference external" href="https://archive.ics.uci.edu/ml/index.php">UCI Machine Learning Repository</a></strong>.
+Specifically, we are going to use the <strong><a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Heart+Disease">Heart Disease Dataset</a></strong>. This dataset will allow us to predict if someone has heart disease based on their sex, age, blood pressure and a variety of other metrics.</p>
+<p><strong>NOTE:</strong> When <strong>pandas</strong> (<strong>pd</strong>) reads in data, it returns a <strong>dataframe</strong>, which is a lot like a spreadsheet. The data are organized in rows and columns and each row can contain a mixture of text and numbers. The standard variable name for a <strong>dataframe</strong> is the initials <strong>df</strong>, and that is what we will use here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## since we have already downloaded the data to a file, we can load the file...</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;processed.cleveland.data&#39;</span><span class="p">,</span> 
+                 <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1">## however, it&#39;s also possible to download the data directly from UCI...</span>
+<span class="c1"># df = pd.read_csv(&#39;https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data&#39;, </span>
+<span class="c1">#                  header=None)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have loaded the data into a <strong>dataframe</strong> called <strong>df</strong>, let’s look at the first five rows using the <code class="docutils literal notranslate"><span class="pre">head()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## print the first 5 rows</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>63.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>145.0</td>
+      <td>233.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>150.0</td>
+      <td>0.0</td>
+      <td>2.3</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>67.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>160.0</td>
+      <td>286.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>108.0</td>
+      <td>1.0</td>
+      <td>1.5</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>67.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>120.0</td>
+      <td>229.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>129.0</td>
+      <td>1.0</td>
+      <td>2.6</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>37.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>130.0</td>
+      <td>250.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>187.0</td>
+      <td>0.0</td>
+      <td>3.5</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>41.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>130.0</td>
+      <td>204.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>172.0</td>
+      <td>0.0</td>
+      <td>1.4</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We see that instead of nice column names, we just have column numbers.  Since nice column names would make it easier to know how to format the data, let’s replace the column numbers with the following column names:</p>
+<ul class="simple">
+<li><p><strong>age</strong>,</p></li>
+<li><p><strong>sex</strong>,</p></li>
+<li><p><strong>cp</strong>, chest pain</p></li>
+<li><p><strong>restbp</strong>, resting blood pressure (in mm Hg)</p></li>
+<li><p><strong>chol</strong>, serum cholesterol in mg/dl</p></li>
+<li><p><strong>fbs</strong>, fasting blood sugar</p></li>
+<li><p><strong>restecg</strong>, resting electrocardiographic results</p></li>
+<li><p><strong>thalach</strong>,  maximum heart rate achieved</p></li>
+<li><p><strong>exang</strong>, exercise induced angina</p></li>
+<li><p><strong>oldpeak</strong>, ST depression induced by exercise relative to rest</p></li>
+<li><p><strong>slope</strong>, the slope of the peak exercise ST segment.</p></li>
+<li><p><strong>ca</strong>, number of major vessels (0-3) colored by fluoroscopy</p></li>
+<li><p><strong>thal</strong>, this is short of thalium heart scan.</p></li>
+<li><p><strong>hd</strong>, diagnosis of heart disease, the predicted attribute</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## change the column numbers to column names</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;sex&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;cp&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;restbp&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;chol&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;fbs&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;restecg&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;thalach&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;exang&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;oldpeak&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;slope&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;ca&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;thal&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;hd&#39;</span><span class="p">]</span>
+<span class="c1">## print the first 5 rows (including the column names)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>restbp</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>hd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>63.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>145.0</td>
+      <td>233.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>150.0</td>
+      <td>0.0</td>
+      <td>2.3</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>67.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>160.0</td>
+      <td>286.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>108.0</td>
+      <td>1.0</td>
+      <td>1.5</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>67.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>120.0</td>
+      <td>229.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>129.0</td>
+      <td>1.0</td>
+      <td>2.6</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>37.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>130.0</td>
+      <td>250.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>187.0</td>
+      <td>0.0</td>
+      <td>3.5</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>41.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>130.0</td>
+      <td>204.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>172.0</td>
+      <td>0.0</td>
+      <td>1.4</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Hooray! We have replaced the column numbers with nice, easy to remember names. Now that we have the data in a <strong>dataframe</strong> called <strong>df</strong>, we are ready to identify and deal with <strong>Missing Data</strong>.</p>
+<hr class="docutils" />
+<p><a id="identify-and-deal-with-missing-data"></a></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="missing-data-part-1-identifying-missing-data">
+<h1>Missing Data Part 1: Identifying Missing Data<a class="headerlink" href="#missing-data-part-1-identifying-missing-data" title="Permalink to this headline">¶</a></h1>
+<p>Unfortunately, the biggest part of any data analysis project is making sure that the data is correctly formatted and fixing it when it is not. The first part of this process is identifying and dealing with <strong>Missing Data</strong>.</p>
+<p><strong>Missing Data</strong> is simply a blank space, or a surrogate value like <strong>NA</strong>, that indicates that we failed to collect data for one of the features. For example, if we forgot to ask someone’s age, or forgot to write it down, then we would have a blank space in the dataset for that person’s <strong>age</strong>.</p>
+<p>There are two main ways to deal with missing data:</p>
+<ol class="simple">
+<li><p>We can remove the rows that contain missing data from the dataset. This is relatively easy to do, but it wastes all of the other values that we collected. How a big of a waste this is depends on how important this missing value is for classification. For example, if we are missing a value for <strong>age</strong>, and <strong>age</strong> is not useful for classifying if people have heart disease or not, then it would be a shame to throw out all of someone’s data just because we do not have their <strong>age</strong>.</p></li>
+<li><p>We can <strong>impute</strong> the values that are missing. In this context <strong>impute</strong> is just a fancy way of saying “we can make an educated guess about about what the value should be”. Continuing our example where we are missing a value for <strong>age</strong>, instead of throwing out the entire row of data, we can fill the missing value with the average age or the median age, or use some other, more sophisticated approach, to guess at an appropriate value.</p></li>
+</ol>
+<p>In this section, we’ll focus on identifying missing values in the dataset.</p>
+<p>First, let’s see what sort of data is in each column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## dtypes tell us the &quot;data type&quot; for each column</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age        float64
+sex        float64
+cp         float64
+restbp     float64
+chol       float64
+fbs        float64
+restecg    float64
+thalach    float64
+exang      float64
+oldpeak    float64
+slope      float64
+ca          object
+thal        object
+hd           int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that that they are almost all <code class="docutils literal notranslate"><span class="pre">float64</span></code>, however, two columns, <strong>ca</strong> and <strong>thal</strong>, have the <code class="docutils literal notranslate"><span class="pre">object</span></code> type and one column, <strong>hd</strong> has <code class="docutils literal notranslate"><span class="pre">int64</span></code>.</p>
+<p>The fact that the <strong>ca</strong> and <strong>thal</strong> columns have <code class="docutils literal notranslate"><span class="pre">object</span></code> data types suggests there is something funny going on in them. <code class="docutils literal notranslate"><span class="pre">object</span></code> datatypes are used when there are mixtures of things, like a mixture of numbers and letters. In theory, both <strong>ca</strong> and <strong>thal</strong> should just have a few values representing different categories, so let’s investigate what’s going on by printing out their unique values. We’ll start with <strong>ca</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## print out unique values in the column called &#39;ca&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;ca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;0.0&#39;, &#39;3.0&#39;, &#39;2.0&#39;, &#39;1.0&#39;, &#39;?&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that <strong>ca</strong> contains numbers (0.0, 3.0, 2.0 and 1.0) and questions marks (?). The numbers represent the number of blood vessels that we lit up by fluoroscopy and the question marks represent missing data.</p>
+<p>Now let’s look at the unique values in <strong>thal</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## print out unique values in the column called &#39;thal&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;thal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;6.0&#39;, &#39;3.0&#39;, &#39;7.0&#39;, &#39;?&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again, <strong>thal</strong> also contains a mixture of numbers, representing the different diagnoses from the thalium heart scan, and question marks, which represent missing values.</p>
+<p>Now that we have identified some missing values, we need to deal with them.</p>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="missing-data-part-2-dealing-with-missing-data">
+<h1>Missing Data Part 2: Dealing With Missing Data<a class="headerlink" href="#missing-data-part-2-dealing-with-missing-data" title="Permalink to this headline">¶</a></h1>
+<p>Since scikit-learn’s classification trees do not support datasets with missing values, we need to figure out what to do these question marks. We can either delete these patients from the training dataset, or impute values for the missing data. First let’s see how many rows contain missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## print the number of rows that contain missing values.</span>
+<span class="c1">##</span>
+<span class="c1">## loc[], short for &quot;location&quot;, let&#39;s us specify which rows we want...</span>
+<span class="c1">## and so we say we want any row with &#39;?&#39; in column &#39;ca&#39;</span>
+<span class="c1">## OR</span>
+<span class="c1">## any row with &#39;?&#39; in column &#39;thal&#39;</span>
+<span class="c1">##</span>
+<span class="c1">## len(), short for &quot;length&quot;, prints out the number of rows.</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ca&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span> 
+           <span class="o">|</span> 
+           <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;thal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;?&#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since only 6 rows have missing values, let’s look at them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## print out the rows that contain missing values.</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ca&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span> 
+       <span class="o">|</span> 
+       <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;thal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;?&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>restbp</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>hd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>87</th>
+      <td>53.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>128.0</td>
+      <td>216.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>115.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>?</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>52.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>138.0</td>
+      <td>223.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>169.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>?</td>
+      <td>3.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>43.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>132.0</td>
+      <td>247.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>143.0</td>
+      <td>1.0</td>
+      <td>0.1</td>
+      <td>2.0</td>
+      <td>?</td>
+      <td>7.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>266</th>
+      <td>52.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>128.0</td>
+      <td>204.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>156.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>?</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>287</th>
+      <td>58.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>125.0</td>
+      <td>220.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>144.0</td>
+      <td>0.0</td>
+      <td>0.4</td>
+      <td>2.0</td>
+      <td>?</td>
+      <td>7.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>302</th>
+      <td>38.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>138.0</td>
+      <td>175.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>173.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>?</td>
+      <td>3.0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now let’s count the number of rows in the full dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>303
+</pre></div>
+</div>
+</div>
+</div>
+<p>So 6 of the <strong>303</strong> rows, or <strong>2%</strong>, contain missing values. Since <strong>303 - 6 = 297</strong>, and <strong>297</strong> is plenty of data to build a classification tree, we will remove the rows with missing values, rather than try to impute their values.</p>
+<p><strong>NOTE:</strong> Imputing missing values is a big topic that we will tackle in another webinar. By taking the “easy” route by just deleting rows with missing values, we can stay focused on <strong>Decision Trees</strong>.</p>
+<p>We remove the rows with missing values by selecting all of the rows that <em>do not</em> contain question marks in either the <strong>ca</strong> or <strong>thal</strong> columns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## use loc[] to select all rows that do not contain missing values</span>
+<span class="c1">## and save them in a new dataframe called &quot;df_no_missing&quot;</span>
+<span class="n">df_no_missing</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ca&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span> 
+                       <span class="o">&amp;</span> 
+                       <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;thal&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;?&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since <code class="docutils literal notranslate"><span class="pre">df_no_missing</span></code> has <strong>6</strong> fewer rows than the original <code class="docutils literal notranslate"><span class="pre">df</span></code>, it should have <strong>297</strong> rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df_no_missing</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>297
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hooray! The math works out. However, we can also make sure <strong>ca</strong> no longer contains question marks by printing its unique values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_no_missing</span><span class="p">[</span><span class="s1">&#39;ca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;0.0&#39;, &#39;3.0&#39;, &#39;2.0&#39;, &#39;1.0&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we can also do the same thing for <strong>thal</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_no_missing</span><span class="p">[</span><span class="s1">&#39;thal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;6.0&#39;, &#39;3.0&#39;, &#39;7.0&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>BAM!</strong> We have verified that <code class="docutils literal notranslate"><span class="pre">df_no_missing</span></code> does not contain any missing values. <strong>NOTE:</strong> <strong>ca</strong> and <strong>thal</strong> still have the <code class="docutils literal notranslate"><span class="pre">object</span></code> data type. That’s OK. Now we are ready to format the data for making a <strong>Classification Tree</strong>.</p>
+<hr class="docutils" />
+<p><a id="format-the-data"></a></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="format-data-part-1-split-the-data-into-dependent-and-independent-variables">
+<h1>Format Data Part 1: Split the Data into Dependent and Independent Variables<a class="headerlink" href="#format-data-part-1-split-the-data-into-dependent-and-independent-variables" title="Permalink to this headline">¶</a></h1>
+<p>Now that we have taken care of the missing data, we are ready to start formatting the data for making a <strong>Classification Tree</strong>.</p>
+<p>The first step is to split the data into two parts:</p>
+<ol class="simple">
+<li><p>The columns of data that we will use to make classifications</p></li>
+<li><p>The column of data that we want to predict.</p></li>
+</ol>
+<p>We will use the conventional notation of <code class="docutils literal notranslate"><span class="pre">X</span></code> (capital <strong>X</strong>) to represent the columns of data that we will use to make classifications and <code class="docutils literal notranslate"><span class="pre">y</span></code> (lower case <strong>y</strong>) to represent the thing we want to predict. In this case, we want to predict <strong>hd</strong> (heart disease).</p>
+<p><strong>NOTE:</strong> The reason we deal with missing data before splitting it into <strong>X</strong> and <strong>y</strong> is that if we need to remove rows, splitting after ensures that each row in <strong>X</strong> correctly corresponds with the appropriate value in <strong>y</strong>.</p>
+<p><strong>ALSO NOTE:</strong> In the code below we are using <code class="docutils literal notranslate"><span class="pre">copy()</span></code> to copy the data <em>by value</em>. By default, pandas uses copy <em>by reference</em>. Using <code class="docutils literal notranslate"><span class="pre">copy()</span></code> ensures that the original data <code class="docutils literal notranslate"><span class="pre">df_no_missing</span></code> is not modified when we modify <code class="docutils literal notranslate"><span class="pre">X</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code>. In other words, if we make a mistake when we are formatting the columns for classification trees, we can just re-copy <code class="docutils literal notranslate"><span class="pre">df_no_missing</span></code>, rather than reload the original data and remove the missing values etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Make a new copy of the columns used to make predictions</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_no_missing</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;hd&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># alternatively: X = df_no_missing.iloc[:,:-1]</span>
+<span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>restbp</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>63.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>145.0</td>
+      <td>233.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>150.0</td>
+      <td>0.0</td>
+      <td>2.3</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>67.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>160.0</td>
+      <td>286.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>108.0</td>
+      <td>1.0</td>
+      <td>1.5</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>67.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>120.0</td>
+      <td>229.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>129.0</td>
+      <td>1.0</td>
+      <td>2.6</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>37.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>130.0</td>
+      <td>250.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>187.0</td>
+      <td>0.0</td>
+      <td>3.5</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>41.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>130.0</td>
+      <td>204.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>172.0</td>
+      <td>0.0</td>
+      <td>1.4</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Make a new copy of the column of data we want to predict</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_no_missing</span><span class="p">[</span><span class="s1">&#39;hd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0
+1    2
+2    1
+3    0
+4    0
+Name: hd, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have created <strong>X</strong>, which has the data we want to use to make predictions, and <strong>y</strong>, which has the data we want to predict, we are ready to continue formatting <strong>X</strong> so that it is suitable for making a <strong>Decision Tree</strong>.</p>
+<hr class="docutils" />
+<p><a id="one-hot-encoding"></a></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="format-the-data-part-2-one-hot-encoding">
+<h1>Format the Data Part 2: One-Hot Encoding<a class="headerlink" href="#format-the-data-part-2-one-hot-encoding" title="Permalink to this headline">¶</a></h1>
+<p>Now that we have split the dataframe into two pieces, <code class="docutils literal notranslate"><span class="pre">X</span></code>, which contains the data we will use to  predict classifications, and <code class="docutils literal notranslate"><span class="pre">y</span></code>, which contains the known classifications in our training dataset, we need to take a closer look at the variables in <code class="docutils literal notranslate"><span class="pre">X</span></code>. The list bellow tells us what each variable represents and the type of data (<strong>float</strong> or <strong>categorical</strong>) it should contain:</p>
+<ul class="simple">
+<li><p><strong>age</strong>, <strong>Float</strong></p></li>
+<li><p><strong>sex</strong> - <strong>Category</strong></p>
+<ul>
+<li><p>0 = female</p></li>
+<li><p>1 = male</p></li>
+</ul>
+</li>
+<li><p><strong>cp</strong>, chest pain, <strong>Category</strong></p>
+<ul>
+<li><p>1 = typical angina</p></li>
+<li><p>2 = atypical angina</p></li>
+<li><p>3 = non-anginal pain</p></li>
+<li><p>4 = asymptomatic</p></li>
+</ul>
+</li>
+<li><p><strong>restbp</strong>, resting blood pressure (in mm Hg), <strong>Float</strong></p></li>
+<li><p><strong>chol</strong>, serum cholesterol in mg/dl, <strong>Float</strong></p></li>
+<li><p><strong>fbs</strong>, fasting blood sugar, <strong>Category</strong></p>
+<ul>
+<li><p>0 = &gt;=120 mg/dl</p></li>
+<li><p>1 = &lt;120 mg/dl</p></li>
+</ul>
+</li>
+<li><p><strong>restecg</strong>, resting electrocardiographic results, <strong>Category</strong></p>
+<ul>
+<li><p>1 = normal</p></li>
+<li><p>2 = having ST-T wave abnormality</p></li>
+<li><p>3 = showing probable or definite left ventricular hypertrophy</p></li>
+</ul>
+</li>
+<li><p><strong>thalach</strong>,  maximum heart rate achieved, <strong>Float</strong></p></li>
+<li><p><strong>exang</strong>, exercise induced angina, <strong>Category</strong></p>
+<ul>
+<li><p>0 = no</p></li>
+<li><p>1 = yes</p></li>
+</ul>
+</li>
+<li><p><strong>oldpeak</strong>, ST depression induced by exercise relative to rest. <strong>Float</strong></p></li>
+<li><p><strong>slope</strong>, the slope of the peak exercise ST segment, <strong>Category</strong></p>
+<ul>
+<li><p>1 = upsloping</p></li>
+<li><p>2 = flat</p></li>
+<li><p>3 = downsloping</p></li>
+</ul>
+</li>
+<li><p><strong>ca</strong>, number of major vessels (0-3) colored by fluoroscopy, <strong>Float</strong></p></li>
+<li><p><strong>thal</strong>, thalium heart scan, <strong>Category</strong></p>
+<ul>
+<li><p>3 = normal (no cold spots)</p></li>
+<li><p>6 = fixed defect (cold spots during rest and exercise)</p></li>
+<li><p>7 = reversible defect (when cold spots only appear during exercise)</p></li>
+</ul>
+</li>
+</ul>
+<p>Now, just to review, let’s look at the data types in <code class="docutils literal notranslate"><span class="pre">X</span></code> to remember how python is seeing the data right now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age        float64
+sex        float64
+cp         float64
+restbp     float64
+chol       float64
+fbs        float64
+restecg    float64
+thalach    float64
+exang      float64
+oldpeak    float64
+slope      float64
+ca          object
+thal        object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, we see that <strong>age</strong>, <strong>restbp</strong>, <strong>chol</strong> and <strong>thalach</strong> are all <code class="docutils literal notranslate"><span class="pre">float64</span></code>, which is good, because we want them to be floating point numbers. All of the other columns, however, need to be inspected to make sure they only contain reasonable values, and some of them need to change. This is because, while <strong>scikit learn Decision Trees</strong> natively support continuous data, like resting blood preasure (<strong>restbp</strong>) and maximum heart rate (<strong>thalach</strong>), they do not natively support categorical data, like chest pain (<strong>cp</strong>), which contains 4 different categories. Thus, in order to use categorical data with <strong>scikit learn Decision Trees</strong>, we have to use a trick that converts a column of categorical data into multiple columns of binary values. This trick is called <strong>One-Hot Encoding</strong>.</p>
+<p>At this point you may be wondering, “what’s wrong with treating categorical data like continuous data?” To answer that question, let’s look at an example: For the <strong>cp</strong> (chest pain) column, we have 4 options:</p>
+<ol class="simple">
+<li><p>typical angina</p></li>
+<li><p>atypical angina</p></li>
+<li><p>non-anginal pain</p></li>
+<li><p>asymptomatic</p></li>
+</ol>
+<p>If we treated these values, 1, 2, 3 and 4, like continuous data, then we would assume that 4, which means “asymptomatic”, is more similar to 3, which means “non-anginal pain”, than it is to 1 or 2, which are other types of chest pain. That means the decision tree would be more likely to cluster the patients with 4s and 3s together than the patients with 4s and 1s together. In contrast, if we treat these numbers like categorical data, then we treat each one as a separate category that is no more or less similar to any of the other categories. Thus, the likelihood of clustering patients with 4s with 3s is the same as clustering 4s with 1s, and that approach is more reasonable.</p>
+<p>Now let’s inspect and, if needed, convert the columns that contain categorical and integer data into the correct datatypes. We’ll start with <strong>cp</strong> (chest pain) by inspecting all of its unique values:</p>
+<!-- We'll start with the three colunms that should only contain 0s and 1s. **sex**. First, let's make sure it only contains `0` (for **female**) and `1` (for **male**). --><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 4., 3., 2.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, the good news is that <strong>cp</strong> only contains the values it is supposed to contain, so we will convert it, using <strong>One-Hot Encoding</strong>, into a series of columns that only contains <strong>0s</strong> and <strong>1s</strong>.</p>
+<!-- Now we need to deal with **cp** (chest pain), **restecg** (resting electrocardiographic results), **slope** (the slope of the peak exercise ST segment) and **thal** (thalium heart scan).
+ -->
+<p><strong>NOTE:</strong> There are many different ways to do <strong>One-Hot Encoding</strong> in Python. Two of the more popular methods are <code class="docutils literal notranslate"><span class="pre">ColumnTransformer()</span></code> (from <strong>scikit-learn</strong>) and <code class="docutils literal notranslate"><span class="pre">get_dummies()</span></code> (from <strong>pandas</strong>), and the both methods have pros and cons. <code class="docutils literal notranslate"><span class="pre">ColumnTransformer()</span></code> has a very cool feature where it creates a persistent function that can validate data that you get in the future. For example, if you build your <strong>Decision Tree</strong> using a categorical variable <strong>favorite color</strong> that has <strong>red</strong>, <strong>blue</strong> and <strong>green</strong> options, then <code class="docutils literal notranslate"><span class="pre">ColumnTransformer()</span></code> can remember those options and later on when your <strong>Decision Tree</strong> is being used in a production system, if someone says their favorite color is <strong>orange</strong>, then <code class="docutils literal notranslate"><span class="pre">ColumnTransformer()</span></code> can throw an error or handle the situation in some other nice way. The downside of <code class="docutils literal notranslate"><span class="pre">ColumnTransformer()</span></code> is that it turns your data into an array and looses all of the column names, making it harder to verify that your usage of <code class="docutils literal notranslate"><span class="pre">ColumnTransformer()</span></code> worked as you intended it to. In contrast, <code class="docutils literal notranslate"><span class="pre">get_dummies()</span></code> leaves your data in a dataframe and retains the column names, making it much easier to verify that it worked as intended. However, it does not have the persistent behavior that <code class="docutils literal notranslate"><span class="pre">ColumnTransformer()</span></code> has. So, for the sake of learning how <strong>One-Hot Encoding</strong> works, I prefer to use <code class="docutils literal notranslate"><span class="pre">get_dummies()</span></code>. However, once you are comfortable with <strong>One-Hot Encoding</strong>, I encourage you to investigate using <code class="docutils literal notranslate"><span class="pre">ColumnTransformer()</span></code>.</p>
+<p>First, before we commit to converting <strong>cp</strong> with <strong>One-Hot Encoding</strong>, let’s just see what happens when we convert <strong>cp</strong> without saving the results. This will make it easy to see how <code class="docutils literal notranslate"><span class="pre">get_dummies()</span></code> works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## For this tutorial, we will use get_dummies() to do One-Hot Encoding,</span>
+<span class="c1">## but just know that there are other options.</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>restbp</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>cp_1.0</th>
+      <th>cp_2.0</th>
+      <th>cp_3.0</th>
+      <th>cp_4.0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>63.0</td>
+      <td>1.0</td>
+      <td>145.0</td>
+      <td>233.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>150.0</td>
+      <td>0.0</td>
+      <td>2.3</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>67.0</td>
+      <td>1.0</td>
+      <td>160.0</td>
+      <td>286.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>108.0</td>
+      <td>1.0</td>
+      <td>1.5</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>67.0</td>
+      <td>1.0</td>
+      <td>120.0</td>
+      <td>229.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>129.0</td>
+      <td>1.0</td>
+      <td>2.6</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>37.0</td>
+      <td>1.0</td>
+      <td>130.0</td>
+      <td>250.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>187.0</td>
+      <td>0.0</td>
+      <td>3.5</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>41.0</td>
+      <td>0.0</td>
+      <td>130.0</td>
+      <td>204.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>172.0</td>
+      <td>0.0</td>
+      <td>1.4</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As we can see in the printout above, <code class="docutils literal notranslate"><span class="pre">get_dummies()</span></code> puts all of the columns it does not process in the front and it puts <strong>cp</strong> at the end. It also splits <strong>cp</strong> into <strong>4</strong> columns, just like we expected it. <strong>cp_1.0</strong> is <code class="docutils literal notranslate"><span class="pre">1</span></code> for any patient that scored a <strong>1</strong> for chest pain and <code class="docutils literal notranslate"><span class="pre">0</span></code> for all other patients. <strong>cp_2.0</strong> is <code class="docutils literal notranslate"><span class="pre">1</span></code> for any patient that scored <strong>2</strong> for chest pain and <code class="docutils literal notranslate"><span class="pre">0</span></code> for all other patients. <strong>cp_3.0</strong> is <code class="docutils literal notranslate"><span class="pre">1</span></code> for any patient that scored <strong>3</strong> for chest pain and <strong>cp_4.0</strong> is <code class="docutils literal notranslate"><span class="pre">1</span></code> for any patient that scored <strong>4</strong> for chest pain.</p>
+<p>Now that we see how <code class="docutils literal notranslate"><span class="pre">get_dummies()</span></code> works, let’s use it on the four categorical columns that have more than 2 categories and save the result.</p>
+<p><strong>NOTE:</strong> In a real situation (not a tutorial like this), you should verify all 5 of these columns
+only contain the accepted categories. However, for this tutorial, I’ve already done that for us, so we can skip that step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_encoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> 
+                                       <span class="s1">&#39;restecg&#39;</span><span class="p">,</span> 
+                                       <span class="s1">&#39;slope&#39;</span><span class="p">,</span> 
+                                       <span class="s1">&#39;thal&#39;</span><span class="p">])</span>
+<span class="n">X_encoded</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>restbp</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>ca</th>
+      <th>cp_1.0</th>
+      <th>...</th>
+      <th>cp_4.0</th>
+      <th>restecg_0.0</th>
+      <th>restecg_1.0</th>
+      <th>restecg_2.0</th>
+      <th>slope_1.0</th>
+      <th>slope_2.0</th>
+      <th>slope_3.0</th>
+      <th>thal_3.0</th>
+      <th>thal_6.0</th>
+      <th>thal_7.0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>63.0</td>
+      <td>1.0</td>
+      <td>145.0</td>
+      <td>233.0</td>
+      <td>1.0</td>
+      <td>150.0</td>
+      <td>0.0</td>
+      <td>2.3</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>67.0</td>
+      <td>1.0</td>
+      <td>160.0</td>
+      <td>286.0</td>
+      <td>0.0</td>
+      <td>108.0</td>
+      <td>1.0</td>
+      <td>1.5</td>
+      <td>3.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>67.0</td>
+      <td>1.0</td>
+      <td>120.0</td>
+      <td>229.0</td>
+      <td>0.0</td>
+      <td>129.0</td>
+      <td>1.0</td>
+      <td>2.6</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>37.0</td>
+      <td>1.0</td>
+      <td>130.0</td>
+      <td>250.0</td>
+      <td>0.0</td>
+      <td>187.0</td>
+      <td>0.0</td>
+      <td>3.5</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>41.0</td>
+      <td>0.0</td>
+      <td>130.0</td>
+      <td>204.0</td>
+      <td>0.0</td>
+      <td>172.0</td>
+      <td>0.0</td>
+      <td>1.4</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 22 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="bam">
+<h1>BAM!!!<a class="headerlink" href="#bam" title="Permalink to this headline">¶</a></h1>
+<p>Now we need to talk about the <strong>3</strong> categorical columns that only contain <strong>0</strong>s and <strong>1</strong>s: <strong>sex</strong>, <strong>fbs</strong> (fasting blood sugar), and <strong>exang</strong> (exercise induced angina). As we can see, <strong>One-Hot Encoding</strong> converts a column with more than <strong>2</strong> categories, like <strong>cp</strong> (chest pain) into multiple columns of <strong>0</strong>s and <strong>1</strong>s. Since <strong>sex</strong>, <strong>fbs</strong>, and <strong>exang</strong> only have <strong>2</strong> categories and only contain <strong>0</strong>s and <strong>1</strong>s to begin with, we do not have to do anything special to them, so we’re done formatting the data for the <strong>Classification Tree</strong>.</p>
+<p><strong>NOTE:</strong> In practice we would use <code class="docutils literal notranslate"><span class="pre">unique()</span></code> to verify that they only contain <strong>0</strong>s and <strong>1</strong>s, but to save time…trust me!</p>
+<p>Now, one last thing before we build a <strong>Classification Tree</strong>.  <code class="docutils literal notranslate"><span class="pre">y</span></code> doesn’t just contain <strong>0</strong>s and <strong>1</strong>s. Instead, it has <strong>5</strong> different levels of heart disease. <strong>0 =</strong> no heart disease and <strong>1-4</strong> are various degrees of heart disease. We can see this with <code class="docutils literal notranslate"><span class="pre">unique()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 2, 1, 3, 4])
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this tutorial we’re only making a tree that does simple classification and only care if someone has heart disease or not, so we need to convert all numbers <strong>&gt; 0</strong> to <strong>1</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_not_zero_index</span> <span class="o">=</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c1"># get the index for each non-zero value in y</span>
+<span class="n">y</span><span class="p">[</span><span class="n">y_not_zero_index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># set each non-zero value in y to 1</span>
+<span class="n">y</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>               <span class="c1"># verify that y only contains 0 and 1.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="double-bam">
+<h1>Double BAM!!!<a class="headerlink" href="#double-bam" title="Permalink to this headline">¶</a></h1>
+<p>We have finally finished formatting the data for making a <strong>Classification Tree</strong>, so let’s do it!!!</p>
+<hr class="docutils" />
+<p><a id="build-tree"></a></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="build-a-preliminary-classification-tree">
+<h1>Build A Preliminary Classification Tree<a class="headerlink" href="#build-a-preliminary-classification-tree" title="Permalink to this headline">¶</a></h1>
+<p>At long last, the data are correctly formatted for making a <strong>Classification Tree</strong>. Now we simply split the data into <strong>training</strong> and <strong>testing</strong> sets and build the tree.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## split the data into training and testing sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_encoded</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1">## create a decisiont tree and fit it to the training data</span>
+<span class="n">clf_dt</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf_dt</span> <span class="o">=</span> <span class="n">clf_dt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: We can plot the tree and it is huge!</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">clf_dt</span><span class="p">,</span> 
+          <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+          <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+          <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No HD&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes HD&quot;</span><span class="p">],</span> 
+          <span class="n">feature_names</span><span class="o">=</span><span class="n">X_encoded</span><span class="o">.</span><span class="n">columns</span><span class="p">);</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/statquest_classification_trees_in_python_61_0.png" src="../_images/statquest_classification_trees_in_python_61_0.png" />
+</div>
+</div>
+<p>OK, we’ve built a <strong>Classification Tree</strong> for classification. Let’s see how it performs on the <strong>Testing Dataset</strong> by running the <strong>Testing Dataset</strong> down the tree and drawing a <strong>Confusion Matrix</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## plot_confusion_matrix() will run the test data down the tree and draw</span>
+<span class="c1">## a confusion matrix.</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">clf_dt</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Does not have HD&quot;</span><span class="p">,</span> <span class="s2">&quot;Has HD&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x12d26e160&gt;
+</pre></div>
+</div>
+<img alt="../_images/statquest_classification_trees_in_python_63_1.png" src="../_images/statquest_classification_trees_in_python_63_1.png" />
+</div>
+</div>
+<p>In the confusion matrix, we see that of the <strong>31 + 11 = 42</strong> people that did not have <strong>Heart Disease</strong>, <strong>31 (74%)</strong> were correctly classified. And of the <strong>7 + 26 = 33</strong> people that have <strong>Heart Disease</strong>, <strong>26 (79%)</strong> were correctly classified. Can we do better? One thing that might be holding this <strong>Classification Tree</strong> back is that it may have <strong>overfit</strong> the training dataset. So let’s prune the tree. Pruning, in theory, should solve the overfitting problem and give us better results.</p>
+<hr class="docutils" />
+<p><a id="prune-tree"></a></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="cost-complexity-pruning-part-1-visualize-alpha">
+<h1>Cost Complexity Pruning Part 1: Visualize alpha<a class="headerlink" href="#cost-complexity-pruning-part-1-visualize-alpha" title="Permalink to this headline">¶</a></h1>
+<p><strong>Decision Trees</strong> are notorious for being <strong>overfit</strong> to the <strong>Training Dataset</strong>, and there are a lot of parameters, like <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> and <code class="docutils literal notranslate"><span class="pre">min_samples</span></code>, that are designed to reduce overfitting. However, pruning a tree with <strong>cost complexity pruning</strong> can simplify the whole process of finding a smaller tree that impoves the accuracy with the <strong>Testing Dataset</strong>.</p>
+<p>Pruning a decision tree is all about finding the right value for the pruning parameter, <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, which controls how little or how much pruning happens. One way to find the optimal value for <code class="docutils literal notranslate"><span class="pre">alpha</span></code> is to plot the accuracy of the tree as a function of different values.  We’ll do this for both the <strong>Training Dataset</strong> and the <strong>Testing Dataset</strong>.</p>
+<p>First, let’s extract the different values of <code class="docutils literal notranslate"><span class="pre">alpha</span></code> that are available for this tree and build a pruned tree for each value for <code class="docutils literal notranslate"><span class="pre">alpha</span></code>. <strong>NOTE:</strong> We omit the maximum value for alpha with <code class="docutils literal notranslate"><span class="pre">ccp_alphas</span> <span class="pre">=</span> <span class="pre">ccp_alphas[:-1]</span></code> because it would prune all leaves, leaving us with only a root instead of a tree.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">clf_dt</span><span class="o">.</span><span class="n">cost_complexity_pruning_path</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> <span class="c1"># determine values for alpha</span>
+<span class="n">ccp_alphas</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">ccp_alphas</span> <span class="c1"># extract different values for alpha</span>
+<span class="n">ccp_alphas</span> <span class="o">=</span> <span class="n">ccp_alphas</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># exclude the maximum value for alpha</span>
+
+<span class="n">clf_dts</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># create an array that we will put decision trees into</span>
+
+<span class="c1">## now create one decision tree per value for alpha and store it in the array</span>
+<span class="k">for</span> <span class="n">ccp_alpha</span> <span class="ow">in</span> <span class="n">ccp_alphas</span><span class="p">:</span>
+    <span class="n">clf_dt</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ccp_alpha</span><span class="o">=</span><span class="n">ccp_alpha</span><span class="p">)</span>
+    <span class="n">clf_dt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">clf_dts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clf_dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s graph the accuracy of the trees using the <strong>Training Dataset</strong> and the <strong>Testing Dataset</strong> as a function of alpha.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">clf_dt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> <span class="k">for</span> <span class="n">clf_dt</span> <span class="ow">in</span> <span class="n">clf_dts</span><span class="p">]</span>
+<span class="n">test_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">clf_dt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="k">for</span> <span class="n">clf_dt</span> <span class="ow">in</span> <span class="n">clf_dts</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;alpha&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Accuracy vs alpha for training and testing sets&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ccp_alphas</span><span class="p">,</span> <span class="n">train_scores</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ccp_alphas</span><span class="p">,</span> <span class="n">test_scores</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/statquest_classification_trees_in_python_70_0.png" src="../_images/statquest_classification_trees_in_python_70_0.png" />
+</div>
+</div>
+<p>In the graph above, we see that the accuracy for the <strong>Testing Dataset</strong> hits its maximum value when <code class="docutils literal notranslate"><span class="pre">alpha</span></code> is about <strong>0.016</strong>. After this value for <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, the accuracy of the <strong>Training Dataset</strong> drops off and that suggests we should set <code class="docutils literal notranslate"><span class="pre">ccp_alpha=0.016</span></code>.</p>
+<p><strong>NOTE:</strong> When we apply <strong>Cost Complexity Pruning</strong> to a <strong>Classification Tree</strong>, values for <code class="docutils literal notranslate"><span class="pre">alpha</span></code> go from 0 to 1, because GINI scores go from 0 to 1. In contrast, values for <code class="docutils literal notranslate"><span class="pre">alpha</span></code> for a <strong>Regression Tree</strong> can be much larger since the sum of squared residuals can, in theory, go from 0 to positive infinity.</p>
+<p>Since there are many ways we could have divided the original dataset into <strong>Training</strong> and <strong>Testing</strong> datasets, how do we know we used the best <strong>Training Dataset</strong> and how do we know we used the best <strong>Testing Dataset</strong>? Typically, we answer this question with <strong>10-Fold Cross Validation</strong>. So that’s what we’re going to do now, and we’ll do it with the <code class="docutils literal notranslate"><span class="pre">cross_val_score()</span></code> function.</p>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="cost-complexity-pruning-part-2-cross-validation-for-finding-the-best-alpha">
+<h1>Cost Complexity Pruning Part 2: Cross Validation For Finding the Best Alpha<a class="headerlink" href="#cost-complexity-pruning-part-2-cross-validation-for-finding-the-best-alpha" title="Permalink to this headline">¶</a></h1>
+<p>The graph we just drew suggested one value for alpha, <strong>0.016</strong>, but another
+set of data might suggest another optimal value.</p>
+<!-- **Terminology Alert!!!** Since, ultimately, we have to decide on one value for `alpha`, and
+the **Decision Tree** algorithm will not do this for us, `alpha` is called a **Hyperparameter** to differentiate it from the parameters that the **Decision Tree** algorithm can take care of on its own. -->
+<p>First, let’s demonstrate that different training and testing datasets result in trees with different accuracies when we set <code class="docutils literal notranslate"><span class="pre">ccp_alpha=0.016</span></code>. We will do this by using the <code class="docutils literal notranslate"><span class="pre">cross_val_score()</span></code> function to generate different training and testing datasets and then train and test the tree with those datasets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_dt</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">ccp_alpha</span><span class="o">=</span><span class="mf">0.016</span><span class="p">)</span> <span class="c1"># create the tree with ccp_alpha=0.016</span>
+
+<span class="c1">## now use 5-fold cross validation create 5 different training and testing datasets that</span>
+<span class="c1">## are then used to train and test the tree.</span>
+<span class="c1">## NOTE: We use 5-fold because we don&#39;t have tons of data...</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf_dt</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> 
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;tree&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">:</span> <span class="n">scores</span><span class="p">})</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;tree&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;tree&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/statquest_classification_trees_in_python_75_1.png" src="../_images/statquest_classification_trees_in_python_75_1.png" />
+</div>
+</div>
+<p>The graph above shows that using different <strong>Training</strong> and <strong>Testing</strong> data with the same <code class="docutils literal notranslate"><span class="pre">alpha</span></code> resulted in different accuracies, suggesting that <code class="docutils literal notranslate"><span class="pre">alpha</span></code> is sensitive to the datasets. So, instead of picking a single <strong>Training</strong> dataset and single <strong>Testing</strong> dataset, let’s use <strong>cross validation</strong> to find the optimal value for <code class="docutils literal notranslate"><span class="pre">ccp_alpha</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create an array to store the results of each fold during cross validiation</span>
+<span class="n">alpha_loop_values</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">## For each candidate value for alpha, we will run 5-fold cross validation.</span>
+<span class="c1">## Then we will store the mean and standard deviation of the scores (the accuracy) for each call</span>
+<span class="c1">## to cross_val_score in alpha_loop_values...</span>
+<span class="k">for</span> <span class="n">ccp_alpha</span> <span class="ow">in</span> <span class="n">ccp_alphas</span><span class="p">:</span>
+    <span class="n">clf_dt</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ccp_alpha</span><span class="o">=</span><span class="n">ccp_alpha</span><span class="p">)</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf_dt</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">alpha_loop_values</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">ccp_alpha</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scores</span><span class="p">)])</span>
+
+<span class="c1">## Now we can draw a graph of the means and standard deviations of the scores</span>
+<span class="c1">## for each candidate value for alpha</span>
+<span class="n">alpha_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">alpha_loop_values</span><span class="p">,</span> 
+                             <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">])</span>
+
+<span class="n">alpha_results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> 
+                   <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean_accuracy&#39;</span><span class="p">,</span> 
+                   <span class="n">yerr</span><span class="o">=</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> 
+                   <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> 
+                   <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;alpha&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/statquest_classification_trees_in_python_77_1.png" src="../_images/statquest_classification_trees_in_python_77_1.png" />
+</div>
+</div>
+<p>Using cross validation, we can see that, over all, instead of setting <code class="docutils literal notranslate"><span class="pre">ccp_alpha=0.016</span></code>,  we need to set it to something closer to <strong>0.014</strong>. We can find the exact value with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha_results</span><span class="p">[(</span><span class="n">alpha_results</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.014</span><span class="p">)</span>
+              <span class="o">&amp;</span>
+              <span class="p">(</span><span class="n">alpha_results</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.015</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>alpha</th>
+      <th>mean_accuracy</th>
+      <th>std</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20</th>
+      <td>0.014225</td>
+      <td>0.747778</td>
+      <td>0.091395</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now let’s store the ideal value for alpha so that we can use it to build the best tree.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ideal_ccp_alpha</span> <span class="o">=</span> <span class="n">alpha_results</span><span class="p">[(</span><span class="n">alpha_results</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.014</span><span class="p">)</span> 
+                                <span class="o">&amp;</span> 
+                                <span class="p">(</span><span class="n">alpha_results</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.015</span><span class="p">)][</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span>
+<span class="n">ideal_ccp_alpha</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20    0.014225
+Name: alpha, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>NOTE:</strong> At this point Python thinks that <code class="docutils literal notranslate"><span class="pre">ideal_ccp_alpha</span></code> is a <code class="docutils literal notranslate"><span class="pre">series</span></code>, which is a type of array. We can tell because when we printed <code class="docutils literal notranslate"><span class="pre">ideal_ccp_alpha</span></code> out, we got two bits of stuff. The first one was <code class="docutils literal notranslate"><span class="pre">20</span></code>, which is the index in the series, the second one, <code class="docutils literal notranslate"><span class="pre">0.014225</span></code>, is the value we want. So we can convert this from a series to a float with the following command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## convert ideal_ccp_alpha from a series to a float</span>
+<span class="n">ideal_ccp_alpha</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ideal_ccp_alpha</span><span class="p">)</span>
+<span class="n">ideal_ccp_alpha</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.014224751066856332
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hooray!!! Now we have the ideal value for <code class="docutils literal notranslate"><span class="pre">alpha</span></code> and we can build, evaluate and draw the final <strong>Classification Tree</strong>.</p>
+<hr class="docutils" />
+<p><a id="draw-tree"></a></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="building-evaluating-drawing-and-interpreting-the-final-classification-tree">
+<h1>Building, Evaluating, Drawing, and Interpreting the Final Classification Tree<a class="headerlink" href="#building-evaluating-drawing-and-interpreting-the-final-classification-tree" title="Permalink to this headline">¶</a></h1>
+<p>Now that we have the ideal value for <code class="docutils literal notranslate"><span class="pre">alpha</span></code> we can build the final <strong>Classification Tree</strong> by setting <code class="docutils literal notranslate"><span class="pre">ccp_alpha=ideal_ccp_alpha</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Build and train a new decision tree, only this time use the optimal value for alpha</span>
+<span class="n">clf_dt_pruned</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> 
+                                       <span class="n">ccp_alpha</span><span class="o">=</span><span class="n">ideal_ccp_alpha</span><span class="p">)</span>
+<span class="n">clf_dt_pruned</span> <span class="o">=</span> <span class="n">clf_dt_pruned</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s draw another confusion matrix to see if the pruned tree does better.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">clf_dt_pruned</span><span class="p">,</span> 
+                      <span class="n">X_test</span><span class="p">,</span> 
+                      <span class="n">y_test</span><span class="p">,</span> 
+                      <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Does not have HD&quot;</span><span class="p">,</span> <span class="s2">&quot;Has HD&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x12d6d1c10&gt;
+</pre></div>
+</div>
+<img alt="../_images/statquest_classification_trees_in_python_89_1.png" src="../_images/statquest_classification_trees_in_python_89_1.png" />
+</div>
+</div>
+<p>Hooray!!! We see that the pruned tree is better at classifying patients than the full sized tree.</p>
+<p>Of the <strong>34 + 8 = 42</strong> people that did not have heart disease, <strong>34 (81%)</strong> were correctly classified. This is an improvement over the full sized tree, which only correctly classified <strong>31 (74%)</strong> of the patients without heart disease. Of the <strong>5 + 28 = 33</strong> people with heart disease, <strong>28 (85%)</strong> were correctly classified. Again, this is an improvement over the full sized tree, which only correctly classified <strong>26 (79%)</strong> of the patients with heart disease. Yay for pruning!</p>
+<p>The last thing we are going to do is draw the pruned tree and discuss how to interpret it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">clf_dt_pruned</span><span class="p">,</span> 
+          <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+          <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+          <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No HD&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes HD&quot;</span><span class="p">],</span> 
+          <span class="n">feature_names</span><span class="o">=</span><span class="n">X_encoded</span><span class="o">.</span><span class="n">columns</span><span class="p">);</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/statquest_classification_trees_in_python_92_0.png" src="../_images/statquest_classification_trees_in_python_92_0.png" />
+</div>
+</div>
+<p>Now let’s discuss how to interpret the tree.
+In each node, we have:</p>
+<ul class="simple">
+<li><p>The variable (column name) and the threshold for splitting the observations. For example, in the tree’s root, we use <strong>ca</strong> to split the observations. All
+observations with <strong>ca &lt;= 0.5</strong> go to the <strong>left</strong> and all observations with <strong>ca &gt; 0.5</strong> go to the <strong>right</strong>.</p></li>
+<li><p><strong>gini</strong> is the gini index or score for that node</p></li>
+<li><p><strong>samples</strong> tell us how many samples are in that node</p></li>
+<li><p><strong>value</strong> tells us how many samples in the node are in each category. In this example, we have two categories, <strong>No</strong> and <strong>Yes</strong>, referring to whether or not a patient has heart disease. The number of patients with <strong>No</strong> comes first because the categories are in alphabetical order. Thus, in the root, 118 patients have <strong>No</strong> and 104 patients have <strong>Yes</strong>.</p></li>
+<li><p><strong>class</strong> tells us whichever category is represented most in the node. In the root, since 118 people have <strong>No</strong> and only 104 people have <strong>Yes</strong>, class is set to <strong>No</strong>.</p></li>
+</ul>
+<p>The leaves are just like the nodes, except that they do not contain a variable and threshold for splitting the observations.</p>
+<p>Lastly, the nodes and leaves are colored by the <strong>class</strong>. In this case <strong>No</strong> is different shades of orange-ish and <strong>Yes</strong> is different shades of blue. The the darker the shade, the lower the <strong>gini</strong> score, and that tells us how much the node or leaf is skewed towards one class.</p>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="in-conclusion-we">
+<h1>In conclusion we…<a class="headerlink" href="#in-conclusion-we" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="#download-the-data">Imported Data</a></strong></p></li>
+<li><p><strong><a class="reference external" href="#identify-and-deal-with-missing-data">Identified and Dealt with Missing Data</a></strong></p></li>
+<li><p><strong><a class="reference external" href="#one-hot-encoding">Formatted the Data for Decision Trees using One-Hot Encoding</a></strong></p></li>
+<li><p><strong><a class="reference external" href="#build-tree">Built a Preliminary Decision Tree for Classification</a></strong></p></li>
+<li><p><strong><a class="reference external" href="#prune-tree">Pruned the Decision Tree with Cost Complexity Pruning</a></strong></p></li>
+<li><p><strong><a class="reference external" href="#draw-tree">Built, Drew, Interpreted and Evaluated the Final Decision Tree</a></strong></p></li>
+</ul>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="triple-bam">
+<h1>TRIPLE BAM!!!<a class="headerlink" href="#triple-bam" title="Permalink to this headline">¶</a></h1>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./statquest_trees"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
