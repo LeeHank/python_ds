@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Introduction to Seaborn &#8212; My sample book</title>
+    <title>11. Introduction to Seaborn &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Supervised Learning with scikit-learn" href="../datacamp_su/datacamp_su.html" />
-    <link rel="prev" title="2. Getting Started (official)" href="../ch3_pandas/official_getting_started/getting_started.html" />
+    <link rel="next" title="12. Supervised Learning with scikit-learn" href="../datacamp_su/datacamp_su.html" />
+    <link rel="prev" title="10. Multiple Subplots" href="../ch4_matplotlib/04.08-Multiple-Subplots.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -122,13 +122,60 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.00-matplotlib_intro.html">
+   3. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   4. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   5. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.03-Errorbars.html">
+   6. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   7. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.06-Legends.html">
+   8. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.07-Colorbars.html">
+   9. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   10. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Seaborn
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. Introduction to Seaborn
+   11. Introduction to Seaborn
   </a>
  </li>
 </ul>
@@ -140,12 +187,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   4. Supervised Learning with scikit-learn
+   12. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statquest_trees/classification_tree.html">
+   13. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   5. Permutation Importance vs Random Forest Feature Importance (MDI)
+   14. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -254,91 +306,91 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#scatter-plot">
-   3.1. Scatter plot
+   11.1. Scatter plot
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data">
-     3.1.1. Data
+     11.1.1. Data
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#student-data">
-       3.1.1.1. student_data
+       11.1.1.1. student_data
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#mpg">
-       3.1.1.2. mpg
+       11.1.1.2. mpg
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     3.1.2. 基本 scatter plot
+     11.1.2. 基本 scatter plot
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hue-i-e-color">
-     3.1.3. hue (i.e. color)
+     11.1.3. hue (i.e. color)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       3.1.3.1. 第三個變數的顏色自己指定
+       11.1.3.1. 第三個變數的顏色自己指定
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id3">
-       3.1.3.2. 第三個變數的順序自己指定
+       11.1.3.2. 第三個變數的順序自己指定
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#size">
-     3.1.4. size
+     11.1.4. size
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#style-style">
-     3.1.5. style (點的style)
+     11.1.5. style (點的style)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#alpha">
-     3.1.6. alpha
+     11.1.6. alpha
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#facet-grid">
-     3.1.7. facet_grid 類型
+     11.1.7. facet_grid 類型
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#by-column">
-       3.1.7.1. by column 畫圖
+       11.1.7.1. by column 畫圖
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id4">
-       3.1.7.2. by column 指定順序
+       11.1.7.2. by column 指定順序
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#column">
-       3.1.7.3. 指定 column 行數
+       11.1.7.3. 指定 column 行數
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#by-row">
-       3.1.7.4. by row 畫圖
+       11.1.7.4. by row 畫圖
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#by-column-row-r-facet-grid">
-       3.1.7.5. by column &amp; row (R 的 facet_grid)
+       11.1.7.5. by column &amp; row (R 的 facet_grid)
       </a>
      </li>
     </ul>
@@ -347,46 +399,46 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#line-plot">
-   3.2. Line plot
+   11.2. Line plot
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     3.2.1. 基本 line plot
+     11.2.1. 基本 line plot
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multiple-line-plot">
-     3.2.2. multiple line plot
+     11.2.2. multiple line plot
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#line-plot-with-ci">
-     3.2.3. line plot with CI
+     11.2.3. line plot with CI
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#count-plots-bar-chart">
-   3.3. count plots (bar chart)
+   11.3. count plots (bar chart)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#countplot">
-     3.3.1. 基本 countplot
+     11.3.1. 基本 countplot
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     3.3.2. 兩維的 countplot
+     11.3.2. 兩維的 countplot
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#count-plot">
-   3.4. count plot
+   11.4. count plot
   </a>
  </li>
 </ul>
@@ -411,91 +463,91 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#scatter-plot">
-   3.1. Scatter plot
+   11.1. Scatter plot
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data">
-     3.1.1. Data
+     11.1.1. Data
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#student-data">
-       3.1.1.1. student_data
+       11.1.1.1. student_data
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#mpg">
-       3.1.1.2. mpg
+       11.1.1.2. mpg
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     3.1.2. 基本 scatter plot
+     11.1.2. 基本 scatter plot
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hue-i-e-color">
-     3.1.3. hue (i.e. color)
+     11.1.3. hue (i.e. color)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       3.1.3.1. 第三個變數的顏色自己指定
+       11.1.3.1. 第三個變數的顏色自己指定
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id3">
-       3.1.3.2. 第三個變數的順序自己指定
+       11.1.3.2. 第三個變數的順序自己指定
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#size">
-     3.1.4. size
+     11.1.4. size
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#style-style">
-     3.1.5. style (點的style)
+     11.1.5. style (點的style)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#alpha">
-     3.1.6. alpha
+     11.1.6. alpha
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#facet-grid">
-     3.1.7. facet_grid 類型
+     11.1.7. facet_grid 類型
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#by-column">
-       3.1.7.1. by column 畫圖
+       11.1.7.1. by column 畫圖
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id4">
-       3.1.7.2. by column 指定順序
+       11.1.7.2. by column 指定順序
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#column">
-       3.1.7.3. 指定 column 行數
+       11.1.7.3. 指定 column 行數
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#by-row">
-       3.1.7.4. by row 畫圖
+       11.1.7.4. by row 畫圖
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#by-column-row-r-facet-grid">
-       3.1.7.5. by column &amp; row (R 的 facet_grid)
+       11.1.7.5. by column &amp; row (R 的 facet_grid)
       </a>
      </li>
     </ul>
@@ -504,46 +556,46 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#line-plot">
-   3.2. Line plot
+   11.2. Line plot
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     3.2.1. 基本 line plot
+     11.2.1. 基本 line plot
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multiple-line-plot">
-     3.2.2. multiple line plot
+     11.2.2. multiple line plot
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#line-plot-with-ci">
-     3.2.3. line plot with CI
+     11.2.3. line plot with CI
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#count-plots-bar-chart">
-   3.3. count plots (bar chart)
+   11.3. count plots (bar chart)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#countplot">
-     3.3.1. 基本 countplot
+     11.3.1. 基本 countplot
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     3.3.2. 兩維的 countplot
+     11.3.2. 兩維的 countplot
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#count-plot">
-   3.4. count plot
+   11.4. count plot
   </a>
  </li>
 </ul>
@@ -556,7 +608,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-seaborn">
-<h1><span class="section-number">3. </span>Introduction to Seaborn<a class="headerlink" href="#introduction-to-seaborn" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">11. </span>Introduction to Seaborn<a class="headerlink" href="#introduction-to-seaborn" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>seaborn 是 build 在 matplotlib 上，和 pandas 合作的很好</p></li>
 </ul>
@@ -570,11 +622,11 @@
 </div>
 </div>
 <div class="section" id="scatter-plot">
-<h2><span class="section-number">3.1. </span>Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.1. </span>Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="data">
-<h3><span class="section-number">3.1.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="student-data">
-<h4><span class="section-number">3.1.1.1. </span>student_data<a class="headerlink" href="#student-data" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.1.1. </span>student_data<a class="headerlink" href="#student-data" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">student_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/student-alcohol-consumption.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -896,7 +948,7 @@
 </div>
 </div>
 <div class="section" id="mpg">
-<h4><span class="section-number">3.1.1.2. </span>mpg<a class="headerlink" href="#mpg" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.1.2. </span>mpg<a class="headerlink" href="#mpg" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/mpg.csv&quot;</span><span class="p">)</span>
@@ -1075,7 +1127,7 @@
 </div>
 </div>
 <div class="section" id="id1">
-<h3><span class="section-number">3.1.2. </span>基本 scatter plot<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.2. </span>基本 scatter plot<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span> 
@@ -1092,7 +1144,7 @@
 </ul>
 </div>
 <div class="section" id="hue-i-e-color">
-<h3><span class="section-number">3.1.3. </span>hue (i.e. color)<a class="headerlink" href="#hue-i-e-color" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.3. </span>hue (i.e. color)<a class="headerlink" href="#hue-i-e-color" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span> 
@@ -1109,7 +1161,7 @@
 <li><p>可以看到，第三軸放上 location 後，結論是：不論是城市或鄉下的小孩，都是缺席越多，成績越差</p></li>
 </ul>
 <div class="section" id="id2">
-<h4><span class="section-number">3.1.3.1. </span>第三個變數的顏色自己指定<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.3.1. </span>第三個變數的顏色自己指定<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hue_colors</span> <span class="o">=</span> <span class="p">{</span>
@@ -1130,7 +1182,7 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h4><span class="section-number">3.1.3.2. </span>第三個變數的順序自己指定<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.3.2. </span>第三個變數的順序自己指定<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span> 
@@ -1147,7 +1199,7 @@
 </div>
 </div>
 <div class="section" id="size">
-<h3><span class="section-number">3.1.4. </span>size<a class="headerlink" href="#size" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.4. </span>size<a class="headerlink" href="#size" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
@@ -1188,7 +1240,7 @@
 </ul>
 </div>
 <div class="section" id="style-style">
-<h3><span class="section-number">3.1.5. </span>style (點的style)<a class="headerlink" href="#style-style" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.5. </span>style (點的style)<a class="headerlink" href="#style-style" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
@@ -1226,17 +1278,17 @@
 </div>
 </div>
 <div class="section" id="alpha">
-<h3><span class="section-number">3.1.6. </span>alpha<a class="headerlink" href="#alpha" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.6. </span>alpha<a class="headerlink" href="#alpha" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="facet-grid">
-<h3><span class="section-number">3.1.7. </span>facet_grid 類型<a class="headerlink" href="#facet-grid" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.7. </span>facet_grid 類型<a class="headerlink" href="#facet-grid" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>ggplot 的 facet_grid/facet_wrap，在 sns 中，是用 <code class="docutils literal notranslate"><span class="pre">relplot()</span></code> 來實現</p></li>
 <li><p>relplot 是 relational plot 的縮寫，它包含 scatter plot 和 line plot.</p></li>
 <li><p>我們使用 relplot 的時機是，你想做出 ggplot 那種 facet_wrap 的效果</p></li>
 </ul>
 <div class="section" id="by-column">
-<h4><span class="section-number">3.1.7.1. </span>by column 畫圖<a class="headerlink" href="#by-column" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.7.1. </span>by column 畫圖<a class="headerlink" href="#by-column" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> 
@@ -1253,7 +1305,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h4><span class="section-number">3.1.7.2. </span>by column 指定順序<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.7.2. </span>by column 指定順序<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> 
@@ -1271,7 +1323,7 @@
 </div>
 </div>
 <div class="section" id="column">
-<h4><span class="section-number">3.1.7.3. </span>指定 column 行數<a class="headerlink" href="#column" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.7.3. </span>指定 column 行數<a class="headerlink" href="#column" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>可以定義 by col 畫圖時，最多幾個後要換行</p></li>
 </ul>
@@ -1292,7 +1344,7 @@
 </div>
 </div>
 <div class="section" id="by-row">
-<h4><span class="section-number">3.1.7.4. </span>by row 畫圖<a class="headerlink" href="#by-row" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.7.4. </span>by row 畫圖<a class="headerlink" href="#by-row" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>同樣的做法，可以改成 by row</p></li>
 </ul>
@@ -1312,7 +1364,7 @@
 </div>
 </div>
 <div class="section" id="by-column-row-r-facet-grid">
-<h4><span class="section-number">3.1.7.5. </span>by column &amp; row (R 的 facet_grid)<a class="headerlink" href="#by-column-row-r-facet-grid" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.7.5. </span>by column &amp; row (R 的 facet_grid)<a class="headerlink" href="#by-column-row-r-facet-grid" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>如果要做到 facet_grid (兩個變數交叉)，那就又 col 又 row</p></li>
 </ul>
@@ -1357,21 +1409,21 @@
 </div>
 </div>
 <div class="section" id="line-plot">
-<h2><span class="section-number">3.2. </span>Line plot<a class="headerlink" href="#line-plot" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.2. </span>Line plot<a class="headerlink" href="#line-plot" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
-<h3><span class="section-number">3.2.1. </span>基本 line plot<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.1. </span>基本 line plot<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="multiple-line-plot">
-<h3><span class="section-number">3.2.2. </span>multiple line plot<a class="headerlink" href="#multiple-line-plot" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.2. </span>multiple line plot<a class="headerlink" href="#multiple-line-plot" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="line-plot-with-ci">
-<h3><span class="section-number">3.2.3. </span>line plot with CI<a class="headerlink" href="#line-plot-with-ci" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.3. </span>line plot with CI<a class="headerlink" href="#line-plot-with-ci" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="count-plots-bar-chart">
-<h2><span class="section-number">3.3. </span>count plots (bar chart)<a class="headerlink" href="#count-plots-bar-chart" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.3. </span>count plots (bar chart)<a class="headerlink" href="#count-plots-bar-chart" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="countplot">
-<h3><span class="section-number">3.3.1. </span>基本 countplot<a class="headerlink" href="#countplot" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.3.1. </span>基本 countplot<a class="headerlink" href="#countplot" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;school&quot;</span><span class="p">,</span> 
@@ -1385,7 +1437,7 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">3.3.2. </span>兩維的 countplot<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.3.2. </span>兩維的 countplot<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">palette_colors</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Rural&quot;</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;Urban&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">}</span>
@@ -1759,7 +1811,7 @@ memory usage: 35.6+ KB
 </div>
 </div>
 <div class="section" id="count-plot">
-<h2><span class="section-number">3.4. </span>count plot<a class="headerlink" href="#count-plot" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.4. </span>count plot<a class="headerlink" href="#count-plot" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -1788,17 +1840,17 @@ memory usage: 35.6+ KB
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../ch3_pandas/official_getting_started/getting_started.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../ch4_matplotlib/04.08-Multiple-Subplots.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Getting Started (official)</p>
+            <p class="prev-next-title"><span class="section-number">10. </span>Multiple Subplots</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../datacamp_su/datacamp_su.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Supervised Learning with scikit-learn</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Supervised Learning with scikit-learn</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
