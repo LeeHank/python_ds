@@ -1,0 +1,99 @@
+Traceback (most recent call last):
+  File "/Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nbclient/client.py", line 1082, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/asyncio/base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "/Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nbclient/client.py", line 535, in async_execute
+    await self.async_execute_cell(
+  File "/Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nbclient/client.py", line 827, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nbclient/client.py", line 735, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# use a gray background
+ax = plt.axes(axisbg='#E6E6E6')
+ax.set_axisbelow(True)
+
+# draw solid white grid lines
+plt.grid(color='w', linestyle='solid')
+
+# hide axis spines
+for spine in ax.spines.values():
+    spine.set_visible(False)
+    
+# hide top and right ticks
+ax.xaxis.tick_bottom()
+ax.yaxis.tick_left()
+
+# lighten ticks and labels
+ax.tick_params(colors='gray', direction='out')
+for tick in ax.get_xticklabels():
+    tick.set_color('gray')
+for tick in ax.get_yticklabels():
+    tick.set_color('gray')
+    
+# control face and edge color of histogram
+ax.hist(x, edgecolor='#E6E6E6', color='#EE6666');
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+[0;32m<ipython-input-3-c36ecb5d3c0e>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m# use a gray background[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0max[0m [0;34m=[0m [0mplt[0m[0;34m.[0m[0maxes[0m[0;34m([0m[0maxisbg[0m[0;34m=[0m[0;34m'#E6E6E6'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0max[0m[0;34m.[0m[0mset_axisbelow[0m[0;34m([0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;34m[0m[0m
+[1;32m      5[0m [0;31m# draw solid white grid lines[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/pyplot.py[0m in [0;36maxes[0;34m(arg, **kwargs)[0m
+[1;32m    962[0m [0;34m[0m[0m
+[1;32m    963[0m     [0;32mif[0m [0marg[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 964[0;31m         [0;32mreturn[0m [0msubplot[0m[0;34m([0m[0;36m111[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    965[0m     [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    966[0m         [0;32mreturn[0m [0mgcf[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0madd_axes[0m[0;34m([0m[0marg[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/pyplot.py[0m in [0;36msubplot[0;34m(*args, **kwargs)[0m
+[1;32m   1140[0m [0;34m[0m[0m
+[1;32m   1141[0m     [0mfig[0m [0;34m=[0m [0mgcf[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1142[0;31m     [0max[0m [0;34m=[0m [0mfig[0m[0;34m.[0m[0madd_subplot[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1143[0m     [0mbbox[0m [0;34m=[0m [0max[0m[0;34m.[0m[0mbbox[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1144[0m     [0maxes_to_delete[0m [0;34m=[0m [0;34m[[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/figure.py[0m in [0;36madd_subplot[0;34m(self, *args, **kwargs)[0m
+[1;32m   1400[0m                     [0;31m# more similar to add_axes.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1401[0m                     [0mself[0m[0;34m.[0m[0m_axstack[0m[0;34m.[0m[0mremove[0m[0;34m([0m[0max[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1402[0;31m             [0max[0m [0;34m=[0m [0msubplot_class_factory[0m[0;34m([0m[0mprojection_class[0m[0;34m)[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1403[0m [0;34m[0m[0m
+[1;32m   1404[0m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_add_axes_internal[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0max[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/axes/_subplots.py[0m in [0;36m__init__[0;34m(self, fig, *args, **kwargs)[0m
+[1;32m     40[0m         [0mself[0m[0;34m.[0m[0mupdate_params[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     41[0m         [0;31m# _axes_class is set in the subplot_class_factory[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 42[0;31m         [0mself[0m[0;34m.[0m[0m_axes_class[0m[0;34m.[0m[0m__init__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mfig[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mfigbox[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     43[0m         [0;31m# add a layout box to this, for both the full axis, and the poss[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     44[0m         [0;31m# of the axis.  We need both because the axes may become smaller[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/axes/_base.py[0m in [0;36m__init__[0;34m(self, fig, rect, facecolor, frameon, sharex, sharey, label, xscale, yscale, box_aspect, **kwargs)[0m
+[1;32m    523[0m             [0mself[0m[0;34m.[0m[0mset_yscale[0m[0;34m([0m[0myscale[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    524[0m [0;34m[0m[0m
+[0;32m--> 525[0;31m         [0mself[0m[0;34m.[0m[0mupdate[0m[0;34m([0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    526[0m [0;34m[0m[0m
+[1;32m    527[0m         [0;32mif[0m [0mself[0m[0;34m.[0m[0mxaxis[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/artist.py[0m in [0;36mupdate[0;34m(self, props)[0m
+[1;32m    994[0m                     [0mfunc[0m [0;34m=[0m [0mgetattr[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34mf"set_{k}"[0m[0;34m,[0m [0;32mNone[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    995[0m                     [0;32mif[0m [0;32mnot[0m [0mcallable[0m[0;34m([0m[0mfunc[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 996[0;31m                         raise AttributeError(f"{type(self).__name__!r} object "
+[0m[1;32m    997[0m                                              f"has no property {k!r}")
+[1;32m    998[0m                     [0mret[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0mfunc[0m[0;34m([0m[0mv[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mAttributeError[0m: 'AxesSubplot' object has no property 'axisbg'
+AttributeError: 'AxesSubplot' object has no property 'axisbg'
+

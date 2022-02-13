@@ -1,0 +1,5352 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Getting Started (official) &#8212; My sample book</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Matplotlib 簡介與常用技巧" href="../../ch4_matplotlib/04.00-matplotlib_intro.html" />
+    <link rel="prev" title="1. Introduction to NumPy" href="../../np_1_Intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../np_1_Intro.html">
+   1. Introduction to NumPy
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Getting Started (official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.00-matplotlib_intro.html">
+   3. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   4. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   5. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.03-Errorbars.html">
+   6. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   7. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.06-Legends.html">
+   8. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.07-Colorbars.html">
+   9. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   10. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  unsupervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../05.09-PCA.html">
+   11. In Depth: Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../05.11-K-Means.html">
+   12. In Depth: k-Means Clustering
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/ch3_pandas/official_getting_started/getting_started.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch3_pandas/official_getting_started/getting_started.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/ch3_pandas/official_getting_started/getting_started.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-data">
+   2.1. Pandas 處理哪種 data？
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframe">
+     2.1.1. DataFrame
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series">
+     2.1.2. Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#methods">
+     2.1.3. 一些基礎 methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tabular-data">
+   2.2. 如何 讀寫 tabular data？
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#csv">
+     2.2.1. csv
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#excel">
+     2.2.2. excel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#select-filter">
+   2.3. 如何 select/filter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-column">
+     2.3.1. select 特定 column
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filter-row">
+     2.3.2. filter 特定 row
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2.3.3. select + filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.4. 如何畫圖
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#df-line-plot">
+     2.4.1. 對整個 df 畫圖 (各欄位的line plot)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-series-line-plot">
+     2.4.2. 對某個 series 畫圖 (該series line plot)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot">
+     2.4.3. Scatter plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#box-plot">
+     2.4.4. Box plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#area-plot">
+     2.4.5. Area plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subplot">
+     2.4.6. subplot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.4.7. 更多客製化
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.4.8. 更多細節
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#column">
+   2.5. 如何新增 column
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     2.5.1. 某個 column 乘上一個常數
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.5.2. 多個 column 間的運算
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rename">
+     2.5.3. rename
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-statistics">
+   2.6. 如何做 summary statistics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aggregating-statistics">
+     2.6.1. aggregating statistics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-group">
+     2.6.2. by group
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#count-number">
+     2.6.3. count number
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reshape">
+   2.7. 如何 reshape
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#long-to-wide-pivot-rpivot-wider">
+     2.7.1. Long to wide (pivot)(R的pivot wider)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wide-to-long-melt-rpivot-longer">
+     2.7.2. wide to long (melt)(R的pivot_longer)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concat-r-bind-rows-bind-cols">
+   2.8. 如何 concat (R 的 bind_rows, bind_cols)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#concat-axis-0-bind-rows">
+     2.8.1. concat (axis = 0) (bind_rows)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-r-join">
+   2.9. 如何 merge (R 的 join)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-data">
+   2.10. 如何處理 time-series data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     2.10.1. 最大最小值
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     2.10.2. 從時間資料中，擷取 年/月/日/星期幾…
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slicing-datetime">
+     2.10.3. slicing datetime
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resample-frequency">
+     2.10.4. Resample 成不同的 frequency
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manipulate-textual-data">
+   2.11. 如何 manipulate textual data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     2.11.1. 把某個欄位全轉小寫
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pattern">
+     2.11.2. 把某個欄位依照pattern切開
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     2.11.3. 是否包含某字串
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     2.11.4. 字串長度
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     2.11.5. 字串取代
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Getting Started (official)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-data">
+   2.1. Pandas 處理哪種 data？
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframe">
+     2.1.1. DataFrame
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series">
+     2.1.2. Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#methods">
+     2.1.3. 一些基礎 methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tabular-data">
+   2.2. 如何 讀寫 tabular data？
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#csv">
+     2.2.1. csv
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#excel">
+     2.2.2. excel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#select-filter">
+   2.3. 如何 select/filter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-column">
+     2.3.1. select 特定 column
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filter-row">
+     2.3.2. filter 特定 row
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2.3.3. select + filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.4. 如何畫圖
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#df-line-plot">
+     2.4.1. 對整個 df 畫圖 (各欄位的line plot)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-series-line-plot">
+     2.4.2. 對某個 series 畫圖 (該series line plot)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot">
+     2.4.3. Scatter plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#box-plot">
+     2.4.4. Box plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#area-plot">
+     2.4.5. Area plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subplot">
+     2.4.6. subplot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.4.7. 更多客製化
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.4.8. 更多細節
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#column">
+   2.5. 如何新增 column
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     2.5.1. 某個 column 乘上一個常數
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.5.2. 多個 column 間的運算
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rename">
+     2.5.3. rename
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-statistics">
+   2.6. 如何做 summary statistics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aggregating-statistics">
+     2.6.1. aggregating statistics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-group">
+     2.6.2. by group
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#count-number">
+     2.6.3. count number
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reshape">
+   2.7. 如何 reshape
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#long-to-wide-pivot-rpivot-wider">
+     2.7.1. Long to wide (pivot)(R的pivot wider)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wide-to-long-melt-rpivot-longer">
+     2.7.2. wide to long (melt)(R的pivot_longer)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concat-r-bind-rows-bind-cols">
+   2.8. 如何 concat (R 的 bind_rows, bind_cols)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#concat-axis-0-bind-rows">
+     2.8.1. concat (axis = 0) (bind_rows)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-r-join">
+   2.9. 如何 merge (R 的 join)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-data">
+   2.10. 如何處理 time-series data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     2.10.1. 最大最小值
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     2.10.2. 從時間資料中，擷取 年/月/日/星期幾…
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slicing-datetime">
+     2.10.3. slicing datetime
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resample-frequency">
+     2.10.4. Resample 成不同的 frequency
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manipulate-textual-data">
+   2.11. 如何 manipulate textual data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     2.11.1. 把某個欄位全轉小寫
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pattern">
+     2.11.2. 把某個欄位依照pattern切開
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     2.11.3. 是否包含某字串
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     2.11.4. 字串長度
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     2.11.5. 字串取代
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="getting-started-official">
+<h1><span class="section-number">2. </span>Getting Started (official)<a class="headerlink" href="#getting-started-official" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>這份文件，摘錄自官網的 <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html">Getting started tutorials</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pandas-data">
+<h2><span class="section-number">2.1. </span>Pandas 處理哪種 data？<a class="headerlink" href="#pandas-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>處理 tabular data ，如下：</p></li>
+</ul>
+<p><img alt="" src="../../_images/01_table_dataframe.svg" /></p>
+<div class="section" id="dataframe">
+<h3><span class="section-number">2.1.1. </span>DataFrame<a class="headerlink" href="#dataframe" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>建立 DataFrame 的方式，由 dictionary 來處理：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Braund, Mr. Owen Harris&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Allen, Mr. William Henry&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Bonnell, Miss. Elizabeth&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;Age&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">58</span><span class="p">],</span>
+        <span class="s2">&quot;Sex&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;female&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                       Name  Age     Sex
+0   Braund, Mr. Owen Harris   22    male
+1  Allen, Mr. William Henry   35    male
+2  Bonnell, Miss. Elizabeth   58  female
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>這其實就和 excel 一樣:</p></li>
+</ul>
+<p><img alt="" src="../../_images/01_table_spreadsheet.png" /></p>
+</div>
+<div class="section" id="series">
+<h3><span class="section-number">2.1.2. </span>Series<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>每一個 column，都是一個 <code class="docutils literal notranslate"><span class="pre">Series</span></code></p></li>
+</ul>
+<p><img alt="" src="../../_images/01_table_series.svg" /></p>
+<ul class="simple">
+<li><p>要注意，series還是帶有 row index。例如：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    22
+1    35
+2    58
+Name: Age, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>如果，你想自己建立一個 series，可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">22</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">58</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">)</span>
+<span class="n">ages</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    22
+1    35
+2    58
+Name: Age, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="methods">
+<h3><span class="section-number">2.1.3. </span>一些基礎 methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>對 Series，我們可以進行 numpy 的那些常見 function，例如：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>對 DataFrame，我們可以看一下連續型欄位的 basic statistics</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>3.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>38.333333</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>18.230012</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>22.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>28.500000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>35.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>46.500000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>58.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="tabular-data">
+<h2><span class="section-number">2.2. </span>如何 讀寫 tabular data？<a class="headerlink" href="#tabular-data" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../../_images/02_io_readwrite.svg" /></p>
+<ul class="simple">
+<li><p>如上圖， <code class="docutils literal notranslate"><span class="pre">read_*</span></code> 就讀進來，用 <code class="docutils literal notranslate"><span class="pre">to_*</span></code> 就寫出去</p></li>
+</ul>
+<div class="section" id="csv">
+<h3><span class="section-number">2.2.1. </span>csv<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/titanic.csv&quot;</span><span class="p">)</span>
+<span class="n">titanic</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>886</th>
+      <td>887</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Montvila, Rev. Juozas</td>
+      <td>male</td>
+      <td>27.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>211536</td>
+      <td>13.00</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>888</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Graham, Miss. Margaret Edith</td>
+      <td>female</td>
+      <td>19.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>112053</td>
+      <td>30.00</td>
+      <td>B42</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>888</th>
+      <td>889</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Johnston, Miss. Catherine Helen "Carrie"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>2</td>
+      <td>W./C. 6607</td>
+      <td>23.45</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>890</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Behr, Mr. Karl Howell</td>
+      <td>male</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>111369</td>
+      <td>30.00</td>
+      <td>C148</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>890</th>
+      <td>891</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Dooley, Mr. Patrick</td>
+      <td>male</td>
+      <td>32.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>370376</td>
+      <td>7.75</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="excel">
+<h3><span class="section-number">2.2.2. </span>excel<a class="headerlink" href="#excel" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>記得要先安裝 <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> ，才能順利讀寫</p></li>
+<li><p>我們可以把剛剛的 <code class="docutils literal notranslate"><span class="pre">titanic</span></code> DataFrame 先寫成 excel</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;data/titanic.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;passengers&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>然後，我們把他讀進來看看</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/titanic.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;passengers&quot;</span><span class="p">)</span>
+<span class="n">titanic</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>看一下這張 table 的欄位摘要：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 12 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   PassengerId  891 non-null    int64  
+ 1   Survived     891 non-null    int64  
+ 2   Pclass       891 non-null    int64  
+ 3   Name         891 non-null    object 
+ 4   Sex          891 non-null    object 
+ 5   Age          714 non-null    float64
+ 6   SibSp        891 non-null    int64  
+ 7   Parch        891 non-null    int64  
+ 8   Ticket       891 non-null    object 
+ 9   Fare         891 non-null    float64
+ 10  Cabin        204 non-null    object 
+ 11  Embarked     889 non-null    object 
+dtypes: float64(2), int64(5), object(5)
+memory usage: 83.7+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>第一列告訴你他的型別是 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p></li>
+<li><p>第二列告訴你他的 row index 從 0 ~ 890 (共 891 個 row)</p></li>
+<li><p>第三列告訴你有 12 個 column.</p></li>
+<li><p>第四列開始，摘要每個欄位的資訊.</p>
+<ul>
+<li><p>Non-Null Count 可以讓你看到大部分的 column都沒有 missing (891 non-null)，但 <code class="docutils literal notranslate"><span class="pre">Age</span></code>, <code class="docutils literal notranslate"><span class="pre">Cabin</span></code>, <code class="docutils literal notranslate"><span class="pre">Embarked</span></code> 有 missing</p></li>
+<li><p>Dtype 可以讓你看到每個 column 的 type。<code class="docutils literal notranslate"><span class="pre">object</span></code> 的意思，就是文字型/類別型資料; <code class="docutils literal notranslate"><span class="pre">int64</span></code> 是整數型資料，<code class="docutils literal notranslate"><span class="pre">float64</span></code> 是real number型資料</p></li>
+</ul>
+</li>
+<li><p>倒數第二列，幫你摘要變數的 type，對統計分析來說，就知道數值型資料有 7 個 (float64 + int64)，類別型有 5 個 (object)</p></li>
+<li><p>最後一列告訴你 memory usage 是 84 kb 左右</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="select-filter">
+<h2><span class="section-number">2.3. </span>如何 select/filter<a class="headerlink" href="#select-filter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="select-column">
+<h3><span class="section-number">2.3.1. </span>select 特定 column<a class="headerlink" href="#select-column" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../../_images/03_subset_columns.svg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_sex</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[[</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">]]</span>
+<span class="n">age_sex</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Sex</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22.0</td>
+      <td>male</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>38.0</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>26.0</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>35.0</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>35.0</td>
+      <td>male</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="filter-row">
+<h3><span class="section-number">2.3.2. </span>filter 特定 row<a class="headerlink" href="#filter-row" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../../_images/03_subset_rows.svg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">above_35</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">35</span><span class="p">]</span>
+<span class="n">above_35</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>0</td>
+      <td>1</td>
+      <td>McCarthy, Mr. Timothy J</td>
+      <td>male</td>
+      <td>54.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17463</td>
+      <td>51.8625</td>
+      <td>E46</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Bonnell, Miss. Elizabeth</td>
+      <td>female</td>
+      <td>58.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>113783</td>
+      <td>26.5500</td>
+      <td>C103</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Andersson, Mr. Anders Johan</td>
+      <td>male</td>
+      <td>39.0</td>
+      <td>1</td>
+      <td>5</td>
+      <td>347082</td>
+      <td>31.2750</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Hewlett, Mrs. (Mary D Kingcome)</td>
+      <td>female</td>
+      <td>55.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>248706</td>
+      <td>16.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">class_23</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Pclass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])]</span>
+<span class="n">class_23</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Moran, Mr. James</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>330877</td>
+      <td>8.4583</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Palsson, Master. Gosta Leonard</td>
+      <td>male</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>349909</td>
+      <td>21.0750</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_no_na</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+<span class="n">age_no_na</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3><span class="section-number">2.3.3. </span>select + filter<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../../_images/03_subset_columns_rows.svg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adult_names</span> <span class="o">=</span> <span class="n">titanic</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">35</span><span class="p">,</span> <span class="s2">&quot;Name&quot;</span><span class="p">]</span>
+<span class="n">adult_names</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1     Cumings, Mrs. John Bradley (Florence Briggs Th...
+6                               McCarthy, Mr. Timothy J
+11                             Bonnell, Miss. Elizabeth
+13                          Andersson, Mr. Anders Johan
+15                     Hewlett, Mrs. (Mary D Kingcome) 
+Name: Name, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9</th>
+      <td>2</td>
+      <td>Nasser, Mrs. Nicholas (Adele Achem)</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3</td>
+      <td>Sandstrom, Miss. Marguerite Rut</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1</td>
+      <td>Bonnell, Miss. Elizabeth</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>3</td>
+      <td>Saundercock, Mr. William Henry</td>
+      <td>male</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>3</td>
+      <td>Andersson, Mr. Anders Johan</td>
+      <td>male</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3</td>
+      <td>Vestrom, Miss. Hulda Amanda Adolfina</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2</td>
+      <td>Hewlett, Mrs. (Mary D Kingcome)</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>3</td>
+      <td>Rice, Master. Eugene</td>
+      <td>male</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2</td>
+      <td>Williams, Mr. Charles Eugene</td>
+      <td>male</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>3</td>
+      <td>Vander Planke, Mrs. Julius (Emelia Maria Vande...</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>3</td>
+      <td>Masselmani, Mrs. Fatima</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2</td>
+      <td>Fynney, Mr. Joseph J</td>
+      <td>male</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2</td>
+      <td>Beesley, Mr. Lawrence</td>
+      <td>male</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>3</td>
+      <td>McGowan, Miss. Anna "Annie"</td>
+      <td>female</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>1</td>
+      <td>Sloper, Mr. William Thompson</td>
+      <td>male</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>3</td>
+      <td>Palsson, Miss. Torborg Danira</td>
+      <td>female</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">2.4. </span>如何畫圖<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>這一章，我們拿 air quality 的資料集來舉例</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/air_quality_no2.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station_antwerp</th>
+      <th>station_paris</th>
+      <th>station_london</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-05-07 02:00:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 03:00:00</th>
+      <td>50.5</td>
+      <td>25.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 04:00:00</th>
+      <td>45.0</td>
+      <td>27.7</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 05:00:00</th>
+      <td>NaN</td>
+      <td>50.4</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 06:00:00</th>
+      <td>NaN</td>
+      <td>61.9</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><img alt="" src="../../_images/04_plot_overview.svg" /></p>
+<ul class="simple">
+<li><p>在 pandas 中，只要做 <code class="docutils literal notranslate"><span class="pre">DataFrame.plot.*</span></code> 就可以畫圖，這個星號包括以下幾種：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.plot()</span></code>: 對每個 column 畫 line plot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">series.plot()</span></code>: 對這個serieis 畫 line plot</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.plot.scatter(x,y)</span></code>: x-y 散布圖</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.plot.box()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.plot.hist()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.plot.bar()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.plot.line()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.plot.kde()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.plot.density()</span></code></p></li>
+</ul>
+</li>
+<li><p>如果想知道到底可以畫哪些圖，可以用 <code class="docutils literal notranslate"><span class="pre">df.plot.&lt;tab&gt;</span></code> 就可以知道有哪些 method 可以用</p></li>
+<li><p>這邊條列所有可用的 method 如下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">method_name</span> <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">method_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;area&#39;,
+ &#39;bar&#39;,
+ &#39;barh&#39;,
+ &#39;box&#39;,
+ &#39;density&#39;,
+ &#39;hexbin&#39;,
+ &#39;hist&#39;,
+ &#39;kde&#39;,
+ &#39;line&#39;,
+ &#39;pie&#39;,
+ &#39;scatter&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="df-line-plot">
+<h3><span class="section-number">2.4.1. </span>對整個 df 畫圖 (各欄位的line plot)<a class="headerlink" href="#df-line-plot" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>我如果直接用 <code class="docutils literal notranslate"><span class="pre">air_quality.plot()</span></code>，那預設的作法是：對每一個 column 都去畫 line plot</p></li>
+<li><p>所以以這個資料集為例，就會畫出3條 time-series plot</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/getting_started_58_0.png" src="../../_images/getting_started_58_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="series-series-line-plot">
+<h3><span class="section-number">2.4.2. </span>對某個 series 畫圖 (該series line plot)<a class="headerlink" href="#series-series-line-plot" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;station_paris&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/getting_started_60_0.png" src="../../_images/getting_started_60_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="scatter-plot">
+<h3><span class="section-number">2.4.3. </span>Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;station_london&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;station_paris&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/getting_started_62_0.png" src="../../_images/getting_started_62_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="box-plot">
+<h3><span class="section-number">2.4.4. </span>Box plot<a class="headerlink" href="#box-plot" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">box</span><span class="p">();</span> <span class="c1"># 對每個 column 畫圖</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/getting_started_64_0.png" src="../../_images/getting_started_64_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="area-plot">
+<h3><span class="section-number">2.4.5. </span>Area plot<a class="headerlink" href="#area-plot" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/getting_started_66_0.png" src="../../_images/getting_started_66_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="subplot">
+<h3><span class="section-number">2.4.6. </span>subplot<a class="headerlink" href="#subplot" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>如果我想做成 subplot，可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">subplots</span> <span class="o">=</span> <span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/getting_started_69_0.png" src="../../_images/getting_started_69_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3><span class="section-number">2.4.7. </span>更多客製化<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>如果要做更多客製化，那就要用 matplotlib 的 oop 的寫法</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
+<span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">);</span> <span class="c1"># 建立連結，pandas畫完的圖，本來就是 matplotlib 物件，現在告訴他我要把這物件更新到外面的 axs</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;NO$_2$ concentration&quot;</span><span class="p">);</span>
+<span class="c1"># fig.savefig(&quot;no2_concentrations.png&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/getting_started_72_0.png" src="../../_images/getting_started_72_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">2.4.8. </span>更多細節<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>更多畫圖的細節，請參考 user guide 的 <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/visualization.html">chart Visualization</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="column">
+<h2><span class="section-number">2.5. </span>如何新增 column<a class="headerlink" href="#column" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3><span class="section-number">2.5.1. </span>某個 column 乘上一個常數<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../../_images/05_newcolumn_1.svg" /></p>
+<ul class="simple">
+<li><p>如上圖，我想新增 column，我可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;london_mg_per_cubic&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;station_london&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.882</span>
+<span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station_antwerp</th>
+      <th>station_paris</th>
+      <th>station_london</th>
+      <th>london_mg_per_cubic</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-05-07 02:00:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.0</td>
+      <td>43.286</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 03:00:00</th>
+      <td>50.5</td>
+      <td>25.0</td>
+      <td>19.0</td>
+      <td>35.758</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 04:00:00</th>
+      <td>45.0</td>
+      <td>27.7</td>
+      <td>19.0</td>
+      <td>35.758</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 05:00:00</th>
+      <td>NaN</td>
+      <td>50.4</td>
+      <td>16.0</td>
+      <td>30.112</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 06:00:00</th>
+      <td>NaN</td>
+      <td>61.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">2.5.2. </span>多個 column 間的運算<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../../_images/05_newcolumn_2.svg" /></p>
+<ul class="simple">
+<li><p>那如果是像上圖，我要用兩個欄位來計算出新欄位，我可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;ratio_paris_antwerp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;station_paris&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;station_antwerp&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station_antwerp</th>
+      <th>station_paris</th>
+      <th>station_london</th>
+      <th>london_mg_per_cubic</th>
+      <th>ratio_paris_antwerp</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-05-07 02:00:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.0</td>
+      <td>43.286</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 03:00:00</th>
+      <td>50.5</td>
+      <td>25.0</td>
+      <td>19.0</td>
+      <td>35.758</td>
+      <td>0.495050</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 04:00:00</th>
+      <td>45.0</td>
+      <td>27.7</td>
+      <td>19.0</td>
+      <td>35.758</td>
+      <td>0.615556</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 05:00:00</th>
+      <td>NaN</td>
+      <td>50.4</td>
+      <td>16.0</td>
+      <td>30.112</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 06:00:00</th>
+      <td>NaN</td>
+      <td>61.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="rename">
+<h3><span class="section-number">2.5.3. </span>rename<a class="headerlink" href="#rename" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>要對 column name 做 rename 的話，可以這樣做</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality_renamed</span> <span class="o">=</span> <span class="n">air_quality</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;station_antwerp&quot;</span><span class="p">:</span> <span class="s2">&quot;BETR801&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;station_paris&quot;</span><span class="p">:</span> <span class="s2">&quot;FR04014&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;station_london&quot;</span><span class="p">:</span> <span class="s2">&quot;London Westminster&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">air_quality_renamed</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BETR801</th>
+      <th>FR04014</th>
+      <th>London Westminster</th>
+      <th>london_mg_per_cubic</th>
+      <th>ratio_paris_antwerp</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-05-07 02:00:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.0</td>
+      <td>43.286</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 03:00:00</th>
+      <td>50.5</td>
+      <td>25.0</td>
+      <td>19.0</td>
+      <td>35.758</td>
+      <td>0.495050</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 04:00:00</th>
+      <td>45.0</td>
+      <td>27.7</td>
+      <td>19.0</td>
+      <td>35.758</td>
+      <td>0.615556</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 05:00:00</th>
+      <td>NaN</td>
+      <td>50.4</td>
+      <td>16.0</td>
+      <td>30.112</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 06:00:00</th>
+      <td>NaN</td>
+      <td>61.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>我也可以用 function，把 column name 都轉小寫：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality_renamed</span> <span class="o">=</span> <span class="n">air_quality_renamed</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>
+<span class="n">air_quality_renamed</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>betr801</th>
+      <th>fr04014</th>
+      <th>london westminster</th>
+      <th>london_mg_per_cubic</th>
+      <th>ratio_paris_antwerp</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-05-07 02:00:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.0</td>
+      <td>43.286</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 03:00:00</th>
+      <td>50.5</td>
+      <td>25.0</td>
+      <td>19.0</td>
+      <td>35.758</td>
+      <td>0.495050</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 04:00:00</th>
+      <td>45.0</td>
+      <td>27.7</td>
+      <td>19.0</td>
+      <td>35.758</td>
+      <td>0.615556</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 05:00:00</th>
+      <td>NaN</td>
+      <td>50.4</td>
+      <td>16.0</td>
+      <td>30.112</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 06:00:00</th>
+      <td>NaN</td>
+      <td>61.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="summary-statistics">
+<h2><span class="section-number">2.6. </span>如何做 summary statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="aggregating-statistics">
+<h3><span class="section-number">2.6.1. </span>aggregating statistics<a class="headerlink" href="#aggregating-statistics" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../../_images/06_aggregate.svg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29.69911764705882
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="../../_images/06_reduction.svg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[[</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Fare&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Age     28.0000
+Fare    14.4542
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[[</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Fare&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>714.000000</td>
+      <td>891.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>29.699118</td>
+      <td>32.204208</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.526497</td>
+      <td>49.693429</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.420000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>20.125000</td>
+      <td>7.910400</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>28.000000</td>
+      <td>14.454200</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>38.000000</td>
+      <td>31.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>80.000000</td>
+      <td>512.329200</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Age&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="s2">&quot;skew&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Fare&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>min</th>
+      <td>0.420000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>80.000000</td>
+      <td>512.329200</td>
+    </tr>
+    <tr>
+      <th>median</th>
+      <td>28.000000</td>
+      <td>14.454200</td>
+    </tr>
+    <tr>
+      <th>skew</th>
+      <td>0.389108</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>NaN</td>
+      <td>32.204208</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="by-group">
+<h3><span class="section-number">2.6.2. </span>by group<a class="headerlink" href="#by-group" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../../_images/06_groupby_select_detail.svg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">titanic</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Sex&quot;</span><span class="p">)</span>
+    <span class="p">[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sex
+female    27.915709
+male      30.726645
+Name: Age, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="../../_images/06_groupby_agg_detail.svg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Sex&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="c1"># 對所有 numeric column 取 mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Fare</th>
+    </tr>
+    <tr>
+      <th>Sex</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>female</th>
+      <td>431.028662</td>
+      <td>0.742038</td>
+      <td>2.159236</td>
+      <td>27.915709</td>
+      <td>0.694268</td>
+      <td>0.649682</td>
+      <td>44.479818</td>
+    </tr>
+    <tr>
+      <th>male</th>
+      <td>454.147314</td>
+      <td>0.188908</td>
+      <td>2.389948</td>
+      <td>30.726645</td>
+      <td>0.429809</td>
+      <td>0.235702</td>
+      <td>25.523893</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Sex&quot;</span><span class="p">,</span> <span class="s2">&quot;Pclass&quot;</span><span class="p">])[</span><span class="s2">&quot;Fare&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sex     Pclass
+female  1         106.125798
+        2          21.970121
+        3          16.118810
+male    1          67.226127
+        2          19.741782
+        3          12.661633
+Name: Fare, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="count-number">
+<h3><span class="section-number">2.6.3. </span>count number<a class="headerlink" href="#count-number" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>如果我只是想看某個類別變數 (e.g. <code class="docutils literal notranslate"><span class="pre">Pclass</span></code>) 的次數分配，那可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Pclass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3    491
+1    216
+2    184
+Name: Pclass, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>那其實我也可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Pclass&quot;</span><span class="p">)[</span><span class="s2">&quot;Pclass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pclass
+1    216
+2    184
+3    491
+Name: Pclass, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>上面的過程，就如下圖：</p></li>
+</ul>
+<p><img alt="" src="../../_images/06_valuecounts.svg" /></p>
+</div>
+</div>
+<div class="section" id="reshape">
+<h2><span class="section-number">2.7. </span>如何 reshape<a class="headerlink" href="#reshape" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="long-to-wide-pivot-rpivot-wider">
+<h3><span class="section-number">2.7.1. </span>Long to wide (pivot)(R的pivot wider)<a class="headerlink" href="#long-to-wide-pivot-rpivot-wider" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>我們來看一下 long data 的範例 (就是 stack data 啦)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;data/air_quality_long.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">air_quality</span> <span class="o">=</span> <span class="n">air_quality</span><span class="p">[</span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;parameter&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;no2&quot;</span><span class="p">]</span>
+<span class="n">air_quality</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;country&quot;</span><span class="p">,</span><span class="s2">&quot;city&quot;</span><span class="p">,</span><span class="s2">&quot;date.utc&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>country</th>
+      <th>date.utc</th>
+      <th>location</th>
+      <th>parameter</th>
+      <th>value</th>
+      <th>unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3663</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 01:00:00+00:00</td>
+      <td>BETR801</td>
+      <td>no2</td>
+      <td>22.5</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>3662</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 02:00:00+00:00</td>
+      <td>BETR801</td>
+      <td>no2</td>
+      <td>53.5</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>3661</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 03:00:00+00:00</td>
+      <td>BETR801</td>
+      <td>no2</td>
+      <td>54.5</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>3660</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 04:00:00+00:00</td>
+      <td>BETR801</td>
+      <td>no2</td>
+      <td>34.5</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>3659</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 05:00:00+00:00</td>
+      <td>BETR801</td>
+      <td>no2</td>
+      <td>46.5</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3668</th>
+      <td>London</td>
+      <td>GB</td>
+      <td>2019-06-17 07:00:00+00:00</td>
+      <td>London Westminster</td>
+      <td>no2</td>
+      <td>13.0</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>3667</th>
+      <td>London</td>
+      <td>GB</td>
+      <td>2019-06-17 08:00:00+00:00</td>
+      <td>London Westminster</td>
+      <td>no2</td>
+      <td>13.0</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>3666</th>
+      <td>London</td>
+      <td>GB</td>
+      <td>2019-06-17 09:00:00+00:00</td>
+      <td>London Westminster</td>
+      <td>no2</td>
+      <td>11.0</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>3665</th>
+      <td>London</td>
+      <td>GB</td>
+      <td>2019-06-17 10:00:00+00:00</td>
+      <td>London Westminster</td>
+      <td>no2</td>
+      <td>11.0</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>3664</th>
+      <td>London</td>
+      <td>GB</td>
+      <td>2019-06-17 11:00:00+00:00</td>
+      <td>London Westminster</td>
+      <td>no2</td>
+      <td>11.0</td>
+      <td>µg/m³</td>
+    </tr>
+  </tbody>
+</table>
+<p>3447 rows × 7 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>從上表可以看到，每一列的 key 是 country + city + date.utc + location，表示該城市在該時間點的該測站，所測到的數值</p></li>
+<li><p>那 location 就是被我堆疊起來的變數，我想把 location 來成 column，我可以這樣做</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality_wide</span> <span class="o">=</span> <span class="n">air_quality</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">,</span> <span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;date.utc&quot;</span><span class="p">],</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="s2">&quot;location&quot;</span><span class="p">,</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> <span class="c1"># 如果不 reset_index 的話， city, country, date.utc 會被放在 index</span>
+<span class="n">air_quality_wide</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>location</th>
+      <th>city</th>
+      <th>country</th>
+      <th>date.utc</th>
+      <th>BETR801</th>
+      <th>FR04014</th>
+      <th>London Westminster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 01:00:00+00:00</td>
+      <td>22.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 02:00:00+00:00</td>
+      <td>53.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 03:00:00+00:00</td>
+      <td>54.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 04:00:00+00:00</td>
+      <td>34.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 05:00:00+00:00</td>
+      <td>46.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3442</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 20:00:00+00:00</td>
+      <td>NaN</td>
+      <td>21.4</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3443</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 21:00:00+00:00</td>
+      <td>NaN</td>
+      <td>24.9</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3444</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 22:00:00+00:00</td>
+      <td>NaN</td>
+      <td>26.5</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3445</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 23:00:00+00:00</td>
+      <td>NaN</td>
+      <td>21.8</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3446</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-21 00:00:00+00:00</td>
+      <td>NaN</td>
+      <td>20.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>3447 rows × 6 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>看說明文件，可以看到更多例子：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>air_quality.pivot<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="wide-to-long-melt-rpivot-longer">
+<h3><span class="section-number">2.7.2. </span>wide to long (melt)(R的pivot_longer)<a class="headerlink" href="#wide-to-long-melt-rpivot-longer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>回顧剛剛的 wide data：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality_wide</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>location</th>
+      <th>city</th>
+      <th>country</th>
+      <th>date.utc</th>
+      <th>BETR801</th>
+      <th>FR04014</th>
+      <th>London Westminster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 01:00:00+00:00</td>
+      <td>22.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 02:00:00+00:00</td>
+      <td>53.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 03:00:00+00:00</td>
+      <td>54.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 04:00:00+00:00</td>
+      <td>34.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 05:00:00+00:00</td>
+      <td>46.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3442</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 20:00:00+00:00</td>
+      <td>NaN</td>
+      <td>21.4</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3443</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 21:00:00+00:00</td>
+      <td>NaN</td>
+      <td>24.9</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3444</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 22:00:00+00:00</td>
+      <td>NaN</td>
+      <td>26.5</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3445</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 23:00:00+00:00</td>
+      <td>NaN</td>
+      <td>21.8</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3446</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-21 00:00:00+00:00</td>
+      <td>NaN</td>
+      <td>20.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>3447 rows × 6 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>我現在想倒過來，把 BETR801~London 這幾個 column，折下來，那我可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality_long</span> <span class="o">=</span> <span class="n">air_quality_wide</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+    <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">,</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;date.utc&quot;</span><span class="p">],</span>
+    <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;BETR801&quot;</span><span class="p">,</span> <span class="s2">&quot;FR04014&quot;</span><span class="p">,</span> <span class="s2">&quot;London Westminster&quot;</span><span class="p">],</span>
+    <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="c1"># 轉成新column後的 column name</span>
+    <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;NO_2&quot;</span><span class="p">,</span> <span class="c1"># 轉成新 column 後的 value name</span>
+<span class="p">)</span>
+<span class="n">air_quality_long</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>country</th>
+      <th>date.utc</th>
+      <th>location</th>
+      <th>NO_2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 01:00:00+00:00</td>
+      <td>BETR801</td>
+      <td>22.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 02:00:00+00:00</td>
+      <td>BETR801</td>
+      <td>53.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 03:00:00+00:00</td>
+      <td>BETR801</td>
+      <td>54.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 04:00:00+00:00</td>
+      <td>BETR801</td>
+      <td>34.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Antwerpen</td>
+      <td>BE</td>
+      <td>2019-04-09 05:00:00+00:00</td>
+      <td>BETR801</td>
+      <td>46.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>10336</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 20:00:00+00:00</td>
+      <td>London Westminster</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10337</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 21:00:00+00:00</td>
+      <td>London Westminster</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10338</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 22:00:00+00:00</td>
+      <td>London Westminster</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10339</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 23:00:00+00:00</td>
+      <td>London Westminster</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10340</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-21 00:00:00+00:00</td>
+      <td>London Westminster</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>10341 rows × 5 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="concat-r-bind-rows-bind-cols">
+<h2><span class="section-number">2.8. </span>如何 concat (R 的 bind_rows, bind_cols)<a class="headerlink" href="#concat-r-bind-rows-bind-cols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="concat-axis-0-bind-rows">
+<h3><span class="section-number">2.8.1. </span>concat (axis = 0) (bind_rows)<a class="headerlink" href="#concat-axis-0-bind-rows" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+    <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
+    <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   a  b
+0  1  4
+1  2  5
+2  3  6
+   a   b
+0  7  10
+1  8  11
+2  9  12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="merge-r-join">
+<h2><span class="section-number">2.9. </span>如何 merge (R 的 join)<a class="headerlink" href="#merge-r-join" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;C&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">,</span><span class="s2">&quot;BB&quot;</span><span class="p">,</span><span class="s2">&quot;CC&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   a  b
+0  A  4
+1  A  5
+2  B  6
+   a   c
+0  A  AA
+1  B  BB
+2  C  CC
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>4</td>
+      <td>AA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A</td>
+      <td>5</td>
+      <td>AA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B</td>
+      <td>6</td>
+      <td>BB</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>如果要merge的名稱不同，例如這樣</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;a1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;a2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;C&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">,</span><span class="s2">&quot;BB&quot;</span><span class="p">,</span><span class="s2">&quot;CC&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  a1  b
+0  A  4
+1  A  5
+2  B  6
+  a2   c
+0  A  AA
+1  B  BB
+2  C  CC
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">left_on</span> <span class="o">=</span> <span class="s2">&quot;a1&quot;</span><span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span> <span class="s2">&quot;a2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a1</th>
+      <th>b</th>
+      <th>a2</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>4</td>
+      <td>A</td>
+      <td>AA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A</td>
+      <td>5</td>
+      <td>A</td>
+      <td>AA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B</td>
+      <td>6</td>
+      <td>B</td>
+      <td>BB</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="time-series-data">
+<h2><span class="section-number">2.10. </span>如何處理 time-series data<a class="headerlink" href="#time-series-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/air_quality_no2_long.csv&quot;</span><span class="p">)</span>
+<span class="n">air_quality</span> <span class="o">=</span> <span class="n">air_quality</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;date.utc&quot;</span><span class="p">:</span> <span class="s2">&quot;datetime&quot;</span><span class="p">})</span>
+<span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>country</th>
+      <th>datetime</th>
+      <th>location</th>
+      <th>parameter</th>
+      <th>value</th>
+      <th>unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-21 00:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>20.0</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 23:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>21.8</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 22:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>26.5</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 21:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>24.9</td>
+      <td>µg/m³</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 20:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>21.4</td>
+      <td>µg/m³</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>我們首先看一下這筆資料，他的 <code class="docutils literal notranslate"><span class="pre">datetime</span></code> 欄位，是哪種 type:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2068 entries, 0 to 2067
+Data columns (total 7 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   city       2068 non-null   object 
+ 1   country    2068 non-null   object 
+ 2   datetime   2068 non-null   object 
+ 3   location   2068 non-null   object 
+ 4   parameter  2068 non-null   object 
+ 5   value      2068 non-null   float64
+ 6   unit       2068 non-null   object 
+dtypes: float64(1), object(6)
+memory usage: 113.2+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以發現， datetime 是 “object”，就是文字/類別的意思，所以我先把他轉為 datetime 格式</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">])</span>
+<span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      2019-06-21 00:00:00+00:00
+1      2019-06-20 23:00:00+00:00
+2      2019-06-20 22:00:00+00:00
+3      2019-06-20 21:00:00+00:00
+4      2019-06-20 20:00:00+00:00
+                  ...           
+2063   2019-05-07 06:00:00+00:00
+2064   2019-05-07 04:00:00+00:00
+2065   2019-05-07 03:00:00+00:00
+2066   2019-05-07 02:00:00+00:00
+2067   2019-05-07 01:00:00+00:00
+Name: datetime, Length: 2068, dtype: datetime64[ns, UTC]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，現在 dtype 是 datetime64 了</p></li>
+<li><p>那為啥轉格式重要？因為有很多好用的 method 可以用</p></li>
+</ul>
+<div class="section" id="id7">
+<h3><span class="section-number">2.10.1. </span>最大最小值<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>就很直觀的，想看時間資料的最大值和最小值：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019-05-07 01:00:00+00:00
+2019-06-21 00:00:00+00:00
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，時間最早是 5/7，最晚是 6/21.</p></li>
+<li><p>那我還可以看一下時間距離多久？</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timedelta(&#39;44 days 23:00:00&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">2.10.2. </span>從時間資料中，擷取 年/月/日/星期幾…<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>要擷取的這些資訊，都是 datetime 這個 series 的 attribute，我們可以這樣取</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;datetime: &quot;</span><span class="p">,</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;date: &quot;</span><span class="p">,</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;year: &quot;</span><span class="p">,</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;month: &quot;</span><span class="p">,</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;day: &quot;</span><span class="p">,</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hour: &quot;</span><span class="p">,</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;minute: &quot;</span><span class="p">,</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">minute</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;second: &quot;</span><span class="p">,</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">second</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;weekday: &quot;</span><span class="p">,</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime:  2019-06-21 00:00:00+00:00
+date:  2019-06-21
+year:  2019
+month:  6
+day:  21
+hour:  0
+minute:  0
+second:  0
+weekday:  4
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，我取出 series 後，我還得用 <code class="docutils literal notranslate"><span class="pre">dt</span></code> 這個 accesor，他才知道我要調用 datetime 的 method，然後後面就直接用 date/year/month…等 attribute</p></li>
+</ul>
+<ul class="simple">
+<li><p>來練習一下吧，我如果想新增一個欄位，是只取出月份，那我可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span> <span class="c1"># .dt 是調用datetime的 method/attribute，month看起來是attribute</span>
+<span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>country</th>
+      <th>datetime</th>
+      <th>location</th>
+      <th>parameter</th>
+      <th>value</th>
+      <th>unit</th>
+      <th>month</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-21 00:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>20.0</td>
+      <td>µg/m³</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 23:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>21.8</td>
+      <td>µg/m³</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 22:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>26.5</td>
+      <td>µg/m³</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 21:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>24.9</td>
+      <td>µg/m³</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 20:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>21.4</td>
+      <td>µg/m³</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>如果想取出星期幾(weekday)，我可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;weekday&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span> <span class="c1"># .dt 是調用datetime的 method/attribute，month看起來是attribute</span>
+<span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>country</th>
+      <th>datetime</th>
+      <th>location</th>
+      <th>parameter</th>
+      <th>value</th>
+      <th>unit</th>
+      <th>month</th>
+      <th>weekday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-21 00:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>20.0</td>
+      <td>µg/m³</td>
+      <td>6</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 23:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>21.8</td>
+      <td>µg/m³</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 22:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>26.5</td>
+      <td>µg/m³</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 21:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>24.9</td>
+      <td>µg/m³</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Paris</td>
+      <td>FR</td>
+      <td>2019-06-20 20:00:00+00:00</td>
+      <td>FR04014</td>
+      <td>no2</td>
+      <td>21.4</td>
+      <td>µg/m³</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>我如果想看每個location，每個weekday，平均的 NO2 濃度，我就可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="s2">&quot;weekday&quot;</span><span class="p">])[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>location            weekday
+BETR801             0          27.875000
+                    1          22.214286
+                    2          21.125000
+                    3          27.500000
+                    4          28.400000
+                    5          33.500000
+                    6          21.896552
+FR04014             0          24.856250
+                    1          30.999359
+                    2          29.165753
+                    3          28.600690
+                    4          31.617986
+                    5          25.266154
+                    6          23.274306
+London Westminster  0          23.969697
+                    1          24.885714
+                    2          23.460432
+                    3          24.780142
+                    4          26.446809
+                    5          24.977612
+                    6          24.859155
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>我想畫每個小時的平均 NO2 濃度</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="p">(</span>
+    <span class="n">air_quality</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">hour</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;hour&quot;</span><span class="p">)[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;hour&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/getting_started_156_1.png" src="../../_images/getting_started_156_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="slicing-datetime">
+<h3><span class="section-number">2.10.3. </span>slicing datetime<a class="headerlink" href="#slicing-datetime" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>我們這邊先把資料做成 wide 的形式：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_2</span> <span class="o">=</span> <span class="n">air_quality</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="s2">&quot;location&quot;</span><span class="p">,</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">no_2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>location</th>
+      <th>datetime</th>
+      <th>BETR801</th>
+      <th>FR04014</th>
+      <th>London Westminster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019-05-07 01:00:00+00:00</td>
+      <td>50.5</td>
+      <td>25.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019-05-07 02:00:00+00:00</td>
+      <td>45.0</td>
+      <td>27.7</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019-05-07 03:00:00+00:00</td>
+      <td>NaN</td>
+      <td>50.4</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019-05-07 04:00:00+00:00</td>
+      <td>NaN</td>
+      <td>61.9</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019-05-07 05:00:00+00:00</td>
+      <td>NaN</td>
+      <td>72.4</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>可以看到，現在有三條時間序列</p></li>
+<li><p>我如果想取出 “2019-05-20” ~ “2019-05-21” 的資料，我可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_2</span><span class="p">[(</span><span class="n">no_2</span><span class="o">.</span><span class="n">datetime</span> <span class="o">&gt;=</span> <span class="s2">&quot;2019-05-20&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">no_2</span><span class="o">.</span><span class="n">datetime</span> <span class="o">&lt;=</span> <span class="s2">&quot;2019-05-21&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>location</th>
+      <th>datetime</th>
+      <th>BETR801</th>
+      <th>FR04014</th>
+      <th>London Westminster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>311</th>
+      <td>2019-05-20 00:00:00+00:00</td>
+      <td>26.0</td>
+      <td>16.4</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>312</th>
+      <td>2019-05-20 01:00:00+00:00</td>
+      <td>17.0</td>
+      <td>12.8</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>313</th>
+      <td>2019-05-20 02:00:00+00:00</td>
+      <td>10.5</td>
+      <td>12.1</td>
+      <td>32.0</td>
+    </tr>
+    <tr>
+      <th>314</th>
+      <td>2019-05-20 03:00:00+00:00</td>
+      <td>9.0</td>
+      <td>12.6</td>
+      <td>32.0</td>
+    </tr>
+    <tr>
+      <th>315</th>
+      <td>2019-05-20 04:00:00+00:00</td>
+      <td>14.0</td>
+      <td>14.9</td>
+      <td>26.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>但我還有另外一招，我可以把 datetime 挪去 index，然後直接篩選：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_2_with_datetime_index</span> <span class="o">=</span> <span class="n">no_2</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;datetime&quot;</span><span class="p">)</span>
+<span class="n">no_2_with_datetime_index</span><span class="p">[</span><span class="s2">&quot;2019-05-20&quot;</span><span class="p">:</span><span class="s2">&quot;2019-05-21&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>location</th>
+      <th>BETR801</th>
+      <th>FR04014</th>
+      <th>London Westminster</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-05-20 00:00:00+00:00</th>
+      <td>26.0</td>
+      <td>16.4</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-20 01:00:00+00:00</th>
+      <td>17.0</td>
+      <td>12.8</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-20 02:00:00+00:00</th>
+      <td>10.5</td>
+      <td>12.1</td>
+      <td>32.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-20 03:00:00+00:00</th>
+      <td>9.0</td>
+      <td>12.6</td>
+      <td>32.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-20 04:00:00+00:00</th>
+      <td>14.0</td>
+      <td>14.9</td>
+      <td>26.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>帥吧！接下來，我就可以畫出這三條時間序列：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_2_with_datetime_index</span><span class="p">[</span><span class="s2">&quot;2019-05-20&quot;</span><span class="p">:</span><span class="s2">&quot;2019-05-21&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;datetime&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/getting_started_165_1.png" src="../../_images/getting_started_165_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="resample-frequency">
+<h3><span class="section-number">2.10.4. </span>Resample 成不同的 frequency<a class="headerlink" href="#resample-frequency" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>其實 resample 的語法，就是 groupby 再 aggregate 的 shortcut.</p></li>
+<li><p>舉個例子就懂了。</p></li>
+<li><p>我如果想看每天各個location的平均NO2的值 (所以把 ymd_hms 的 frequency 改成 ymd 而已)，那我得這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">no_2</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Date</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/getting_started_168_0.png" src="../../_images/getting_started_168_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>那我現在可以用這個 resample 的語法，很快做到這件事</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">no_2</span>
+        <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;datetime&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/getting_started_170_0.png" src="../../_images/getting_started_170_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="manipulate-textual-data">
+<h2><span class="section-number">2.11. </span>如何 manipulate textual data<a class="headerlink" href="#manipulate-textual-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>這一節要用的 data 是 Titanic</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/titanic.csv&quot;</span><span class="p">)</span>
+<span class="n">titanic</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="id9">
+<h3><span class="section-number">2.11.1. </span>把某個欄位全轉小寫<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>很快就可以聯想到 <code class="docutils literal notranslate"><span class="pre">str.lower()</span></code> 這個 method，所以作法就是：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0                                braund, mr. owen harris
+1      cumings, mrs. john bradley (florence briggs th...
+2                                 heikkinen, miss. laina
+3           futrelle, mrs. jacques heath (lily may peel)
+4                               allen, mr. william henry
+                             ...                        
+886                                montvila, rev. juozas
+887                         graham, miss. margaret edith
+888             johnston, miss. catherine helen &quot;carrie&quot;
+889                                behr, mr. karl howell
+890                                  dooley, mr. patrick
+Name: Name, Length: 891, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pattern">
+<h3><span class="section-number">2.11.2. </span>把某個欄位依照pattern切開<a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>舉例來說，<code class="docutils literal notranslate"><span class="pre">Name</span></code> 這個欄位，就用 <code class="docutils literal notranslate"><span class="pre">,</span></code> 來分隔出 first name 和 last name.</p></li>
+<li><p>所以，我想把它切開來後，分別叫他 first name 和 last name</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;split_res&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">titanic</span><span class="p">[[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;split_res&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>split_res</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>[Braund,  Mr. Owen Harris]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>[Cumings,  Mrs. John Bradley (Florence Briggs ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>[Heikkinen,  Miss. Laina]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>[Futrelle,  Mrs. Jacques Heath (Lily May Peel)]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Allen, Mr. William Henry</td>
+      <td>[Allen,  Mr. William Henry]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>886</th>
+      <td>Montvila, Rev. Juozas</td>
+      <td>[Montvila,  Rev. Juozas]</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>Graham, Miss. Margaret Edith</td>
+      <td>[Graham,  Miss. Margaret Edith]</td>
+    </tr>
+    <tr>
+      <th>888</th>
+      <td>Johnston, Miss. Catherine Helen "Carrie"</td>
+      <td>[Johnston,  Miss. Catherine Helen "Carrie"]</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>Behr, Mr. Karl Howell</td>
+      <td>[Behr,  Mr. Karl Howell]</td>
+    </tr>
+    <tr>
+      <th>890</th>
+      <td>Dooley, Mr. Patrick</td>
+      <td>[Dooley,  Mr. Patrick]</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 2 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>那如果要再分成 first_name 和 last_name，就得這樣：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;first_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;split_res&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 取第0個element</span>
+<span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;last_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;split_res&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 取第0個element</span>
+<span class="n">titanic</span><span class="p">[[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;split_res&quot;</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>split_res</th>
+      <th>first_name</th>
+      <th>last_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>[Braund,  Mr. Owen Harris]</td>
+      <td>Braund</td>
+      <td>Mr. Owen Harris</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>[Cumings,  Mrs. John Bradley (Florence Briggs ...</td>
+      <td>Cumings</td>
+      <td>Mrs. John Bradley (Florence Briggs Thayer)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>[Heikkinen,  Miss. Laina]</td>
+      <td>Heikkinen</td>
+      <td>Miss. Laina</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>[Futrelle,  Mrs. Jacques Heath (Lily May Peel)]</td>
+      <td>Futrelle</td>
+      <td>Mrs. Jacques Heath (Lily May Peel)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Allen, Mr. William Henry</td>
+      <td>[Allen,  Mr. William Henry]</td>
+      <td>Allen</td>
+      <td>Mr. William Henry</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>886</th>
+      <td>Montvila, Rev. Juozas</td>
+      <td>[Montvila,  Rev. Juozas]</td>
+      <td>Montvila</td>
+      <td>Rev. Juozas</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>Graham, Miss. Margaret Edith</td>
+      <td>[Graham,  Miss. Margaret Edith]</td>
+      <td>Graham</td>
+      <td>Miss. Margaret Edith</td>
+    </tr>
+    <tr>
+      <th>888</th>
+      <td>Johnston, Miss. Catherine Helen "Carrie"</td>
+      <td>[Johnston,  Miss. Catherine Helen "Carrie"]</td>
+      <td>Johnston</td>
+      <td>Miss. Catherine Helen "Carrie"</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>Behr, Mr. Karl Howell</td>
+      <td>[Behr,  Mr. Karl Howell]</td>
+      <td>Behr</td>
+      <td>Mr. Karl Howell</td>
+    </tr>
+    <tr>
+      <th>890</th>
+      <td>Dooley, Mr. Patrick</td>
+      <td>[Dooley,  Mr. Patrick]</td>
+      <td>Dooley</td>
+      <td>Mr. Patrick</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 4 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3><span class="section-number">2.11.3. </span>是否包含某字串<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>如果我想找找看，名字裡面，有出現 <code class="docutils literal notranslate"><span class="pre">Countess</span></code> 的人，那我可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Countess&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+      <th>split_res</th>
+      <th>first_name</th>
+      <th>last_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>759</th>
+      <td>760</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Rothes, the Countess. of (Lucy Noel Martha Dye...</td>
+      <td>female</td>
+      <td>33.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>110152</td>
+      <td>86.5</td>
+      <td>B77</td>
+      <td>S</td>
+      <td>[Rothes,  the Countess. of (Lucy Noel Martha D...</td>
+      <td>Rothes</td>
+      <td>the Countess. of (Lucy Noel Martha Dyer-Edwards)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3><span class="section-number">2.11.4. </span>字串長度<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>我可以這樣，來造出字長：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      23
+1      51
+2      22
+3      44
+4      24
+       ..
+886    21
+887    28
+888    40
+889    21
+890    19
+Name: Name, Length: 891, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>所以，我如果想找出名字最長的人，我可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">titanic</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">name_length</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">())</span>
+        <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;name_length&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="p">[[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;name_length&quot;</span><span class="p">]]</span>
+        <span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># 前三名</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>name_length</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>307</th>
+      <td>Penasco y Castellana, Mrs. Victor de Satode (M...</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>427</th>
+      <td>Phillips, Miss. Kate Florence ("Mrs Kate Louis...</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>556</th>
+      <td>Duff Gordon, Lady. (Lucille Christiana Sutherl...</td>
+      <td>65</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3><span class="section-number">2.11.5. </span>字串取代<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>我如果想把 <code class="docutils literal notranslate"><span class="pre">Sex</span></code> 這個欄位的 “female”，取代為 “F”，我可以這樣做:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;female&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      male
+1         F
+2         F
+3         F
+4      male
+       ... 
+886    male
+887       F
+888       F
+889    male
+890    male
+Name: Sex, Length: 891, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>所以，我如果想把 <code class="docutils literal notranslate"><span class="pre">Sex</span></code> 這個欄位的 “female” 改成 “F”, “male” 改成 “M”，那我可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Sex_short1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;female&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">)</span>
+<span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Sex_short1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Sex_short1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">)</span>
+<span class="n">titanic</span><span class="p">[[</span><span class="s2">&quot;Sex&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex_short1&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sex</th>
+      <th>Sex_short1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>male</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>female</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>female</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>female</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>male</td>
+      <td>M</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>事實上，如果你是要做這種取代的話，更好的做法是這樣：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Sex_short2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;male&quot;</span><span class="p">:</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;female&quot;</span><span class="p">:</span> <span class="s2">&quot;F&quot;</span><span class="p">})</span>
+<span class="n">titanic</span><span class="p">[[</span><span class="s2">&quot;Sex&quot;</span><span class="p">,</span><span class="s2">&quot;Sex_short1&quot;</span><span class="p">,</span><span class="s2">&quot;Sex_short2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sex</th>
+      <th>Sex_short1</th>
+      <th>Sex_short2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>male</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>female</td>
+      <td>F</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>female</td>
+      <td>F</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>female</td>
+      <td>F</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>male</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./ch3_pandas/official_getting_started"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../../np_1_Intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Introduction to NumPy</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../ch4_matplotlib/04.00-matplotlib_intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Matplotlib 簡介與常用技巧</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
