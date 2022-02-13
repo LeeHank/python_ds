@@ -10,7 +10,7 @@
 #   * matrix
 # * Numpy 有一堆高階數學function，可以對 ndarray 和 matrix 做計算
 
-# In[2]:
+# In[1]:
 
 
 import numpy as np
@@ -39,7 +39,7 @@ import numpy as np
 
 # * 就是只有 `1層` 的結構
 
-# In[8]:
+# In[2]:
 
 
 # 1d-array
@@ -49,7 +49,7 @@ a
 
 # * 因為所有的 element 都是數字，所以我可以做數學計算：
 
-# In[9]:
+# In[3]:
 
 
 a.mean()
@@ -60,7 +60,7 @@ a.mean()
 # * 對於1張灰階影像資料，例如是這樣的一張矩陣型資料: $\left[\begin{array}{cc} 0 & 1\\1 & 0 \\1 & 1\end{array}\right]$，可以用數學寫成： $\boldsymbol{X} \in R^{3 \times 2}$ 
 # * 在 python 中，會用這樣的 array 來儲存他：  
 
-# In[10]:
+# In[4]:
 
 
 a = [
@@ -87,7 +87,7 @@ a
 # * 也就是第一層是 $R^{3 \times 2}$ 的 3，第二層是 $R^{3 \times 2}$ 的 2
 # * 所以，我們要練習，這樣寫 list：  
 
-# In[16]:
+# In[5]:
 
 
 # 第一步，先寫出第一層，有3列： 
@@ -103,7 +103,7 @@ a = np.array(a)
 # * 接著，來定義一些名詞： $R^{3 \times 2}$，R的上面有`2`個數字相乘，我們稱它為`2`階張量，儲存的資料類型是 `2`d array。也就是說，這個張量的`維度是2`。然後 R 上面的長相是 $3 \times 2$，所以我們說他的 shape 是 `(3,2)`  
 # * 我們來看一下這個 numpy array 的 attribute，就可以驗證上面講的內容：
 
-# In[17]:
+# In[6]:
 
 
 a.ndim
@@ -111,7 +111,7 @@ a.ndim
 
 # * ndim 是 2，就表示 ndarray 是 2d array(n=2, 有兩層，R上面有2個數字相乘)  
 
-# In[18]:
+# In[7]:
 
 
 a.shape
@@ -121,7 +121,7 @@ a.shape
 
 # ### 3d-array
 
-# In[6]:
+# In[8]:
 
 
 # 2d-array
@@ -129,7 +129,7 @@ b = np.array([[1,2],[3,4]])
 b
 
 
-# In[5]:
+# In[9]:
 
 
 # 2d-array (用 tuple，自動幫你轉回list)
@@ -192,7 +192,7 @@ b
 # * 最後，做出第三層：  
 # 
 
-# In[19]:
+# In[10]:
 
 
 a = [
@@ -218,7 +218,7 @@ a
 
 # * 驗證一下，這個 $R^{3 \times 3 \times 2}$ 是 3d array(因為R上面有3個數字相乘，或說，建立list的時候要寫到第3層)。shape是 `3*3*2`
 
-# In[20]:
+# In[11]:
 
 
 print(f"the dim of a is {a.ndim}")
@@ -298,7 +298,7 @@ print(f"the shape of a is {a.shape}")
 # 
 # * 最後，每一列裡面，都有兩個 element:  
 
-# In[21]:
+# In[12]:
 
 
 a = [
@@ -343,7 +343,7 @@ a
 
 # * 驗證一下，這個 $R^{2張 \times 3通道 \times 3列 \times 2行}$是 4d array(因為R上面有4個數字相乘，或說，建立list的時候要寫到第4層)。shape是 `2*3*3*2`
 
-# In[22]:
+# In[13]:
 
 
 print(f"the dim of a is {a.ndim}")
@@ -362,13 +362,13 @@ len(a)
 
 # ### np.zeros()
 
-# In[23]:
+# In[14]:
 
 
 np.zeros(4)
 
 
-# In[24]:
+# In[15]:
 
 
 np.zeros((3,2))
@@ -376,13 +376,13 @@ np.zeros((3,2))
 
 # ### np.ones()
 
-# In[25]:
+# In[16]:
 
 
 np.ones(4)
 
 
-# In[26]:
+# In[17]:
 
 
 np.ones((3,2))
@@ -390,13 +390,13 @@ np.ones((3,2))
 
 # ### np.full()
 
-# In[33]:
+# In[18]:
 
 
 np.full(5, 4) # 做一個 shape = 5 的 array，element 都是 4
 
 
-# In[35]:
+# In[19]:
 
 
 np.full((3,2), 4) # 做一個 shape = (3,2) 的 array，element 都是 4
@@ -406,13 +406,13 @@ np.full((3,2), 4) # 做一個 shape = (3,2) 的 array，element 都是 4
 
 # * create an array of evenly spaced values (step value)
 
-# In[27]:
+# In[20]:
 
 
 np.arange(10)
 
 
-# In[30]:
+# In[21]:
 
 
 np.arange(10,25,3) # 第三個 argument, 是步數, 也就是間隔 3
@@ -422,19 +422,19 @@ np.arange(10,25,3) # 第三個 argument, 是步數, 也就是間隔 3
 
 # * create an array of evenly spaced values (number of samples)
 
-# In[31]:
+# In[22]:
 
 
 np.linspace(10,25,3) # 第三個 argument, 是總數
 
 
-# In[36]:
+# In[23]:
 
 
 np.random.random((2,2))
 
 
-# In[37]:
+# In[24]:
 
 
 get_ipython().run_line_magic('pinfo', 'np.random.random')
@@ -446,13 +446,13 @@ get_ipython().run_line_magic('pinfo', 'np.random.random')
 # * 可用 `np.random.random?` 來查詢用法. 
 # * 可用 `np.random.<tab>` 找到還有一堆隨機分配可以用，例如 `np.random.normal()`
 
-# In[41]:
+# In[25]:
 
 
 np.random.random(5)
 
 
-# In[42]:
+# In[26]:
 
 
 np.random.random((3,2))
@@ -462,7 +462,7 @@ np.random.random((3,2))
 
 # ### Sorting
 
-# In[47]:
+# In[27]:
 
 
 a = np.array([3,6,2])
@@ -470,7 +470,7 @@ a.sort() # a 已變，不用再 assign 回 a
 a
 
 
-# In[51]:
+# In[28]:
 
 
 c = np.array([
@@ -493,7 +493,7 @@ c
 
 # #### np.concaterate()
 
-# In[53]:
+# In[29]:
 
 
 a = np.array([1, 2, 3, 4])
@@ -503,7 +503,7 @@ b = np.array([5, 6, 7, 8])
 np.concatenate((a, b))
 
 
-# In[54]:
+# In[30]:
 
 
 x = np.array([[1, 2], [3, 4]])
@@ -513,7 +513,7 @@ np.concatenate((x, y), axis=0) # 沿第0軸，最外層，concate
 
 # #### np.vstack()
 
-# In[88]:
+# In[31]:
 
 
 a1 = np.array([[1, 1],
@@ -527,7 +527,7 @@ np.vstack((a1, a2))
 
 # #### np.hstack()
 
-# In[89]:
+# In[32]:
 
 
 a1 = np.array([[1, 1],
@@ -543,7 +543,7 @@ np.hstack((a1, a2))
 
 # * 這邊要講，如何把一個 array，拆成多個：
 
-# In[90]:
+# In[33]:
 
 
 x = np.arange(1, 25).reshape(2, 12)
@@ -552,13 +552,13 @@ x
 
 # #### np.hsplit()
 
-# In[92]:
+# In[34]:
 
 
 np.hsplit(x, 3) # 水平均分成 3 份
 
 
-# In[94]:
+# In[35]:
 
 
 np.hsplit(x, (3, 4)) # 我想在 column 3 切一刀， column 4 切一刀
@@ -566,7 +566,7 @@ np.hsplit(x, (3, 4)) # 我想在 column 3 切一刀， column 4 切一刀
 
 # #### np.vsplit()
 
-# In[97]:
+# In[36]:
 
 
 np.vsplit(x, 2) # 垂直均分兩份
@@ -576,20 +576,20 @@ np.vsplit(x, 2) # 垂直均分兩份
 
 # ![](figures/np_reshape.png)
 
-# In[55]:
+# In[37]:
 
 
 a = np.arange(6)
 print(a)
 
 
-# In[62]:
+# In[38]:
 
 
 a.reshape(3, 2) # 轉成 shape = (3,2), 他會 byrow 填入
 
 
-# In[63]:
+# In[39]:
 
 
 a.reshape(6) # 轉成 shape = (6,)
@@ -599,7 +599,7 @@ a.reshape(6) # 轉成 shape = (6,)
 
 # * 用 flatten 時，你如果改新的 array，不會影響到舊的 (immutable)
 
-# In[128]:
+# In[40]:
 
 
 x = np.array([[1 , 2, 3, 4], 
@@ -607,14 +607,14 @@ x = np.array([[1 , 2, 3, 4],
               [9, 10, 11, 12]])
 
 
-# In[132]:
+# In[41]:
 
 
 print(x.flatten())
 print(x) # x 不變，所以 flatten 完應該要存成新變數
 
 
-# In[133]:
+# In[42]:
 
 
 a1 = x.flatten()
@@ -625,7 +625,7 @@ print(a1)  # New array
 
 # * 但如果你用 `.ravel()`，那舊的會跟著變
 
-# In[134]:
+# In[43]:
 
 
 a2 = x.ravel()
@@ -638,7 +638,7 @@ print(a2)  # New array
 
 # #### 1d array
 
-# In[151]:
+# In[44]:
 
 
 arr = np.array([1, 2, 3, 4, 5, 6, 7, 8])
@@ -648,7 +648,7 @@ reversed_arr
 
 # #### 2d array
 
-# In[152]:
+# In[45]:
 
 
 arr_2d = np.array([[1, 2, 3, 4], 
@@ -657,21 +657,21 @@ arr_2d = np.array([[1, 2, 3, 4],
 arr_2d
 
 
-# In[153]:
+# In[46]:
 
 
 reversed_arr = np.flip(arr_2d)
 print(reversed_arr)
 
 
-# In[158]:
+# In[47]:
 
 
 reversed_arr_rows = np.flip(arr_2d, axis=0) # 只對第0軸reverse，所以原本是 [A, B, C], 變 [C, B, A]，其中 A = [1,2,3,4]
 print(reversed_arr_rows)
 
 
-# In[157]:
+# In[48]:
 
 
 reversed_arr_cols = np.flip(arr_2d, axis=1)
@@ -682,14 +682,14 @@ print(reversed_arr_cols)
 
 # * 這邊要介紹，如何把 1d array，轉成 row vecctor / column vector
 
-# In[66]:
+# In[49]:
 
 
 a = np.array([1, 2, 3, 4, 5, 6])
 a.shape
 
 
-# In[74]:
+# In[50]:
 
 
 a_row_vector = a[np.newaxis, :]
@@ -700,7 +700,7 @@ print(a_row_vector.shape)
 # * np.newaxis 就是宣告多一個軸，而且是放在第一個位子
 # * 如果放在第二個位子，變成 column vector
 
-# In[75]:
+# In[51]:
 
 
 a_col_vector = a[:, np.newaxis]
@@ -710,7 +710,7 @@ print(a_col_vector.shape)
 
 # * 也可以用 `np.expand_dims()` 來處理
 
-# In[76]:
+# In[52]:
 
 
 a = np.array([1, 2, 3, 4, 5, 6])
@@ -727,7 +727,7 @@ print(c.shape)
 
 # ### subsetting
 
-# In[77]:
+# In[53]:
 
 
 data = np.array([1, 2, 3])
@@ -736,19 +736,19 @@ data[0]
 
 # ### slicing
 
-# In[79]:
+# In[54]:
 
 
 data[0:2]
 
 
-# In[80]:
+# In[55]:
 
 
 data[1:]
 
 
-# In[81]:
+# In[56]:
 
 
 data[-2:]
@@ -756,7 +756,7 @@ data[-2:]
 
 # ### booling indexing
 
-# In[84]:
+# In[57]:
 
 
 a = np.array([[1 , 2, 3, 4], 
@@ -765,19 +765,19 @@ a = np.array([[1 , 2, 3, 4],
 a
 
 
-# In[85]:
+# In[58]:
 
 
 a < 5
 
 
-# In[86]:
+# In[59]:
 
 
 a[a < 5]
 
 
-# In[87]:
+# In[60]:
 
 
 a[(a > 2) & (a < 11)]
@@ -787,7 +787,7 @@ a[(a > 2) & (a < 11)]
 
 # ![](figures/np_multiply_broadcasting.png)
 
-# In[100]:
+# In[61]:
 
 
 data = np.array([1.0, 2.0])
@@ -796,7 +796,7 @@ data * 1.6
 
 # ![](figures/np_matrix_broadcasting.png)
 
-# In[126]:
+# In[62]:
 
 
 data = np.array([[1, 2], [3, 4], [5, 6]])
@@ -808,7 +808,7 @@ data + ones_row
 
 # ![](figures/np_sub_mult_divide.png)
 
-# In[98]:
+# In[63]:
 
 
 data = np.array([1, 2])
@@ -824,7 +824,7 @@ print(data / data)
 
 # #### 1d array
 
-# In[101]:
+# In[64]:
 
 
 a = np.array([1, 2, 3, 4])
@@ -837,7 +837,7 @@ a.sum()
 
 # ![](figures/np_matrix_aggregation_row.png)
 
-# In[123]:
+# In[65]:
 
 
 b = np.array([[1, 2], 
@@ -848,7 +848,7 @@ b
 
 # * 只寫 `.sum()`，就是全加
 
-# In[124]:
+# In[66]:
 
 
 b.sum()
@@ -856,19 +856,19 @@ b.sum()
 
 # * 有指定 axis，就是沿著那個 axis 做相加
 
-# In[103]:
+# In[67]:
 
 
 b.sum(axis = 0) #沿著第0軸相加，所以是 [1, 1] + [2, 2]
 
 
-# In[104]:
+# In[68]:
 
 
 b.sum(axis = 1) # 沿著第1軸相加，所以是 1 + 1; 2+2
 
 
-# In[125]:
+# In[69]:
 
 
 print(b.max())
@@ -876,7 +876,7 @@ print(b.max(axis = 0))
 print(b.max(axis = 1))
 
 
-# In[117]:
+# In[70]:
 
 
 print(b.min())
@@ -884,7 +884,7 @@ print(b.min(axis = 0))
 print(b.min(axis = 1))
 
 
-# In[118]:
+# In[71]:
 
 
 print(b.mean())
@@ -892,7 +892,7 @@ print(b.mean(axis = 0))
 print(b.mean(axis = 1))
 
 
-# In[121]:
+# In[72]:
 
 
 # b.median() # wrong，沒有這個 method
@@ -901,7 +901,7 @@ print(np.median(b, axis = 0))
 print(np.median(b, axis = 1))
 
 
-# In[122]:
+# In[73]:
 
 
 print(b.std())
@@ -913,14 +913,14 @@ print(b.std(axis = 1))
 
 # #### 1d array
 
-# In[135]:
+# In[74]:
 
 
 a = np.array([11, 11, 12, 13, 14, 15, 16, 17, 12, 13, 11, 14, 18, 19, 20])
 a
 
 
-# In[136]:
+# In[75]:
 
 
 unique_values = np.unique(a)
@@ -929,7 +929,7 @@ print(unique_values)
 
 # * 如果你想拿到 index (如果有重複的值，只給我第一個出現的 index 就好)，可以這樣做
 
-# In[137]:
+# In[76]:
 
 
 unique_values, indices_list = np.unique(a, return_index=True)
@@ -940,7 +940,7 @@ print(indices_list)
 
 # * 如果我想看每個值重複的狀況，我可以這樣做：
 
-# In[138]:
+# In[77]:
 
 
 unique_values, occurrence_count = np.unique(a, return_counts=True)
@@ -949,7 +949,7 @@ print(occurrence_count)
 
 # #### 2d array
 
-# In[147]:
+# In[78]:
 
 
 a_2d = np.array([[1, 2, 2, 4], 
@@ -961,7 +961,7 @@ a_2d
 
 # * 只用 `np.unique()`，就是全部一起看：
 
-# In[148]:
+# In[79]:
 
 
 unique_values = np.unique(a_2d)
@@ -970,14 +970,14 @@ print(unique_values)
 
 # * 加入 axis，就可以看沿著那軸的 unique
 
-# In[149]:
+# In[80]:
 
 
 unique_rows = np.unique(a_2d, axis=0)
 print(unique_rows)
 
 
-# In[150]:
+# In[81]:
 
 
 unique_cols = np.unique(a_2d, axis=1)
@@ -998,7 +998,7 @@ print(unique_cols)
 
 # ### np.save() & np.load()
 
-# In[159]:
+# In[82]:
 
 
 a = np.array([1, 2, 3, 4, 5, 6])
@@ -1009,7 +1009,7 @@ print(b)
 
 # ### np.savetxt() & np.loadtxt()
 
-# In[160]:
+# In[83]:
 
 
 csv_arr = np.array([1, 2, 3, 4, 5, 6, 7, 8])
