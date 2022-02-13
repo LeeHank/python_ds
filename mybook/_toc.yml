@@ -30,7 +30,7 @@ parts:
   - caption: supervised learning
     numbered: true
     chapters:
-#    - file: datacamp_su/datacamp_su
+    - file: datacamp_su/datacamp_su
 #    - file: statquest_trees/classification_tree
     - file: sklearn_guide/rf_permutation_imp
     
