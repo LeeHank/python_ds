@@ -1,0 +1,1826 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Introduction to Seaborn &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Supervised Learning with scikit-learn" href="../datacamp_su/datacamp_su.html" />
+    <link rel="prev" title="2. Getting Started (official)" href="../ch3_pandas/official_getting_started/getting_started.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_su/datacamp_su.html">
+   4. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
+   5. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/datacamp_seaborn/intro_seaborn.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdatacamp_seaborn/intro_seaborn.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/datacamp_seaborn/intro_seaborn.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scatter-plot">
+   3.1. Scatter plot
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     3.1.1. Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#student-data">
+       3.1.1.1. student_data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mpg">
+       3.1.1.2. mpg
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     3.1.2. 基本 scatter plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hue-i-e-color">
+     3.1.3. hue (i.e. color)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       3.1.3.1. 第三個變數的顏色自己指定
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       3.1.3.2. 第三個變數的順序自己指定
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#size">
+     3.1.4. size
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#style-style">
+     3.1.5. style (點的style)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alpha">
+     3.1.6. alpha
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#facet-grid">
+     3.1.7. facet_grid 類型
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#by-column">
+       3.1.7.1. by column 畫圖
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       3.1.7.2. by column 指定順序
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#column">
+       3.1.7.3. 指定 column 行數
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#by-row">
+       3.1.7.4. by row 畫圖
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#by-column-row-r-facet-grid">
+       3.1.7.5. by column &amp; row (R 的 facet_grid)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#line-plot">
+   3.2. Line plot
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     3.2.1. 基本 line plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-line-plot">
+     3.2.2. multiple line plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#line-plot-with-ci">
+     3.2.3. line plot with CI
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#count-plots-bar-chart">
+   3.3. count plots (bar chart)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#countplot">
+     3.3.1. 基本 countplot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     3.3.2. 兩維的 countplot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#count-plot">
+   3.4. count plot
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Seaborn</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scatter-plot">
+   3.1. Scatter plot
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     3.1.1. Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#student-data">
+       3.1.1.1. student_data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mpg">
+       3.1.1.2. mpg
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     3.1.2. 基本 scatter plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hue-i-e-color">
+     3.1.3. hue (i.e. color)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       3.1.3.1. 第三個變數的顏色自己指定
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       3.1.3.2. 第三個變數的順序自己指定
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#size">
+     3.1.4. size
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#style-style">
+     3.1.5. style (點的style)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alpha">
+     3.1.6. alpha
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#facet-grid">
+     3.1.7. facet_grid 類型
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#by-column">
+       3.1.7.1. by column 畫圖
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       3.1.7.2. by column 指定順序
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#column">
+       3.1.7.3. 指定 column 行數
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#by-row">
+       3.1.7.4. by row 畫圖
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#by-column-row-r-facet-grid">
+       3.1.7.5. by column &amp; row (R 的 facet_grid)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#line-plot">
+   3.2. Line plot
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     3.2.1. 基本 line plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-line-plot">
+     3.2.2. multiple line plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#line-plot-with-ci">
+     3.2.3. line plot with CI
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#count-plots-bar-chart">
+   3.3. count plots (bar chart)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#countplot">
+     3.3.1. 基本 countplot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     3.3.2. 兩維的 countplot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#count-plot">
+   3.4. count plot
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-seaborn">
+<h1><span class="section-number">3. </span>Introduction to Seaborn<a class="headerlink" href="#introduction-to-seaborn" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>seaborn 是 build 在 matplotlib 上，和 pandas 合作的很好</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="scatter-plot">
+<h2><span class="section-number">3.1. </span>Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data">
+<h3><span class="section-number">3.1.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="student-data">
+<h4><span class="section-number">3.1.1.1. </span>student_data<a class="headerlink" href="#student-data" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">student_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/student-alcohol-consumption.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">student_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>famsize</th>
+      <th>Pstatus</th>
+      <th>Medu</th>
+      <th>Fedu</th>
+      <th>traveltime</th>
+      <th>failures</th>
+      <th>schoolsup</th>
+      <th>...</th>
+      <th>goout</th>
+      <th>Dalc</th>
+      <th>Walc</th>
+      <th>health</th>
+      <th>absences</th>
+      <th>G1</th>
+      <th>G2</th>
+      <th>G3</th>
+      <th>location</th>
+      <th>study_time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>GP</td>
+      <td>F</td>
+      <td>18</td>
+      <td>GT3</td>
+      <td>A</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>yes</td>
+      <td>...</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>6</td>
+      <td>5</td>
+      <td>6</td>
+      <td>6</td>
+      <td>Urban</td>
+      <td>2 to 5 hours</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>GP</td>
+      <td>F</td>
+      <td>17</td>
+      <td>GT3</td>
+      <td>T</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>no</td>
+      <td>...</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>5</td>
+      <td>6</td>
+      <td>Urban</td>
+      <td>2 to 5 hours</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>GP</td>
+      <td>F</td>
+      <td>15</td>
+      <td>LE3</td>
+      <td>T</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>yes</td>
+      <td>...</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>10</td>
+      <td>7</td>
+      <td>8</td>
+      <td>10</td>
+      <td>Urban</td>
+      <td>2 to 5 hours</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>GP</td>
+      <td>F</td>
+      <td>15</td>
+      <td>GT3</td>
+      <td>T</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>no</td>
+      <td>...</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>2</td>
+      <td>15</td>
+      <td>14</td>
+      <td>15</td>
+      <td>Urban</td>
+      <td>5 to 10 hours</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>GP</td>
+      <td>F</td>
+      <td>16</td>
+      <td>GT3</td>
+      <td>T</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>no</td>
+      <td>...</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>5</td>
+      <td>4</td>
+      <td>6</td>
+      <td>10</td>
+      <td>10</td>
+      <td>Urban</td>
+      <td>2 to 5 hours</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>390</th>
+      <td>MS</td>
+      <td>M</td>
+      <td>20</td>
+      <td>LE3</td>
+      <td>A</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>no</td>
+      <td>...</td>
+      <td>4</td>
+      <td>4</td>
+      <td>5</td>
+      <td>4</td>
+      <td>11</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>Urban</td>
+      <td>2 to 5 hours</td>
+    </tr>
+    <tr>
+      <th>391</th>
+      <td>MS</td>
+      <td>M</td>
+      <td>17</td>
+      <td>LE3</td>
+      <td>T</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>no</td>
+      <td>...</td>
+      <td>5</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>3</td>
+      <td>14</td>
+      <td>16</td>
+      <td>16</td>
+      <td>Urban</td>
+      <td>&lt;2 hours</td>
+    </tr>
+    <tr>
+      <th>392</th>
+      <td>MS</td>
+      <td>M</td>
+      <td>21</td>
+      <td>GT3</td>
+      <td>T</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>no</td>
+      <td>...</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>10</td>
+      <td>8</td>
+      <td>7</td>
+      <td>Rural</td>
+      <td>&lt;2 hours</td>
+    </tr>
+    <tr>
+      <th>393</th>
+      <td>MS</td>
+      <td>M</td>
+      <td>18</td>
+      <td>LE3</td>
+      <td>T</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>no</td>
+      <td>...</td>
+      <td>1</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>0</td>
+      <td>11</td>
+      <td>12</td>
+      <td>10</td>
+      <td>Rural</td>
+      <td>&lt;2 hours</td>
+    </tr>
+    <tr>
+      <th>394</th>
+      <td>MS</td>
+      <td>M</td>
+      <td>19</td>
+      <td>LE3</td>
+      <td>T</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>no</td>
+      <td>...</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>5</td>
+      <td>5</td>
+      <td>8</td>
+      <td>9</td>
+      <td>9</td>
+      <td>Urban</td>
+      <td>&lt;2 hours</td>
+    </tr>
+  </tbody>
+</table>
+<p>395 rows × 29 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="mpg">
+<h4><span class="section-number">3.1.1.2. </span>mpg<a class="headerlink" href="#mpg" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/mpg.csv&quot;</span><span class="p">)</span>
+<span class="n">mpg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mpg</th>
+      <th>cylinders</th>
+      <th>displacement</th>
+      <th>horsepower</th>
+      <th>weight</th>
+      <th>acceleration</th>
+      <th>model_year</th>
+      <th>origin</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>18.0</td>
+      <td>8</td>
+      <td>307.0</td>
+      <td>130.0</td>
+      <td>3504</td>
+      <td>12.0</td>
+      <td>70</td>
+      <td>usa</td>
+      <td>chevrolet chevelle malibu</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15.0</td>
+      <td>8</td>
+      <td>350.0</td>
+      <td>165.0</td>
+      <td>3693</td>
+      <td>11.5</td>
+      <td>70</td>
+      <td>usa</td>
+      <td>buick skylark 320</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>18.0</td>
+      <td>8</td>
+      <td>318.0</td>
+      <td>150.0</td>
+      <td>3436</td>
+      <td>11.0</td>
+      <td>70</td>
+      <td>usa</td>
+      <td>plymouth satellite</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16.0</td>
+      <td>8</td>
+      <td>304.0</td>
+      <td>150.0</td>
+      <td>3433</td>
+      <td>12.0</td>
+      <td>70</td>
+      <td>usa</td>
+      <td>amc rebel sst</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17.0</td>
+      <td>8</td>
+      <td>302.0</td>
+      <td>140.0</td>
+      <td>3449</td>
+      <td>10.5</td>
+      <td>70</td>
+      <td>usa</td>
+      <td>ford torino</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>393</th>
+      <td>27.0</td>
+      <td>4</td>
+      <td>140.0</td>
+      <td>86.0</td>
+      <td>2790</td>
+      <td>15.6</td>
+      <td>82</td>
+      <td>usa</td>
+      <td>ford mustang gl</td>
+    </tr>
+    <tr>
+      <th>394</th>
+      <td>44.0</td>
+      <td>4</td>
+      <td>97.0</td>
+      <td>52.0</td>
+      <td>2130</td>
+      <td>24.6</td>
+      <td>82</td>
+      <td>europe</td>
+      <td>vw pickup</td>
+    </tr>
+    <tr>
+      <th>395</th>
+      <td>32.0</td>
+      <td>4</td>
+      <td>135.0</td>
+      <td>84.0</td>
+      <td>2295</td>
+      <td>11.6</td>
+      <td>82</td>
+      <td>usa</td>
+      <td>dodge rampage</td>
+    </tr>
+    <tr>
+      <th>396</th>
+      <td>28.0</td>
+      <td>4</td>
+      <td>120.0</td>
+      <td>79.0</td>
+      <td>2625</td>
+      <td>18.6</td>
+      <td>82</td>
+      <td>usa</td>
+      <td>ford ranger</td>
+    </tr>
+    <tr>
+      <th>397</th>
+      <td>31.0</td>
+      <td>4</td>
+      <td>119.0</td>
+      <td>82.0</td>
+      <td>2720</td>
+      <td>19.4</td>
+      <td>82</td>
+      <td>usa</td>
+      <td>chevy s-10</td>
+    </tr>
+  </tbody>
+</table>
+<p>398 rows × 9 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3><span class="section-number">3.1.2. </span>基本 scatter plot<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span> 
+                <span class="n">data</span><span class="o">=</span><span class="n">student_data</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_10_0.png" src="../_images/intro_seaborn_10_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>G3 是 第三次段考的意思。可以看到，缺席率越高，看起來成績越低</p></li>
+</ul>
+</div>
+<div class="section" id="hue-i-e-color">
+<h3><span class="section-number">3.1.3. </span>hue (i.e. color)<a class="headerlink" href="#hue-i-e-color" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span> 
+                <span class="n">data</span><span class="o">=</span><span class="n">student_data</span><span class="p">,</span> 
+                <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_13_0.png" src="../_images/intro_seaborn_13_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，第三軸放上 location 後，結論是：不論是城市或鄉下的小孩，都是缺席越多，成績越差</p></li>
+</ul>
+<div class="section" id="id2">
+<h4><span class="section-number">3.1.3.1. </span>第三個變數的顏色自己指定<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hue_colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Urban&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Rural&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span>
+<span class="p">}</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span> 
+                <span class="n">data</span><span class="o">=</span><span class="n">student_data</span><span class="p">,</span> 
+                <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span>
+                <span class="n">hue_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rural&quot;</span><span class="p">,</span> <span class="s2">&quot;Urban&quot;</span><span class="p">],</span>
+                <span class="n">palette</span> <span class="o">=</span> <span class="n">hue_colors</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_16_0.png" src="../_images/intro_seaborn_16_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h4><span class="section-number">3.1.3.2. </span>第三個變數的順序自己指定<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span> 
+                <span class="n">data</span><span class="o">=</span><span class="n">student_data</span><span class="p">,</span> 
+                <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span>
+                <span class="n">hue_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rural&quot;</span><span class="p">,</span> <span class="s2">&quot;Urban&quot;</span><span class="p">]);</span> <span class="c1"># 先 Rural 再 Urban</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_18_0.png" src="../_images/intro_seaborn_18_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="size">
+<h3><span class="section-number">3.1.4. </span>size<a class="headerlink" href="#size" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> 
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="s2">&quot;cylinders&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_20_0.png" src="../_images/intro_seaborn_20_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，汽缸數越多(cylinders)，horsepower越大，而油耗越差(mpg)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> 
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="s2">&quot;cylinders&quot;</span><span class="p">,</span>
+    <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;cylinders&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_22_0.png" src="../_images/intro_seaborn_22_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>加上顏色，看得更清楚</p></li>
+<li><p>也因為 cylinders 被他認為是 float 變數，所以當第三軸的顏色時，他是給你 gradient 顏色，比較好觀察</p></li>
+</ul>
+</div>
+<div class="section" id="style-style">
+<h3><span class="section-number">3.1.5. </span>style (點的style)<a class="headerlink" href="#style-style" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;acceleration&quot;</span><span class="p">,</span> 
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span>
+    <span class="n">style</span> <span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span>
+    <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;origin&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_25_0.png" src="../_images/intro_seaborn_25_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，usa的車子最多，而且比起 japan 和 europe 的特色，是他有一部分都聚在左下角：表示加速快 &amp; 油耗差</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;absences&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;G3&quot;</span><span class="p">,</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">student_data</span><span class="p">,</span>
+    <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;traveltime&quot;</span><span class="p">,</span>
+    <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;traveltime&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_27_0.png" src="../_images/intro_seaborn_27_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="alpha">
+<h3><span class="section-number">3.1.6. </span>alpha<a class="headerlink" href="#alpha" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="facet-grid">
+<h3><span class="section-number">3.1.7. </span>facet_grid 類型<a class="headerlink" href="#facet-grid" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>ggplot 的 facet_grid/facet_wrap，在 sns 中，是用 <code class="docutils literal notranslate"><span class="pre">relplot()</span></code> 來實現</p></li>
+<li><p>relplot 是 relational plot 的縮寫，它包含 scatter plot 和 line plot.</p></li>
+<li><p>我們使用 relplot 的時機是，你想做出 ggplot 那種 facet_wrap 的效果</p></li>
+</ul>
+<div class="section" id="by-column">
+<h4><span class="section-number">3.1.7.1. </span>by column 畫圖<a class="headerlink" href="#by-column" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">student_data</span><span class="p">,</span> 
+            <span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;location&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_32_0.png" src="../_images/intro_seaborn_32_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h4><span class="section-number">3.1.7.2. </span>by column 指定順序<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">student_data</span><span class="p">,</span> 
+            <span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;location&quot;</span><span class="p">,</span>
+           <span class="n">col_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rural&quot;</span><span class="p">,</span> <span class="s2">&quot;Urban&quot;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_34_0.png" src="../_images/intro_seaborn_34_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="column">
+<h4><span class="section-number">3.1.7.3. </span>指定 column 行數<a class="headerlink" href="#column" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>可以定義 by col 畫圖時，最多幾個後要換行</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">student_data</span><span class="p">,</span> 
+            <span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;study_time&quot;</span><span class="p">,</span>
+            <span class="n">col_wrap</span> <span class="o">=</span> <span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_37_0.png" src="../_images/intro_seaborn_37_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="by-row">
+<h4><span class="section-number">3.1.7.4. </span>by row 畫圖<a class="headerlink" href="#by-row" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>同樣的做法，可以改成 by row</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">student_data</span><span class="p">,</span> 
+            <span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;location&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_40_0.png" src="../_images/intro_seaborn_40_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="by-column-row-r-facet-grid">
+<h4><span class="section-number">3.1.7.5. </span>by column &amp; row (R 的 facet_grid)<a class="headerlink" href="#by-column-row-r-facet-grid" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>如果要做到 facet_grid (兩個變數交叉)，那就又 col 又 row</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;absences&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">student_data</span><span class="p">,</span> 
+            <span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;study_time&quot;</span><span class="p">,</span>
+           <span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;location&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_43_0.png" src="../_images/intro_seaborn_43_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>當然，剛剛 row 和 column 用過的細節設定都還是可以下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;G1&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;G3&quot;</span><span class="p">,</span> <span class="c1"># 第一學期 和 第三學期 的成績</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">student_data</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> 
+            <span class="n">col</span><span class="o">=</span><span class="s2">&quot;schoolsup&quot;</span><span class="p">,</span> <span class="c1"># 有沒有獲得學校補助 school support</span>
+            <span class="n">col_order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span><span class="p">],</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;famsup&quot;</span><span class="p">,</span> <span class="c1"># 有沒有獲得家庭補助 family support</span>
+            <span class="n">row_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1325f9ee0&gt;
+</pre></div>
+</div>
+<img alt="../_images/intro_seaborn_45_1.png" src="../_images/intro_seaborn_45_1.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="line-plot">
+<h2><span class="section-number">3.2. </span>Line plot<a class="headerlink" href="#line-plot" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3><span class="section-number">3.2.1. </span>基本 line plot<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="multiple-line-plot">
+<h3><span class="section-number">3.2.2. </span>multiple line plot<a class="headerlink" href="#multiple-line-plot" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="line-plot-with-ci">
+<h3><span class="section-number">3.2.3. </span>line plot with CI<a class="headerlink" href="#line-plot-with-ci" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="count-plots-bar-chart">
+<h2><span class="section-number">3.3. </span>count plots (bar chart)<a class="headerlink" href="#count-plots-bar-chart" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="countplot">
+<h3><span class="section-number">3.3.1. </span>基本 countplot<a class="headerlink" href="#countplot" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;school&quot;</span><span class="p">,</span> 
+              <span class="n">data</span> <span class="o">=</span> <span class="n">student_data</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_52_0.png" src="../_images/intro_seaborn_52_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">3.3.2. </span>兩維的 countplot<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">palette_colors</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Rural&quot;</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;Urban&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">}</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;school&quot;</span><span class="p">,</span> 
+              <span class="n">data</span> <span class="o">=</span> <span class="n">student_data</span><span class="p">,</span> 
+              <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;location&quot;</span><span class="p">,</span> 
+              <span class="n">palette</span> <span class="o">=</span> <span class="n">palette_colors</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_54_0.png" src="../_images/intro_seaborn_54_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/countries-of-the-world.csv&quot;</span><span class="p">)</span>
+<span class="n">countries</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>Region</th>
+      <th>Population</th>
+      <th>Area (sq. mi.)</th>
+      <th>Pop. Density (per sq. mi.)</th>
+      <th>Coastline (coast/area ratio)</th>
+      <th>Net migration</th>
+      <th>Infant mortality (per 1000 births)</th>
+      <th>GDP ($ per capita)</th>
+      <th>Literacy (%)</th>
+      <th>Phones (per 1000)</th>
+      <th>Arable (%)</th>
+      <th>Crops (%)</th>
+      <th>Other (%)</th>
+      <th>Climate</th>
+      <th>Birthrate</th>
+      <th>Deathrate</th>
+      <th>Agriculture</th>
+      <th>Industry</th>
+      <th>Service</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>ASIA (EX. NEAR EAST)</td>
+      <td>31056997</td>
+      <td>647500</td>
+      <td>48,0</td>
+      <td>0,00</td>
+      <td>23,06</td>
+      <td>163,07</td>
+      <td>700.0</td>
+      <td>36,0</td>
+      <td>3,2</td>
+      <td>12,13</td>
+      <td>0,22</td>
+      <td>87,65</td>
+      <td>1</td>
+      <td>46,6</td>
+      <td>20,34</td>
+      <td>0,38</td>
+      <td>0,24</td>
+      <td>0,38</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>EASTERN EUROPE</td>
+      <td>3581655</td>
+      <td>28748</td>
+      <td>124,6</td>
+      <td>1,26</td>
+      <td>-4,93</td>
+      <td>21,52</td>
+      <td>4500.0</td>
+      <td>86,5</td>
+      <td>71,2</td>
+      <td>21,09</td>
+      <td>4,42</td>
+      <td>74,49</td>
+      <td>3</td>
+      <td>15,11</td>
+      <td>5,22</td>
+      <td>0,232</td>
+      <td>0,188</td>
+      <td>0,579</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>NORTHERN AFRICA</td>
+      <td>32930091</td>
+      <td>2381740</td>
+      <td>13,8</td>
+      <td>0,04</td>
+      <td>-0,39</td>
+      <td>31</td>
+      <td>6000.0</td>
+      <td>70,0</td>
+      <td>78,1</td>
+      <td>3,22</td>
+      <td>0,25</td>
+      <td>96,53</td>
+      <td>1</td>
+      <td>17,14</td>
+      <td>4,61</td>
+      <td>0,101</td>
+      <td>0,6</td>
+      <td>0,298</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>American Samoa</td>
+      <td>OCEANIA</td>
+      <td>57794</td>
+      <td>199</td>
+      <td>290,4</td>
+      <td>58,29</td>
+      <td>-20,71</td>
+      <td>9,27</td>
+      <td>8000.0</td>
+      <td>97,0</td>
+      <td>259,5</td>
+      <td>10</td>
+      <td>15</td>
+      <td>75</td>
+      <td>2</td>
+      <td>22,46</td>
+      <td>3,27</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Andorra</td>
+      <td>WESTERN EUROPE</td>
+      <td>71201</td>
+      <td>468</td>
+      <td>152,1</td>
+      <td>0,00</td>
+      <td>6,6</td>
+      <td>4,05</td>
+      <td>19000.0</td>
+      <td>100,0</td>
+      <td>497,2</td>
+      <td>2,22</td>
+      <td>0</td>
+      <td>97,78</td>
+      <td>3</td>
+      <td>8,71</td>
+      <td>6,25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>West Bank</td>
+      <td>NEAR EAST</td>
+      <td>2460492</td>
+      <td>5860</td>
+      <td>419,9</td>
+      <td>0,00</td>
+      <td>2,98</td>
+      <td>19,62</td>
+      <td>800.0</td>
+      <td>NaN</td>
+      <td>145,2</td>
+      <td>16,9</td>
+      <td>18,97</td>
+      <td>64,13</td>
+      <td>3</td>
+      <td>31,67</td>
+      <td>3,92</td>
+      <td>0,09</td>
+      <td>0,28</td>
+      <td>0,63</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>Western Sahara</td>
+      <td>NORTHERN AFRICA</td>
+      <td>273008</td>
+      <td>266000</td>
+      <td>1,0</td>
+      <td>0,42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0,02</td>
+      <td>0</td>
+      <td>99,98</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0,4</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>Yemen</td>
+      <td>NEAR EAST</td>
+      <td>21456188</td>
+      <td>527970</td>
+      <td>40,6</td>
+      <td>0,36</td>
+      <td>0</td>
+      <td>61,5</td>
+      <td>800.0</td>
+      <td>50,2</td>
+      <td>37,2</td>
+      <td>2,78</td>
+      <td>0,24</td>
+      <td>96,98</td>
+      <td>1</td>
+      <td>42,89</td>
+      <td>8,3</td>
+      <td>0,135</td>
+      <td>0,472</td>
+      <td>0,393</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>Zambia</td>
+      <td>SUB-SAHARAN AFRICA</td>
+      <td>11502010</td>
+      <td>752614</td>
+      <td>15,3</td>
+      <td>0,00</td>
+      <td>0</td>
+      <td>88,29</td>
+      <td>800.0</td>
+      <td>80,6</td>
+      <td>8,2</td>
+      <td>7,08</td>
+      <td>0,03</td>
+      <td>92,9</td>
+      <td>2</td>
+      <td>41</td>
+      <td>19,93</td>
+      <td>0,22</td>
+      <td>0,29</td>
+      <td>0,489</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>Zimbabwe</td>
+      <td>SUB-SAHARAN AFRICA</td>
+      <td>12236805</td>
+      <td>390580</td>
+      <td>31,3</td>
+      <td>0,00</td>
+      <td>0</td>
+      <td>67,69</td>
+      <td>1900.0</td>
+      <td>90,7</td>
+      <td>26,8</td>
+      <td>8,32</td>
+      <td>0,34</td>
+      <td>91,34</td>
+      <td>2</td>
+      <td>28,01</td>
+      <td>21,84</td>
+      <td>0,179</td>
+      <td>0,243</td>
+      <td>0,579</td>
+    </tr>
+  </tbody>
+</table>
+<p>227 rows × 20 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 227 entries, 0 to 226
+Data columns (total 20 columns):
+ #   Column                              Non-Null Count  Dtype  
+---  ------                              --------------  -----  
+ 0   Country                             227 non-null    object 
+ 1   Region                              227 non-null    object 
+ 2   Population                          227 non-null    int64  
+ 3   Area (sq. mi.)                      227 non-null    int64  
+ 4   Pop. Density (per sq. mi.)          227 non-null    object 
+ 5   Coastline (coast/area ratio)        227 non-null    object 
+ 6   Net migration                       224 non-null    object 
+ 7   Infant mortality (per 1000 births)  224 non-null    object 
+ 8   GDP ($ per capita)                  226 non-null    float64
+ 9   Literacy (%)                        209 non-null    object 
+ 10  Phones (per 1000)                   223 non-null    object 
+ 11  Arable (%)                          225 non-null    object 
+ 12  Crops (%)                           225 non-null    object 
+ 13  Other (%)                           225 non-null    object 
+ 14  Climate                             205 non-null    object 
+ 15  Birthrate                           224 non-null    object 
+ 16  Deathrate                           223 non-null    object 
+ 17  Agriculture                         212 non-null    object 
+ 18  Industry                            211 non-null    object 
+ 19  Service                             212 non-null    object 
+dtypes: float64(1), int64(2), object(17)
+memory usage: 35.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;GDP ($ per capita)&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Literacy (%)&quot;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">countries</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/intro_seaborn_57_0.png" src="../_images/intro_seaborn_57_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="count-plot">
+<h2><span class="section-number">3.4. </span>count plot<a class="headerlink" href="#count-plot" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./datacamp_seaborn"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../ch3_pandas/official_getting_started/getting_started.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Getting Started (official)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../datacamp_su/datacamp_su.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Supervised Learning with scikit-learn</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

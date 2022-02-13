@@ -23,10 +23,10 @@ parts:
 #    - file: ch4_matplotlib/04.06-Legends
 #    - file: ch4_matplotlib/04.07-Colorbars
 #    - file: ch4_matplotlib/04.08-Multiple-Subplots
-#  - caption: Seaborn
-#    numbered: true
-#    chapters: 
-#    - file: datacamp_seaborn/intro_seaborn
+  - caption: Seaborn
+    numbered: true
+    chapters: 
+    - file: datacamp_seaborn/intro_seaborn
   - caption: supervised learning
     numbered: true
     chapters:
