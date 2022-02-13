@@ -1,0 +1,1263 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12. Clustering &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="13. Supervised Learning with scikit-learn" href="../datacamp_su/datacamp_su.html" />
+    <link rel="prev" title="11. Introduction to Seaborn" href="../datacamp_seaborn/intro_seaborn.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.00-matplotlib_intro.html">
+   3. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   4. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   5. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.03-Errorbars.html">
+   6. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   7. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.06-Legends.html">
+   8. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.07-Colorbars.html">
+   9. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   10. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
+   11. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  unsupervised learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   12. Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_su/datacamp_su.html">
+   13. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statquest_trees/classification_tree.html">
+   14. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
+   15. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/datacamp_unsu/clusters.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdatacamp_unsu/clusters.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/datacamp_unsu/clusters.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means">
+   12.1. K-Means
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#toy-example-iris">
+     12.1.1. toy-example (iris)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stock-movement">
+     12.1.2. stock movement
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Clustering</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means">
+   12.1. K-Means
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#toy-example-iris">
+     12.1.1. toy-example (iris)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stock-movement">
+     12.1.2. stock movement
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="clustering">
+<h1><span class="section-number">12. </span>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="k-means">
+<h2><span class="section-number">12.1. </span>K-Means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="toy-example-iris">
+<h3><span class="section-number">12.1.1. </span>toy-example (iris)<a class="headerlink" href="#toy-example-iris" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>出動 iris 資料集吧</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">df_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">iris</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]],</span>
+                     <span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SepalLengthCm&#39;</span><span class="p">,</span><span class="s1">&#39;SepalWidthCm&#39;</span><span class="p">,</span><span class="s1">&#39;PetalLengthCm&#39;</span><span class="p">,</span><span class="s1">&#39;PetalWidthCm&#39;</span><span class="p">,</span><span class="s1">&#39;Species&#39;</span><span class="p">])</span>
+<span class="n">df_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SepalLengthCm</th>
+      <th>SepalWidthCm</th>
+      <th>PetalLengthCm</th>
+      <th>PetalWidthCm</th>
+      <th>Species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Species&quot;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">kmeansModel</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="c1"># 分 3 群</span>
+                     <span class="n">n_init</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="c1"># 起始值有10組，每組分完後，比 inertia，選最小的那組給你</span>
+                     <span class="n">random_state</span><span class="o">=</span><span class="mi">46</span><span class="p">,</span> <span class="c1"># 產出 10 組起始值時，用的 seed</span>
+                    <span class="n">tol</span> <span class="o">=</span> <span class="mf">0.0001</span><span class="p">)</span> <span class="c1"># 前後兩次 iteration， centers 間的 歐式距離，小於 0.0001 就算收斂</span>
+<span class="n">kmeansModel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">clusters_pred</span> <span class="o">=</span> <span class="n">kmeansModel</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>分群結果</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clusters_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2,
+       2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 0, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2,
+       2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0], dtype=int32)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>各群的中心</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeansModel</span><span class="o">.</span><span class="n">cluster_centers_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5.9016129 , 2.7483871 , 4.39354839, 1.43387097],
+       [5.006     , 3.428     , 1.462     , 0.246     ],
+       [6.85      , 3.07368421, 5.74210526, 2.07105263]])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>inertia (within-group sum of variance)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeansModel</span><span class="o">.</span><span class="n">inertia_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78.85144142614601
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>選 k</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">46</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">inertias</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">inertia_</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">kmeans_list</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">inertias</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/clusters_15_0.png" src="../_images/clusters_15_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，elbow 在 2 or 3，所以可以選 2 or 3 當分群的群數</p></li>
+</ul>
+<ul class="simple">
+<li><p>詳細說明文件，看 <code class="docutils literal notranslate"><span class="pre">KMeans?</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>KMeans<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stock-movement">
+<h3><span class="section-number">12.1.2. </span>stock movement<a class="headerlink" href="#stock-movement" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>這個應用蠻好玩的，我們可以對股票的 “走勢” 做分群。</p></li>
+<li><p>資料如以下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movements</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/company-stock-movements.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">movements</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2010-01-04</th>
+      <th>2010-01-05</th>
+      <th>2010-01-06</th>
+      <th>2010-01-07</th>
+      <th>2010-01-08</th>
+      <th>2010-01-11</th>
+      <th>2010-01-12</th>
+      <th>2010-01-13</th>
+      <th>2010-01-14</th>
+      <th>2010-01-15</th>
+      <th>...</th>
+      <th>2013-10-16</th>
+      <th>2013-10-17</th>
+      <th>2013-10-18</th>
+      <th>2013-10-21</th>
+      <th>2013-10-22</th>
+      <th>2013-10-23</th>
+      <th>2013-10-24</th>
+      <th>2013-10-25</th>
+      <th>2013-10-28</th>
+      <th>2013-10-29</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Apple</th>
+      <td>0.580000</td>
+      <td>-0.220005</td>
+      <td>-3.409998</td>
+      <td>-1.170000</td>
+      <td>1.680011</td>
+      <td>-2.689994</td>
+      <td>-1.469994</td>
+      <td>2.779997</td>
+      <td>-0.680003</td>
+      <td>-4.999995</td>
+      <td>...</td>
+      <td>0.320008</td>
+      <td>4.519997</td>
+      <td>2.899987</td>
+      <td>9.590019</td>
+      <td>-6.540016</td>
+      <td>5.959976</td>
+      <td>6.910011</td>
+      <td>-5.359962</td>
+      <td>0.840019</td>
+      <td>-19.589981</td>
+    </tr>
+    <tr>
+      <th>AIG</th>
+      <td>-0.640002</td>
+      <td>-0.650000</td>
+      <td>-0.210001</td>
+      <td>-0.420000</td>
+      <td>0.710001</td>
+      <td>-0.200001</td>
+      <td>-1.130001</td>
+      <td>0.069999</td>
+      <td>-0.119999</td>
+      <td>-0.500000</td>
+      <td>...</td>
+      <td>0.919998</td>
+      <td>0.709999</td>
+      <td>0.119999</td>
+      <td>-0.480000</td>
+      <td>0.010002</td>
+      <td>-0.279998</td>
+      <td>-0.190003</td>
+      <td>-0.040001</td>
+      <td>-0.400002</td>
+      <td>0.660000</td>
+    </tr>
+    <tr>
+      <th>Amazon</th>
+      <td>-2.350006</td>
+      <td>1.260009</td>
+      <td>-2.350006</td>
+      <td>-2.009995</td>
+      <td>2.960006</td>
+      <td>-2.309997</td>
+      <td>-1.640007</td>
+      <td>1.209999</td>
+      <td>-1.790001</td>
+      <td>-2.039994</td>
+      <td>...</td>
+      <td>2.109985</td>
+      <td>3.699982</td>
+      <td>9.570008</td>
+      <td>-3.450013</td>
+      <td>4.820008</td>
+      <td>-4.079986</td>
+      <td>2.579986</td>
+      <td>4.790009</td>
+      <td>-1.760009</td>
+      <td>3.740021</td>
+    </tr>
+    <tr>
+      <th>American express</th>
+      <td>0.109997</td>
+      <td>0.000000</td>
+      <td>0.260002</td>
+      <td>0.720002</td>
+      <td>0.190003</td>
+      <td>-0.270001</td>
+      <td>0.750000</td>
+      <td>0.300004</td>
+      <td>0.639999</td>
+      <td>-0.130001</td>
+      <td>...</td>
+      <td>0.680001</td>
+      <td>2.290001</td>
+      <td>0.409996</td>
+      <td>-0.069999</td>
+      <td>0.100006</td>
+      <td>0.069999</td>
+      <td>0.130005</td>
+      <td>1.849999</td>
+      <td>0.040001</td>
+      <td>0.540001</td>
+    </tr>
+    <tr>
+      <th>Boeing</th>
+      <td>0.459999</td>
+      <td>1.770000</td>
+      <td>1.549999</td>
+      <td>2.690003</td>
+      <td>0.059997</td>
+      <td>-1.080002</td>
+      <td>0.360000</td>
+      <td>0.549999</td>
+      <td>0.530002</td>
+      <td>-0.709999</td>
+      <td>...</td>
+      <td>1.559997</td>
+      <td>2.480003</td>
+      <td>0.019997</td>
+      <td>-1.220001</td>
+      <td>0.480003</td>
+      <td>3.020004</td>
+      <td>-0.029999</td>
+      <td>1.940002</td>
+      <td>1.130005</td>
+      <td>0.309998</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 963 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>可以看到，每一列是一家公司，每一行是時間點，值是股價(大概做過一些調整了，所以有正有負，我們可以不用管他，就當是股價即可)</p></li>
+<li><p>如果我今天要做的分群，是對絕對的數值做分群，那我就直接用這張表分群就好.</p></li>
+<li><p>但如果我今天是想對 “走勢” 做分群，那我會希望對 “列” 做標準化。</p>
+<ul>
+<li><p>舉例來說，台積電的股價變化是 600, 580, 600, 620, 640，啟基是 60, 58, 60, 62, 64。</p></li>
+<li><p>那從 “走勢” 來看，台積跟啟基走勢是一樣的，應該被分為一群，但如果直接做 kmeans，就再見了，因為光 600 和 60 的距離就很遠。</p></li>
+<li><p>另外，台積股價的變化是 -20, 20, 20, 20; 啟基是 -2, 2, 2, 2，這個變動差距也不同，但如果改成看變化百分比(把股價放分母，變化當分子)，那兩邊就又差不多了.</p></li>
+<li><p>所以，我如果先對列做標準化，那兩個公司的數值就都變成 [-0.39, -1.37, -0.39, 0.58, 1.56]，一模模一樣樣，euclidean distance 變成 0，分群時一定放在一塊兒</p></li>
+</ul>
+</li>
+<li><p>所以，這一個例子，我們就要對 “列” 做標準化，那就要用到 <code class="docutils literal notranslate"><span class="pre">Normalizer</span></code> 這個 preprocessor:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Normalizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">make_pipeline</span>
+
+<span class="c1"># Create a normalizer: normalizer</span>
+<span class="n">normalizer</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">()</span>
+
+<span class="c1"># Create a KMeans model with 10 clusters: kmeans</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Make a pipeline chaining normalizer and kmeans: pipeline</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">normalizer</span><span class="p">,</span> <span class="n">kmeans</span><span class="p">)</span>
+
+<span class="c1"># Fit pipeline to the daily price movements</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">movements</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[(&#39;normalizer&#39;, Normalizer()),
+                (&#39;kmeans&#39;, KMeans(n_clusters=10))])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict the cluster labels: labels</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">movements</span><span class="p">)</span>
+
+<span class="c1"># Create a DataFrame aligning labels and companies: df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">labels</span><span class="p">,</span> 
+                   <span class="s1">&#39;companies&#39;</span><span class="p">:</span> <span class="n">movements</span><span class="o">.</span><span class="n">index</span><span class="p">})</span>
+
+<span class="c1"># Display df sorted by cluster label</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;labels&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>labels</th>
+      <th>companies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>22</th>
+      <td>0</td>
+      <td>HP</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0</td>
+      <td>Dell</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>1</td>
+      <td>SAP</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1</td>
+      <td>Sanofi-Aventis</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>1</td>
+      <td>Pfizer</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>1</td>
+      <td>Novartis</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1</td>
+      <td>British American Tobacco</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>1</td>
+      <td>Total</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1</td>
+      <td>GlaxoSmithKline</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>1</td>
+      <td>Unilever</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>2</td>
+      <td>Mitsubishi</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>2</td>
+      <td>Toyota</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>2</td>
+      <td>Sony</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2</td>
+      <td>Ford</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2</td>
+      <td>Honda</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Amazon</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2</td>
+      <td>Cisco</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2</td>
+      <td>Canon</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>3</td>
+      <td>Xerox</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>3</td>
+      <td>Symantec</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>3</td>
+      <td>Navistar</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>3</td>
+      <td>3M</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>3</td>
+      <td>McDonalds</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>3</td>
+      <td>MasterCard</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>3</td>
+      <td>DuPont de Nemours</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>3</td>
+      <td>Yahoo</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>3</td>
+      <td>Taiwan Semiconductor Manufacturing</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>3</td>
+      <td>Texas instruments</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>3</td>
+      <td>Caterpillar</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>3</td>
+      <td>Home Depot</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>4</td>
+      <td>Wal-Mart</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>4</td>
+      <td>Kimberly-Clark</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>4</td>
+      <td>Colgate-Palmolive</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>4</td>
+      <td>Johnson &amp; Johnson</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>4</td>
+      <td>Procter Gamble</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>4</td>
+      <td>Pepsi</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>AIG</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>5</td>
+      <td>General Electrics</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>5</td>
+      <td>JPMorgan Chase</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>5</td>
+      <td>Goldman Sachs</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>5</td>
+      <td>Wells Fargo</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>Bank of America</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+      <td>American express</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>6</td>
+      <td>Walgreen</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>6</td>
+      <td>Lookheed Martin</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>6</td>
+      <td>Northrop Grumman</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6</td>
+      <td>Boeing</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>7</td>
+      <td>Royal Dutch Shell</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7</td>
+      <td>Coca Cola</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>7</td>
+      <td>Valero Energy</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7</td>
+      <td>Chevron</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7</td>
+      <td>ConocoPhillips</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>7</td>
+      <td>Exxon</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>7</td>
+      <td>Schlumberger</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>8</td>
+      <td>Philip Morris</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>9</td>
+      <td>Microsoft</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>9</td>
+      <td>Intel</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>9</td>
+      <td>IBM</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>9</td>
+      <td>Google/Alphabet</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>9</td>
+      <td>Apple</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./datacamp_unsu"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../datacamp_seaborn/intro_seaborn.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>Introduction to Seaborn</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../datacamp_su/datacamp_su.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Supervised Learning with scikit-learn</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
