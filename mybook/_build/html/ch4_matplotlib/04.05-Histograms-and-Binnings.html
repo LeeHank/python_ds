@@ -1,0 +1,714 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7. Histograms, Binnings, and Density &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. In Depth: Principal Component Analysis" href="../05.09-PCA.html" />
+    <link rel="prev" title="6. Error bars &amp; Error region" href="04.03-Errorbars.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../np_1_Intro.html">
+   1. Introduction to NumPy
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03.04-Missing-Values.html">
+   2. Handling Missing Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.00-matplotlib_intro.html">
+   3. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.01-Simple-Line-Plots.html">
+   4. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.02-Simple-Scatter-Plots.html">
+   5. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.03-Errorbars.html">
+   6. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. Histograms, Binnings, and Density
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  unsupervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05.09-PCA.html">
+   8. In Depth: Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05.11-K-Means.html">
+   9. In Depth: k-Means Clustering
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ch4_matplotlib/04.05-Histograms-and-Binnings.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch4_matplotlib/04.05-Histograms-and-Binnings.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/ch4_matplotlib/04.05-Histograms-and-Binnings.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   7.1. 一維的直方圖
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   7.2. 二維的直方圖
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plt-hist2d">
+     7.2.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       plt.hist2d
+      </span>
+     </code>
+     : 二維直方圖
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kernel-density-estimation">
+     7.2.2. Kernel density estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Histograms, Binnings, and Density</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   7.1. 一維的直方圖
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   7.2. 二維的直方圖
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plt-hist2d">
+     7.2.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       plt.hist2d
+      </span>
+     </code>
+     : 二維直方圖
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kernel-density-estimation">
+     7.2.2. Kernel density estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="histograms-binnings-and-density">
+<h1><span class="section-number">7. </span>Histograms, Binnings, and Density<a class="headerlink" href="#histograms-binnings-and-density" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-white&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">7.1. </span>一維的直方圖<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>一個簡單的直方圖，就用 <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 就可以完成：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.05-Histograms-and-Binnings_4_0.png" src="../_images/04.05-Histograms-and-Binnings_4_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>我們還有很多客製化的參數可以下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
+         <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> 
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">,</span>
+         <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+         <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;stepfilled&#39;</span><span class="p">,</span> 
+         <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.05-Histograms-and-Binnings_6_0.png" src="../_images/04.05-Histograms-and-Binnings_6_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>如果想得到分類後的數據就好，那可以這樣做</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">)</span> <span class="c1"># 每個bin的起點終點</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span> <span class="c1"># 每個 bin 對應到的次數</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-2.6546697  -1.52945268 -0.40423566  0.72098136  1.84619838  2.9714154 ]
+[ 55 285 406 221  33]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>如果要同時畫多個 histogram，那就多做幾次 <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 就好:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;stepfilled&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.05-Histograms-and-Binnings_10_0.png" src="../_images/04.05-Histograms-and-Binnings_10_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">7.2. </span>二維的直方圖<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 生出二維常態的資料</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plt-hist2d">
+<h3><span class="section-number">7.2.1. </span><code class="docutils literal notranslate"><span class="pre">plt.hist2d</span></code>: 二維直方圖<a class="headerlink" href="#plt-hist2d" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>剛剛一維的 histogram，是用 <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 來畫，現在二維的 histogram，是用 <code class="docutils literal notranslate"><span class="pre">plt.hist2d()</span></code> 來畫.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;counts in bin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.05-Histograms-and-Binnings_15_0.png" src="../_images/04.05-Histograms-and-Binnings_15_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>就像剛剛可以用 <code class="docutils literal notranslate"><span class="pre">np.histogram()</span></code> 來得到組別和各組的count的訊息，現在可以用 <code class="docutils literal notranslate"><span class="pre">np.histogram2d()</span></code> 來得到各組的組別(就是x和y的range)以及組別的count。作法如下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span><span class="p">,</span> <span class="n">xedges</span><span class="p">,</span> <span class="n">yedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">xedges</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yedges</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  1.   0.   0.   0.   1.   0.   0.   0.   1.   0.   0.   0.   0.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   1.   1.   1.   0.   1.   0.   0.   0.   0.   0.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   4.   1.   2.   2.   0.   5.   1.   0.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   2.   2.   1.   2.   4.   1.   4.   0.   1.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   1.   4.   5.   7.   3.  12.   7.  10.   6.   5.   3.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   1.   1.   1.   8.   9.  10.  17.  12.  12.  12.   2.
+    0.   0.   0.   0.   1.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   1.   0.   1.   2.   5.   9.  10.  20.  34.  24.  17.  19.  11.
+    4.   2.   1.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   1.   0.   0.   0.   7.   9.  19.  27.  31.  36.  38.  25.  19.
+   13.   5.   2.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   2.   0.   3.  19.  42.  49.  50.  46.  59.  35.
+   31.  11.  10.   3.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   1.   3.   2.   7.  18.  30.  49.  69.  81.  63.  51.
+   48.  29.  13.   3.   1.   1.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   2.   4.  18.  25.  61.  54.  98. 104.  94.
+   73.  58.  32.  18.   6.   2.   1.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   1.   1.   1.   9.  22.  42.  68. 109. 113. 138.
+  118.  94.  52.  30.  16.   7.   2.   0.   1.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   1.   2.   6.   9.  36.  52.  89. 121. 144.
+  153. 104.  82.  49.  31.   4.   1.   1.   1.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   1.   4.  10.  23.  48.  94. 136. 159.
+  147. 162.  96.  64.  48.  19.   8.   2.   2.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   3.   2.  14.  27.  57.  87. 146.
+  157. 164. 134. 103.  63.  31.   9.  11.   2.   1.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   3.   6.  19.  30.  56. 117.
+  138. 168. 149. 107.  90.  51.  15.   4.   5.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   3.  10.  16.  41.  77.
+  108. 142. 127. 122.  84.  56.  26.  17.   3.   1.   1.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   1.   2.   1.   7.  11.  27.  54.
+   60.  98. 122. 130.  81.  65.  46.  22.   8.   3.   2.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   1.   0.   5.   6.   7.  24.
+   57.  68.  66.  86.  90.  76.  32.  27.  12.   7.   1.   2.   1.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   1.   1.   2.   4.  11.
+   27.  33.  44.  76.  70.  65.  45.  42.  15.  11.   2.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   2.   4.
+    8.  18.  34.  36.  42.  43.  37.  26.  13.   4.   4.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   4.
+    2.   7.  11.  20.  17.  25.  25.  20.  17.   8.   4.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   1.   1.
+    1.   2.   5.   6.  18.  14.  14.  12.  11.   2.   2.   0.   0.   0.
+    1.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   1.   2.   7.  10.   8.  10.  11.   5.   7.   5.   2.   0.   2.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.   0.   3.   1.   0.   4.   2.   4.   6.   3.   1.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.   2.   2.   1.   2.   3.   1.   2.   3.   2.   0.   0.   0.
+    0.   1.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.   0.   0.   2.   0.   1.   0.   1.   2.   2.   2.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.   0.   0.   0.   0.   1.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.   1.   0.   0.   1.   0.
+    0.   0.]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+    0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   1.   0.   0.
+    0.   0.]]
+[-3.63294548 -3.37721174 -3.121478   -2.86574426 -2.61001052 -2.35427678
+ -2.09854304 -1.8428093  -1.58707556 -1.33134182 -1.07560808 -0.81987433
+ -0.56414059 -0.30840685 -0.05267311  0.20306063  0.45879437  0.71452811
+  0.97026185  1.22599559  1.48172933  1.73746307  1.99319681  2.24893055
+  2.50466429  2.76039803  3.01613177  3.27186551  3.52759925  3.78333299
+  4.03906673]
+[-6.0988992  -5.68848594 -5.27807269 -4.86765944 -4.45724619 -4.04683293
+ -3.63641968 -3.22600643 -2.81559317 -2.40517992 -1.99476667 -1.58435342
+ -1.17394016 -0.76352691 -0.35311366  0.0572996   0.46771285  0.8781261
+  1.28853935  1.69895261  2.10936586  2.51977911  2.93019236  3.34060562
+  3.75101887  4.16143212  4.57184538  4.98225863  5.39267188  5.80308513
+  6.21349839]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;count in bin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.05-Histograms-and-Binnings_19_0.png" src="../_images/04.05-Histograms-and-Binnings_19_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="kernel-density-estimation">
+<h3><span class="section-number">7.2.2. </span>Kernel density estimation<a class="headerlink" href="#kernel-density-estimation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>我們也可以去估計二維分配的 density，例如，我假設資料服從二維常態，然後去估計他</p></li>
+<li><p>我們可以用 <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 這個 module</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+
+<span class="c1"># fit an array of size [Ndim, Nsamples]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># evaluate on a regular grid</span>
+<span class="n">xgrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">ygrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">Xgrid</span><span class="p">,</span> <span class="n">Ygrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xgrid</span><span class="p">,</span> <span class="n">ygrid</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">kde</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">Xgrid</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">Ygrid</span><span class="o">.</span><span class="n">ravel</span><span class="p">()]))</span>
+
+<span class="c1"># Plot the result as an image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">Xgrid</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span>
+           <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+           <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+           <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.05-Histograms-and-Binnings_22_0.png" src="../_images/04.05-Histograms-and-Binnings_22_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>之後在 <span class="xref myst">深入研究: 核密度估計</span>的章節，會介紹 kernel density的估計方法。</p></li>
+<li><p>後面的 <span class="xref myst">使用seaborn</span>進行視覺化，也會介紹seaborn更簡潔的語法，做到更客製化的繪圖。</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./ch4_matplotlib"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="04.03-Errorbars.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Error bars &amp; Error region</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../05.09-PCA.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>In Depth: Principal Component Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

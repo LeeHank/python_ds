@@ -1,0 +1,874 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geographic Data with Basemap &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../np_1_Intro.html">
+   1. Introduction to NumPy
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03.04-Missing-Values.html">
+   2. Handling Missing Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.00-matplotlib_intro.html">
+   3. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.01-Simple-Line-Plots.html">
+   4. Simple Line Plots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  unsupervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05.09-PCA.html">
+   5. In Depth: Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05.11-K-Means.html">
+   6. In Depth: k-Means Clustering
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ch4_matplotlib/04.13-Geographic-Data-With-Basemap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch4_matplotlib/04.13-Geographic-Data-With-Basemap.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/ch4_matplotlib/04.13-Geographic-Data-With-Basemap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#map-projections">
+   Map Projections
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cylindrical-projections">
+     Cylindrical projections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pseudo-cylindrical-projections">
+     Pseudo-cylindrical projections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perspective-projections">
+     Perspective projections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conic-projections">
+     Conic projections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-projections">
+     Other projections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drawing-a-map-background">
+   Drawing a Map Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-data-on-maps">
+   Plotting Data on Maps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-california-cities">
+   Example: California Cities
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-surface-temperature-data">
+   Example: Surface Temperature Data
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Geographic Data with Basemap</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#map-projections">
+   Map Projections
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cylindrical-projections">
+     Cylindrical projections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pseudo-cylindrical-projections">
+     Pseudo-cylindrical projections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perspective-projections">
+     Perspective projections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conic-projections">
+     Conic projections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-projections">
+     Other projections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drawing-a-map-background">
+   Drawing a Map Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-data-on-maps">
+   Plotting Data on Maps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-california-cities">
+   Example: California Cities
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-surface-temperature-data">
+   Example: Surface Temperature Data
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <!--BOOK_INFORMATION-->
+<img align="left" style="padding-right:10px;" src="figures/PDSH-cover-small.png">
+<p><em>This notebook contains an excerpt from the <a class="reference external" href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; the content is available <a class="reference external" href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.</em></p>
+<p><em>The text is released under the <a class="reference external" href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a class="reference external" href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a class="reference external" href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</em></p>
+<!--NAVIGATION-->
+<p>&lt; <a class="reference internal" href="04.12-Three-Dimensional-Plotting.html"><span class="doc std std-doc">Three-Dimensional Plotting in Matplotlib</span></a> | <span class="xref myst">Contents</span> | <a class="reference internal" href="04.14-Visualization-With-Seaborn.html"><span class="doc std std-doc">Visualization with Seaborn</span></a> &gt;</p>
+<p><a href="https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/04.13-Geographic-Data-With-Basemap.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open and Execute in Google Colaboratory"></a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="geographic-data-with-basemap">
+<h1>Geographic Data with Basemap<a class="headerlink" href="#geographic-data-with-basemap" title="Permalink to this headline">¶</a></h1>
+<p>One common type of visualization in data science is that of geographic data.
+Matplotlib’s main tool for this type of visualization is the Basemap toolkit, which is one of several Matplotlib toolkits which lives under the <code class="docutils literal notranslate"><span class="pre">mpl_toolkits</span></code> namespace.
+Admittedly, Basemap feels a bit clunky to use, and often even simple visualizations take much longer to render than you might hope.
+More modern solutions such as leaflet or the Google Maps API may be a better choice for more intensive map visualizations.
+Still, Basemap is a useful tool for Python users to have in their virtual toolbelts.
+In this section, we’ll show several examples of the type of map visualization that is possible with this toolkit.</p>
+<p>Installation of Basemap is straightforward; if you’re using conda you can type this and the package will be downloaded:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install basemap
+</pre></div>
+</div>
+<p>We add just a single new import to our standard boilerplate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">db2649dcf0a1</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;mpl_toolkits.basemap&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once you have the Basemap toolkit installed and imported, geographic plots are just a few lines away (the graphics in the following also requires the <code class="docutils literal notranslate"><span class="pre">PIL</span></code> package in Python 2, or the <code class="docutils literal notranslate"><span class="pre">pillow</span></code> package in Python 3):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">bluemarble</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.13-Geographic-Data-With-Basemap_6_0.png" src="../_images/04.13-Geographic-Data-With-Basemap_6_0.png" />
+</div>
+</div>
+<p>The meaning of the arguments to <code class="docutils literal notranslate"><span class="pre">Basemap</span></code> will be discussed momentarily.</p>
+<p>The useful thing is that the globe shown here is not a mere image; it is a fully-functioning Matplotlib axes that understands spherical coordinates and which allows us to easily overplot data on the map!
+For example, we can use a different map projection, zoom-in to North America and plot the location of Seattle.
+We’ll use an etopo image (which shows topographical features both on land and under the ocean) as the map background:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;lcc&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mf">8E6</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">8E6</span><span class="p">,</span> 
+            <span class="n">lat_0</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">100</span><span class="p">,)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">etopo</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Map (long, lat) to (x, y) for plotting</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="o">-</span><span class="mf">122.3</span><span class="p">,</span> <span class="mf">47.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;ok&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39; Seattle&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.13-Geographic-Data-With-Basemap_8_0.png" src="../_images/04.13-Geographic-Data-With-Basemap_8_0.png" />
+</div>
+</div>
+<p>This gives you a brief glimpse into the sort of geographic visualizations that are possible with just a few lines of Python.
+We’ll now discuss the features of Basemap in more depth, and provide several examples of visualizing map data.
+Using these brief examples as building blocks, you should be able to create nearly any map visualization that you desire.</p>
+<div class="section" id="map-projections">
+<h2>Map Projections<a class="headerlink" href="#map-projections" title="Permalink to this headline">¶</a></h2>
+<p>The first thing to decide when using maps is what projection to use.
+You’re probably familiar with the fact that it is impossible to project a spherical map, such as that of the Earth, onto a flat surface without somehow distorting it or breaking its continuity.
+These projections have been developed over the course of human history, and there are a lot of choices!
+Depending on the intended use of the map projection, there are certain map features (e.g., direction, area, distance, shape, or other considerations) that are useful to maintain.</p>
+<p>The Basemap package implements several dozen such projections, all referenced by a short format code.
+Here we’ll briefly demonstrate some of the more common ones.</p>
+<p>We’ll start by defining a convenience routine to draw our world map along with the longitude and latitude lines:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="k">def</span> <span class="nf">draw_map</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+    <span class="c1"># draw a shaded-relief image</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">shadedrelief</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+    
+    <span class="c1"># lats and longs are returned as a dictionary</span>
+    <span class="n">lats</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+    <span class="n">lons</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+
+    <span class="c1"># keys contain the plt.Line2D instances</span>
+    <span class="n">lat_lines</span> <span class="o">=</span> <span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">lats</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+    <span class="n">lon_lines</span> <span class="o">=</span> <span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">lons</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+    <span class="n">all_lines</span> <span class="o">=</span> <span class="n">chain</span><span class="p">(</span><span class="n">lat_lines</span><span class="p">,</span> <span class="n">lon_lines</span><span class="p">)</span>
+    
+    <span class="c1"># cycle through these lines and set the desired style</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">all_lines</span><span class="p">:</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="cylindrical-projections">
+<h3>Cylindrical projections<a class="headerlink" href="#cylindrical-projections" title="Permalink to this headline">¶</a></h3>
+<p>The simplest of map projections are cylindrical projections, in which lines of constant latitude and longitude are mapped to horizontal and vertical lines, respectively.
+This type of mapping represents equatorial regions quite well, but results in extreme distortions near the poles.
+The spacing of latitude lines varies between different cylindrical projections, leading to different conservation properties, and different distortion near the poles.
+In the following figure we show an example of the <em>equidistant cylindrical projection</em>, which chooses a latitude scaling that preserves distances along meridians.
+Other cylindrical projections are the Mercator (<code class="docutils literal notranslate"><span class="pre">projection='merc'</span></code>) and the cylindrical equal area (<code class="docutils literal notranslate"><span class="pre">projection='cea'</span></code>) projections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;cyl&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">llcrnrlat</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">urcrnrlat</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+            <span class="n">llcrnrlon</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">urcrnrlon</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">draw_map</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.13-Geographic-Data-With-Basemap_13_0.png" src="../_images/04.13-Geographic-Data-With-Basemap_13_0.png" />
+</div>
+</div>
+<p>The additional arguments to Basemap for this view specify the latitude (<code class="docutils literal notranslate"><span class="pre">lat</span></code>) and longitude (<code class="docutils literal notranslate"><span class="pre">lon</span></code>) of the lower-left corner (<code class="docutils literal notranslate"><span class="pre">llcrnr</span></code>) and upper-right corner (<code class="docutils literal notranslate"><span class="pre">urcrnr</span></code>) for the desired map, in units of degrees.</p>
+</div>
+<div class="section" id="pseudo-cylindrical-projections">
+<h3>Pseudo-cylindrical projections<a class="headerlink" href="#pseudo-cylindrical-projections" title="Permalink to this headline">¶</a></h3>
+<p>Pseudo-cylindrical projections relax the requirement that meridians (lines of constant longitude) remain vertical; this can give better properties near the poles of the projection.
+The Mollweide projection (<code class="docutils literal notranslate"><span class="pre">projection='moll'</span></code>) is one common example of this, in which all meridians are elliptical arcs.
+It is constructed so as to preserve area across the map: though there are distortions near the poles, the area of small patches reflects the true area.
+Other pseudo-cylindrical projections are the sinusoidal (<code class="docutils literal notranslate"><span class="pre">projection='sinu'</span></code>) and Robinson (<code class="docutils literal notranslate"><span class="pre">projection='robin'</span></code>) projections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;moll&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">lat_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">draw_map</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.13-Geographic-Data-With-Basemap_16_0.png" src="../_images/04.13-Geographic-Data-With-Basemap_16_0.png" />
+</div>
+</div>
+<p>The extra arguments to Basemap here refer to the central latitude (<code class="docutils literal notranslate"><span class="pre">lat_0</span></code>) and longitude (<code class="docutils literal notranslate"><span class="pre">lon_0</span></code>) for the desired map.</p>
+</div>
+<div class="section" id="perspective-projections">
+<h3>Perspective projections<a class="headerlink" href="#perspective-projections" title="Permalink to this headline">¶</a></h3>
+<p>Perspective projections are constructed using a particular choice of perspective point, similar to if you photographed the Earth from a particular point in space (a point which, for some projections, technically lies within the Earth!).
+One common example is the orthographic projection (<code class="docutils literal notranslate"><span class="pre">projection='ortho'</span></code>), which shows one side of the globe as seen from a viewer at a very long distance. As such, it can show only half the globe at a time.
+Other perspective-based projections include the gnomonic projection (<code class="docutils literal notranslate"><span class="pre">projection='gnom'</span></code>) and stereographic projection (<code class="docutils literal notranslate"><span class="pre">projection='stere'</span></code>).
+These are often the most useful for showing small portions of the map.</p>
+<p>Here is an example of the orthographic projection:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">draw_map</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.13-Geographic-Data-With-Basemap_19_0.png" src="../_images/04.13-Geographic-Data-With-Basemap_19_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="conic-projections">
+<h3>Conic projections<a class="headerlink" href="#conic-projections" title="Permalink to this headline">¶</a></h3>
+<p>A Conic projection projects the map onto a single cone, which is then unrolled.
+This can lead to very good local properties, but regions far from the focus point of the cone may become very distorted.
+One example of this is the Lambert Conformal Conic projection (<code class="docutils literal notranslate"><span class="pre">projection='lcc'</span></code>), which we saw earlier in the map of North America.
+It projects the map onto a cone arranged in such a way that two standard parallels (specified in Basemap by <code class="docutils literal notranslate"><span class="pre">lat_1</span></code> and <code class="docutils literal notranslate"><span class="pre">lat_2</span></code>) have well-represented distances, with scale decreasing between them and increasing outside of them.
+Other useful conic projections are the equidistant conic projection (<code class="docutils literal notranslate"><span class="pre">projection='eqdc'</span></code>) and the Albers equal-area projection (<code class="docutils literal notranslate"><span class="pre">projection='aea'</span></code>).
+Conic projections, like perspective projections, tend to be good choices for representing small to medium patches of the globe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;lcc&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lat_1</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">lat_2</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mf">1.6E7</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.2E7</span><span class="p">)</span>
+<span class="n">draw_map</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.13-Geographic-Data-With-Basemap_21_0.png" src="../_images/04.13-Geographic-Data-With-Basemap_21_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="other-projections">
+<h3>Other projections<a class="headerlink" href="#other-projections" title="Permalink to this headline">¶</a></h3>
+<p>If you’re going to do much with map-based visualizations, I encourage you to read up on other available projections, along with their properties, advantages, and disadvantages.
+Most likely, they are available in the <a class="reference external" href="http://matplotlib.org/basemap/users/mapsetup.html">Basemap package</a>.
+If you dig deep enough into this topic, you’ll find an incredible subculture of geo-viz geeks who will be ready to argue fervently in support of their favorite projection for any given application!</p>
+</div>
+</div>
+<div class="section" id="drawing-a-map-background">
+<h2>Drawing a Map Background<a class="headerlink" href="#drawing-a-map-background" title="Permalink to this headline">¶</a></h2>
+<p>Earlier we saw the <code class="docutils literal notranslate"><span class="pre">bluemarble()</span></code> and <code class="docutils literal notranslate"><span class="pre">shadedrelief()</span></code> methods for projecting global images on the map, as well as the <code class="docutils literal notranslate"><span class="pre">drawparallels()</span></code> and <code class="docutils literal notranslate"><span class="pre">drawmeridians()</span></code> methods for drawing lines of constant latitude and longitude.
+The Basemap package contains a range of useful functions for drawing borders of physical features like continents, oceans, lakes, and rivers, as well as political boundaries such as countries and US states and counties.
+The following are some of the available drawing functions that you may wish to explore using IPython’s help features:</p>
+<ul class="simple">
+<li><p><strong>Physical boundaries and bodies of water</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawcoastlines()</span></code>: Draw continental coast lines</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawlsmask()</span></code>: Draw a mask between the land and sea, for use with projecting images on one or the other</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawmapboundary()</span></code>: Draw the map boundary, including the fill color for oceans.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawrivers()</span></code>: Draw rivers on the map</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fillcontinents()</span></code>: Fill the continents with a given color; optionally fill lakes with another color</p></li>
+</ul>
+</li>
+<li><p><strong>Political boundaries</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawcountries()</span></code>: Draw country boundaries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawstates()</span></code>: Draw US state boundaries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawcounties()</span></code>: Draw US county boundaries</p></li>
+</ul>
+</li>
+<li><p><strong>Map features</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawgreatcircle()</span></code>: Draw a great circle between two points</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawparallels()</span></code>: Draw lines of constant latitude</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawmeridians()</span></code>: Draw lines of constant longitude</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawmapscale()</span></code>: Draw a linear scale on the map</p></li>
+</ul>
+</li>
+<li><p><strong>Whole-globe images</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bluemarble()</span></code>: Project NASA’s blue marble image onto the map</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shadedrelief()</span></code>: Project a shaded relief image onto the map</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">etopo()</span></code>: Draw an etopo relief image onto the map</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warpimage()</span></code>: Project a user-provided image onto the map</p></li>
+</ul>
+</li>
+</ul>
+<p>For the boundary-based features, you must set the desired resolution when creating a Basemap image.
+The <code class="docutils literal notranslate"><span class="pre">resolution</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">Basemap</span></code> class sets the level of detail in boundaries, either <code class="docutils literal notranslate"><span class="pre">'c'</span></code> (crude), <code class="docutils literal notranslate"><span class="pre">'l'</span></code> (low), <code class="docutils literal notranslate"><span class="pre">'i'</span></code> (intermediate), <code class="docutils literal notranslate"><span class="pre">'h'</span></code> (high), <code class="docutils literal notranslate"><span class="pre">'f'</span></code> (full), or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no boundaries will be used.
+This choice is important: setting high-resolution boundaries on a global map, for example, can be <em>very</em> slow.</p>
+<p>Here’s an example of drawing land/sea boundaries, and the effect of the resolution parameter.
+We’ll create both a low- and high-resolution map of Scotland’s beautiful Isle of Skye.
+It’s located at 57.3°N, 6.2°W, and a map of 90,000 × 120,000 kilometers shows it well:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">]):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;gnom&#39;</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mf">57.3</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mf">6.2</span><span class="p">,</span>
+                <span class="n">width</span><span class="o">=</span><span class="mi">90000</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">120000</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="n">res</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#FFDDCC&quot;</span><span class="p">,</span> <span class="n">lake_color</span><span class="o">=</span><span class="s1">&#39;#DDEEFF&#39;</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">(</span><span class="n">fill_color</span><span class="o">=</span><span class="s2">&quot;#DDEEFF&quot;</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;resolution=&#39;</span><span class="si">{0}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.13-Geographic-Data-With-Basemap_24_0.png" src="../_images/04.13-Geographic-Data-With-Basemap_24_0.png" />
+</div>
+</div>
+<p>Notice that the low-resolution coastlines are not suitable for this level of zoom, while high-resolution works just fine.
+The low level would work just fine for a global view, however, and would be <em>much</em> faster than loading the high-resolution border data for the entire globe!
+It might require some experimentation to find the correct resolution parameter for a given view: the best route is to start with a fast, low-resolution plot and increase the resolution as needed.</p>
+</div>
+<div class="section" id="plotting-data-on-maps">
+<h2>Plotting Data on Maps<a class="headerlink" href="#plotting-data-on-maps" title="Permalink to this headline">¶</a></h2>
+<p>Perhaps the most useful piece of the Basemap toolkit is the ability to over-plot a variety of data onto a map background.
+For simple plotting and text, any <code class="docutils literal notranslate"><span class="pre">plt</span></code> function works on the map; you can use the <code class="docutils literal notranslate"><span class="pre">Basemap</span></code> instance to project latitude and longitude coordinates to <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinates for plotting with <code class="docutils literal notranslate"><span class="pre">plt</span></code>, as we saw earlier in the Seattle example.</p>
+<p>In addition to this, there are many map-specific functions available as methods of the <code class="docutils literal notranslate"><span class="pre">Basemap</span></code> instance.
+These work very similarly to their standard Matplotlib counterparts, but have an additional Boolean argument <code class="docutils literal notranslate"><span class="pre">latlon</span></code>, which if set to <code class="docutils literal notranslate"><span class="pre">True</span></code> allows you to pass raw latitudes and longitudes to the method, rather than projected <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinates.</p>
+<p>Some of these map-specific methods are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">contour()</span></code>/<code class="docutils literal notranslate"><span class="pre">contourf()</span></code> : Draw contour lines or filled contours</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">imshow()</span></code>: Draw an image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pcolor()</span></code>/<code class="docutils literal notranslate"><span class="pre">pcolormesh()</span></code> : Draw a pseudocolor plot for irregular/regular meshes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot()</span></code>: Draw lines and/or markers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scatter()</span></code>: Draw points with markers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quiver()</span></code>: Draw vectors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">barbs()</span></code>: Draw wind barbs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawgreatcircle()</span></code>: Draw a great circle.</p></li>
+</ul>
+<p>We’ll see some examples of a few of these as we continue.
+For more information on these functions, including several example plots, see the <a class="reference external" href="http://matplotlib.org/basemap/">online Basemap documentation</a>.</p>
+</div>
+<div class="section" id="example-california-cities">
+<h2>Example: California Cities<a class="headerlink" href="#example-california-cities" title="Permalink to this headline">¶</a></h2>
+<p>Recall that in <a class="reference internal" href="04.06-Customizing-Legends.html"><span class="doc std std-doc">Customizing Plot Legends</span></a>, we demonstrated the use of size and color in a scatter plot to convey information about the location, size, and population of California cities.
+Here, we’ll create this plot again, but using Basemap to put the data in context.</p>
+<p>We start with loading the data, as we did before:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/california_cities.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Extract the data we&#39;re interested in</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">cities</span><span class="p">[</span><span class="s1">&#39;latd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">cities</span><span class="p">[</span><span class="s1">&#39;longd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">population</span> <span class="o">=</span> <span class="n">cities</span><span class="p">[</span><span class="s1">&#39;population_total&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">cities</span><span class="p">[</span><span class="s1">&#39;area_total_km2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we set up the map projection, scatter the data, and then create a colorbar and legend:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Draw the map background</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;lcc&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> 
+            <span class="n">lat_0</span><span class="o">=</span><span class="mf">37.5</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">119</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.2E6</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">shadedrelief</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">drawstates</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. scatter city data, with color reflecting population</span>
+<span class="c1"># and size reflecting area</span>
+<span class="n">m</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">latlon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">population</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="n">area</span><span class="p">,</span>
+          <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># 3. create colorbar and legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\log_</span><span class="si">{10}</span><span class="s1">({\rm population})$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># make legend with dummy points</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; km$^2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+           <span class="n">labelspacing</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.13-Geographic-Data-With-Basemap_30_0.png" src="../_images/04.13-Geographic-Data-With-Basemap_30_0.png" />
+</div>
+</div>
+<p>This shows us roughly where larger populations of people have settled in California: they are clustered near the coast in the Los Angeles and San Francisco areas, stretched along the highways in the flat central valley, and avoiding almost completely the mountainous regions along the borders of the state.</p>
+</div>
+<div class="section" id="example-surface-temperature-data">
+<h2>Example: Surface Temperature Data<a class="headerlink" href="#example-surface-temperature-data" title="Permalink to this headline">¶</a></h2>
+<p>As an example of visualizing some more continuous geographic data, let’s consider the “polar vortex” that hit the eastern half of the United States in January of 2014.
+A great source for any sort of climatic data is <a class="reference external" href="http://data.giss.nasa.gov/">NASA’s Goddard Institute for Space Studies</a>.
+Here we’ll use the GIS 250 temperature data, which we can download using shell commands (these commands may have to be modified on Windows machines).
+The data used here was downloaded on 6/12/2016, and the file size is approximately 9MB:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !curl -O http://data.giss.nasa.gov/pub/gistemp/gistemp250.nc.gz</span>
+<span class="c1"># !gunzip gistemp250.nc.gz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The data comes in NetCDF format, which can be read in Python by the <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code> library.
+You can install this library as shown here</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install netcdf4
+</pre></div>
+</div>
+<p>We read the data as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s1">&#39;gistemp250.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The file contains many global temperature readings on a variety of dates; we need to select the index of the date we’re interested in—in this case, January 15, 2014:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">date2index</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="n">timeindex</span> <span class="o">=</span> <span class="n">date2index</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+                       <span class="n">data</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can load the latitude and longitude data, as well as the temperature anomaly for this index:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][:]</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][:]</span>
+<span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="n">temp_anomaly</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;tempanomaly&#39;</span><span class="p">][</span><span class="n">timeindex</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we’ll use the <code class="docutils literal notranslate"><span class="pre">pcolormesh()</span></code> method to draw a color mesh of the data.
+We’ll look at North America, and use a shaded relief map in the background.
+Note that for this data we specifically chose a divergent colormap, which has a neutral color at zero and two contrasting colors at negative and positive values.
+We’ll also lightly draw the coastlines over the colors for reference:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;lcc&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mf">8E6</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">8E6</span><span class="p">,</span> 
+            <span class="n">lat_0</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">100</span><span class="p">,)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">shadedrelief</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">temp_anomaly</span><span class="p">,</span>
+             <span class="n">latlon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;January 2014 Temperature Anomaly&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;temperature anomaly (°C)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.13-Geographic-Data-With-Basemap_41_0.png" src="../_images/04.13-Geographic-Data-With-Basemap_41_0.png" />
+</div>
+</div>
+<p>The data paints a picture of the localized, extreme temperature anomalies that happened during that month.
+The eastern half of the United States was much colder than normal, while the western half and Alaska were much warmer.
+Regions with no recorded temperature show the map background.</p>
+<!--NAVIGATION-->
+<p>&lt; <a class="reference internal" href="04.12-Three-Dimensional-Plotting.html"><span class="doc std std-doc">Three-Dimensional Plotting in Matplotlib</span></a> | <span class="xref myst">Contents</span> | <a class="reference internal" href="04.14-Visualization-With-Seaborn.html"><span class="doc std std-doc">Visualization with Seaborn</span></a> &gt;</p>
+<p><a href="https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/04.13-Geographic-Data-With-Basemap.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open and Execute in Google Colaboratory"></a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ch4_matplotlib"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

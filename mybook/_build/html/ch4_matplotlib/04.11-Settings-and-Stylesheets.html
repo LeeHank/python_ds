@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customizing Matplotlib: Configurations and Stylesheets &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../np_1_Intro.html">
+   1. Introduction to NumPy
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03.04-Missing-Values.html">
+   2. Handling Missing Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.00-matplotlib_intro.html">
+   3. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.01-Simple-Line-Plots.html">
+   4. Simple Line Plots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  unsupervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05.09-PCA.html">
+   5. In Depth: Principal Component Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05.11-K-Means.html">
+   6. In Depth: k-Means Clustering
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ch4_matplotlib/04.11-Settings-and-Stylesheets.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch4_matplotlib/04.11-Settings-and-Stylesheets.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/ch4_matplotlib/04.11-Settings-and-Stylesheets.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-customization-by-hand">
+   Plot Customization by Hand
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#changing-the-defaults-rcparams">
+   Changing the Defaults:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     rcParams
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stylesheets">
+   Stylesheets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#default-style">
+     Default style
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fivethiryeight-style">
+     FiveThiryEight style
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ggplot">
+     ggplot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayesian-methods-for-hackers-style">
+     *Bayesian Methods for Hackers( style
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dark-background">
+     Dark background
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grayscale">
+     Grayscale
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seaborn-style">
+     Seaborn style
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Customizing Matplotlib: Configurations and Stylesheets</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-customization-by-hand">
+   Plot Customization by Hand
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#changing-the-defaults-rcparams">
+   Changing the Defaults:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     rcParams
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stylesheets">
+   Stylesheets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#default-style">
+     Default style
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fivethiryeight-style">
+     FiveThiryEight style
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ggplot">
+     ggplot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayesian-methods-for-hackers-style">
+     *Bayesian Methods for Hackers( style
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dark-background">
+     Dark background
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grayscale">
+     Grayscale
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seaborn-style">
+     Seaborn style
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <!--BOOK_INFORMATION-->
+<img align="left" style="padding-right:10px;" src="figures/PDSH-cover-small.png">
+<p><em>This notebook contains an excerpt from the <a class="reference external" href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; the content is available <a class="reference external" href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.</em></p>
+<p><em>The text is released under the <a class="reference external" href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a class="reference external" href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a class="reference external" href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</em></p>
+<!--NAVIGATION-->
+<p>&lt; <a class="reference internal" href="04.10-Customizing-Ticks.html"><span class="doc std std-doc">Customizing Ticks</span></a> | <span class="xref myst">Contents</span> | <a class="reference internal" href="04.12-Three-Dimensional-Plotting.html"><span class="doc std std-doc">Three-Dimensional Plotting in Matplotlib</span></a> &gt;</p>
+<p><a href="https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/04.11-Settings-and-Stylesheets.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open and Execute in Google Colaboratory"></a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="customizing-matplotlib-configurations-and-stylesheets">
+<h1>Customizing Matplotlib: Configurations and Stylesheets<a class="headerlink" href="#customizing-matplotlib-configurations-and-stylesheets" title="Permalink to this headline">¶</a></h1>
+<p>Matplotlib’s default plot settings are often the subject of complaint among its users.
+While much is slated to change in the 2.0 Matplotlib release in late 2016, the ability to customize default settings helps bring the package inline with your own aesthetic preferences.</p>
+<p>Here we’ll walk through some of Matplotlib’s runtime configuration (rc) options, and take a look at the newer <em>stylesheets</em> feature, which contains some nice sets of default configurations.</p>
+<div class="section" id="plot-customization-by-hand">
+<h2>Plot Customization by Hand<a class="headerlink" href="#plot-customization-by-hand" title="Permalink to this headline">¶</a></h2>
+<p>Through this chapter, we’ve seen how it is possible to tweak individual plot settings to end up with something that looks a little bit nicer than the default.
+It’s possible to do these customizations for each individual plot.
+For example, here is a fairly drab default histogram:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;classic&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.11-Settings-and-Stylesheets_6_0.png" src="../_images/04.11-Settings-and-Stylesheets_6_0.png" />
+</div>
+</div>
+<p>We can adjust this by hand to make it a much more visually pleasing plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use a gray background</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">axisbg</span><span class="o">=</span><span class="s1">&#39;#E6E6E6&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># draw solid white grid lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+
+<span class="c1"># hide axis spines</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">spine</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    
+<span class="c1"># hide top and right ticks</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_bottom</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">tick_left</span><span class="p">()</span>
+
+<span class="c1"># lighten ticks and labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+    <span class="n">tick</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
+    <span class="n">tick</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    
+<span class="c1"># control face and edge color of histogram</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#E6E6E6&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#EE6666&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">c36ecb5d3c0e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># use a gray background</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">axisbg</span><span class="o">=</span><span class="s1">&#39;#E6E6E6&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># draw solid white grid lines</span>
+
+<span class="nn">~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ni">axes</span><span class="nt">(arg, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">962</span> 
+<span class="g g-Whitespace">    </span><span class="mi">963</span>     <span class="k">if</span> <span class="n">arg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">964</span>         <span class="k">return</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">965</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">966</span>         <span class="k">return</span> <span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">add_axes</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ni">subplot</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1140</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1141</span>     <span class="n">fig</span> <span class="o">=</span> <span class="n">gcf</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1142</span>     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1143</span>     <span class="n">bbox</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">bbox</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="n">axes_to_delete</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/figure.py</span> in <span class="ni">add_subplot</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1400</span>                     <span class="c1"># more similar to add_axes.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1401</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">_axstack</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1402</span>             <span class="n">ax</span> <span class="o">=</span> <span class="n">subplot_class_factory</span><span class="p">(</span><span class="n">projection_class</span><span class="p">)(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1403</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1404</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_axes_internal</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="nn">~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/axes/_subplots.py</span> in <span class="ni">__init__</span><span class="nt">(self, fig, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>         <span class="bp">self</span><span class="o">.</span><span class="n">update_params</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>         <span class="c1"># _axes_class is set in the subplot_class_factory</span>
+<span class="ne">---&gt; </span><span class="mi">42</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_axes_class</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">figbox</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>         <span class="c1"># add a layout box to this, for both the full axis, and the poss</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>         <span class="c1"># of the axis.  We need both because the axes may become smaller</span>
+
+<span class="nn">~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/axes/_base.py</span> in <span class="ni">__init__</span><span class="nt">(self, fig, rect, facecolor, frameon, sharex, sharey, label, xscale, yscale, box_aspect, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span>             <span class="bp">self</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="n">yscale</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span> 
+<span class="ne">--&gt; </span><span class="mi">525</span>         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">526</span> 
+<span class="g g-Whitespace">    </span><span class="mi">527</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xaxis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">~/.pyenv/versions/3.8.0/lib/python3.8/site-packages/matplotlib/artist.py</span> in <span class="ni">update</span><span class="nt">(self, props)</span>
+<span class="g g-Whitespace">    </span><span class="mi">994</span>                     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;set_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">995</span>                     <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">996</span>                         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">!r}</span><span class="s2"> object &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">997</span>                                              <span class="sa">f</span><span class="s2">&quot;has no property </span><span class="si">{</span><span class="n">k</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">998</span>                     <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+
+<span class="ne">AttributeError</span>: &#39;AxesSubplot&#39; object has no property &#39;axisbg&#39;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This looks better, and you may recognize the look as inspired by the look of the R language’s ggplot visualization package.
+But this took a whole lot of effort!
+We definitely do not want to have to do all that tweaking each time we create a plot.
+Fortunately, there is a way to adjust these defaults once in a way that will work for all plots.</p>
+</div>
+<div class="section" id="changing-the-defaults-rcparams">
+<h2>Changing the Defaults: <code class="docutils literal notranslate"><span class="pre">rcParams</span></code><a class="headerlink" href="#changing-the-defaults-rcparams" title="Permalink to this headline">¶</a></h2>
+<p>Each time Matplotlib loads, it defines a runtime configuration (rc) containing the default styles for every plot element you create.
+This configuration can be adjusted at any time using the <code class="docutils literal notranslate"><span class="pre">plt.rc</span></code> convenience routine.
+Let’s see what it looks like to modify the rc parameters so that our default plot will look similar to what we did before.</p>
+<p>We’ll start by saving a copy of the current <code class="docutils literal notranslate"><span class="pre">rcParams</span></code> dictionary, so we can easily reset these changes in the current session:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IPython_default</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can use the <code class="docutils literal notranslate"><span class="pre">plt.rc</span></code> function to change some of these settings:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cycler</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;#EE6666&#39;</span><span class="p">,</span> <span class="s1">&#39;#3388BB&#39;</span><span class="p">,</span> <span class="s1">&#39;#9988DD&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;#EECC55&#39;</span><span class="p">,</span> <span class="s1">&#39;#88BB44&#39;</span><span class="p">,</span> <span class="s1">&#39;#FFBBBB&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#E6E6E6&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+       <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prop_cycle</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;grid&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;patch&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#E6E6E6&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With these settings defined, we can now create a plot and see our settings in action:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.11-Settings-and-Stylesheets_15_0.png" src="../_images/04.11-Settings-and-Stylesheets_15_0.png" />
+</div>
+</div>
+<p>Let’s see what simple line plots look like with these rc parameters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.11-Settings-and-Stylesheets_17_0.png" src="../_images/04.11-Settings-and-Stylesheets_17_0.png" />
+</div>
+</div>
+<p>I find this much more aesthetically pleasing than the default styling.
+If you disagree with my aesthetic sense, the good news is that you can adjust the rc parameters to suit your own tastes!
+These settings can be saved in a <em>.matplotlibrc</em> file, which you can read about in the <a class="reference external" href="http://Matplotlib.org/users/customizing.html">Matplotlib documentation</a>.
+That said, I prefer to customize Matplotlib using its stylesheets instead.</p>
+</div>
+<div class="section" id="stylesheets">
+<h2>Stylesheets<a class="headerlink" href="#stylesheets" title="Permalink to this headline">¶</a></h2>
+<p>The version 1.4 release of Matplotlib in August 2014 added a very convenient <code class="docutils literal notranslate"><span class="pre">style</span></code> module, which includes a number of new default stylesheets, as well as the ability to create and package your own styles. These stylesheets are formatted similarly to the <em>.matplotlibrc</em> files mentioned earlier, but must be named with a <em>.mplstyle</em> extension.</p>
+<p>Even if you don’t create your own style, the stylesheets included by default are extremely useful.
+The available styles are listed in <code class="docutils literal notranslate"><span class="pre">plt.style.available</span></code>—here I’ll list only the first five for brevity:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">available</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;fivethirtyeight&#39;,
+ &#39;seaborn-pastel&#39;,
+ &#39;seaborn-whitegrid&#39;,
+ &#39;ggplot&#39;,
+ &#39;grayscale&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The basic way to switch to a stylesheet is to call</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;stylename&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>But keep in mind that this will change the style for the rest of the session!
+Alternatively, you can use the style context manager, which sets a style temporarily:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;stylename&#39;</span><span class="p">):</span>
+    <span class="n">make_a_plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Let’s create a function that will make two basic types of plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hist_and_lines</span><span class="p">():</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll use this to explore how these plots look using the various built-in styles.</p>
+<div class="section" id="default-style">
+<h3>Default style<a class="headerlink" href="#default-style" title="Permalink to this headline">¶</a></h3>
+<p>The default style is what we’ve been seeing so far throughout the book; we’ll start with that.
+First, let’s reset our runtime configuration to the notebook default:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reset rcParams</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">IPython_default</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s see how it looks:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist_and_lines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.11-Settings-and-Stylesheets_28_0.png" src="../_images/04.11-Settings-and-Stylesheets_28_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="fivethiryeight-style">
+<h3>FiveThiryEight style<a class="headerlink" href="#fivethiryeight-style" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">fivethirtyeight</span></code> style mimics the graphics found on the popular <a class="reference external" href="https://fivethirtyeight.com">FiveThirtyEight website</a>.
+As you can see here, it is typified by bold colors, thick lines, and transparent axes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">):</span>
+    <span class="n">hist_and_lines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.11-Settings-and-Stylesheets_30_0.png" src="../_images/04.11-Settings-and-Stylesheets_30_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ggplot">
+<h3>ggplot<a class="headerlink" href="#ggplot" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> package in the R language is a very popular visualization tool.
+Matplotlib’s <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> style mimics the default styles from that package:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">):</span>
+    <span class="n">hist_and_lines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.11-Settings-and-Stylesheets_32_0.png" src="../_images/04.11-Settings-and-Stylesheets_32_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="bayesian-methods-for-hackers-style">
+<h3>*Bayesian Methods for Hackers( style<a class="headerlink" href="#bayesian-methods-for-hackers-style" title="Permalink to this headline">¶</a></h3>
+<p>There is a very nice short online book called <a class="reference external" href="http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/"><em>Probabilistic Programming and Bayesian Methods for Hackers</em></a>; it features figures created with Matplotlib, and uses a nice set of rc parameters to create a consistent and visually-appealing style throughout the book.
+This style is reproduced in the <code class="docutils literal notranslate"><span class="pre">bmh</span></code> stylesheet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;bmh&#39;</span><span class="p">):</span>
+    <span class="n">hist_and_lines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.11-Settings-and-Stylesheets_34_0.png" src="../_images/04.11-Settings-and-Stylesheets_34_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="dark-background">
+<h3>Dark background<a class="headerlink" href="#dark-background" title="Permalink to this headline">¶</a></h3>
+<p>For figures used within presentations, it is often useful to have a dark rather than light background.
+The <code class="docutils literal notranslate"><span class="pre">dark_background</span></code> style provides this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">):</span>
+    <span class="n">hist_and_lines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.11-Settings-and-Stylesheets_36_0.png" src="../_images/04.11-Settings-and-Stylesheets_36_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="grayscale">
+<h3>Grayscale<a class="headerlink" href="#grayscale" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes you might find yourself preparing figures for a print publication that does not accept color figures.
+For this, the <code class="docutils literal notranslate"><span class="pre">grayscale</span></code> style, shown here, can be very useful:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;grayscale&#39;</span><span class="p">):</span>
+    <span class="n">hist_and_lines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.11-Settings-and-Stylesheets_38_0.png" src="../_images/04.11-Settings-and-Stylesheets_38_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="seaborn-style">
+<h3>Seaborn style<a class="headerlink" href="#seaborn-style" title="Permalink to this headline">¶</a></h3>
+<p>Matplotlib also has stylesheets inspired by the Seaborn library (discussed more fully in <a class="reference internal" href="04.14-Visualization-With-Seaborn.html"><span class="doc std std-doc">Visualization With Seaborn</span></a>).
+As we will see, these styles are loaded automatically when Seaborn is imported into a notebook.
+I’ve found these settings to be very nice, and tend to use them as defaults in my own data exploration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span>
+<span class="n">hist_and_lines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.11-Settings-and-Stylesheets_40_0.png" src="../_images/04.11-Settings-and-Stylesheets_40_0.png" />
+</div>
+</div>
+<p>With all of these built-in options for various plot styles, Matplotlib becomes much more useful for both interactive visualization and creation of figures for publication.
+Throughout this book, I will generally use one or more of these style conventions when creating plots.</p>
+<!--NAVIGATION-->
+<p>&lt; <a class="reference internal" href="04.10-Customizing-Ticks.html"><span class="doc std std-doc">Customizing Ticks</span></a> | <span class="xref myst">Contents</span> | <a class="reference internal" href="04.12-Three-Dimensional-Plotting.html"><span class="doc std std-doc">Three-Dimensional Plotting in Matplotlib</span></a> &gt;</p>
+<p><a href="https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/04.11-Settings-and-Stylesheets.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open and Execute in Google Colaboratory"></a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ch4_matplotlib"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
