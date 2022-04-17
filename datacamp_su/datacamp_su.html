@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>13. Supervised Learning with scikit-learn &#8212; My sample book</title>
+    <title>15. Supervised Learning with scikit-learn &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="14. Classification Trees" href="../statquest_trees/classification_tree.html" />
-    <link rel="prev" title="12. Clustering" href="../datacamp_unsu/clusters.html" />
+    <link rel="next" title="16. Classification Trees" href="../statquest_trees/classification_tree.html" />
+    <link rel="prev" title="14. Clustering" href="../datacamp_unsu/clusters.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -181,13 +181,30 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/KMeans.html">
+   12. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/GMM.html">
+   13. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   unsupervised learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_unsu/clusters.html">
-   12. Clustering
+   14. Clustering
   </a>
  </li>
 </ul>
@@ -199,17 +216,17 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   13. Supervised Learning with scikit-learn
+   15. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   14. Classification Trees
+   16. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   15. Permutation Importance vs Random Forest Feature Importance (MDI)
+   17. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -318,84 +335,84 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification">
-   13.1. Classification
+   15.1. Classification
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#knn-binary">
-     13.1.1. KNN (binary)
+     15.1.1. KNN (binary)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       13.1.1.1. 讀資料集
+       15.1.1.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       13.1.1.2. 最簡單流程
+       15.1.1.2. 最簡單流程
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#train-test">
-         13.1.1.2.1. 分 train/test
+         15.1.1.2.1. 分 train/test
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#pipeline">
-         13.1.1.2.2. 做 pipeline
+         15.1.1.2.2. 做 pipeline
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#training-set-fitting">
-         13.1.1.2.3. 用整個 training set 做 fitting.
+         15.1.1.2.3. 用整個 training set 做 fitting.
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#testing-set-predict">
-         13.1.1.2.4. 對 testing set 做 predict
+         15.1.1.2.4. 對 testing set 做 predict
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id3">
-         13.1.1.2.5. 效果評估
+         15.1.1.2.5. 效果評估
         </a>
        </li>
       </ul>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id4">
-       13.1.1.3. 最完整流程整理
+       15.1.1.3. 最完整流程整理
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id5">
-         13.1.1.3.1. 分 train/test
+         15.1.1.3.1. 分 train/test
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id6">
-         13.1.1.3.2. 做 pipeline
+         15.1.1.3.2. 做 pipeline
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#hyper-parameter-tunning">
-         13.1.1.3.3. 做 hyper-parameter tunning
+         15.1.1.3.3. 做 hyper-parameter tunning
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id7">
-         13.1.1.3.4. 用整個 training set 做 fitting.
+         15.1.1.3.4. 用整個 training set 做 fitting.
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id8">
-         13.1.1.3.5. 用 testing set 做 predict
+         15.1.1.3.5. 用 testing set 做 predict
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id9">
-         13.1.1.3.6. 效果評估
+         15.1.1.3.6. 效果評估
         </a>
        </li>
       </ul>
@@ -404,95 +421,95 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#knn-multi-class">
-     13.1.2. KNN (multi_class)
+     15.1.2. KNN (multi_class)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id10">
-       13.1.2.1. 讀資料集
+       15.1.2.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fit-model-predict">
-       13.1.2.2. fit model &amp; predict
+       15.1.2.2. fit model &amp; predict
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#overfitting-exploration">
-       13.1.2.3. overfitting exploration
+       15.1.2.3. overfitting exploration
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logistic-binary">
-     13.1.3. Logistic (binary)
+     15.1.3. Logistic (binary)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id11">
-       13.1.3.1. 讀資料集
+       15.1.3.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fit-predict-and-evaluate">
-       13.1.3.2. fit, predict, and evaluate
+       15.1.3.2. fit, predict, and evaluate
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decisiontree-binary">
-     13.1.4. DecisionTree (binary)
+     15.1.4. DecisionTree (binary)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#svc-binary">
-     13.1.5. SVC (binary)
+     15.1.5. SVC (binary)
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression">
-   13.2. Regression
+   15.2. Regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gapminder-data">
-     13.2.1. Gapminder Data
+     15.2.1. Gapminder Data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-regression">
-     13.2.2. Linear Regression
+     15.2.2. Linear Regression
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id12">
-       13.2.2.1. train/test
+       15.2.2.1. train/test
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#cv">
-       13.2.2.2. CV
+       15.2.2.2. CV
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lasso-regression">
-     13.2.3. Lasso Regression
+     15.2.3. Lasso Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ridge-regression">
-     13.2.4. Ridge Regression
+     15.2.4. Ridge Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#elastic-net">
-     13.2.5. Elastic net
+     15.2.5. Elastic net
     </a>
    </li>
   </ul>
@@ -519,84 +536,84 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification">
-   13.1. Classification
+   15.1. Classification
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#knn-binary">
-     13.1.1. KNN (binary)
+     15.1.1. KNN (binary)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       13.1.1.1. 讀資料集
+       15.1.1.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       13.1.1.2. 最簡單流程
+       15.1.1.2. 最簡單流程
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#train-test">
-         13.1.1.2.1. 分 train/test
+         15.1.1.2.1. 分 train/test
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#pipeline">
-         13.1.1.2.2. 做 pipeline
+         15.1.1.2.2. 做 pipeline
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#training-set-fitting">
-         13.1.1.2.3. 用整個 training set 做 fitting.
+         15.1.1.2.3. 用整個 training set 做 fitting.
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#testing-set-predict">
-         13.1.1.2.4. 對 testing set 做 predict
+         15.1.1.2.4. 對 testing set 做 predict
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id3">
-         13.1.1.2.5. 效果評估
+         15.1.1.2.5. 效果評估
         </a>
        </li>
       </ul>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id4">
-       13.1.1.3. 最完整流程整理
+       15.1.1.3. 最完整流程整理
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id5">
-         13.1.1.3.1. 分 train/test
+         15.1.1.3.1. 分 train/test
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id6">
-         13.1.1.3.2. 做 pipeline
+         15.1.1.3.2. 做 pipeline
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#hyper-parameter-tunning">
-         13.1.1.3.3. 做 hyper-parameter tunning
+         15.1.1.3.3. 做 hyper-parameter tunning
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id7">
-         13.1.1.3.4. 用整個 training set 做 fitting.
+         15.1.1.3.4. 用整個 training set 做 fitting.
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id8">
-         13.1.1.3.5. 用 testing set 做 predict
+         15.1.1.3.5. 用 testing set 做 predict
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id9">
-         13.1.1.3.6. 效果評估
+         15.1.1.3.6. 效果評估
         </a>
        </li>
       </ul>
@@ -605,95 +622,95 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#knn-multi-class">
-     13.1.2. KNN (multi_class)
+     15.1.2. KNN (multi_class)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id10">
-       13.1.2.1. 讀資料集
+       15.1.2.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fit-model-predict">
-       13.1.2.2. fit model &amp; predict
+       15.1.2.2. fit model &amp; predict
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#overfitting-exploration">
-       13.1.2.3. overfitting exploration
+       15.1.2.3. overfitting exploration
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logistic-binary">
-     13.1.3. Logistic (binary)
+     15.1.3. Logistic (binary)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id11">
-       13.1.3.1. 讀資料集
+       15.1.3.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fit-predict-and-evaluate">
-       13.1.3.2. fit, predict, and evaluate
+       15.1.3.2. fit, predict, and evaluate
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decisiontree-binary">
-     13.1.4. DecisionTree (binary)
+     15.1.4. DecisionTree (binary)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#svc-binary">
-     13.1.5. SVC (binary)
+     15.1.5. SVC (binary)
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression">
-   13.2. Regression
+   15.2. Regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gapminder-data">
-     13.2.1. Gapminder Data
+     15.2.1. Gapminder Data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-regression">
-     13.2.2. Linear Regression
+     15.2.2. Linear Regression
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id12">
-       13.2.2.1. train/test
+       15.2.2.1. train/test
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#cv">
-       13.2.2.2. CV
+       15.2.2.2. CV
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lasso-regression">
-     13.2.3. Lasso Regression
+     15.2.3. Lasso Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ridge-regression">
-     13.2.4. Ridge Regression
+     15.2.4. Ridge Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#elastic-net">
-     13.2.5. Elastic net
+     15.2.5. Elastic net
     </a>
    </li>
   </ul>
@@ -708,7 +725,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="supervised-learning-with-scikit-learn">
-<h1><span class="section-number">13. </span>Supervised Learning with scikit-learn<a class="headerlink" href="#supervised-learning-with-scikit-learn" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">15. </span>Supervised Learning with scikit-learn<a class="headerlink" href="#supervised-learning-with-scikit-learn" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -723,11 +740,11 @@
 </div>
 </div>
 <div class="section" id="classification">
-<h2><span class="section-number">13.1. </span>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">15.1. </span>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="knn-binary">
-<h3><span class="section-number">13.1.1. </span>KNN (binary)<a class="headerlink" href="#knn-binary" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.1.1. </span>KNN (binary)<a class="headerlink" href="#knn-binary" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id1">
-<h4><span class="section-number">13.1.1.1. </span>讀資料集<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.1.1. </span>讀資料集<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vote_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/house-votes-84.csv&quot;</span><span class="p">)</span>
@@ -1052,7 +1069,7 @@ memory usage: 32.6+ KB
 </ul>
 </div>
 <div class="section" id="id2">
-<h4><span class="section-number">13.1.1.2. </span>最簡單流程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.1.2. </span>最簡單流程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>先來講最簡單的流程</p>
 <ul>
@@ -1082,7 +1099,7 @@ memory usage: 32.6+ KB
 </li>
 </ul>
 <div class="section" id="train-test">
-<h5><span class="section-number">13.1.1.2.1. </span>分 train/test<a class="headerlink" href="#train-test" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.2.1. </span>分 train/test<a class="headerlink" href="#train-test" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 分 train/test</span>
@@ -1139,7 +1156,7 @@ republican% in testing set is: 0.4714285714285714
 </div>
 </div>
 <div class="section" id="pipeline">
-<h5><span class="section-number">13.1.1.2.2. </span>做 pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.2.2. </span>做 pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>pipeline 包括 preprocessing + model，那這邊只做 model</p></li>
 </ul>
@@ -1164,10 +1181,160 @@ republican% in testing set is: 0.4714285714285714
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span>
+KNeighborsClassifier<span class=" -Color -Color-Blue">(</span>
+    n_neighbors<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">5</span><span class=" -Color -Color-Blue">,</span>
+    <span class=" -Color -Color-Blue">*,</span>
+    weights<span class=" -Color -Color-Blue">=&#39;uniform&#39;,</span>
+    algorithm<span class=" -Color -Color-Blue">=&#39;auto&#39;,</span>
+    leaf_size<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">30</span><span class=" -Color -Color-Blue">,</span>
+    p<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">2</span><span class=" -Color -Color-Blue">,</span>
+    metric<span class=" -Color -Color-Blue">=&#39;minkowski&#39;,</span>
+    metric_params<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    n_jobs<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>     
+Classifier implementing the k-nearest neighbors vote.
+
+Read more in the :ref:`User Guide &lt;classification&gt;`.
+
+Parameters
+----------
+n_neighbors : int, default=5
+    Number of neighbors to use by default for :meth:`kneighbors` queries.
+
+weights : {&#39;uniform&#39;, &#39;distance&#39;} or callable, default=&#39;uniform&#39;
+    Weight function used in prediction.  Possible values:
+
+    - &#39;uniform&#39; : uniform weights.  All points in each neighborhood
+      are weighted equally.
+    - &#39;distance&#39; : weight points by the inverse of their distance.
+      in this case, closer neighbors of a query point will have a
+      greater influence than neighbors which are further away.
+    - [callable] : a user-defined function which accepts an
+      array of distances, and returns an array of the same shape
+      containing the weights.
+
+algorithm : {&#39;auto&#39;, &#39;ball_tree&#39;, &#39;kd_tree&#39;, &#39;brute&#39;}, default=&#39;auto&#39;
+    Algorithm used to compute the nearest neighbors:
+
+    - &#39;ball_tree&#39; will use :class:`BallTree`
+    - &#39;kd_tree&#39; will use :class:`KDTree`
+    - &#39;brute&#39; will use a brute-force search.
+    - &#39;auto&#39; will attempt to decide the most appropriate algorithm
+      based on the values passed to :meth:`fit` method.
+
+    Note: fitting on sparse input will override the setting of
+    this parameter, using brute force.
+
+leaf_size : int, default=30
+    Leaf size passed to BallTree or KDTree.  This can affect the
+    speed of the construction and query, as well as the memory
+    required to store the tree.  The optimal value depends on the
+    nature of the problem.
+
+p : int, default=2
+    Power parameter for the Minkowski metric. When p = 1, this is
+    equivalent to using manhattan_distance (l1), and euclidean_distance
+    (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used.
+
+metric : str or callable, default=&#39;minkowski&#39;
+    The distance metric to use for the tree.  The default metric is
+    minkowski, and with p=2 is equivalent to the standard Euclidean
+    metric. For a list of available metrics, see the documentation of
+    :class:`~sklearn.metrics.DistanceMetric`.
+    If metric is &quot;precomputed&quot;, X is assumed to be a distance matrix and
+    must be square during fit. X may be a :term:`sparse graph`,
+    in which case only &quot;nonzero&quot; elements may be considered neighbors.
+
+metric_params : dict, default=None
+    Additional keyword arguments for the metric function.
+
+n_jobs : int, default=None
+    The number of parallel jobs to run for neighbors search.
+    ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context.
+    ``-1`` means using all processors. See :term:`Glossary &lt;n_jobs&gt;`
+    for more details.
+    Doesn&#39;t affect :meth:`fit` method.
+
+Attributes
+----------
+classes_ : array of shape (n_classes,)
+    Class labels known to the classifier
+
+effective_metric_ : str or callble
+    The distance metric used. It will be same as the `metric` parameter
+    or a synonym of it, e.g. &#39;euclidean&#39; if the `metric` parameter set to
+    &#39;minkowski&#39; and `p` parameter set to 2.
+
+effective_metric_params_ : dict
+    Additional keyword arguments for the metric function. For most metrics
+    will be same with `metric_params` parameter, but may also contain the
+    `p` parameter value if the `effective_metric_` attribute is set to
+    &#39;minkowski&#39;.
+
+n_features_in_ : int
+    Number of features seen during :term:`fit`.
+
+    .. versionadded:: 0.24
+
+feature_names_in_ : ndarray of shape (`n_features_in_`,)
+    Names of features seen during :term:`fit`. Defined only when `X`
+    has feature names that are all strings.
+
+    .. versionadded:: 1.0
+
+n_samples_fit_ : int
+    Number of samples in the fitted data.
+
+outputs_2d_ : bool
+    False when `y`&#39;s shape is (n_samples, ) or (n_samples, 1) during fit
+    otherwise True.
+
+See Also
+--------
+RadiusNeighborsClassifier: Classifier based on neighbors within a fixed radius.
+KNeighborsRegressor: Regression based on k-nearest neighbors.
+RadiusNeighborsRegressor: Regression based on neighbors within a fixed radius.
+NearestNeighbors: Unsupervised learner for implementing neighbor searches.
+
+Notes
+-----
+See :ref:`Nearest Neighbors &lt;neighbors&gt;` in the online documentation
+for a discussion of the choice of ``algorithm`` and ``leaf_size``.
+
+.. warning::
+
+   Regarding the Nearest Neighbors algorithms, if it is found that two
+   neighbors, neighbor `k+1` and `k`, have identical distances
+   but different labels, the results will depend on the ordering of the
+   training data.
+
+https://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm
+
+Examples
+--------
+&gt;&gt;&gt; X = [[0], [1], [2], [3]]
+&gt;&gt;&gt; y = [0, 0, 1, 1]
+&gt;&gt;&gt; from sklearn.neighbors import KNeighborsClassifier
+&gt;&gt;&gt; neigh = KNeighborsClassifier(n_neighbors=3)
+&gt;&gt;&gt; neigh.fit(X, y)
+KNeighborsClassifier(...)
+&gt;&gt;&gt; print(neigh.predict([[1.1]]))
+[0]
+&gt;&gt;&gt; print(neigh.predict_proba([[0.9]]))
+[[0.666... 0.333...]]
+<span class=" -Color -Color-Red">File:</span>           /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/neighbors/_classification.py
+<span class=" -Color -Color-Red">Type:</span>           ABCMeta
+<span class=" -Color -Color-Red">Subclasses:</span>     
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="training-set-fitting">
-<h5><span class="section-number">13.1.1.2.3. </span>用整個 training set 做 fitting.<a class="headerlink" href="#training-set-fitting" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.2.3. </span>用整個 training set 做 fitting.<a class="headerlink" href="#training-set-fitting" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1197,7 +1364,7 @@ republican% in testing set is: 0.4714285714285714
 </div>
 </div>
 <div class="section" id="testing-set-predict">
-<h5><span class="section-number">13.1.1.2.4. </span>對 testing set 做 predict<a class="headerlink" href="#testing-set-predict" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.2.4. </span>對 testing set 做 predict<a class="headerlink" href="#testing-set-predict" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -1331,7 +1498,7 @@ republican% in testing set is: 0.4714285714285714
 </ul>
 </div>
 <div class="section" id="id3">
-<h5><span class="section-number">13.1.1.2.5. </span>效果評估<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.2.5. </span>效果評估<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span>
@@ -1476,7 +1643,7 @@ weighted avg       0.90      0.90      0.90        70
 </div>
 </div>
 <div class="section" id="id4">
-<h4><span class="section-number">13.1.1.3. </span>最完整流程整理<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.1.3. </span>最完整流程整理<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>來講最完整的流程</p>
 <ul>
@@ -1506,7 +1673,7 @@ weighted avg       0.90      0.90      0.90        70
 </li>
 </ul>
 <div class="section" id="id5">
-<h5><span class="section-number">13.1.1.3.1. </span>分 train/test<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.3.1. </span>分 train/test<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 分 train/test</span>
@@ -1527,7 +1694,7 @@ weighted avg       0.90      0.90      0.90        70
 </div>
 </div>
 <div class="section" id="id6">
-<h5><span class="section-number">13.1.1.3.2. </span>做 pipeline<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.3.2. </span>做 pipeline<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>對 knn 這種依賴 euclidean distance 的演算法，必須先做 normalization，再開始算距離，所以 pipeline寫成這樣：</p></li>
 </ul>
@@ -1554,7 +1721,7 @@ weighted avg       0.90      0.90      0.90        70
 </div>
 </div>
 <div class="section" id="hyper-parameter-tunning">
-<h5><span class="section-number">13.1.1.3.3. </span>做 hyper-parameter tunning<a class="headerlink" href="#hyper-parameter-tunning" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.3.3. </span>做 hyper-parameter tunning<a class="headerlink" href="#hyper-parameter-tunning" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>先來做 grid_search</p></li>
 </ul>
@@ -1609,6 +1776,348 @@ weighted avg       0.90      0.90      0.90        70
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span>
+GridSearchCV<span class=" -Color -Color-Blue">(</span>
+    estimator<span class=" -Color -Color-Blue">,</span>
+    param_grid<span class=" -Color -Color-Blue">,</span>
+    <span class=" -Color -Color-Blue">*,</span>
+    scoring<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    n_jobs<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    refit<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    cv<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    verbose<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
+    pre_dispatch<span class=" -Color -Color-Blue">=&#39;2*n_jobs&#39;,</span>
+    error_score<span class=" -Color -Color-Blue">=</span>nan<span class=" -Color -Color-Blue">,</span>
+    return_train_score<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>     
+Exhaustive search over specified parameter values for an estimator.
+
+Important members are fit, predict.
+
+GridSearchCV implements a &quot;fit&quot; and a &quot;score&quot; method.
+It also implements &quot;score_samples&quot;, &quot;predict&quot;, &quot;predict_proba&quot;,
+&quot;decision_function&quot;, &quot;transform&quot; and &quot;inverse_transform&quot; if they are
+implemented in the estimator used.
+
+The parameters of the estimator used to apply these methods are optimized
+by cross-validated grid-search over a parameter grid.
+
+Read more in the :ref:`User Guide &lt;grid_search&gt;`.
+
+Parameters
+----------
+estimator : estimator object
+    This is assumed to implement the scikit-learn estimator interface.
+    Either estimator needs to provide a ``score`` function,
+    or ``scoring`` must be passed.
+
+param_grid : dict or list of dictionaries
+    Dictionary with parameters names (`str`) as keys and lists of
+    parameter settings to try as values, or a list of such
+    dictionaries, in which case the grids spanned by each dictionary
+    in the list are explored. This enables searching over any sequence
+    of parameter settings.
+
+scoring : str, callable, list, tuple or dict, default=None
+    Strategy to evaluate the performance of the cross-validated model on
+    the test set.
+
+    If `scoring` represents a single score, one can use:
+
+    - a single string (see :ref:`scoring_parameter`);
+    - a callable (see :ref:`scoring`) that returns a single value.
+
+    If `scoring` represents multiple scores, one can use:
+
+    - a list or tuple of unique strings;
+    - a callable returning a dictionary where the keys are the metric
+      names and the values are the metric scores;
+    - a dictionary with metric names as keys and callables a values.
+
+    See :ref:`multimetric_grid_search` for an example.
+
+n_jobs : int, default=None
+    Number of jobs to run in parallel.
+    ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context.
+    ``-1`` means using all processors. See :term:`Glossary &lt;n_jobs&gt;`
+    for more details.
+
+    .. versionchanged:: v0.20
+       `n_jobs` default changed from 1 to None
+
+refit : bool, str, or callable, default=True
+    Refit an estimator using the best found parameters on the whole
+    dataset.
+
+    For multiple metric evaluation, this needs to be a `str` denoting the
+    scorer that would be used to find the best parameters for refitting
+    the estimator at the end.
+
+    Where there are considerations other than maximum score in
+    choosing a best estimator, ``refit`` can be set to a function which
+    returns the selected ``best_index_`` given ``cv_results_``. In that
+    case, the ``best_estimator_`` and ``best_params_`` will be set
+    according to the returned ``best_index_`` while the ``best_score_``
+    attribute will not be available.
+
+    The refitted estimator is made available at the ``best_estimator_``
+    attribute and permits using ``predict`` directly on this
+    ``GridSearchCV`` instance.
+
+    Also for multiple metric evaluation, the attributes ``best_index_``,
+    ``best_score_`` and ``best_params_`` will only be available if
+    ``refit`` is set and all of them will be determined w.r.t this specific
+    scorer.
+
+    See ``scoring`` parameter to know more about multiple metric
+    evaluation.
+
+    .. versionchanged:: 0.20
+        Support for callable added.
+
+cv : int, cross-validation generator or an iterable, default=None
+    Determines the cross-validation splitting strategy.
+    Possible inputs for cv are:
+
+    - None, to use the default 5-fold cross validation,
+    - integer, to specify the number of folds in a `(Stratified)KFold`,
+    - :term:`CV splitter`,
+    - An iterable yielding (train, test) splits as arrays of indices.
+
+    For integer/None inputs, if the estimator is a classifier and ``y`` is
+    either binary or multiclass, :class:`StratifiedKFold` is used. In all
+    other cases, :class:`KFold` is used. These splitters are instantiated
+    with `shuffle=False` so the splits will be the same across calls.
+
+    Refer :ref:`User Guide &lt;cross_validation&gt;` for the various
+    cross-validation strategies that can be used here.
+
+    .. versionchanged:: 0.22
+        ``cv`` default value if None changed from 3-fold to 5-fold.
+
+verbose : int
+    Controls the verbosity: the higher, the more messages.
+
+    - &gt;1 : the computation time for each fold and parameter candidate is
+      displayed;
+    - &gt;2 : the score is also displayed;
+    - &gt;3 : the fold and candidate parameter indexes are also displayed
+      together with the starting time of the computation.
+
+pre_dispatch : int, or str, default=&#39;2*n_jobs&#39;
+    Controls the number of jobs that get dispatched during parallel
+    execution. Reducing this number can be useful to avoid an
+    explosion of memory consumption when more jobs get dispatched
+    than CPUs can process. This parameter can be:
+
+        - None, in which case all the jobs are immediately
+          created and spawned. Use this for lightweight and
+          fast-running jobs, to avoid delays due to on-demand
+          spawning of the jobs
+
+        - An int, giving the exact number of total jobs that are
+          spawned
+
+        - A str, giving an expression as a function of n_jobs,
+          as in &#39;2*n_jobs&#39;
+
+error_score : &#39;raise&#39; or numeric, default=np.nan
+    Value to assign to the score if an error occurs in estimator fitting.
+    If set to &#39;raise&#39;, the error is raised. If a numeric value is given,
+    FitFailedWarning is raised. This parameter does not affect the refit
+    step, which will always raise the error.
+
+return_train_score : bool, default=False
+    If ``False``, the ``cv_results_`` attribute will not include training
+    scores.
+    Computing training scores is used to get insights on how different
+    parameter settings impact the overfitting/underfitting trade-off.
+    However computing the scores on the training set can be computationally
+    expensive and is not strictly required to select the parameters that
+    yield the best generalization performance.
+
+    .. versionadded:: 0.19
+
+    .. versionchanged:: 0.21
+        Default value was changed from ``True`` to ``False``
+
+Attributes
+----------
+cv_results_ : dict of numpy (masked) ndarrays
+    A dict with keys as column headers and values as columns, that can be
+    imported into a pandas ``DataFrame``.
+
+    For instance the below given table
+
+    +------------+-----------+------------+-----------------+---+---------+
+    |param_kernel|param_gamma|param_degree|split0_test_score|...|rank_t...|
+    +============+===========+============+=================+===+=========+
+    |  &#39;poly&#39;    |     --    |      2     |       0.80      |...|    2    |
+    +------------+-----------+------------+-----------------+---+---------+
+    |  &#39;poly&#39;    |     --    |      3     |       0.70      |...|    4    |
+    +------------+-----------+------------+-----------------+---+---------+
+    |  &#39;rbf&#39;     |     0.1   |     --     |       0.80      |...|    3    |
+    +------------+-----------+------------+-----------------+---+---------+
+    |  &#39;rbf&#39;     |     0.2   |     --     |       0.93      |...|    1    |
+    +------------+-----------+------------+-----------------+---+---------+
+
+    will be represented by a ``cv_results_`` dict of::
+
+        {
+        &#39;param_kernel&#39;: masked_array(data = [&#39;poly&#39;, &#39;poly&#39;, &#39;rbf&#39;, &#39;rbf&#39;],
+                                     mask = [False False False False]...)
+        &#39;param_gamma&#39;: masked_array(data = [-- -- 0.1 0.2],
+                                    mask = [ True  True False False]...),
+        &#39;param_degree&#39;: masked_array(data = [2.0 3.0 -- --],
+                                     mask = [False False  True  True]...),
+        &#39;split0_test_score&#39;  : [0.80, 0.70, 0.80, 0.93],
+        &#39;split1_test_score&#39;  : [0.82, 0.50, 0.70, 0.78],
+        &#39;mean_test_score&#39;    : [0.81, 0.60, 0.75, 0.85],
+        &#39;std_test_score&#39;     : [0.01, 0.10, 0.05, 0.08],
+        &#39;rank_test_score&#39;    : [2, 4, 3, 1],
+        &#39;split0_train_score&#39; : [0.80, 0.92, 0.70, 0.93],
+        &#39;split1_train_score&#39; : [0.82, 0.55, 0.70, 0.87],
+        &#39;mean_train_score&#39;   : [0.81, 0.74, 0.70, 0.90],
+        &#39;std_train_score&#39;    : [0.01, 0.19, 0.00, 0.03],
+        &#39;mean_fit_time&#39;      : [0.73, 0.63, 0.43, 0.49],
+        &#39;std_fit_time&#39;       : [0.01, 0.02, 0.01, 0.01],
+        &#39;mean_score_time&#39;    : [0.01, 0.06, 0.04, 0.04],
+        &#39;std_score_time&#39;     : [0.00, 0.00, 0.00, 0.01],
+        &#39;params&#39;             : [{&#39;kernel&#39;: &#39;poly&#39;, &#39;degree&#39;: 2}, ...],
+        }
+
+    NOTE
+
+    The key ``&#39;params&#39;`` is used to store a list of parameter
+    settings dicts for all the parameter candidates.
+
+    The ``mean_fit_time``, ``std_fit_time``, ``mean_score_time`` and
+    ``std_score_time`` are all in seconds.
+
+    For multi-metric evaluation, the scores for all the scorers are
+    available in the ``cv_results_`` dict at the keys ending with that
+    scorer&#39;s name (``&#39;_&lt;scorer_name&gt;&#39;``) instead of ``&#39;_score&#39;`` shown
+    above. (&#39;split0_test_precision&#39;, &#39;mean_train_precision&#39; etc.)
+
+best_estimator_ : estimator
+    Estimator that was chosen by the search, i.e. estimator
+    which gave highest score (or smallest loss if specified)
+    on the left out data. Not available if ``refit=False``.
+
+    See ``refit`` parameter for more information on allowed values.
+
+best_score_ : float
+    Mean cross-validated score of the best_estimator
+
+    For multi-metric evaluation, this is present only if ``refit`` is
+    specified.
+
+    This attribute is not available if ``refit`` is a function.
+
+best_params_ : dict
+    Parameter setting that gave the best results on the hold out data.
+
+    For multi-metric evaluation, this is present only if ``refit`` is
+    specified.
+
+best_index_ : int
+    The index (of the ``cv_results_`` arrays) which corresponds to the best
+    candidate parameter setting.
+
+    The dict at ``search.cv_results_[&#39;params&#39;][search.best_index_]`` gives
+    the parameter setting for the best model, that gives the highest
+    mean score (``search.best_score_``).
+
+    For multi-metric evaluation, this is present only if ``refit`` is
+    specified.
+
+scorer_ : function or a dict
+    Scorer function used on the held out data to choose the best
+    parameters for the model.
+
+    For multi-metric evaluation, this attribute holds the validated
+    ``scoring`` dict which maps the scorer key to the scorer callable.
+
+n_splits_ : int
+    The number of cross-validation splits (folds/iterations).
+
+refit_time_ : float
+    Seconds used for refitting the best model on the whole dataset.
+
+    This is present only if ``refit`` is not False.
+
+    .. versionadded:: 0.20
+
+multimetric_ : bool
+    Whether or not the scorers compute several metrics.
+
+classes_ : ndarray of shape (n_classes,)
+    The classes labels. This is present only if ``refit`` is specified and
+    the underlying estimator is a classifier.
+
+n_features_in_ : int
+    Number of features seen during :term:`fit`. Only defined if
+    `best_estimator_` is defined (see the documentation for the `refit`
+    parameter for more details) and that `best_estimator_` exposes
+    `n_features_in_` when fit.
+
+    .. versionadded:: 0.24
+
+feature_names_in_ : ndarray of shape (`n_features_in_`,)
+    Names of features seen during :term:`fit`. Only defined if
+    `best_estimator_` is defined (see the documentation for the `refit`
+    parameter for more details) and that `best_estimator_` exposes
+    `feature_names_in_` when fit.
+
+    .. versionadded:: 1.0
+
+Notes
+-----
+The parameters selected are those that maximize the score of the left out
+data, unless an explicit score is passed in which case it is used instead.
+
+If `n_jobs` was set to a value higher than one, the data is copied for each
+point in the grid (and not `n_jobs` times). This is done for efficiency
+reasons if individual jobs take very little time, but may raise errors if
+the dataset is large and not enough memory is available.  A workaround in
+this case is to set `pre_dispatch`. Then, the memory is copied only
+`pre_dispatch` many times. A reasonable value for `pre_dispatch` is `2 *
+n_jobs`.
+
+See Also
+---------
+ParameterGrid : Generates all the combinations of a hyperparameter grid.
+train_test_split : Utility function to split the data into a development
+    set usable for fitting a GridSearchCV instance and an evaluation set
+    for its final evaluation.
+sklearn.metrics.make_scorer : Make a scorer from a performance metric or
+    loss function.
+
+Examples
+--------
+&gt;&gt;&gt; from sklearn import svm, datasets
+&gt;&gt;&gt; from sklearn.model_selection import GridSearchCV
+&gt;&gt;&gt; iris = datasets.load_iris()
+&gt;&gt;&gt; parameters = {&#39;kernel&#39;:(&#39;linear&#39;, &#39;rbf&#39;), &#39;C&#39;:[1, 10]}
+&gt;&gt;&gt; svc = svm.SVC()
+&gt;&gt;&gt; clf = GridSearchCV(svc, parameters)
+&gt;&gt;&gt; clf.fit(iris.data, iris.target)
+GridSearchCV(estimator=SVC(),
+             param_grid={&#39;C&#39;: [1, 10], &#39;kernel&#39;: (&#39;linear&#39;, &#39;rbf&#39;)})
+&gt;&gt;&gt; sorted(clf.cv_results_.keys())
+[&#39;mean_fit_time&#39;, &#39;mean_score_time&#39;, &#39;mean_test_score&#39;,...
+ &#39;param_C&#39;, &#39;param_kernel&#39;, &#39;params&#39;,...
+ &#39;rank_test_score&#39;, &#39;split0_test_score&#39;,...
+ &#39;split2_test_score&#39;, ...
+ &#39;std_fit_time&#39;, &#39;std_score_time&#39;, &#39;std_test_score&#39;]
+<span class=" -Color -Color-Red">File:</span>           /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/model_selection/_search.py
+<span class=" -Color -Color-Red">Type:</span>           ABCMeta
+<span class=" -Color -Color-Red">Subclasses:</span>     
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1617,52 +2126,52 @@ weighted avg       0.90      0.90      0.90        70
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00288739, 0.00269608, 0.00267882, 0.00259504, 0.00291085,
-        0.0025713 , 0.00247726, 0.00218558, 0.00236454, 0.00303764,
-        0.00260563, 0.00304317, 0.00314536, 0.00290213, 0.00352464,
-        0.00321937, 0.00303898, 0.00286922, 0.00256538, 0.00242038,
-        0.00231957, 0.00223579, 0.00216413, 0.00215979, 0.00222921,
-        0.00259433, 0.00228615, 0.00243282, 0.00234866, 0.0023694 ,
-        0.00228882, 0.00220819, 0.00229216, 0.00220833, 0.00236449,
-        0.00234218, 0.00231705, 0.00230274, 0.00221438, 0.00229039,
-        0.00274386, 0.00241861, 0.00246124, 0.00235791, 0.00234251,
-        0.00241523, 0.0025022 , 0.002595  , 0.00255213]),
- &#39;std_fit_time&#39;: array([3.03044236e-04, 2.25743212e-04, 2.95840987e-04, 9.05231861e-05,
-        3.01340712e-04, 1.22867474e-04, 8.97020050e-05, 2.53473824e-05,
-        1.05899790e-04, 9.07945812e-04, 1.12061338e-04, 3.78905349e-04,
-        6.10776742e-04, 1.45718627e-04, 8.71695138e-04, 3.77682633e-04,
-        5.64358515e-04, 7.57206111e-04, 1.24992290e-04, 3.37368271e-05,
-        1.14052431e-04, 8.02278483e-05, 2.82620060e-05, 3.44226892e-05,
-        6.62652691e-05, 5.31056769e-04, 1.25100789e-04, 6.83670420e-05,
-        1.94078581e-04, 1.72854029e-04, 1.84653612e-04, 8.45414128e-05,
-        1.56135302e-04, 8.42595141e-05, 1.66712568e-04, 2.15500085e-04,
-        2.84189330e-04, 1.85566043e-04, 1.12348582e-04, 1.43373809e-04,
-        6.21731011e-04, 1.77585873e-04, 9.53977537e-05, 1.11363682e-05,
-        1.99590752e-04, 8.03354436e-05, 9.41391767e-05, 4.16876216e-04,
-        1.17191848e-04]),
- &#39;mean_score_time&#39;: array([0.00234394, 0.00212984, 0.00242343, 0.00212879, 0.0023314 ,
-        0.00207548, 0.0021029 , 0.00193038, 0.00233603, 0.00213032,
-        0.00212097, 0.00314436, 0.00296421, 0.00334139, 0.00288153,
-        0.00249224, 0.00300241, 0.00229197, 0.00230012, 0.00216107,
-        0.00207191, 0.0020576 , 0.00207295, 0.00200677, 0.00213485,
-        0.00229807, 0.00209727, 0.00221863, 0.00214515, 0.00206294,
-        0.00217075, 0.0022058 , 0.00210462, 0.00221043, 0.002036  ,
-        0.00201964, 0.00209646, 0.00203552, 0.00203943, 0.00207982,
-        0.00281682, 0.00235119, 0.00229425, 0.00234942, 0.00219746,
-        0.00278859, 0.00232553, 0.00248199, 0.0023777 ]),
- &#39;std_score_time&#39;: array([2.51869585e-04, 1.22410461e-04, 2.87346265e-04, 6.75827143e-05,
-        3.98984487e-04, 2.47204083e-05, 1.37284010e-04, 1.10209292e-04,
-        3.46811503e-04, 3.16108872e-05, 3.91349409e-05, 7.65787970e-04,
-        5.54199100e-04, 7.60854531e-04, 6.48313542e-04, 4.95260698e-04,
-        6.69547156e-04, 9.62275107e-05, 9.29298737e-05, 7.19034070e-05,
-        2.28664643e-04, 1.62223155e-04, 2.03875662e-04, 1.15852786e-04,
-        2.42038774e-04, 1.94448756e-04, 1.15594474e-04, 1.04228204e-04,
-        1.89705611e-04, 1.13124086e-04, 1.41605977e-04, 2.17709633e-04,
-        1.73255263e-04, 1.73475128e-04, 4.31745964e-05, 3.37161301e-05,
-        1.10339274e-04, 3.25039294e-05, 3.38504008e-05, 3.09403020e-05,
-        5.63389804e-04, 1.48141081e-04, 5.83500236e-05, 1.33444342e-04,
-        1.12022577e-04, 1.08198317e-03, 8.79625630e-05, 2.23080782e-04,
-        6.23555341e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00410557, 0.00349936, 0.00289578, 0.00251188, 0.00247269,
+        0.00252709, 0.00272069, 0.00246129, 0.00306287, 0.00371184,
+        0.00294638, 0.00308042, 0.00299649, 0.00300522, 0.00273948,
+        0.00361261, 0.00310259, 0.00313864, 0.00295277, 0.00384784,
+        0.00304828, 0.00281844, 0.00319686, 0.00302219, 0.00305853,
+        0.00290966, 0.00289521, 0.00281544, 0.00308471, 0.00267277,
+        0.00285001, 0.0030632 , 0.00333405, 0.00302234, 0.00311818,
+        0.00305524, 0.00284081, 0.00307274, 0.00295916, 0.00310979,
+        0.00310645, 0.00305629, 0.00277839, 0.00244412, 0.00253983,
+        0.00268669, 0.00238819, 0.00241308, 0.00232444]),
+ &#39;std_fit_time&#39;: array([7.88619106e-04, 9.42372814e-04, 5.09592826e-04, 2.05940145e-04,
+        1.30329147e-04, 1.39555875e-04, 4.71658495e-04, 9.38250994e-05,
+        7.01362537e-04, 9.40648512e-04, 5.46725004e-04, 6.70972481e-04,
+        6.49284812e-04, 6.08038812e-04, 4.14937119e-04, 5.44774122e-04,
+        4.02125639e-04, 7.85894654e-04, 4.22827063e-04, 3.05221040e-04,
+        4.93310674e-04, 4.91984687e-04, 6.07253808e-04, 3.68679192e-04,
+        7.83753444e-04, 3.84013546e-04, 5.97170735e-04, 3.48093033e-04,
+        5.59792474e-04, 1.83740436e-04, 5.59706703e-04, 6.29626715e-04,
+        6.91515668e-04, 5.43012236e-04, 4.23518716e-04, 4.46913336e-04,
+        2.66436123e-04, 5.09237350e-04, 2.87175098e-04, 5.41384761e-04,
+        3.48689486e-04, 4.61566522e-04, 4.62282743e-05, 1.11534301e-04,
+        2.85003914e-04, 3.43765774e-04, 4.60957275e-05, 6.26801311e-05,
+        2.83467783e-04]),
+ &#39;mean_score_time&#39;: array([0.0031558 , 0.00250463, 0.00250649, 0.00215402, 0.00216942,
+        0.00229611, 0.00228481, 0.00209074, 0.00282593, 0.00295038,
+        0.00259624, 0.00252881, 0.00267229, 0.00262327, 0.00244746,
+        0.00306764, 0.00275512, 0.00263891, 0.00269318, 0.00277519,
+        0.00260739, 0.00271072, 0.00273805, 0.0025115 , 0.00240846,
+        0.00260949, 0.00252876, 0.00271316, 0.00271668, 0.00248637,
+        0.00258036, 0.00288286, 0.0027564 , 0.00256944, 0.00278878,
+        0.00260425, 0.0026751 , 0.00264025, 0.00280237, 0.0027246 ,
+        0.00317144, 0.00274553, 0.00256987, 0.00226922, 0.00251756,
+        0.00245085, 0.0023438 , 0.00224037, 0.00238848]),
+ &#39;std_score_time&#39;: array([1.11923762e-03, 5.02003516e-04, 6.28364240e-04, 2.53515694e-04,
+        1.18820261e-04, 2.69056802e-04, 2.76645180e-04, 7.58113199e-05,
+        6.51008842e-04, 6.12322828e-04, 5.13428608e-04, 4.03309776e-04,
+        4.90662646e-04, 4.82464803e-04, 2.78491622e-04, 2.98720787e-04,
+        3.83199448e-04, 4.57812113e-04, 3.96594125e-04, 4.14270047e-04,
+        4.59691211e-04, 4.23115014e-04, 3.26109745e-04, 2.89609198e-04,
+        2.27550939e-04, 4.39541240e-04, 3.07336423e-04, 6.50968867e-04,
+        3.49868736e-04, 1.77414479e-04, 2.67554022e-04, 4.83264888e-04,
+        4.17323549e-04, 2.95681527e-04, 2.24535524e-04, 3.38101453e-04,
+        2.95083632e-04, 3.19394449e-04, 4.91383988e-04, 3.39971364e-04,
+        5.14225423e-04, 4.11409220e-04, 9.38881830e-05, 3.99615144e-05,
+        2.96201578e-04, 2.11339188e-04, 8.54063938e-05, 6.91232000e-05,
+        3.91190910e-04]),
  &#39;param_knn__n_neighbors&#39;: masked_array(data=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
                     17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
                     31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
@@ -1805,13 +2314,13 @@ weighted avg       0.90      0.90      0.90        70
 </div>
 </div>
 <div class="section" id="id7">
-<h5><span class="section-number">13.1.1.3.4. </span>用整個 training set 做 fitting.<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.3.4. </span>用整個 training set 做 fitting.<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>剛剛的 grid_cv 物件，再找完最佳參數後，就已經幫你把整個 training set 給 fit 完了</p></li>
 </ul>
 </div>
 <div class="section" id="id8">
-<h5><span class="section-number">13.1.1.3.5. </span>用 testing set 做 predict<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.3.5. </span>用 testing set 做 predict<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_label_test</span> <span class="o">=</span> <span class="n">grid_cv</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -1822,7 +2331,7 @@ weighted avg       0.90      0.90      0.90        70
 </div>
 </div>
 <div class="section" id="id9">
-<h5><span class="section-number">13.1.1.3.6. </span>效果評估<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.3.6. </span>效果評估<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 評估結果</span>
@@ -1852,9 +2361,9 @@ weighted avg       0.87      0.87      0.87        70
 </div>
 </div>
 <div class="section" id="knn-multi-class">
-<h3><span class="section-number">13.1.2. </span>KNN (multi_class)<a class="headerlink" href="#knn-multi-class" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.1.2. </span>KNN (multi_class)<a class="headerlink" href="#knn-multi-class" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id10">
-<h4><span class="section-number">13.1.2.1. </span>讀資料集<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.2.1. </span>讀資料集<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>要來引入數字辨認資料集</p></li>
 </ul>
@@ -1907,7 +2416,7 @@ weighted avg       0.87      0.87      0.87        70
 </ul>
 </div>
 <div class="section" id="fit-model-predict">
-<h4><span class="section-number">13.1.2.2. </span>fit model &amp; predict<a class="headerlink" href="#fit-model-predict" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.2.2. </span>fit model &amp; predict<a class="headerlink" href="#fit-model-predict" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 切資料</span>
@@ -1973,7 +2482,7 @@ weighted avg       0.98      0.98      0.98       360
 </div>
 </div>
 <div class="section" id="overfitting-exploration">
-<h4><span class="section-number">13.1.2.3. </span>overfitting exploration<a class="headerlink" href="#overfitting-exploration" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.2.3. </span>overfitting exploration<a class="headerlink" href="#overfitting-exploration" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>最後，我們來玩點新的，看看 overfitting 的狀況</p></li>
 </ul>
@@ -2018,9 +2527,9 @@ weighted avg       0.98      0.98      0.98       360
 </div>
 </div>
 <div class="section" id="logistic-binary">
-<h3><span class="section-number">13.1.3. </span>Logistic (binary)<a class="headerlink" href="#logistic-binary" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.1.3. </span>Logistic (binary)<a class="headerlink" href="#logistic-binary" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id11">
-<h4><span class="section-number">13.1.3.1. </span>讀資料集<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.3.1. </span>讀資料集<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diabetes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/diabetes.csv&quot;</span><span class="p">)</span>
@@ -2225,7 +2734,7 @@ memory usage: 54.1 KB
 </div>
 </div>
 <div class="section" id="fit-predict-and-evaluate">
-<h4><span class="section-number">13.1.3.2. </span>fit, predict, and evaluate<a class="headerlink" href="#fit-predict-and-evaluate" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.3.2. </span>fit, predict, and evaluate<a class="headerlink" href="#fit-predict-and-evaluate" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 切資料</span>
@@ -2357,9 +2866,87 @@ Increase the number of iterations (max_iter) or scale the data as shown in:
 Please also refer to the documentation for alternative solver options:
     https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
   n_iter_i = _check_optimize_result(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
@@ -2455,9 +3042,79 @@ Increase the number of iterations (max_iter) or scale the data as shown in:
 Please also refer to the documentation for alternative solver options:
     https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
   n_iter_i = _check_optimize_result(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
@@ -2545,16 +3202,6 @@ Increase the number of iterations (max_iter) or scale the data as shown in:
 Please also refer to the documentation for alternative solver options:
     https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
   n_iter_i = _check_optimize_result(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
 /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
@@ -2564,154 +3211,6 @@ Please also refer to the documentation for alternative solver options:
     https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
   n_iter_i = _check_optimize_result(
 /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-Please also refer to the documentation for alternative solver options:
-    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
-  n_iter_i = _check_optimize_result(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
@@ -2835,7 +3334,6 @@ Please also refer to the documentation for alternative solver options:
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tuned Logistic Regression Parameters: {&#39;C&#39;: 0.4393970560760795, &#39;penalty&#39;: &#39;l2&#39;}
 Best score is 0.7891304347826086
-AUC: 0.8193146417445483
 [[169  32]
  [ 47  60]]
               precision    recall  f1-score   support
@@ -2848,7 +3346,7 @@ AUC: 0.8193146417445483
 weighted avg       0.74      0.74      0.74       308
 </pre></div>
 </div>
-<img alt="../_images/datacamp_su_80_7.png" src="../_images/datacamp_su_80_7.png" />
+<img alt="../_images/datacamp_su_80_2.png" src="../_images/datacamp_su_80_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7007718417259498
 </pre></div>
 </div>
@@ -2867,7 +3365,7 @@ weighted avg       0.74      0.74      0.74       308
 </div>
 </div>
 <div class="section" id="decisiontree-binary">
-<h3><span class="section-number">13.1.4. </span>DecisionTree (binary)<a class="headerlink" href="#decisiontree-binary" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.1.4. </span>DecisionTree (binary)<a class="headerlink" href="#decisiontree-binary" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 切資料</span>
@@ -2937,19 +3435,19 @@ weighted avg       0.74      0.74      0.74       308
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tuned Decision Tree Parameters: {&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: None, &#39;max_features&#39;: 6, &#39;min_samples_leaf&#39;: 4}
-Best score is 0.75
-AUC: 0.7062584274887247
-[[164  37]
- [ 52  55]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tuned Decision Tree Parameters: {&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 3, &#39;max_features&#39;: 5, &#39;min_samples_leaf&#39;: 5}
+Best score is 0.7608695652173914
+AUC: 0.7851629701957501
+[[174  27]
+ [ 57  50]]
               precision    recall  f1-score   support
 
-           0       0.76      0.82      0.79       201
-           1       0.60      0.51      0.55       107
+           0       0.75      0.87      0.81       201
+           1       0.65      0.47      0.54       107
 
-    accuracy                           0.71       308
-   macro avg       0.68      0.66      0.67       308
-weighted avg       0.70      0.71      0.71       308
+    accuracy                           0.73       308
+   macro avg       0.70      0.67      0.67       308
+weighted avg       0.72      0.73      0.71       308
 </pre></div>
 </div>
 <img alt="../_images/datacamp_su_83_1.png" src="../_images/datacamp_su_83_1.png" />
@@ -2957,7 +3455,7 @@ weighted avg       0.70      0.71      0.71       308
 </div>
 </div>
 <div class="section" id="svc-binary">
-<h3><span class="section-number">13.1.5. </span>SVC (binary)<a class="headerlink" href="#svc-binary" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.1.5. </span>SVC (binary)<a class="headerlink" href="#svc-binary" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import necessary modules</span>
@@ -3024,9 +3522,9 @@ weighted avg       0.96      0.95      0.95       131
 </div>
 </div>
 <div class="section" id="regression">
-<h2><span class="section-number">13.2. </span>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">15.2. </span>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="gapminder-data">
-<h3><span class="section-number">13.2.1. </span>Gapminder Data<a class="headerlink" href="#gapminder-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.2.1. </span>Gapminder Data<a class="headerlink" href="#gapminder-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -3166,9 +3664,9 @@ memory usage: 11.0+ KB
 </div>
 </div>
 <div class="section" id="linear-regression">
-<h3><span class="section-number">13.2.2. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.2.2. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id12">
-<h4><span class="section-number">13.2.2.1. </span>train/test<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.2.2.1. </span>train/test<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -3207,7 +3705,7 @@ Root Mean Squared Error: 3.405248115733344
 </div>
 </div>
 <div class="section" id="cv">
-<h4><span class="section-number">13.2.2.2. </span>CV<a class="headerlink" href="#cv" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.2.2.2. </span>CV<a class="headerlink" href="#cv" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
@@ -3236,7 +3734,7 @@ Average 5-Fold CV Score: 0.8529382494240787
 </div>
 </div>
 <div class="section" id="lasso-regression">
-<h3><span class="section-number">13.2.3. </span>Lasso Regression<a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.2.3. </span>Lasso Regression<a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Lasso</span>
@@ -3297,7 +3795,7 @@ Root Mean Squared Error: 3.2266824659707334
 </div>
 </div>
 <div class="section" id="ridge-regression">
-<h3><span class="section-number">13.2.4. </span>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.2.4. </span>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">display_plot</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">,</span> <span class="n">cv_scores_std</span><span class="p">):</span>
@@ -3363,7 +3861,7 @@ Root Mean Squared Error: 3.2266824659707334
 </div>
 </div>
 <div class="section" id="elastic-net">
-<h3><span class="section-number">13.2.5. </span>Elastic net<a class="headerlink" href="#elastic-net" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.2.5. </span>Elastic net<a class="headerlink" href="#elastic-net" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import necessary modules</span>
@@ -3454,13 +3952,13 @@ Tuned ElasticNet MSE: 8.594868215979249
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">12. </span>Clustering</p>
+            <p class="prev-next-title"><span class="section-number">14. </span>Clustering</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../statquest_trees/classification_tree.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>Classification Trees</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Classification Trees</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

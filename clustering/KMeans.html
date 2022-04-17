@@ -1,0 +1,2558 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12. K-Means &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="13. Gaussian Mixture Model (GMM)" href="GMM.html" />
+    <link rel="prev" title="11. Introduction to Seaborn" href="../datacamp_seaborn/intro_seaborn.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.00-matplotlib_intro.html">
+   3. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   4. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   5. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.03-Errorbars.html">
+   6. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   7. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.06-Legends.html">
+   8. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.07-Colorbars.html">
+   9. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   10. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
+   11. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   12. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GMM.html">
+   13. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  unsupervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_unsu/clusters.html">
+   14. Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_su/datacamp_su.html">
+   15. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statquest_trees/classification_tree.html">
+   16. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
+   17. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/clustering/KMeans.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fclustering/KMeans.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/clustering/KMeans.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#toy-example">
+   12.1. Toy Example 直接走一次
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     12.1.1. 產生資料
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     12.1.2. 概念講解
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code">
+     12.1.3. code 實作
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#training">
+       12.1.3.1. training
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#instance">
+       12.1.3.2. 預測 目前/未來 的 instance 屬於哪一群
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       12.1.3.3. 視覺化
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   12.2. 細節討論
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     12.2.1. 與 效果 有關的討論
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       12.2.1.1. 分群結果到底好不好？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       12.2.1.2. 如果分的不好怎麼辦？
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eda">
+     12.2.2. 與 EDA 有關的討論
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kmeans-assumption">
+       12.2.2.1. 使用 KMeans 有 assumption 嗎？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#imbalance">
+       12.2.2.2. Imbalance 的群數可以處理嗎？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       12.2.2.3. 要分成幾群？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#outlier-kmeans">
+       12.2.2.4. Outlier 會影響到 KMeans 嗎？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature">
+       12.2.2.5. 對於非數值形的 feature 如何處理？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#span-style-color-red-kmeans-span">
+       12.2.2.6.
+       <span style="color: red">
+        使用 KMeans 前要做前處理嗎？
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     12.2.3. 與建模有關的討論
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       12.2.3.1. 起始值有影響嗎？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#function">
+       12.2.3.2. 善用
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ?
+        </span>
+       </code>
+       可得 function 滿滿細節
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kmeans-nonlinear">
+       12.2.3.3. 如何將 KMeans 變成 nonlinear？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kmeans-big-data">
+       12.2.3.4. KMeans 可以處理 big data 嗎？
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     12.2.4. 與後續應用有關的討論
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kmeans">
+       12.2.4.1. KMeans 可以用在訊號分群嗎？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       12.2.4.2. KMeans 可以用在影像分群嗎？
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#workflow">
+   12.3. 推薦的 workflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-world-examples">
+   12.4. Real world examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stock-movent">
+     12.4.1. [訊號分群] Stock Movent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#number-digits">
+     12.4.2. [影像分群] Number Digits
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id13">
+       12.4.2.1. 資料
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#olivetti">
+     12.4.3. [影像分群] Olivetti 臉譜分群
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     12.4.4. [影像半監督學習] Number Digits
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     12.4.5. [影像分割]
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>K-Means</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#toy-example">
+   12.1. Toy Example 直接走一次
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     12.1.1. 產生資料
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     12.1.2. 概念講解
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code">
+     12.1.3. code 實作
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#training">
+       12.1.3.1. training
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#instance">
+       12.1.3.2. 預測 目前/未來 的 instance 屬於哪一群
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       12.1.3.3. 視覺化
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   12.2. 細節討論
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     12.2.1. 與 效果 有關的討論
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       12.2.1.1. 分群結果到底好不好？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       12.2.1.2. 如果分的不好怎麼辦？
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eda">
+     12.2.2. 與 EDA 有關的討論
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kmeans-assumption">
+       12.2.2.1. 使用 KMeans 有 assumption 嗎？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#imbalance">
+       12.2.2.2. Imbalance 的群數可以處理嗎？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       12.2.2.3. 要分成幾群？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#outlier-kmeans">
+       12.2.2.4. Outlier 會影響到 KMeans 嗎？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature">
+       12.2.2.5. 對於非數值形的 feature 如何處理？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#span-style-color-red-kmeans-span">
+       12.2.2.6.
+       <span style="color: red">
+        使用 KMeans 前要做前處理嗎？
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     12.2.3. 與建模有關的討論
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       12.2.3.1. 起始值有影響嗎？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#function">
+       12.2.3.2. 善用
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ?
+        </span>
+       </code>
+       可得 function 滿滿細節
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kmeans-nonlinear">
+       12.2.3.3. 如何將 KMeans 變成 nonlinear？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kmeans-big-data">
+       12.2.3.4. KMeans 可以處理 big data 嗎？
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     12.2.4. 與後續應用有關的討論
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kmeans">
+       12.2.4.1. KMeans 可以用在訊號分群嗎？
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       12.2.4.2. KMeans 可以用在影像分群嗎？
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#workflow">
+   12.3. 推薦的 workflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-world-examples">
+   12.4. Real world examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stock-movent">
+     12.4.1. [訊號分群] Stock Movent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#number-digits">
+     12.4.2. [影像分群] Number Digits
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id13">
+       12.4.2.1. 資料
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#olivetti">
+     12.4.3. [影像分群] Olivetti 臉譜分群
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     12.4.4. [影像半監督學習] Number Digits
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     12.4.5. [影像分割]
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="k-means">
+<h1><span class="section-number">12. </span>K-Means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="p">;</span> <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>  <span class="c1"># for plot styling</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="toy-example">
+<h2><span class="section-number">12.1. </span>Toy Example 直接走一次<a class="headerlink" href="#toy-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3><span class="section-number">12.1.1. </span>產生資料<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>我們用內建的 function，來產出一筆模擬資料</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from sklearn.datasets.samples_generator import make_blobs # 舊版寫法，已不能使用</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                       <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.60</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 看資料的維度</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># 看資料的前五筆</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(300, 2)
+[[ 0.83685684  2.13635938]
+ [-1.4136581   7.40962324]
+ [ 1.15521298  5.09961887]
+ [-1.01861632  7.81491465]
+ [ 1.27135141  1.89254207]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/KMeans_7_0.png" src="../_images/KMeans_7_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>從上面的資料和圖，可以得知我們拿到一組 nxp = 300x2 的資料</p></li>
+<li><p>在座標系上描出這 300 個點，長得像上圖一樣。</p></li>
+<li><p>直觀來看，分成四群。由於這是模擬資料，所以其實我知道他真的是來自 4 群，而且我還有他們的真實標籤 (<code class="docutils literal notranslate"><span class="pre">y_true</span></code>)</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3><span class="section-number">12.1.2. </span>概念講解<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="code">
+<h3><span class="section-number">12.1.3. </span>code 實作<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="training">
+<h4><span class="section-number">12.1.3.1. </span>training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 必要參數，我想分成幾群</span>
+<span class="n">num_clusters</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c1"># training</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="n">num_clusters</span><span class="p">);</span>
+<span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>有幾個我們想知道的內容：</p>
+<ul>
+<li><p>最後得到的那些 centers，座標分別是多少？ -&gt; 用 <code class="docutils literal notranslate"><span class="pre">kmeans.cluster_centers_</span></code> 來查看.</p></li>
+<li><p>最後分完全群後，<code class="docutils literal notranslate"><span class="pre">inertia</span></code> (i.e. Total within sum of square) 是多少 -&gt; 用 <code class="docutils literal notranslate"><span class="pre">kmeans.inertia_</span></code> 來查看</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># centers 的座標</span>
+<span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.98258281,  0.86771314],
+       [-1.37324398,  7.75368871],
+       [-1.58438467,  2.83081263],
+       [ 0.94973532,  4.41906906]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="instance">
+<h4><span class="section-number">12.1.3.2. </span>預測 目前/未來 的 instance 屬於哪一群<a class="headerlink" href="#instance" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prediction</span>
+<span class="n">y_kmeans</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到分群結果：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_kmeans</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 3, 1, 0, 0, 2, 3, 1, 1, 2, 1, 3, 1, 0, 3, 3, 0, 2, 2, 0, 0,
+       3, 2, 2, 3, 0, 3, 2, 3, 1, 1, 3, 1, 1, 1, 1, 1, 2, 0, 3, 2, 3, 3,
+       2, 2, 1, 2, 1, 0, 2, 0, 1, 0, 0, 2, 1, 2, 1, 0, 1, 3, 1, 2, 2, 2,
+       1, 0, 1, 2, 3, 2, 1, 2, 2, 1, 2, 3, 0, 1, 0, 3, 0, 0, 1, 3, 0, 3,
+       1, 1, 3, 0, 1, 2, 2, 3, 0, 0, 3, 2, 1, 0, 1, 0, 3, 0, 0, 3, 1, 3,
+       2, 2, 0, 1, 0, 3, 1, 0, 0, 3, 2, 0, 2, 0, 0, 0, 0, 2, 0, 2, 1, 2,
+       2, 0, 1, 2, 2, 1, 3, 1, 1, 2, 3, 2, 3, 2, 1, 3, 1, 1, 1, 3, 1, 3,
+       0, 2, 1, 2, 0, 3, 1, 3, 3, 0, 3, 2, 2, 3, 0, 3, 3, 1, 0, 3, 2, 1,
+       0, 0, 3, 2, 0, 3, 2, 2, 3, 3, 3, 3, 0, 1, 3, 2, 3, 3, 2, 2, 2, 3,
+       2, 1, 3, 2, 0, 2, 3, 1, 2, 1, 3, 1, 3, 2, 3, 3, 1, 2, 2, 0, 0, 3,
+       1, 0, 0, 2, 0, 2, 3, 1, 1, 3, 3, 1, 3, 0, 2, 3, 0, 2, 1, 2, 0, 3,
+       0, 1, 1, 1, 1, 2, 2, 1, 3, 2, 0, 3, 2, 2, 2, 0, 0, 1, 3, 3, 2, 0,
+       1, 2, 3, 1, 3, 0, 0, 2, 2, 3, 0, 0, 0, 3, 1, 1, 0, 0, 3, 0, 0, 0,
+       1, 2, 1, 3, 0, 0, 1, 1, 1, 0, 0, 3, 1, 2], dtype=int32)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h4><span class="section-number">12.1.3.3. </span>視覺化<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">);</span>
+
+<span class="n">centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centers</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centers</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/KMeans_20_0.png" src="../_images/KMeans_20_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">12.2. </span>細節討論<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3><span class="section-number">12.2.1. </span>與 效果 有關的討論<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h4><span class="section-number">12.2.1.1. </span>分群結果到底好不好？<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>看圖：</p>
+<ul>
+<li><p>直接畫圖來看，是一定要先做的事 (二維就直接畫圖，多維就先降維再畫圖)</p></li>
+<li><p>以此例來說，很明顯分的不錯，看起來是 4 群，實際也分成 4 群</p></li>
+</ul>
+</li>
+<li><p>看量化指標：</p>
+<ul>
+<li><p>我們可以把 centers 當成是那一群的預測值，然後去算 total square error，就可以知道預測的好不好.</p></li>
+<li><p>那這個total square error，其時就是 within group variance.</p></li>
+<li><p>而在 kmeans 中，被稱為 <code class="docutils literal notranslate"><span class="pre">inertia</span></code>，我們可以這樣得到結果：</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inertia(i.e. total square error; within group sum of square): &quot;</span><span class="p">,</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE(i.e. sqrt(inertia/n_points): &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">inertia_</span><span class="o">/</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inertia(i.e. total square error; within group sum of square):  212.00599621083478
+RMSE(i.e. sqrt(inertia/n_points):  0.8406465690384491
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>如果，我們對 domain knowledge 是有 fu 的，那就可以用 mean square error 的角度去解釋這樣算大算小： 平均來說，分完群後，大家離各群的中心有 RMSE 這麼遠</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h4><span class="section-number">12.2.1.2. </span>如果分的不好怎麼辦？<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>有時候分群完一看圖，就覺得分得有點 NG，例如：</p></li>
+<li><p><span style="color: red"> 那接下來可以做的包括 </span>：</p>
+<ul>
+<li><p>不是線性可分的資料，改成用非線性的方法(例如 kernel 版 KMeans; 或是本來就是 nonlinear 的分群演算法，如：…)</p></li>
+<li><p>可能是預設群數設定不佳的問題，可以用xxx來決定群數.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="eda">
+<h3><span class="section-number">12.2.2. </span>與 EDA 有關的討論<a class="headerlink" href="#eda" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="kmeans-assumption">
+<h4><span class="section-number">12.2.2.1. </span>使用 KMeans 有 assumption 嗎？<a class="headerlink" href="#kmeans-assumption" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>KMeans 雖然看起來很簡單好算，又沒有特別假設資料要符合什麼分佈，但其實，他是有假設的，只是沒說而已</p></li>
+<li><p>延續剛剛的例子，我們把每一群的 center 標出來，然後拿該群離 center 最遠的點和 center 的距離當半徑，可以畫出下圖：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cdist</span>
+
+<span class="k">def</span> <span class="nf">plot_kmeans</span><span class="p">(</span><span class="n">kmeans</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">rseed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="c1"># plot the input data</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span> <span class="ow">or</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># plot the representation of the KMeans model</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+    <span class="n">radii</span> <span class="o">=</span> <span class="p">[</span><span class="n">cdist</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">],</span> <span class="p">[</span><span class="n">center</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">center</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">centers</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">centers</span><span class="p">,</span> <span class="n">radii</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;#CCCCCC&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plot_kmeans</span><span class="p">(</span><span class="n">kmeans</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/KMeans_33_0.png" src="../_images/KMeans_33_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>從圖中可以看到，在圓內的點，就會被分為該群。</p></li>
+<li><p>以中間那兩群來說，中間的黃色點，他介於兩群中間，但因為他和黃色的中心，比和藍色的中心近，所以他被歸為黃色那群。那意思就是，在這圈圈內的，都被歸為黃色的群。</p></li>
+<li><p>所以，把這個圓當 contour 來看，就會是個二元常態，且變異數共變數矩陣必須是對角矩陣，且對角線上的每個 element 都一樣大 (i.e. <span class="math notranslate nohighlight">\(\Sigma = c*I\)</span>，c 是常數。因為 contour 是正圓，不是斜橢圓，表變異數相等)。</p></li>
+<li><p>所以，KMeans 的假設，可以寫成：</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\((X_i | S_i = k) \sim N(\mu_k, \Sigma_k)\)</span>: 第 i 筆資料，given 他是第 k 群的話(<span class="math notranslate nohighlight">\(S_i = k\)</span>)，那他會 follow 一個 multivariate normal distribution.</p></li>
+<li><p>而且， <span class="math notranslate nohighlight">\(\Sigma_k = \lambda_k * I, k = 1,2,...,K\)</span>: 意思是，變異數共變數矩陣，不僅是對角矩陣，而且對角線的 element 每個都一樣大</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_i\)</span> 就是來自 mixture of k 個 Multivariate Normal</p></li>
+</ul>
+</li>
+<li><p>由此可知，之後會介紹的 Gaussian Mixture Model (GMM)，可以視為 KMeans 的推廣。而 KMeans 只是 GMM 的特例。</p></li>
+<li><p><span style = "color: red">可以先睹為快</span>：</p>
+<ul>
+<li><p>如果資料不是分佈的像正圓，而是橢圓的樣子，那 KMeans 會分不好，但 GMM 會分的好</p></li>
+<li><p>如果資料分布的就是正圓的樣子，那 GMM 會分的根 KMeans 一樣好</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="imbalance">
+<h4><span class="section-number">12.2.2.2. </span>Imbalance 的群數可以處理嗎？<a class="headerlink" href="#imbalance" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>如果今天有 100 筆資料，而且我們手中握有真實的標籤(2類)，1類有 90 筆，另一類 10 筆，那 KMeans 有辦法幫我分成兩群嗎？</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h4><span class="section-number">12.2.2.3. </span>要分成幾群？<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>先畫圖來點直覺.</p>
+<ul>
+<li><p>例如剛剛的範例，一畫完圖，就知道分成 4 群是好選擇.</p></li>
+<li><p>如果今天資料的 feature 大於 2 維，無法直接畫圖，那就先做降維，用 2 維的圖來判斷一下要分成幾群.</p></li>
+</ul>
+</li>
+<li><p>畫完圖還看不出來，可以進一步用：</p>
+<ul>
+<li><p>inertia + elbow method</p>
+<ul>
+<li><p>用迴圈，分成 k 群， k = 1,2,…,K.</p></li>
+<li><p>每做一次，就算 inertia，然後看 inertia 在哪裡有拐點.</p></li>
+</ul>
+</li>
+<li><p>輪廓圖：</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inertia_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">try_kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">try_kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">inertia_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">try_kmeans</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">inertia_list</span><span class="p">,</span> <span class="s1">&#39;--bo&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/KMeans_39_0.png" src="../_images/KMeans_39_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，在第 4 個 點的時候，出現 elbow，所以適合用 k = 4 來當群數</p></li>
+</ul>
+<ul class="simple">
+<li><p><span style="color: red"> 如果用了畫圖，和 elbow method，都還是很難決定群數，那可以考慮：  </span></p>
+<ul>
+<li><p>用別的指標(e.g. AIC)來取代inertia： 例如改用 Gausian Mixture Model 來分群，他提供的 AIC 指標也許可以更好的選到 k 要幾群.</p></li>
+<li><p>用可以直接幫你找出群數的分群方法：</p>
+<ul>
+<li><p>Baysian 版的 GMM</p></li>
+<li><p>DBSCAN.</p></li>
+<li><p>mean-shift.</p></li>
+<li><p>affinity propagation</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="outlier-kmeans">
+<h4><span class="section-number">12.2.2.4. </span>Outlier 會影響到 KMeans 嗎？<a class="headerlink" href="#outlier-kmeans" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="feature">
+<h4><span class="section-number">12.2.2.5. </span>對於非數值形的 feature 如何處理？<a class="headerlink" href="#feature" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="span-style-color-red-kmeans-span">
+<h4><span class="section-number">12.2.2.6. </span><span style="color: red">使用 KMeans 前要做前處理嗎？</span><a class="headerlink" href="#span-style-color-red-kmeans-span" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>先講結論：</p>
+<ul>
+<li><p>require: Normalization.</p></li>
+<li><p>optional: PCA</p></li>
+</ul>
+</li>
+<li><p>由於 KMeans 在算兩點的距離時，就直接把所有 feature 一視同仁的算 Euclidean Distance，所以把大家的單位都調成一樣，是很重要的</p></li>
+<li><p>如果對每個 feature 做 Normalization，那就等於把變異數共變數矩陣的對角項所有元素設為1(等變異)。此時的 contour 仍不一定是正圓，而是 x, y 方向的 range 一樣大的斜橢圓.</p></li>
+<li><p>但如果想做到確保 contour 是正圓，那就接著做 PCA (就 de-correlation了)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><span class="section-number">12.2.3. </span>與建模有關的討論<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h4><span class="section-number">12.2.3.1. </span>起始值有影響嗎？<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>KMeans 在做起始值時，是用隨機撒點的方式(從現有資料中，隨機抽出 k 筆資料當中心).</p></li>
+<li><p>所以，如果你起始值撒得不好</p></li>
+<li><p>例如，我們已經知道一組爛起始值如下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 已知的爛起始值</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])[:</span><span class="n">num_clusters</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;起始值是取資料的這 4 個 row: &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;起始 centers 的座標如下：&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>起始值是取資料的這 4 個 row:  [208 188  12 221]
+起始 centers 的座標如下：
+[[1.07627418 4.68480619]
+ [2.47019077 1.31451315]
+ [1.24258802 4.50399192]
+ [2.5270643  0.6178122 ]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> 
+    <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> 
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> 
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/KMeans_50_0.png" src="../_images/KMeans_50_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>所以，如果一開始起始值取到這組，那結果會很慘：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans_bad</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span>
+    <span class="n">n_init</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># 預設是 10</span>
+    <span class="n">n_clusters</span> <span class="o">=</span> <span class="n">num_clusters</span><span class="p">,</span>
+    <span class="n">init</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c1"># 給定剛剛那組起始值</span>
+<span class="p">)</span>
+<span class="n">kmeans_bad</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y_pred_bad</span> <span class="o">=</span> <span class="n">kmeans_bad</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> 
+    <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> 
+    <span class="n">c</span> <span class="o">=</span> <span class="n">y_pred_bad</span><span class="p">,</span> 
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> 
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">)</span>
+
+<span class="n">centers_bad</span> <span class="o">=</span> <span class="n">kmeans_bad</span><span class="o">.</span><span class="n">cluster_centers_</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centers_bad</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centers_bad</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/KMeans_52_0.png" src="../_images/KMeans_52_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，分群結果不理想.</p></li>
+<li><p>那這部分在實作時，是可以不用太擔心</p></li>
+<li><p>因為 sklearn 知道 KMeans 有這個缺陷，所以他會.</p>
+<ul>
+<li><p>預設就先幫你撒 10 組 init (可從 <code class="docutils literal notranslate"><span class="pre">n_init</span> <span class="pre">=</span> <span class="pre">10</span></code> 這個參數來做設定).</p></li>
+<li><p>每一組 init，就會做一次完整的 KMeans 分群，分完後，得到 inertia.</p></li>
+<li><p>只取出 10 組中， inertia 最小的給你，當作結果</p></li>
+</ul>
+</li>
+<li><p><span style="color: red">選初始值的其他方式: 另一本書的 p237 開始</span></p></li>
+</ul>
+</div>
+<div class="section" id="function">
+<h4><span class="section-number">12.2.3.2. </span>善用 <code class="docutils literal notranslate"><span class="pre">?</span></code> 可得 function 滿滿細節<a class="headerlink" href="#function" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>KMeans
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span>
+KMeans<span class=" -Color -Color-Blue">(</span>
+    n_clusters<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">8</span><span class=" -Color -Color-Blue">,</span>
+    <span class=" -Color -Color-Blue">*,</span>
+    init<span class=" -Color -Color-Blue">=&#39;k-means++&#39;,</span>
+    n_init<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">10</span><span class=" -Color -Color-Blue">,</span>
+    max_iter<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">300</span><span class=" -Color -Color-Blue">,</span>
+    tol<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0.0001</span><span class=" -Color -Color-Blue">,</span>
+    verbose<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
+    random_state<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    copy_x<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    algorithm<span class=" -Color -Color-Blue">=&#39;auto&#39;,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>     
+K-Means clustering.
+
+Read more in the :ref:`User Guide &lt;k_means&gt;`.
+
+Parameters
+----------
+
+n_clusters : int, default=8
+    The number of clusters to form as well as the number of
+    centroids to generate.
+
+init : {&#39;k-means++&#39;, &#39;random&#39;}, callable or array-like of shape             (n_clusters, n_features), default=&#39;k-means++&#39;
+    Method for initialization:
+
+    &#39;k-means++&#39; : selects initial cluster centers for k-mean
+    clustering in a smart way to speed up convergence. See section
+    Notes in k_init for more details.
+
+    &#39;random&#39;: choose `n_clusters` observations (rows) at random from data
+    for the initial centroids.
+
+    If an array is passed, it should be of shape (n_clusters, n_features)
+    and gives the initial centers.
+
+    If a callable is passed, it should take arguments X, n_clusters and a
+    random state and return an initialization.
+
+n_init : int, default=10
+    Number of time the k-means algorithm will be run with different
+    centroid seeds. The final results will be the best output of
+    n_init consecutive runs in terms of inertia.
+
+max_iter : int, default=300
+    Maximum number of iterations of the k-means algorithm for a
+    single run.
+
+tol : float, default=1e-4
+    Relative tolerance with regards to Frobenius norm of the difference
+    in the cluster centers of two consecutive iterations to declare
+    convergence.
+
+verbose : int, default=0
+    Verbosity mode.
+
+random_state : int, RandomState instance or None, default=None
+    Determines random number generation for centroid initialization. Use
+    an int to make the randomness deterministic.
+    See :term:`Glossary &lt;random_state&gt;`.
+
+copy_x : bool, default=True
+    When pre-computing distances it is more numerically accurate to center
+    the data first. If copy_x is True (default), then the original data is
+    not modified. If False, the original data is modified, and put back
+    before the function returns, but small numerical differences may be
+    introduced by subtracting and then adding the data mean. Note that if
+    the original data is not C-contiguous, a copy will be made even if
+    copy_x is False. If the original data is sparse, but not in CSR format,
+    a copy will be made even if copy_x is False.
+
+algorithm : {&quot;auto&quot;, &quot;full&quot;, &quot;elkan&quot;}, default=&quot;auto&quot;
+    K-means algorithm to use. The classical EM-style algorithm is &quot;full&quot;.
+    The &quot;elkan&quot; variation is more efficient on data with well-defined
+    clusters, by using the triangle inequality. However it&#39;s more memory
+    intensive due to the allocation of an extra array of shape
+    (n_samples, n_clusters).
+
+    For now &quot;auto&quot; (kept for backward compatibility) chooses &quot;elkan&quot; but it
+    might change in the future for a better heuristic.
+
+    .. versionchanged:: 0.18
+        Added Elkan algorithm
+
+Attributes
+----------
+cluster_centers_ : ndarray of shape (n_clusters, n_features)
+    Coordinates of cluster centers. If the algorithm stops before fully
+    converging (see ``tol`` and ``max_iter``), these will not be
+    consistent with ``labels_``.
+
+labels_ : ndarray of shape (n_samples,)
+    Labels of each point
+
+inertia_ : float
+    Sum of squared distances of samples to their closest cluster center,
+    weighted by the sample weights if provided.
+
+n_iter_ : int
+    Number of iterations run.
+
+n_features_in_ : int
+    Number of features seen during :term:`fit`.
+
+    .. versionadded:: 0.24
+
+feature_names_in_ : ndarray of shape (`n_features_in_`,)
+    Names of features seen during :term:`fit`. Defined only when `X`
+    has feature names that are all strings.
+
+    .. versionadded:: 1.0
+
+See Also
+--------
+MiniBatchKMeans : Alternative online implementation that does incremental
+    updates of the centers positions using mini-batches.
+    For large scale learning (say n_samples &gt; 10k) MiniBatchKMeans is
+    probably much faster than the default batch implementation.
+
+Notes
+-----
+The k-means problem is solved using either Lloyd&#39;s or Elkan&#39;s algorithm.
+
+The average complexity is given by O(k n T), where n is the number of
+samples and T is the number of iteration.
+
+The worst case complexity is given by O(n^(k+2/p)) with
+n = n_samples, p = n_features. (D. Arthur and S. Vassilvitskii,
+&#39;How slow is the k-means method?&#39; SoCG2006)
+
+In practice, the k-means algorithm is very fast (one of the fastest
+clustering algorithms available), but it falls in local minima. That&#39;s why
+it can be useful to restart it several times.
+
+If the algorithm stops before fully converging (because of ``tol`` or
+``max_iter``), ``labels_`` and ``cluster_centers_`` will not be consistent,
+i.e. the ``cluster_centers_`` will not be the means of the points in each
+cluster. Also, the estimator will reassign ``labels_`` after the last
+iteration to make ``labels_`` consistent with ``predict`` on the training
+set.
+
+Examples
+--------
+
+&gt;&gt;&gt; from sklearn.cluster import KMeans
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; X = np.array([[1, 2], [1, 4], [1, 0],
+...               [10, 2], [10, 4], [10, 0]])
+&gt;&gt;&gt; kmeans = KMeans(n_clusters=2, random_state=0).fit(X)
+&gt;&gt;&gt; kmeans.labels_
+array([1, 1, 1, 0, 0, 0], dtype=int32)
+&gt;&gt;&gt; kmeans.predict([[0, 0], [12, 3]])
+array([1, 0], dtype=int32)
+&gt;&gt;&gt; kmeans.cluster_centers_
+array([[10.,  2.],
+       [ 1.,  2.]])
+<span class=" -Color -Color-Red">File:</span>           /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py
+<span class=" -Color -Color-Red">Type:</span>           type
+<span class=" -Color -Color-Red">Subclasses:</span>     MiniBatchKMeans
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="kmeans-nonlinear">
+<h4><span class="section-number">12.2.3.3. </span>如何將 KMeans 變成 nonlinear？<a class="headerlink" href="#kmeans-nonlinear" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>KMeans 的算法，是算 點 到 center 的距離，所以概念上，他用 “圓形” 的 decision boundary 在分群，只能做到 線性 分群</p></li>
+<li><p>那如果碰到以下經典的 <code class="docutils literal notranslate"><span class="pre">moon</span></code> dataset，用 KMeans 就分不好：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_moons</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_moons</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">noise</span><span class="o">=.</span><span class="mi">05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+            <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/KMeans_58_0.png" src="../_images/KMeans_58_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到， Kmeans 把他切成左邊和右邊，但…應該要分成上半圓和下半圓</p></li>
+<li><p>如果想改善的話，有兩條路可以走：</p>
+<ul>
+<li><p>把資料先投影到高維度，再用 KMeans 對高維資料做分群 (所以，概念上就是 kernel methods, e.g. SVM).</p></li>
+<li><p>換方法吧…，xxx方法 可以做到 nonlinear 分群</p></li>
+</ul>
+</li>
+<li><p>這邊來試試 kernel 的方法：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">SpectralClustering</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SpectralClustering</span><span class="p">(</span>
+    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+    <span class="n">affinity</span><span class="o">=</span><span class="s1">&#39;nearest_neighbors&#39;</span><span class="p">,</span>
+    <span class="n">assign_labels</span><span class="o">=</span><span class="s1">&#39;kmeans&#39;</span>
+<span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+            <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/manifold/_spectral_embedding.py:260: UserWarning: Graph is not fully connected, spectral embedding may not work as expected.
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../_images/KMeans_60_1.png" src="../_images/KMeans_60_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="kmeans-big-data">
+<h4><span class="section-number">12.2.3.4. </span>KMeans 可以處理 big data 嗎？<a class="headerlink" href="#kmeans-big-data" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>KMeans 在每次 iteration 的時候，都要算組平均.</p></li>
+<li><p>這意味著，他要一直對 “所有” 的 data 算 mean_vector.</p></li>
+<li><p>那資料量一多，就會算很慢.</p></li>
+<li><p>所以解決方法是：</p>
+<ul>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">batch-based</span> <span class="pre">k-means</span></code></p></li>
+<li><p>也就是每次迭代時，我只用一個 batch 的資料來更新 mean_vector 就好.</p></li>
+<li><p>這邊的做法，可用 <code class="docutils literal notranslate"><span class="pre">sklearn.cluster.MiniBatchKMeans</span></code> 來處理，等等可在<span style="color: red">哪裡看到這個例子</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id11">
+<h3><span class="section-number">12.2.4. </span>與後續應用有關的討論<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="kmeans">
+<h4><span class="section-number">12.2.4.1. </span>KMeans 可以用在訊號分群嗎？<a class="headerlink" href="#kmeans" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><span style="color: red"> 可以 der，舉股票走勢 的例子. </span></p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h4><span class="section-number">12.2.4.2. </span>KMeans 可以用在影像分群嗎？<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><span style="color: red">可以 der，舉 number digit 分群的例子 </span></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="workflow">
+<h2><span class="section-number">12.3. </span>推薦的 workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>EDA:</p></li>
+<li><p>建模:</p></li>
+</ul>
+</div>
+<div class="section" id="real-world-examples">
+<h2><span class="section-number">12.4. </span>Real world examples<a class="headerlink" href="#real-world-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stock-movent">
+<h3><span class="section-number">12.4.1. </span>[訊號分群] Stock Movent<a class="headerlink" href="#stock-movent" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>這個應用蠻好玩的，我們可以對股票的 “走勢” 做分群。</p></li>
+<li><p>資料如以下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movements</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/company-stock-movements.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">movements</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2010-01-04</th>
+      <th>2010-01-05</th>
+      <th>2010-01-06</th>
+      <th>2010-01-07</th>
+      <th>2010-01-08</th>
+      <th>2010-01-11</th>
+      <th>2010-01-12</th>
+      <th>2010-01-13</th>
+      <th>2010-01-14</th>
+      <th>2010-01-15</th>
+      <th>...</th>
+      <th>2013-10-16</th>
+      <th>2013-10-17</th>
+      <th>2013-10-18</th>
+      <th>2013-10-21</th>
+      <th>2013-10-22</th>
+      <th>2013-10-23</th>
+      <th>2013-10-24</th>
+      <th>2013-10-25</th>
+      <th>2013-10-28</th>
+      <th>2013-10-29</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Apple</th>
+      <td>0.580000</td>
+      <td>-0.220005</td>
+      <td>-3.409998</td>
+      <td>-1.170000</td>
+      <td>1.680011</td>
+      <td>-2.689994</td>
+      <td>-1.469994</td>
+      <td>2.779997</td>
+      <td>-0.680003</td>
+      <td>-4.999995</td>
+      <td>...</td>
+      <td>0.320008</td>
+      <td>4.519997</td>
+      <td>2.899987</td>
+      <td>9.590019</td>
+      <td>-6.540016</td>
+      <td>5.959976</td>
+      <td>6.910011</td>
+      <td>-5.359962</td>
+      <td>0.840019</td>
+      <td>-19.589981</td>
+    </tr>
+    <tr>
+      <th>AIG</th>
+      <td>-0.640002</td>
+      <td>-0.650000</td>
+      <td>-0.210001</td>
+      <td>-0.420000</td>
+      <td>0.710001</td>
+      <td>-0.200001</td>
+      <td>-1.130001</td>
+      <td>0.069999</td>
+      <td>-0.119999</td>
+      <td>-0.500000</td>
+      <td>...</td>
+      <td>0.919998</td>
+      <td>0.709999</td>
+      <td>0.119999</td>
+      <td>-0.480000</td>
+      <td>0.010002</td>
+      <td>-0.279998</td>
+      <td>-0.190003</td>
+      <td>-0.040001</td>
+      <td>-0.400002</td>
+      <td>0.660000</td>
+    </tr>
+    <tr>
+      <th>Amazon</th>
+      <td>-2.350006</td>
+      <td>1.260009</td>
+      <td>-2.350006</td>
+      <td>-2.009995</td>
+      <td>2.960006</td>
+      <td>-2.309997</td>
+      <td>-1.640007</td>
+      <td>1.209999</td>
+      <td>-1.790001</td>
+      <td>-2.039994</td>
+      <td>...</td>
+      <td>2.109985</td>
+      <td>3.699982</td>
+      <td>9.570008</td>
+      <td>-3.450013</td>
+      <td>4.820008</td>
+      <td>-4.079986</td>
+      <td>2.579986</td>
+      <td>4.790009</td>
+      <td>-1.760009</td>
+      <td>3.740021</td>
+    </tr>
+    <tr>
+      <th>American express</th>
+      <td>0.109997</td>
+      <td>0.000000</td>
+      <td>0.260002</td>
+      <td>0.720002</td>
+      <td>0.190003</td>
+      <td>-0.270001</td>
+      <td>0.750000</td>
+      <td>0.300004</td>
+      <td>0.639999</td>
+      <td>-0.130001</td>
+      <td>...</td>
+      <td>0.680001</td>
+      <td>2.290001</td>
+      <td>0.409996</td>
+      <td>-0.069999</td>
+      <td>0.100006</td>
+      <td>0.069999</td>
+      <td>0.130005</td>
+      <td>1.849999</td>
+      <td>0.040001</td>
+      <td>0.540001</td>
+    </tr>
+    <tr>
+      <th>Boeing</th>
+      <td>0.459999</td>
+      <td>1.770000</td>
+      <td>1.549999</td>
+      <td>2.690003</td>
+      <td>0.059997</td>
+      <td>-1.080002</td>
+      <td>0.360000</td>
+      <td>0.549999</td>
+      <td>0.530002</td>
+      <td>-0.709999</td>
+      <td>...</td>
+      <td>1.559997</td>
+      <td>2.480003</td>
+      <td>0.019997</td>
+      <td>-1.220001</td>
+      <td>0.480003</td>
+      <td>3.020004</td>
+      <td>-0.029999</td>
+      <td>1.940002</td>
+      <td>1.130005</td>
+      <td>0.309998</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 963 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>可以看到，每一列是一家公司，每一行是時間點，值是股價(大概做過一些調整了，所以有正有負，我們可以不用管他，就當是股價即可)</p></li>
+<li><p>我們就取這前 5 家公司，來看看他的走勢圖：</p></li>
+</ul>
+<ul class="simple">
+<li><p>如果我今天要做的分群，是對絕對的數值做分群，那我就直接用這張表分群就好.</p></li>
+<li><p>因為，我去算兩列的 歐式距離，就等於在算兩條訊號的距離有多近。所以，比較近的就被分在同一群裡.</p></li>
+<li><p>但如果我今天是想對 “走勢” 做分群，那我會希望對 “列” 做標準化。</p>
+<ul>
+<li><p>舉例來說，台積電的股價變化是 600, 580, 600, 620, 640，啟基是 60, 58, 60, 62, 64。</p></li>
+<li><p>那從 “走勢” 來看，台積跟啟基走勢是一樣的，應該被分為一群，但如果直接做 kmeans，就再見了，因為光 600 和 60 的距離就很遠。</p></li>
+<li><p>另外，台積股價的變化是 -20, 20, 20, 20; 啟基是 -2, 2, 2, 2，這個變動差距也不同，但如果改成看變化百分比(把股價放分母，變化當分子)，那兩邊就又差不多了.</p></li>
+<li><p>所以，我如果先對列做標準化，那兩個公司的數值就都變成 [-0.39, -1.37, -0.39, 0.58, 1.56]，一模模一樣樣，euclidean distance 變成 0，分群時一定放在一塊兒</p></li>
+</ul>
+</li>
+<li><p>所以，這一個例子，我們就要對 “列” 做標準化，那就要用到 <code class="docutils literal notranslate"><span class="pre">Normalizer</span></code> 這個 preprocessor:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Normalizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">make_pipeline</span>
+
+<span class="c1"># Create a normalizer: normalizer</span>
+<span class="n">normalizer</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">()</span>
+<span class="n">normalizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">movements</span><span class="p">)</span>
+<span class="n">movements_norm</span> <span class="o">=</span> <span class="n">normalizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">movements</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movements</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2010-01-04</th>
+      <th>2010-01-05</th>
+      <th>2010-01-06</th>
+      <th>2010-01-07</th>
+      <th>2010-01-08</th>
+      <th>2010-01-11</th>
+      <th>2010-01-12</th>
+      <th>2010-01-13</th>
+      <th>2010-01-14</th>
+      <th>2010-01-15</th>
+      <th>...</th>
+      <th>2013-10-16</th>
+      <th>2013-10-17</th>
+      <th>2013-10-18</th>
+      <th>2013-10-21</th>
+      <th>2013-10-22</th>
+      <th>2013-10-23</th>
+      <th>2013-10-24</th>
+      <th>2013-10-25</th>
+      <th>2013-10-28</th>
+      <th>2013-10-29</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Apple</th>
+      <td>0.580000</td>
+      <td>-0.220005</td>
+      <td>-3.409998</td>
+      <td>-1.170000</td>
+      <td>1.680011</td>
+      <td>-2.689994</td>
+      <td>-1.469994</td>
+      <td>2.779997</td>
+      <td>-0.680003</td>
+      <td>-4.999995</td>
+      <td>...</td>
+      <td>0.320008</td>
+      <td>4.519997</td>
+      <td>2.899987</td>
+      <td>9.590019</td>
+      <td>-6.540016</td>
+      <td>5.959976</td>
+      <td>6.910011</td>
+      <td>-5.359962</td>
+      <td>0.840019</td>
+      <td>-19.589981</td>
+    </tr>
+    <tr>
+      <th>AIG</th>
+      <td>-0.640002</td>
+      <td>-0.650000</td>
+      <td>-0.210001</td>
+      <td>-0.420000</td>
+      <td>0.710001</td>
+      <td>-0.200001</td>
+      <td>-1.130001</td>
+      <td>0.069999</td>
+      <td>-0.119999</td>
+      <td>-0.500000</td>
+      <td>...</td>
+      <td>0.919998</td>
+      <td>0.709999</td>
+      <td>0.119999</td>
+      <td>-0.480000</td>
+      <td>0.010002</td>
+      <td>-0.279998</td>
+      <td>-0.190003</td>
+      <td>-0.040001</td>
+      <td>-0.400002</td>
+      <td>0.660000</td>
+    </tr>
+    <tr>
+      <th>Amazon</th>
+      <td>-2.350006</td>
+      <td>1.260009</td>
+      <td>-2.350006</td>
+      <td>-2.009995</td>
+      <td>2.960006</td>
+      <td>-2.309997</td>
+      <td>-1.640007</td>
+      <td>1.209999</td>
+      <td>-1.790001</td>
+      <td>-2.039994</td>
+      <td>...</td>
+      <td>2.109985</td>
+      <td>3.699982</td>
+      <td>9.570008</td>
+      <td>-3.450013</td>
+      <td>4.820008</td>
+      <td>-4.079986</td>
+      <td>2.579986</td>
+      <td>4.790009</td>
+      <td>-1.760009</td>
+      <td>3.740021</td>
+    </tr>
+    <tr>
+      <th>American express</th>
+      <td>0.109997</td>
+      <td>0.000000</td>
+      <td>0.260002</td>
+      <td>0.720002</td>
+      <td>0.190003</td>
+      <td>-0.270001</td>
+      <td>0.750000</td>
+      <td>0.300004</td>
+      <td>0.639999</td>
+      <td>-0.130001</td>
+      <td>...</td>
+      <td>0.680001</td>
+      <td>2.290001</td>
+      <td>0.409996</td>
+      <td>-0.069999</td>
+      <td>0.100006</td>
+      <td>0.069999</td>
+      <td>0.130005</td>
+      <td>1.849999</td>
+      <td>0.040001</td>
+      <td>0.540001</td>
+    </tr>
+    <tr>
+      <th>Boeing</th>
+      <td>0.459999</td>
+      <td>1.770000</td>
+      <td>1.549999</td>
+      <td>2.690003</td>
+      <td>0.059997</td>
+      <td>-1.080002</td>
+      <td>0.360000</td>
+      <td>0.549999</td>
+      <td>0.530002</td>
+      <td>-0.709999</td>
+      <td>...</td>
+      <td>1.559997</td>
+      <td>2.480003</td>
+      <td>0.019997</td>
+      <td>-1.220001</td>
+      <td>0.480003</td>
+      <td>3.020004</td>
+      <td>-0.029999</td>
+      <td>1.940002</td>
+      <td>1.130005</td>
+      <td>0.309998</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 963 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>最後，就可以把 company 做分群，得到以下結果：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a KMeans model with 10 clusters: kmeans</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Make a pipeline chaining normalizer and kmeans: pipeline</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">normalizer</span><span class="p">,</span> <span class="n">kmeans</span><span class="p">)</span>
+
+<span class="c1"># Fit pipeline to the daily price movements</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">movements</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[(&#39;normalizer&#39;, Normalizer()),
+                (&#39;kmeans&#39;, KMeans(n_clusters=10))])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict the cluster labels: labels</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">movements</span><span class="p">)</span>
+
+<span class="c1"># Create a DataFrame aligning labels and companies: df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">labels</span><span class="p">,</span> 
+                   <span class="s1">&#39;companies&#39;</span><span class="p">:</span> <span class="n">movements</span><span class="o">.</span><span class="n">index</span><span class="p">})</span>
+
+<span class="c1"># Display df sorted by cluster label</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;labels&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>labels</th>
+      <th>companies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>57</th>
+      <td>0</td>
+      <td>Exxon</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>0</td>
+      <td>Schlumberger</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>0</td>
+      <td>Royal Dutch Shell</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0</td>
+      <td>ConocoPhillips</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>0</td>
+      <td>Valero Energy</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0</td>
+      <td>Chevron</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>1</td>
+      <td>Texas instruments</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1</td>
+      <td>McDonalds</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>1</td>
+      <td>Taiwan Semiconductor Manufacturing</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>1</td>
+      <td>IBM</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>1</td>
+      <td>3M</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1</td>
+      <td>Home Depot</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>1</td>
+      <td>Symantec</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>1</td>
+      <td>MasterCard</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>1</td>
+      <td>Walgreen</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>1</td>
+      <td>Navistar</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1</td>
+      <td>Caterpillar</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>Boeing</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1</td>
+      <td>DuPont de Nemours</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>1</td>
+      <td>Xerox</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2</td>
+      <td>Ford</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2</td>
+      <td>General Electrics</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>2</td>
+      <td>Wells Fargo</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2</td>
+      <td>Goldman Sachs</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>Bank of America</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>American express</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>AIG</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2</td>
+      <td>JPMorgan Chase</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>3</td>
+      <td>Northrop Grumman</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>3</td>
+      <td>Lookheed Martin</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>4</td>
+      <td>Kimberly-Clark</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>4</td>
+      <td>Johnson &amp; Johnson</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>4</td>
+      <td>Colgate-Palmolive</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>4</td>
+      <td>Wal-Mart</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>4</td>
+      <td>Pepsi</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>4</td>
+      <td>Procter Gamble</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>4</td>
+      <td>Philip Morris</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>4</td>
+      <td>Coca Cola</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>5</td>
+      <td>Unilever</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>5</td>
+      <td>Total</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>5</td>
+      <td>GlaxoSmithKline</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>5</td>
+      <td>Novartis</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>5</td>
+      <td>Pfizer</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>5</td>
+      <td>British American Tobacco</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>5</td>
+      <td>SAP</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>5</td>
+      <td>Sanofi-Aventis</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+      <td>Apple</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>6</td>
+      <td>Microsoft</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>6</td>
+      <td>Intel</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>6</td>
+      <td>Cisco</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>7</td>
+      <td>Mitsubishi</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>7</td>
+      <td>Toyota</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7</td>
+      <td>Honda</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>Canon</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>7</td>
+      <td>Sony</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>8</td>
+      <td>Google/Alphabet</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8</td>
+      <td>Amazon</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>8</td>
+      <td>Yahoo</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>9</td>
+      <td>HP</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>9</td>
+      <td>Dell</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="number-digits">
+<h3><span class="section-number">12.4.2. </span>[影像分群] Number Digits<a class="headerlink" href="#number-digits" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h4><span class="section-number">12.4.2.1. </span>資料<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+<span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+<span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1797, 64)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>一樣用 Number Digits 的資料，但這次的目標，是不看 y ，只看 x (有64個 feature)，看能不能分成 10 群</p></li>
+</ul>
+<ul class="simple">
+<li><p>先不急著用 KMeans，我們先來看一下資料投影到 2 維時，能不能輕易地看出分成 10 群</p></li>
+</ul>
+<ul class="simple">
+<li><p>我們分別把圖投影到(PC1, PC2), (PC2, PC3), (PC1, PC3)，看起來沒有那麼漂亮</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10, 64)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>我們來看看這 10 個 centers 的圖長怎樣：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">axi</span><span class="p">,</span> <span class="n">center</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">centers</span><span class="p">):</span>
+    <span class="n">axi</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+    <span class="n">axi</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/KMeans_90_0.png" src="../_images/KMeans_90_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>看來這 10 個群組的中心，都還有模有樣的，但 1 和 8 似乎分不太清楚</p></li>
+</ul>
+<ul class="simple">
+<li><p>因為我們其實有答案，所以可以來對個答案看看.</p></li>
+<li><p>但因為我們現在只知道每張照片被分到某一群，但我不知道這一群是 0~9 的哪個數字，所以我打算用以下方式來給 label:</p>
+<ul>
+<li><p>對於 第 i 群 的圖片來說，我取出這些圖片的答案 labels. ，再對這些 labels 取眾數，就用眾數來代表這一群.</p></li>
+<li><p>舉例來說，左上圖這一群裡面，假設有 1000 張圖片，那如果這 1000 張圖片的眾樹是 4 ，我就把這一群命名為 4</p></li>
+</ul>
+</li>
+<li><p>結果如下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">mode</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">clusters</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">labels</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mode</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">mask</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;各張照片被分到第幾群： &quot;</span><span class="p">,</span> <span class="n">clusters</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;該群代表的數字 label: &quot;</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>各張照片被分到第幾群：  [5 7 7 ... 7 3 3]
+該群代表的數字 label:  [0 8 8 ... 8 9 9]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>那，接下來就可以對答案了。先看一下準確率：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7935447968836951
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>並不意外～ 因為從 centers 來看，除了 1 和 8 這兩個數字外，其他看起來都很明顯，所以有 80% 的資料分的很好.</p></li>
+<li><p>用 confusion matrix 來確認一下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">xticklabels</span><span class="o">=</span><span class="n">digits</span><span class="o">.</span><span class="n">target_names</span><span class="p">,</span>
+            <span class="n">yticklabels</span><span class="o">=</span><span class="n">digits</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;true label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;predicted label&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/KMeans_98_0.png" src="../_images/KMeans_98_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>1 和 8 最常分錯(不意外)</p></li>
+<li><p>9 和 5 看來也分的不好</p></li>
+<li><p>9 和 8 也分的不好</p></li>
+</ul>
+<ul class="simple">
+<li><p>我們如果降到 2 維來看原始資料，也可發現這三個數字 overlap 較嚴重.</p></li>
+</ul>
+<ul class="simple">
+<li><p>如果想提升 KMeans 的表現，下一步就是做 kernel KMeans。</p></li>
+<li><p>但我們這邊不想這麼做，我們想試試另一種做法(純屬好玩).</p></li>
+<li><p>先把資料做 t-SNE，看看做完後是不是資料散得很開，用 KMeans 就能分出來：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+
+<span class="c1"># Project the data: this step will take several seconds</span>
+<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">digits_proj</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/manifold/_t_sne.py:790: FutureWarning: The default learning rate in TSNE will change from 200.0 to &#39;auto&#39; in 1.2.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits_proj</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1797, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">digits_proj</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> 
+    <span class="n">digits_proj</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> 
+    <span class="n">c</span><span class="o">=</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/KMeans_104_0.png" src="../_images/KMeans_104_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>看起來各個數字分的很開，而且用圓形就可以一圈一圈的分出來.</p></li>
+<li><p>那就來看看用 KMeans 可以做多好吧：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the clusters</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">digits_proj</span><span class="p">)</span>
+
+<span class="c1"># Permute the labels</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">clusters</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">labels</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mode</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">mask</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Compute the accuracy</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9432387312186978
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>發現 accuracy 可以到 94%</p></li>
+<li><p>在我不知道 label 的情況下，還可以有這種準確率，讚啦！！</p></li>
+<li><p>但要提醒的是，在實務上，不太能這樣做，因為</p>
+<ul>
+<li><p>t-SNE 只能對手上這筆樣本作轉換，未來新資料進來時，我沒辦法把該圖的 64 維，投影到現在看到的 2 維</p></li>
+<li><p>所以只能對手邊這組影像做分群，無法對未來的影像做分群</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="olivetti">
+<h3><span class="section-number">12.4.3. </span>[影像分群] Olivetti 臉譜分群<a class="headerlink" href="#olivetti" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_olivetti_faces</span>
+
+<span class="n">olivetti</span> <span class="o">=</span> <span class="n">fetch_olivetti_faces</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>downloading Olivetti faces from https://ndownloader.figshare.com/files/5976027 to /Users/hanklee/scikit_learn_data
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3><span class="section-number">12.4.4. </span>[影像半監督學習] Number Digits<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id15">
+<h3><span class="section-number">12.4.5. </span>[影像分割]<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./clustering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../datacamp_seaborn/intro_seaborn.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>Introduction to Seaborn</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="GMM.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Gaussian Mixture Model (GMM)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

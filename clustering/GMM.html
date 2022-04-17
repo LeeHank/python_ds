@@ -1,0 +1,1989 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13. Gaussian Mixture Model (GMM) &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="14. Clustering" href="../datacamp_unsu/clusters.html" />
+    <link rel="prev" title="12. K-Means" href="KMeans.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.00-matplotlib_intro.html">
+   3. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   4. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   5. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.03-Errorbars.html">
+   6. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   7. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.06-Legends.html">
+   8. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.07-Colorbars.html">
+   9. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   10. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
+   11. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="KMeans.html">
+   12. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   13. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  unsupervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_unsu/clusters.html">
+   14. Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_su/datacamp_su.html">
+   15. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statquest_trees/classification_tree.html">
+   16. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
+   17. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/clustering/GMM.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fclustering/GMM.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/clustering/GMM.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#toy-example">
+   13.1. Toy Example (多維, 多群)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kmeans">
+     13.1.1. 產生資料並先試試 KMeans
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kmeans-gmm">
+     13.1.2. 從 KMeans 改到 GMM 的動機
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     13.1.3. 概念講解
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#span-style-color-blue-span">
+       13.1.3.1.
+       <span style="color: blue">
+        資料生成模型
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       13.1.3.2.
+       <span style="color: blue">
+        參數估計
+       </span>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#span-style-color-blue-sigma-span">
+         13.1.3.2.1.
+         <span style="color: blue">
+          選
+          <span class="math notranslate nohighlight">
+           \(\Sigma\)
+          </span>
+          限制式
+         </span>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#span-style-color-blue-k-span">
+         13.1.3.2.2.
+         <span style="color: blue">
+          選 k
+         </span>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       13.1.3.3.
+       <span style="color: blue">
+        預測(分群)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code">
+     13.1.4. code 實作
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       13.1.4.1. 資料
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#training">
+       13.1.4.2. training
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#prediction">
+       13.1.4.3. prediction(分群)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       13.1.4.4. 視覺化
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#covariance">
+       13.1.4.5. 不同 covariance 限制式的影響
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cov">
+       13.1.4.6. 選群數，選 cov 限制式
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#density-estimation">
+       13.1.4.7. 產生資料 與 density estimation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#anomaly-detection">
+       13.1.4.8. anomaly detection
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   13.2. 細節討論
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nonlinear-pattern">
+     13.2.1. 對 nonlinear 的 pattern 一樣沒轍
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#workflow">
+   13.3. 推薦的 workflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-world-examples">
+   13.4. Real world examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#density-estimation-moon-data">
+     13.4.1. [Density Estimation] moon data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#digits-number">
+     13.4.2. [影像生成] Digits Number
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   13.5. 要再看的資源
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Gaussian Mixture Model (GMM)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#toy-example">
+   13.1. Toy Example (多維, 多群)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kmeans">
+     13.1.1. 產生資料並先試試 KMeans
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kmeans-gmm">
+     13.1.2. 從 KMeans 改到 GMM 的動機
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     13.1.3. 概念講解
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#span-style-color-blue-span">
+       13.1.3.1.
+       <span style="color: blue">
+        資料生成模型
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       13.1.3.2.
+       <span style="color: blue">
+        參數估計
+       </span>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#span-style-color-blue-sigma-span">
+         13.1.3.2.1.
+         <span style="color: blue">
+          選
+          <span class="math notranslate nohighlight">
+           \(\Sigma\)
+          </span>
+          限制式
+         </span>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#span-style-color-blue-k-span">
+         13.1.3.2.2.
+         <span style="color: blue">
+          選 k
+         </span>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       13.1.3.3.
+       <span style="color: blue">
+        預測(分群)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code">
+     13.1.4. code 實作
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       13.1.4.1. 資料
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#training">
+       13.1.4.2. training
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#prediction">
+       13.1.4.3. prediction(分群)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       13.1.4.4. 視覺化
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#covariance">
+       13.1.4.5. 不同 covariance 限制式的影響
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cov">
+       13.1.4.6. 選群數，選 cov 限制式
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#density-estimation">
+       13.1.4.7. 產生資料 與 density estimation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#anomaly-detection">
+       13.1.4.8. anomaly detection
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   13.2. 細節討論
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nonlinear-pattern">
+     13.2.1. 對 nonlinear 的 pattern 一樣沒轍
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#workflow">
+   13.3. 推薦的 workflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-world-examples">
+   13.4. Real world examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#density-estimation-moon-data">
+     13.4.1. [Density Estimation] moon data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#digits-number">
+     13.4.2. [影像生成] Digits Number
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   13.5. 要再看的資源
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="gaussian-mixture-model-gmm">
+<h1><span class="section-number">13. </span>Gaussian Mixture Model (GMM)<a class="headerlink" href="#gaussian-mixture-model-gmm" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="p">;</span> <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>  <span class="c1"># for plot styling</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># from sklearn.datasets.samples_generator import make_blobs # 舊版寫法，已不能使用</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="c1"># from sklearn.mixture import GMM</span>
+<span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cdist</span>
+
+<span class="k">def</span> <span class="nf">plot_kmeans</span><span class="p">(</span><span class="n">kmeans</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">rseed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="c1"># plot the input data</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span> <span class="ow">or</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># plot the representation of the KMeans model</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+    <span class="n">radii</span> <span class="o">=</span> <span class="p">[</span><span class="n">cdist</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">],</span> <span class="p">[</span><span class="n">center</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">center</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">centers</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">centers</span><span class="p">,</span> <span class="n">radii</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;#CCCCCC&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Ellipse</span>
+
+<span class="k">def</span> <span class="nf">draw_ellipse</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">covariance</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Draw an ellipse with a given position and covariance&quot;&quot;&quot;</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span> <span class="ow">or</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    
+    <span class="c1"># Convert covariance to principal axes</span>
+    <span class="k">if</span> <span class="n">covariance</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">covariance</span><span class="p">)</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">covariance</span><span class="p">)</span>
+    
+    <span class="c1"># Draw the Ellipse</span>
+    <span class="k">for</span> <span class="n">nsig</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">nsig</span> <span class="o">*</span> <span class="n">width</span><span class="p">,</span> <span class="n">nsig</span> <span class="o">*</span> <span class="n">height</span><span class="p">,</span>
+                             <span class="n">angle</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        
+<span class="k">def</span> <span class="nf">plot_gmm</span><span class="p">(</span><span class="n">gmm</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span> <span class="ow">or</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">label</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    
+    <span class="n">centers</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">means_</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centers</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centers</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">3</span><span class="p">);</span>
+    
+    <span class="n">w_factor</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">/</span> <span class="n">gmm</span><span class="o">.</span><span class="n">weights_</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">covariance_type</span> <span class="o">==</span> <span class="s2">&quot;spherical&quot;</span><span class="p">:</span>
+        <span class="n">cov_right_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">eta</span> <span class="k">for</span> <span class="n">eta</span> <span class="ow">in</span> <span class="n">gmm</span><span class="o">.</span><span class="n">covariances_</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">covariance_type</span> <span class="o">==</span> <span class="s2">&quot;diag&quot;</span><span class="p">:</span>
+        <span class="n">cov_right_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">diagflat</span><span class="p">(</span><span class="n">eta</span><span class="p">)</span> <span class="k">for</span> <span class="n">eta</span> <span class="ow">in</span> <span class="n">gmm</span><span class="o">.</span><span class="n">covariances_</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">covariance_type</span> <span class="o">==</span> <span class="s2">&quot;tied&quot;</span><span class="p">:</span>
+        <span class="n">cov_right_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">gmm</span><span class="o">.</span><span class="n">covariances_</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">gmm</span><span class="o">.</span><span class="n">n_components</span><span class="p">)])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cov_right_shape</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">covariances_</span>
+    
+    <span class="k">for</span> <span class="n">pos</span><span class="p">,</span> <span class="n">covar</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">centers</span><span class="p">,</span> <span class="n">cov_right_shape</span><span class="p">,</span> <span class="n">gmm</span><span class="o">.</span><span class="n">weights_</span><span class="p">):</span>
+        <span class="n">draw_ellipse</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">covar</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">w</span> <span class="o">*</span> <span class="n">w_factor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="toy-example">
+<h2><span class="section-number">13.1. </span>Toy Example (多維, 多群)<a class="headerlink" href="#toy-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kmeans">
+<h3><span class="section-number">13.1.1. </span>產生資料並先試試 KMeans<a class="headerlink" href="#kmeans" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                       <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.60</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># flip axes for better plotting</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">X_stretched</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 看資料的維度</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_stretched</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># 看資料的前五筆</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(400, 2)
+[[-4.63330948  5.00361975]
+ [-1.67654295  0.68197545]
+ [-2.05710285  1.00284771]
+ [-3.10473256  3.56955705]
+ [-1.58585158  0.65172436]]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到這是筆 400x2 的 data，feature 只有 2 維</p></li>
+<li><p>畫個圖先看一下資料分布</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_stretched</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_8_0.png" src="../_images/GMM_8_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以發現，資料分布看起來是 4 群</p></li>
+<li><p>但有別於之前看過的例子，現在每一群的分配，比較像斜橢圓，而不是正圓.</p></li>
+<li><p>那如果繼續用 KMeans 來分群，結果會如何呢？</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plot_kmeans</span><span class="p">(</span><span class="n">kmeans</span><span class="p">,</span> <span class="n">X_stretched</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_10_0.png" src="../_images/GMM_10_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以發現，第三群 和 第四群分的並不好。</p></li>
+<li><p>這是因為，這兩群的圓出現了 overlap。所以交集的點，有些被分到左邊，有些被分到右邊。</p></li>
+<li><p>這可以理解，因為每一群的點，看起來不是正圓，和 KMeans 的假設不合。</p></li>
+<li><p>那我們試試有沒有辦法對資料做前處理，想辦法先讓他變正圓，再來做 KMeans.</p>
+<ul>
+<li><p>先各個 feature 做 Normalization. (先讓 x,y 方向散的一樣開，此時會是 scale 相同的橢圓)</p></li>
+<li><p>再做 PCA (把橢圓躺下來，變正圓)</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_normalizer</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_stretch_norm</span> <span class="o">=</span> <span class="n">col_normalizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;column means: &quot;</span><span class="p">,</span> <span class="n">X_stretch_norm</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;column sd: &quot;</span><span class="p">,</span> <span class="n">X_stretch_norm</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cor of two feature: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X_stretch_norm</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_stretch_norm</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plot_kmeans</span><span class="p">(</span><span class="n">kmeans</span><span class="p">,</span> <span class="n">X_stretch_norm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>column means:  [7.20534743e-16 1.94289029e-16]
+column sd:  [1. 1.]
+cor of two feature: 
+[[ 1.         -0.94271845]
+ [-0.94271845  1.        ]]
+</pre></div>
+</div>
+<img alt="../_images/GMM_12_1.png" src="../_images/GMM_12_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以發現，效果沒變。還是分不好.</p></li>
+<li><p>甚至，看最左上角那群，他在 y 方向散的比較開， x 方向散的比較窄。</p></li>
+<li><p>理論上，做完標準化後，應該在兩個方向要散的一樣開，但為啥會這樣？</p>
+<ul>
+<li><p>那是因為，我們是對 <code class="docutils literal notranslate"><span class="pre">整個</span></code> 資料集做標準化，不是對個別的群做標準化。</p></li>
+<li><p>所以可以看到，對整個資料集來說，做完前處理後，兩個 feature 的平均數都是 0 ，標準差都是 1，兩個 feature 的相關性是 -0.94.</p></li>
+<li><p>這也反映在整張圖的點，x 和 y 方向散的一樣開，正中心在 (0,0)</p></li>
+<li><p>但這無濟於事，因為我是希望群內做標準化，才能讓他散的一樣開。but，你就還沒分群，當然無法做群內標準化。這流於雞生蛋，蛋生雞。</p></li>
+</ul>
+</li>
+<li><p>接下來，繼續做 PCA 看看</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">X_stretch_norm_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_stretch_norm</span><span class="p">)</span>
+
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plot_kmeans</span><span class="p">(</span><span class="n">kmeans</span><span class="p">,</span> <span class="n">X_stretch_norm_pca</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_14_0.png" src="../_images/GMM_14_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以發現，橢圓都躺下來了，但還是無法解決 overlap 的問題.</p></li>
+<li><p>理由同上，如果我們可以對各個群，自己做 Normalization + PCA，就能解決，但…我現在就是不知道各自屬於哪一群。</p></li>
+</ul>
+</div>
+<div class="section" id="kmeans-gmm">
+<h3><span class="section-number">13.1.2. </span>從 KMeans 改到 GMM 的動機<a class="headerlink" href="#kmeans-gmm" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>從上面的範例，大概可以了解 KMeans 的致命缺點了：</p>
+<ul>
+<li><p>每一群的資料，必須分佈成正圓，才能分得好。(對於不是正圓的資料，做前處理也未必能轉換成正圓，最終無解。)</p></li>
+<li><p>對於 overlap 的點，我們只能強硬的幫他分到某一類，我沒辦法指出，這些 overlap 的點，有多少機率來自第一群/第二群/…/第ｋ群</p></li>
+</ul>
+</li>
+<li><p>而 GMM，作為 KMeans 的延伸，就是可以來解決以上兩點：</p>
+<ul>
+<li><p>每一群的資料，是正圓或橢圓都沒關係。</p></li>
+<li><p>每一個點，我都可以給出，他屬於 K 個群的各自可能性</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3><span class="section-number">13.1.3. </span>概念講解<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>之後整理，我覺得重點是以下幾個：</p></li>
+</ul>
+<div class="section" id="span-style-color-blue-span">
+<h4><span class="section-number">13.1.3.1. </span><span style="color: blue">資料生成模型</span><a class="headerlink" href="#span-style-color-blue-span" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>每一個資料點，都假設來自以下的 mixture of Gaussian distribution:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(X_i \ \ iid \ \  \sim p_1*N(\mu_1, \Sigma_1)+p_2*N(\mu_2, \Sigma_2)+...+ p_K*N(\mu_K, \Sigma_K)\)</span></p></li>
+<li><p>這個分佈，可以用各種角度來想 (先假設資料只有 1 維就好，那就是多峰的 Normal)：</p>
+<ul>
+<li><p>以 density 的形狀來說，他就像各種 normal訊號 的線性組合結果，<span class="math notranslate nohighlight">\(p_k\)</span> 就是權重.</p></li>
+<li><p>以蒐集到 100 筆的資料後來想，就表示第k群的資料量，佔全部資料的 <span class="math notranslate nohighlight">\(p_k\)</span> 比例</p></li>
+<li><p>以生成一筆新資料來說，就是有 <span class="math notranslate nohighlight">\(p_k\)</span> 比利的可能性，會從 第k群 的 normal 來生出一筆資料.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>我覺得，用資料生成的圖，更好理解這個過程。假設我們現在想生成一筆 data，過程如下：</p>
+<ul>
+<li><p>先從 <span class="math notranslate nohighlight">\(S_i \sim Categorical(p_1, p_2, ..., p_k)\)</span> 的分佈中，生成 <span class="math notranslate nohighlight">\(S_i = k\)</span>，k=1,2,…,K，就可以知道這筆資料來自哪一組.</p></li>
+<li><p>再從 <span class="math notranslate nohighlight">\((X_i|S_i = k) \sim N(\mu_k, \Sigma_k)\)</span> 的分佈中，生成 <span class="math notranslate nohighlight">\(X_i = x_i\)</span></p></li>
+</ul>
+</li>
+<li><p>那我們現在要做參數估計時，就是上面的倒過來：</p>
+<ul>
+<li><p>已經收到 <span class="math notranslate nohighlight">\(x_i, i = 1,2, ..., N\)</span> 的資料.</p></li>
+<li><p>哪一組參數，最可能產出我手上收到的這筆資料？</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h4><span class="section-number">13.1.3.2. </span><span style="color: blue">參數估計</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>要估計的參數，包括：</p>
+<ul>
+<li><p>mixture 的權重： <span class="math notranslate nohighlight">\(K-1\)</span> 個 (因為只要知道 K-1 個權重，最後一個用 1 - 大家就好)</p></li>
+<li><p>K 個 <span class="math notranslate nohighlight">\(mu\)</span> vector： <span class="math notranslate nohighlight">\(K \times p\)</span> 個.</p></li>
+<li><p>K 個 <span class="math notranslate nohighlight">\(\Sigma\)</span> matrix: <span class="math notranslate nohighlight">\(K \times \frac{p \times (p+1)}{2}\)</span></p></li>
+<li><p>總計： <span class="math notranslate nohighlight">\(\frac{1}{2} \times K \times (P+1) \times (P+2) - 1\)</span></p></li>
+</ul>
+</li>
+<li><p>令 <span class="math notranslate nohighlight">\(\Theta = (p_1,...,p_K,\mu_1,\Sigma_1,...,\mu_K, \Sigma_K)\)</span>，則每一資料，生成的 pdf 如下：</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+f_{Mix}(x_i|\Theta) = \sum_{k=1}^K p_k \frac{1}{(2\pi)^{\frac{p}{2}}|\Sigma_k|^{\frac{1}{2}}} exp \left\{ -\frac{1}{2} (x_i - \mu_k)^T \Sigma_k^{-1} (x_i - \mu_k) \right\}
+\]</div>
+<ul class="simple">
+<li><p>收到 N 筆資料， join pdf (i.e. likelihood) 如下：</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+L(\Theta | X) = \prod_{i=1}^N f_{Mix}(x_i|\Theta)
+\]</div>
+<ul class="simple">
+<li><p>經過一番參數估計後(會用 EM 演算法，詳情參考之前統算推導)，就可以得到</p>
+<ul>
+<li><p>一組參數估計值： <span class="math notranslate nohighlight">\(\hat{\Theta} = arg \ max L(\Theta|X)\)</span></p></li>
+<li><p>一個 max likelihood 的值: <span class="math notranslate nohighlight">\(L_{max} = L(\hat{\Theta}|X)\)</span></p></li>
+<li><p>以及估計的參數個數</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="span-style-color-blue-sigma-span">
+<h5><span class="section-number">13.1.3.2.1. </span><span style="color: blue"> 選 <span class="math notranslate nohighlight">\(\Sigma\)</span> 限制式</span><a class="headerlink" href="#span-style-color-blue-sigma-span" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>剛剛在做參數估計時，對 <span class="math notranslate nohighlight">\(\Sigma\)</span>，是沒有限制式的。</p></li>
+<li><p>但其實沒有限制式的話，很可能造成要估計的參數過多(大過sample數)，而造成無法估計。</p></li>
+<li><p>所以，會做以下的限制</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\Sigma_k\)</span></p></th>
+<th class="head"><p>限制式意義</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">covariance_type</span></code> <br> (在 sklearn 的參數名稱)</p></th>
+<th class="head"><p>參數個數</p></th>
+<th class="head"><p>備註</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\eta I\)</span></p></td>
+<td><p>每一群都是相同的正圓</p></td>
+<td><p>a</p></td>
+<td><p>K(p+1)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\eta_k \ I\)</span></p></td>
+<td><p>每一群是不同的正圓</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">spherical</span></code></p></td>
+<td><p>K(p+2) -1</p></td>
+<td><p>KMeans 在這</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\eta_k\)</span> Diag (<span class="math notranslate nohighlight">\(\lambda_1\)</span>,…,<span class="math notranslate nohighlight">\(\lambda_p\)</span>)</p></td>
+<td><p>每一群是不同的正橢圓</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">diag</span></code></p></td>
+<td><p>K(p+2) + p -1</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\Sigma\)</span></p></td>
+<td><p>每一群都是同一個斜橢圓</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tied</span></code></p></td>
+<td><p>K-1 + K(px(p+1)/2)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\Sigma_k\)</span> (無限制)</p></td>
+<td><p>每一群是不同的斜橢圓</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">full</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>K(p+1)(p+2) - 1</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="span-style-color-blue-k-span">
+<h5><span class="section-number">13.1.3.2.2. </span><span style="color: blue"> 選 k </span><a class="headerlink" href="#span-style-color-blue-k-span" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>給定一個 k 後，就可以做上面的參數估計，估計完後，就可以得到 max liklihood 的值</p></li>
+<li><p>可以想像， k 如果給越大， likelihood 會越好，但就越容易 overfitting.</p></li>
+<li><p>所以，可以用 <code class="docutils literal notranslate"><span class="pre">AIC</span></code> or <code class="docutils literal notranslate"><span class="pre">BIC</span></code> 這兩個指標，來幫我們選模</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(AIC = -2 \ ln \ L_{max} + 2 \times\)</span> (number of parameters estimated) -&gt; <span class="math notranslate nohighlight">\(\hat{k} = arg \ min AIC\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(BIC = -2 \ ln \ L_{max} + ln(N) \times\)</span> (number of parameters estimated) -&gt; <span class="math notranslate nohighlight">\(\hat{k} = arg \ min BIC\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h4><span class="section-number">13.1.3.3. </span><span style="color: blue">預測(分群)</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>再來，就可以預估手上這筆 data，來自各群的可能性了，怎做？ -&gt; 用 posterior distribution 來處理：</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{\theta}_k^{(i)} = P(S_i = k|x_i) = \frac{P(x_i|S_i=k)P(S_i=k)}{\sum_{j=1}^K P(x_j|S_j=k)P(S_j=k)} = \frac{\hat{f_k} (x_i) \ \hat{p_k}}{\sum_{j=1}^K \hat{f_k} (x_i) \ \hat{p_k}}
+\]</div>
+<ul class="simple">
+<li><p>經由上式，就得到 第i組 data，他在第 k 群的可能性。那跑遍 K 群，就得到他在每一群的預測值: <span class="math notranslate nohighlight">\((\hat{\theta}_1^{(i)},\hat{\theta}_2^{(i)},...,\hat{\theta}_K^{(i)})\)</span></p></li>
+<li><p>接下來，有兩種方式可以給出 硬分群 的結果.</p>
+<ul>
+<li><p>從 <span class="math notranslate nohighlight">\(Multinominal(n=1, \hat{\theta}_1^{(i)},\hat{\theta}_2^{(i)},...,\hat{\theta}_K^{(i)})\)</span> 中，抽出一筆，可能值就是 1 or 2 or ,,, or K，那這就是預測群組了.</p></li>
+<li><p>直接找最大的就好： <span class="math notranslate nohighlight">\(\hat{k} = arg max \{ \hat{\theta}_1^{(i)},\hat{\theta}_2^{(i)},...,\hat{\theta}_K^{(i)} \}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="code">
+<h3><span class="section-number">13.1.4. </span>code 實作<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h4><span class="section-number">13.1.4.1. </span>資料<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>再來看一下剛剛的範例資料：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_stretched</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_40_0.png" src="../_images/GMM_40_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_stretched</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(400, 2)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="training">
+<h4><span class="section-number">13.1.4.2. </span>training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">gm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>看一下參數估計是否收斂：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;是否收斂？ &quot;</span><span class="p">,</span> <span class="n">gm</span><span class="o">.</span><span class="n">converged_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EM iteration了幾次&quot;</span><span class="p">,</span> <span class="n">gm</span><span class="o">.</span><span class="n">n_iter_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>是否收斂？  True
+EM iteration了幾次 6
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>看一下參數估計的結果：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p hat: &quot;</span><span class="p">,</span> <span class="n">gm</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mu hat: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gm</span><span class="o">.</span><span class="n">means_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sigma hat: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gm</span><span class="o">.</span><span class="n">covariances_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p hat:  [0.24960937 0.24856308 0.24726764 0.25455991]
+mu hat: 
+[[-0.68373205  1.51591598]
+ [-5.4736886   5.27447425]
+ [-1.95405049  1.40907606]
+ [-3.15090783  3.71109673]]
+Sigma hat: 
+[[[ 0.15012765 -0.15798472]
+  [-0.15798472  0.22221707]]
+
+ [[ 0.18632125 -0.20655164]
+  [-0.20655164  0.27558183]]
+
+ [[ 0.19777594 -0.22402528]
+  [-0.22402528  0.31418505]]
+
+ [[ 0.20718288 -0.22448647]
+  [-0.22448647  0.30342679]]]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>看起來美賣：</p>
+<ul>
+<li><p>分成 4 群，每一群的比例都差不多是 0.25。這和我從圖上看到的比例很像。</p></li>
+<li><p>mu_hat 給我 4 組 mean vector，這等等畫圖再來看估得好不好.</p></li>
+<li><p>Sigma hat 給我 4 個 covariance matrix，而且看起來都沒被限制 (因為 default 是 <code class="docutils literal notranslate"><span class="pre">covariance_type</span> <span class="pre">=</span> <span class="pre">'full'</span></code>)，可以想像等等會畫出 4 個不同的斜橢圓.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="prediction">
+<h4><span class="section-number">13.1.4.3. </span>prediction(分群)<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>我們可以先做 軟分群：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm_pred_prob</span> <span class="o">=</span> <span class="n">gm</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">)</span>
+<span class="n">gm_pred_prob</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.57650321e-22, 4.25123071e-01, 2.55374096e-07, 5.74876674e-01],
+       [4.53546582e-15, 1.90957124e-17, 9.99999999e-01, 1.06652119e-09],
+       [2.92853046e-17, 2.34378258e-14, 9.99999998e-01, 2.37101929e-09],
+       ...,
+       [9.99999920e-01, 1.08972061e-36, 2.05299504e-08, 5.89991829e-08],
+       [3.68290892e-04, 2.08418557e-15, 4.45517666e-01, 5.54114043e-01],
+       [1.00000000e+00, 3.80709722e-47, 5.71567299e-14, 1.76093911e-11]])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，第一個 sample，他在 k 個群上的預測機率。</p></li>
+<li><p>我們可以找出最大值在哪：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">gm_pred_prob</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以得知，他是 index = 3 這一群</p></li>
+</ul>
+<ul class="simple">
+<li><p>如果要做 硬分群，就這樣做就好：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#gm_pred = gm.predict(X_stretched)</span>
+<span class="n">gm_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">gm_pred_prob</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">gm_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3, 2, 2, 3, 2, 1, 0, 3, 2, 0, 1, 0, 3, 2, 2, 0, 2, 0, 3, 2, 2, 2,
+       1, 3, 3, 1, 1, 3, 3, 0, 3, 3, 2, 3, 2, 1, 0, 3, 0, 3, 2, 1, 0, 3,
+       0, 1, 0, 0, 0, 1, 1, 1, 2, 1, 1, 2, 3, 0, 0, 2, 0, 0, 0, 0, 3, 2,
+       0, 3, 2, 1, 2, 3, 2, 1, 0, 2, 3, 2, 1, 2, 2, 3, 0, 1, 3, 2, 2, 3,
+       2, 0, 2, 0, 3, 2, 2, 1, 3, 0, 0, 0, 1, 0, 3, 3, 2, 1, 3, 1, 0, 2,
+       2, 2, 3, 2, 1, 0, 1, 2, 1, 1, 0, 2, 0, 1, 3, 1, 0, 0, 0, 3, 1, 1,
+       1, 2, 3, 2, 1, 3, 1, 2, 3, 2, 2, 1, 2, 0, 3, 2, 0, 2, 0, 3, 0, 3,
+       1, 2, 0, 2, 2, 2, 3, 2, 1, 2, 2, 1, 0, 0, 2, 1, 1, 1, 1, 0, 0, 0,
+       3, 2, 3, 1, 3, 1, 2, 3, 1, 2, 1, 3, 3, 1, 3, 3, 1, 2, 1, 1, 1, 0,
+       0, 3, 3, 2, 0, 0, 1, 3, 2, 1, 3, 1, 3, 3, 0, 0, 1, 0, 3, 1, 0, 1,
+       2, 3, 1, 2, 2, 2, 0, 1, 3, 1, 3, 2, 3, 3, 1, 0, 2, 0, 3, 2, 0, 3,
+       3, 1, 0, 3, 1, 3, 0, 2, 2, 0, 2, 3, 1, 1, 3, 3, 0, 1, 3, 2, 2, 2,
+       1, 3, 3, 3, 3, 3, 0, 3, 3, 1, 2, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1,
+       0, 3, 0, 3, 0, 2, 3, 0, 2, 3, 0, 0, 3, 2, 1, 1, 3, 1, 0, 0, 3, 1,
+       1, 0, 0, 3, 1, 3, 0, 3, 0, 1, 2, 2, 0, 2, 3, 2, 2, 1, 2, 1, 0, 2,
+       1, 0, 1, 3, 2, 3, 2, 0, 3, 0, 1, 0, 0, 0, 0, 1, 0, 2, 0, 2, 0, 3,
+       1, 2, 0, 0, 3, 2, 2, 1, 1, 1, 2, 3, 0, 3, 2, 0, 2, 1, 2, 3, 3, 2,
+       1, 3, 1, 1, 2, 1, 2, 1, 3, 3, 3, 2, 1, 1, 1, 1, 2, 1, 3, 0, 0, 3,
+       3, 0, 3, 0])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h4><span class="section-number">13.1.4.4. </span>視覺化<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plot_gmm</span><span class="p">(</span><span class="n">gm</span><span class="p">,</span> <span class="n">X_stretched</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_58_0.png" src="../_images/GMM_58_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>水啦～ 分的將將好</p></li>
+</ul>
+</div>
+<div class="section" id="covariance">
+<h4><span class="section-number">13.1.4.5. </span>不同 covariance 限制式的影響<a class="headerlink" href="#covariance" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>剛剛在估計 covariance matrix 時，是沒有設限制式的。</p></li>
+<li><p>我們現在來試試看，如果用和 KMeans 幾乎等價的限制式 (covariance_type = ‘spherical’) 會怎麼樣：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm_spherical</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span>
+    <span class="n">n_components</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">n_init</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">covariance_type</span> <span class="o">=</span> <span class="s1">&#39;spherical&#39;</span>
+<span class="p">)</span>
+
+<span class="n">plot_gmm</span><span class="p">(</span><span class="n">gm_spherical</span><span class="p">,</span> <span class="n">X_stretched</span><span class="p">,</span> <span class="n">covariance_type</span> <span class="o">=</span> <span class="s2">&quot;spherical&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_62_0.png" src="../_images/GMM_62_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>果然跟 KMeans 的結果一樣</p></li>
+<li><p>那如果換成 <code class="docutils literal notranslate"><span class="pre">covariance_type</span> <span class="pre">=</span> <span class="pre">'diag'</span></code>，就換變成用正橢圓來分類，結果預計也不會太好</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm_diag</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span>
+    <span class="n">n_components</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">n_init</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">covariance_type</span> <span class="o">=</span> <span class="s1">&#39;diag&#39;</span>
+<span class="p">)</span>
+<span class="c1">#gm_diag.fit(X_stretched);</span>
+<span class="n">plot_gmm</span><span class="p">(</span><span class="n">gm_diag</span><span class="p">,</span> <span class="n">X_stretched</span><span class="p">,</span> <span class="n">covariance_type</span> <span class="o">=</span> <span class="s2">&quot;diag&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_64_0.png" src="../_images/GMM_64_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，結果果然不怎樣，他送出了 4 個直橢圓</p></li>
+<li><p>接著試試看，如果限制大家都是同一個斜橢圓 (covariance_type = ‘tied’)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm_tied</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span>
+    <span class="n">n_components</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">n_init</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">covariance_type</span> <span class="o">=</span> <span class="s1">&#39;tied&#39;</span>
+<span class="p">)</span>
+<span class="n">plot_gmm</span><span class="p">(</span><span class="n">gm_tied</span><span class="p">,</span> <span class="n">X_stretched</span><span class="p">,</span> <span class="n">covariance_type</span> <span class="o">=</span> <span class="s2">&quot;tied&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_66_0.png" src="../_images/GMM_66_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>讚拉！ 而且這筆模擬資料，看起來的確各個組的 covariance matrix 都差不多</p></li>
+</ul>
+</div>
+<div class="section" id="cov">
+<h4><span class="section-number">13.1.4.6. </span>選群數，選 cov 限制式<a class="headerlink" href="#cov" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>剛剛都是直接指定 k = 4，現在來用 AIC 和 BIC 選選看：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gms_per_k</span> <span class="o">=</span> <span class="p">[</span><span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+             <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+
+<span class="n">bics</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">bic</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">gms_per_k</span><span class="p">]</span>
+<span class="n">aics</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">aic</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">gms_per_k</span><span class="p">]</span>
+
+<span class="n">arg_min_aic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">aics</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">arg_min_bic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">bics</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;arg min aic = &quot;</span><span class="p">,</span> <span class="n">arg_min_aic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;arg min bic = &quot;</span><span class="p">,</span> <span class="n">arg_min_bic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>arg min aic =  4
+arg min bic =  4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">bics</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;BIC&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">aics</span><span class="p">,</span> <span class="s2">&quot;go--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;AIC&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$k$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Information Criterion&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">aics</span><span class="p">)</span> <span class="o">-</span> <span class="mi">50</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">aics</span><span class="p">)</span> <span class="o">+</span> <span class="mi">50</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Minimum&#39;</span><span class="p">,</span>
+             <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">arg_min_aic</span><span class="p">,</span> <span class="n">bics</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+             <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span>
+             <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;figure fraction&#39;</span><span class="p">,</span>
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+            <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1"># save_fig(&quot;aic_bic_vs_k_plot&quot;)</span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1303e6490&gt;
+</pre></div>
+</div>
+<img alt="../_images/GMM_71_1.png" src="../_images/GMM_71_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以得知，選 k = 4 是較好的</p></li>
+</ul>
+<ul class="simple">
+<li><p>最後，我們可以同時把 k 和 covariance_type 都當作 hyper-parameter，然後用 BIC 找出最好的組合：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_bic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">infty</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">covariance_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;full&quot;</span><span class="p">,</span> <span class="s2">&quot;tied&quot;</span><span class="p">,</span> <span class="s2">&quot;spherical&quot;</span><span class="p">,</span> <span class="s2">&quot;diag&quot;</span><span class="p">):</span>
+        <span class="n">bic</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                              <span class="n">covariance_type</span><span class="o">=</span><span class="n">covariance_type</span><span class="p">,</span>
+                              <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">bic</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bic</span> <span class="o">&lt;</span> <span class="n">min_bic</span><span class="p">:</span>
+            <span class="n">min_bic</span> <span class="o">=</span> <span class="n">bic</span>
+            <span class="n">best_k</span> <span class="o">=</span> <span class="n">k</span>
+            <span class="n">best_covariance_type</span> <span class="o">=</span> <span class="n">covariance_type</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;best k is: &quot;</span><span class="p">,</span> <span class="n">best_k</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;best_covariance_type: &quot;</span><span class="p">,</span> <span class="n">best_covariance_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>best k is:  4
+best_covariance_type:  tied
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>結果還不錯，看來大家共用同樣的 covariance matrix，就可以估的很好了 (分群分的 ok ，而且參數比 full 更精簡)</p></li>
+</ul>
+</div>
+<div class="section" id="density-estimation">
+<h4><span class="section-number">13.1.4.7. </span>產生資料 與 density estimation<a class="headerlink" href="#density-estimation" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>當我們 fit 完 GMM 後，等於得到了一個 pdf.</p></li>
+<li><p>有這個 pdf，我要生成新資料，或是去算 density 就都很方便了：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># final model</span>
+<span class="n">gmm_tied</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span>
+    <span class="n">n_components</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">n_init</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">covariance_type</span> <span class="o">=</span> <span class="s1">&#39;tied&#39;</span>
+<span class="p">)</span>
+<span class="n">gmm_tied</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">);</span>
+
+<span class="c1"># 隨機生成 5 筆 data</span>
+<span class="n">X_new</span><span class="p">,</span> <span class="n">y_new</span> <span class="o">=</span> <span class="n">gmm_tied</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;生成5筆資料&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;此五筆資料來自的 cluster&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_new</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;此五筆資料的 density&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">gmm_tied</span><span class="o">.</span><span class="n">score_samples</span><span class="p">(</span><span class="n">X_new</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>生成5筆資料
+[[-0.36581533  0.85440405]
+ [-5.37152264  5.12592459]
+ [-5.33699891  5.03877372]
+ [-1.48330776  1.04367111]
+ [-2.22834881  2.62981916]]
+此五筆資料來自的 cluster
+[0 1 1 2 3]
+此五筆資料的 density
+[0.12417672 0.3755171  0.34741156 0.17303794 0.03868295]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>這邊要特別注意的是，因為數值運算的關係，他吐給你的 density，是在 log scale 上的，所以要取 exp，才會得到真的 pdf</p></li>
+<li><p>我們來驗證一下，此 pdf 的 曲線下的面積會是 1</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resolution</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">resolution</span><span class="p">)</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
+<span class="n">X_full</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">gmm_tied</span><span class="o">.</span><span class="n">score_samples</span><span class="p">(</span><span class="n">X_full</span><span class="p">))</span>
+<span class="n">pdf_probas</span> <span class="o">=</span> <span class="n">pdf</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">resolution</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">pdf_probas</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0000000000000424
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>來畫一下 contour</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+
+<span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k.&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_centroids</span><span class="p">(</span><span class="n">centroids</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">circle_color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">cross_color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">centroids</span> <span class="o">=</span> <span class="n">centroids</span><span class="p">[</span><span class="n">weights</span> <span class="o">&gt;</span> <span class="n">weights</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">/</span> <span class="mi">10</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centroids</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centroids</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">circle_color</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centroids</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centroids</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">cross_color</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_decision_boundaries</span><span class="p">(</span><span class="n">clusterer</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">show_centroids</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                             <span class="n">show_xlabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_ylabels</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">mins</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.1</span>
+    <span class="n">maxs</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">resolution</span><span class="p">),</span>
+                         <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">resolution</span><span class="p">))</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">mins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Pastel2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">mins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">plot_data</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">show_centroids</span><span class="p">:</span>
+        <span class="n">plot_centroids</span><span class="p">(</span><span class="n">clusterer</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show_xlabels</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">show_ylabels</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_gaussian_mixture</span><span class="p">(</span><span class="n">clusterer</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">show_ylabels</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">mins</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.1</span>
+    <span class="n">maxs</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">resolution</span><span class="p">),</span>
+                         <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">resolution</span><span class="p">))</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="o">-</span><span class="n">clusterer</span><span class="o">.</span><span class="n">score_samples</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span>
+                 <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">30.0</span><span class="p">),</span>
+                 <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span>
+                <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">30.0</span><span class="p">),</span>
+                <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+                <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span>
+                <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k.&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plot_centroids</span><span class="p">(</span><span class="n">clusterer</span><span class="o">.</span><span class="n">means_</span><span class="p">,</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">show_ylabels</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plot_gaussian_mixture</span><span class="p">(</span><span class="n">gmm_tied</span><span class="p">,</span> <span class="n">X_stretched</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_84_0.png" src="../_images/GMM_84_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="anomaly-detection">
+<h4><span class="section-number">13.1.4.8. </span>anomaly detection<a class="headerlink" href="#anomaly-detection" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>因為有 pdf，就可以算尾機率。</p></li>
+<li><p>所以，我們可以定義，4% 左右的產品是有缺陷的，那我就想抓出 4% 左右的 outlier.</p></li>
+<li><p>那作法就是：</p>
+<ul>
+<li><p>算出目前資料的所有資料點所對應的 density.</p></li>
+<li><p>將 density 由小排到大，算出 density 的 PR4 當 threshold(意義是，只有 4% 的資料， density 會比他小。那就等於排除 4% 的資料）</p></li>
+<li><p>所有資料中， density 小於此 threshold 的，都認為是 outlier</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">densities</span> <span class="o">=</span> <span class="n">gmm_tied</span><span class="o">.</span><span class="n">score_samples</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">)</span>
+<span class="n">density_threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">densities</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">anomalies</span> <span class="o">=</span> <span class="n">X_stretched</span><span class="p">[</span><span class="n">densities</span> <span class="o">&lt;</span> <span class="n">density_threshold</span><span class="p">]</span>
+<span class="n">anomalies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-4.63330948,  5.00361975],
+       [-2.54838565,  3.64269177],
+       [-0.91910995,  1.15856978],
+       [-0.86486896,  0.52612946],
+       [-4.89433471,  5.18742875],
+       [-4.29724243,  3.8822148 ],
+       [-3.57676231,  4.75833171],
+       [-1.55916518,  1.98841812],
+       [-0.94562645,  0.64439676],
+       [-0.69821632,  0.02550763],
+       [-0.33938455,  1.75038413],
+       [ 0.11392436,  1.07418878],
+       [-3.73846534,  4.87602497],
+       [ 0.4434933 ,  0.45946803],
+       [-0.89865011,  0.54233655],
+       [-2.05111636,  2.20700669]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">13.2. </span>細節討論<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nonlinear-pattern">
+<h3><span class="section-number">13.2.1. </span>對 nonlinear 的 pattern 一樣沒轍<a class="headerlink" href="#nonlinear-pattern" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="workflow">
+<h2><span class="section-number">13.3. </span>推薦的 workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="real-world-examples">
+<h2><span class="section-number">13.4. </span>Real world examples<a class="headerlink" href="#real-world-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="density-estimation-moon-data">
+<h3><span class="section-number">13.4.1. </span>[Density Estimation] moon data<a class="headerlink" href="#density-estimation-moon-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>GMM 不只可以拿來做 Clustering，還可以拿來估計出一組多變量資料的 jpdf</p></li>
+<li><p>以 moon 資料集來說：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_moons</span>
+<span class="n">Xmoon</span><span class="p">,</span> <span class="n">ymoon</span> <span class="o">=</span> <span class="n">make_moons</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">noise</span><span class="o">=.</span><span class="mi">05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xmoon</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Xmoon</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_94_0.png" src="../_images/GMM_94_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>這組資料，是二維的，而且，一看就知道，這組資料不會是二元常態分配.</p></li>
+<li><p>那如果你還用分群的角度看他，你可能會想 fit 一個 k = 2 的 GMM，那他只會跟你說悲劇，因為這很明顯不能用兩個橢圓區分開來：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gmm2</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plot_gmm</span><span class="p">(</span><span class="n">gmm2</span><span class="p">,</span> <span class="n">Xmoon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_96_0.png" src="../_images/GMM_96_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>從分群的角度看回來的話，他其實是告訴我們，這個 moon data 背後的 jpdf，不會是 2 個 normal 的 mixture.</p></li>
+<li><p>那 …，有沒有可能是多個 normal 的 mixture 呢？</p></li>
+<li><p>就好比任意一個訊號，你可以用好幾個不同頻率的 sin, cos 來組出這個訊號一樣</p>
+<ul>
+<li><p>任意一個一維資料的 pdf，我可以用多個不同的 normal 的線性組合把他組出來.</p></li>
+<li><p>任意一個多維資料的 jpdf，我可以用多個不同的 多變量 normal 的線性組合把他組出來.</p></li>
+</ul>
+</li>
+<li><p>所以，我們就直接以量取勝，看 k 要取到多少時， AIC 就好棒棒了：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_components</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">n_components</span><span class="p">]</span>
+<span class="n">bics</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">bic</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">]</span>
+<span class="n">arg_min_bic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">bics</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;arg_min_bic: &quot;</span><span class="p">,</span> <span class="n">arg_min_bic</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_components</span><span class="p">,</span> <span class="n">bics</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>arg_min_bic:  10
+</pre></div>
+</div>
+<img alt="../_images/GMM_98_1.png" src="../_images/GMM_98_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以得知，用 10 個不同的二元常態，可以去近似的很好</p></li>
+<li><p>那我們就來 fit 看看</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gmm10</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">arg_min_bic</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plot_gmm</span><span class="p">(</span><span class="n">gmm10</span><span class="p">,</span> <span class="n">Xmoon</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_100_0.png" src="../_images/GMM_100_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>分成 10 群，然後這堆橢圓把他 fit 的很清楚</p></li>
+<li><p>現在用這個 model 來生成資料，看看生出來的點像不像 moon</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">moon_gen</span><span class="p">,</span> <span class="n">moon_cluster</span> <span class="o">=</span> <span class="n">gmm10</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">moon_gen</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">moon_gen</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_102_0.png" src="../_images/GMM_102_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>nice~ 生成的不錯</p></li>
+</ul>
+</div>
+<div class="section" id="digits-number">
+<h3><span class="section-number">13.4.2. </span>[影像生成] Digits Number<a class="headerlink" href="#digits-number" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>假設我們已經有一組資料了(Digits Number資料集)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+<span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+<span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1797, 64)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>這筆資料有 1797 筆，每筆是 64 維的 feature.</p></li>
+<li><p>大概長成這樣：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_digits</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                           <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[]))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">axi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">):</span>
+        <span class="n">im</span> <span class="o">=</span> <span class="n">axi</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+        <span class="n">im</span><span class="o">.</span><span class="n">set_clim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">plot_digits</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/GMM_108_0.png" src="../_images/GMM_108_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>我們可以將 1797 筆的資料，用 GMM 做分群。等我們 fitting 完後，就可以自動生成資料.</p></li>
+<li><p>但像這題 64 個 feature，對 GMM 來說，也有點吃不消了</p></li>
+<li><p>因為如果你用 <code class="docutils literal notranslate"><span class="pre">covariance_type</span> <span class="pre">=</span> <span class="pre">&quot;full&quot;</span></code> 來估的話，參數個數就有 1/2 x 10 x (64+1) x (64+2) -1 = 21449。但資料才 1797 筆</p></li>
+<li><p>所以，我們打算</p>
+<ul>
+<li><p>先把圖片用 PCA 壓縮 (保留 99% 的變異量)</p></li>
+<li><p>壓縮完，再 fitting GMM</p></li>
+<li><p>用 GMM 生成新資料</p></li>
+<li><p>用 PCA 轉換回原尺度.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 降維</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">whiten</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1797, 41)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>接下來，就去 fit GMM，並用 BIC 選一下需要多少個 component</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_components</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">n_components</span><span class="p">]</span>
+<span class="n">bics</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">bic</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">]</span>
+
+<span class="n">arg_min_bic</span> <span class="o">=</span> <span class="n">n_components</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">bics</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;arg_min_bic: &quot;</span><span class="p">,</span> <span class="n">arg_min_bic</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_components</span><span class="p">,</span> <span class="n">bics</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>arg_min_bic:  70
+</pre></div>
+</div>
+<img alt="../_images/GMM_112_1.png" src="../_images/GMM_112_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以發現，70 個 components 可以 minimize BIC，那就來 fit 這個 model</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gmm70</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">gmm70</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gmm70</span><span class="o">.</span><span class="n">converged_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>接下來，先生成 100 張 data，再轉回圖片的尺度</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_new</span><span class="p">,</span> <span class="n">data_target</span> <span class="o">=</span> <span class="n">gmm70</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_new</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">digits_new</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">data_new</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">digits_new</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">plot_digits</span><span class="p">(</span><span class="n">digits_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100, 41)
+(100, 64)
+</pre></div>
+</div>
+<img alt="../_images/GMM_116_1.png" src="../_images/GMM_116_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>看起來還行啊～～</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2529.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">13.5. </span>要再看的資源<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>讀完 Olivetti 資料 (p269)</p></li>
+<li><p>看其他 anomaly detection 的資料.</p>
+<ul>
+<li><p>Isolation Forest: <a class="reference external" href="https://tomohiroliu22.medium.com/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98%E7%B3%BB%E5%88%97-95-%E5%AD%A4%E7%AB%8B%E6%A3%AE%E6%9E%97-isolation-forest-7efa96213eec">https://tomohiroliu22.medium.com/機器學習-學習筆記系列-95-孤立森林-isolation-forest-7efa96213eec</a></p></li>
+<li><p>Minimum Covariance Determinant:</p>
+<ul>
+<li><p><a class="reference external" href="https://zhuanlan.zhihu.com/p/62146814">https://zhuanlan.zhihu.com/p/62146814</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.covariance.MinCovDet.html">https://scikit-learn.org/stable/modules/generated/sklearn.covariance.MinCovDet.html</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/auto_examples/covariance/plot_robust_vs_empirical_covariance.html#sphx-glr-auto-examples-covariance-plot-robust-vs-empirical-covariance-py">https://scikit-learn.org/stable/auto_examples/covariance/plot_robust_vs_empirical_covariance.html#sphx-glr-auto-examples-covariance-plot-robust-vs-empirical-covariance-py</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/auto_examples/covariance/plot_mahalanobis_distances.html#sphx-glr-auto-examples-covariance-plot-mahalanobis-distances-py">https://scikit-learn.org/stable/auto_examples/covariance/plot_mahalanobis_distances.html#sphx-glr-auto-examples-covariance-plot-mahalanobis-distances-py</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>範例 jupyter notebook:</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks">https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ageron/handson-ml2">https://github.com/ageron/handson-ml2</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./clustering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="KMeans.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">12. </span>K-Means</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../datacamp_unsu/clusters.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Clustering</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
