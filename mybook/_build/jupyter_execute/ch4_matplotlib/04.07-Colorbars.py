@@ -31,7 +31,7 @@ plt.colorbar();
 # * 畫圖的時候， `cmap` 這個 argument 是 color map (色彩對應表) 的縮寫，他可以決定我的圖的顏色
 # * 例如，我改成灰階 (數字由小到大，對應到顏色由黑到白)
 
-# In[3]:
+# In[7]:
 
 
 plt.imshow(I, cmap='gray');
@@ -48,7 +48,7 @@ plt.colorbar();
 #   * 沒有特別順序的色彩組成 (e.g. "rainbow", "jet")
 # * 我們來寫個函數，可以好好的視覺化不同的 colormap
 
-# In[4]:
+# In[8]:
 
 
 def view_colormap(cmap):
@@ -60,13 +60,13 @@ def view_colormap(cmap):
 
 # #### 連續的色彩
 
-# In[5]:
+# In[10]:
 
 
 view_colormap("viridis") # 預設的
 
 
-# In[6]:
+# In[12]:
 
 
 view_colormap("binary") # 灰階
@@ -74,7 +74,7 @@ view_colormap("binary") # 灰階
 
 # #### 給兩個顏色
 
-# In[7]:
+# In[13]:
 
 
 view_colormap("RdBu")
@@ -82,13 +82,13 @@ view_colormap("RdBu")
 
 # #### 無特定順序
 
-# In[8]:
+# In[14]:
 
 
 view_colormap("rainbow")
 
 
-# In[9]:
+# In[15]:
 
 
 view_colormap("jet")
@@ -100,7 +100,7 @@ view_colormap("jet")
 # * 所以，所有的 axes 和 tick 都是可以設定的. 
 # * 馬上來看個例子：
 
-# In[10]:
+# In[16]:
 
 
 # 製造一個影像，裡面有 1% 的雜訊
@@ -115,7 +115,7 @@ plt.colorbar()
 # * 可以看到，color bar 為了把零星的雜訊 (值已經衝到 < -10 or >10，其實就是 outlier) 也包進來，反而原本要顯示的圖 (值介於 -1~1) 看不清楚了
 # * 那對於這種狀況，我可以限制我的圖的 `clim` (color limit的縮寫)，來顯示 -1 ~ 1 的點就好：
 
-# In[11]:
+# In[18]:
 
 
 plt.figure(figsize=(10, 3.5))
@@ -126,7 +126,7 @@ plt.colorbar();
 
 # * 已經相當不錯了，但其實那些雜訊，並不是 -1 或 1，這樣顯示會有點誤導之嫌，所以我們可以用 `extend` 這個 argument，讓 color bar 展現延伸的樣子，就會比較清楚：
 
-# In[12]:
+# In[19]:
 
 
 plt.figure(figsize=(10, 3.5))
@@ -140,7 +140,7 @@ plt.colorbar(extend='both');
 # Colormaps are by default continuous, but sometimes you'd like to represent discrete values.
 # The easiest way to do this is to use the ``plt.cm.get_cmap()`` function, and pass the name of a suitable colormap along with the number of desired bins:
 
-# In[13]:
+# In[11]:
 
 
 plt.imshow(I, cmap=plt.cm.get_cmap('Blues', 6))
@@ -156,7 +156,7 @@ plt.clim(-1, 1);
 # * 這些資料在 scikit-learn 中可以找到，有接近 2000 個 8x8 的圖片. 
 # * 我們下載 0~5 的數字影像，然後看一下長怎樣：
 
-# In[14]:
+# In[20]:
 
 
 # load images of the digits 0 through 5 and visualize several of them
@@ -172,7 +172,7 @@ for i, axi in enumerate(ax.flat):
 # * 每一張圖片，都是 8x8，共 64 個像素，所以一張圖片可以看成在 64 維空間裡的一個點。每一個維度表示那個對應像素的亮度。  
 # * 接下來，我們把它降到 2 維，再畫散布圖看看：
 
-# In[15]:
+# In[21]:
 
 
 # project the digits into 2 dimensions using IsoMap
@@ -183,7 +183,7 @@ projection = iso.fit_transform(digits.data)
 
 # * 我們將用離散型 color map，來顯示這些點：
 
-# In[16]:
+# In[23]:
 
 
 # plot the results

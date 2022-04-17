@@ -16,7 +16,7 @@ import numpy as np
 
 # * 我們可以自己畫出兩個 axes
 
-# In[2]:
+# In[4]:
 
 
 ax1 = plt.axes()  # standard axes
@@ -28,7 +28,7 @@ ax2 = plt.axes([0.65, 0.65, 0.2, 0.2]) # [left, bottom, width, height]
 
 # * 對應到 oop，我們可以用 `add_axex` 的指令來新增 axes。例如，我要建立2個垂直堆疊的 axes
 
-# In[3]:
+# In[5]:
 
 
 fig = plt.figure()
@@ -64,7 +64,7 @@ for i in range(1, 7):
 # * The command `plt.subplots_adjust` 可以用來調整間距. 
 # * 剛剛的做法，是 `plt.subplot()`，那如果是用 oop，對應的寫法就是 `fig.add_subplot()`
 
-# In[5]:
+# In[7]:
 
 
 fig = plt.figure()
@@ -81,7 +81,7 @@ for i in range(1, 7):
 # * 那這還蠻煩的，如果你的格子點非常規律，那我可以用 `plt.subplots()` 直接一次做完就好。
 # * 我們接下來要建立一個 2x3 的子圖表，然後我要他們 share x 軸 和 y 軸，作法如下：
 
-# In[6]:
+# In[8]:
 
 
 fig, ax = plt.subplots(2, 3, sharex='col', sharey='row')
@@ -90,7 +90,7 @@ fig, ax = plt.subplots(2, 3, sharex='col', sharey='row')
 # * 可以看到，當你 `srarex` 和 `sharey` 後，就自動移除不必要的刻度和label了。
 # * 那現在的 `ax` 物件，他已經是個二維陣列，所以我們可以用 for 回圈，依序加入我要的圖：
 
-# In[7]:
+# In[9]:
 
 
 # axes are in a two-dimensional array, indexed by [row, col]
@@ -107,7 +107,7 @@ fig
 
 # * 直接看範例
 
-# In[8]:
+# In[10]:
 
 
 grid = plt.GridSpec(2, 3, wspace=0.4, hspace=0.3)
@@ -115,7 +115,7 @@ grid = plt.GridSpec(2, 3, wspace=0.4, hspace=0.3)
 
 # * 現在這個 grid，他就是個二維list，layout 長成 2x3 的樣子
 
-# In[9]:
+# In[15]:
 
 
 plt.subplot(grid[0, 0]) # grid 的 0,0 就是右上角的格子
@@ -126,7 +126,7 @@ plt.subplot(grid[1, 2]); # grid 的 (1,2) 給他
 
 # * 實際的應用如二維散布圖，然後margin我想畫 histogram
 
-# In[10]:
+# In[16]:
 
 
 # 先生成資料(二維常態)

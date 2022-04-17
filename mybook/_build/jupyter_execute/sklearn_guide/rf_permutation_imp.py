@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -18,7 +18,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 #   * 另一個 impurity-based importance 的潛在問題是(看不太懂)： the impurity-based feature importance of random forests suffers from being computed on statistics derived from the training dataset: the importances can be high even for features that are not predictive of the target variable, as long as the model has the capacity to use them to overfit.
 #   * 所以，如果你的變數有類別有連續，建議用 permutation-based importance  
 
-# In[2]:
+# In[25]:
 
 
 import matplotlib.pyplot as plt
@@ -47,7 +47,7 @@ from sklearn.inspection import permutation_importance
 
 # * 我們先 load 資料集
 
-# In[3]:
+# In[26]:
 
 
 X, y = fetch_openml("titanic", version=1, as_frame=True, return_X_y=True)
@@ -58,7 +58,7 @@ X.head()
 #   - ``random_num`` is a high cardinality numerical variable (as many unique values as records).
 #   - ``random_cat`` is a low cardinality categorical variable (3 possible values).
 
-# In[4]:
+# In[27]:
 
 
 rng = np.random.RandomState(seed=42)
@@ -70,7 +70,7 @@ X.random_cat.head()
 
 # * 接下來，就來 fit model 吧：
 
-# In[5]:
+# In[28]:
 
 
 categorical_columns = ["pclass", "sex", "embarked", "random_cat"]
@@ -107,7 +107,7 @@ rf.fit(X_train, y_train)
 
 # * 在檢查變數重要性前，我們要先確認 model 夠準了。因為如果不準的話，我們對於變數重要性的探索是沒啥興趣的。
 
-# In[6]:
+# In[29]:
 
 
 print(f"RF train accuracy: {rf.score(X_train, y_train)}")
@@ -120,7 +120,7 @@ print(f"RF test accuracy: {rf.score(X_test, y_test)}")
 
 # ## Tree's Feature Importance from Mean Decrease in Impurity (MDI)
 
-# In[7]:
+# In[30]:
 
 
 ohe = rf.named_steps["preprocess"].named_transformers_["cat"] # 取出 one-hot encoding 的 transformer
@@ -146,7 +146,7 @@ plt.show()
 #     - impurity-based importances are computed on training set statistics and therefore do not reflect the ability of feature to be useful to make predictions that generalize to the test set (when the model has enough capacity).
 # * 但另一方面，如果用 permutation importances，他是用 test set 來計算重要性的，他的結果就天差地別：
 
-# In[8]:
+# In[31]:
 
 
 result = permutation_importance(
@@ -166,7 +166,7 @@ plt.show()
 # * 可以看到，如預期的，random_num 的重要性降的極低. 
 # * 如果，你用 training set 來計算 permutation，結果會變成
 
-# In[9]:
+# In[32]:
 
 
 result = permutation_importance(

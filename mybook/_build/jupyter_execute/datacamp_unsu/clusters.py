@@ -3,7 +3,7 @@
 
 # # Clustering
 
-# In[1]:
+# In[30]:
 
 
 import numpy as np
@@ -19,7 +19,7 @@ from sklearn.datasets import load_iris
 
 # * 出動 iris 資料集吧
 
-# In[2]:
+# In[31]:
 
 
 iris = load_iris()
@@ -28,7 +28,7 @@ df_data = pd.DataFrame(data= np.c_[iris['data'], iris['target']],
 df_data
 
 
-# In[3]:
+# In[36]:
 
 
 from sklearn.cluster import KMeans
@@ -45,7 +45,7 @@ clusters_pred = kmeansModel.predict(X)
 
 # * 分群結果
 
-# In[4]:
+# In[37]:
 
 
 clusters_pred
@@ -53,7 +53,7 @@ clusters_pred
 
 # * 各群的中心
 
-# In[5]:
+# In[38]:
 
 
 kmeansModel.cluster_centers_
@@ -61,7 +61,7 @@ kmeansModel.cluster_centers_
 
 # * inertia (within-group sum of variance)
 
-# In[6]:
+# In[39]:
 
 
 kmeansModel.inertia_
@@ -69,7 +69,7 @@ kmeansModel.inertia_
 
 # * 選 k
 
-# In[7]:
+# In[41]:
 
 
 kmeans_list = [KMeans(n_clusters=k, random_state=46).fit(X)
@@ -77,7 +77,7 @@ kmeans_list = [KMeans(n_clusters=k, random_state=46).fit(X)
 inertias = [model.inertia_ for model in kmeans_list]
 
 
-# In[8]:
+# In[43]:
 
 
 plt.plot(range(1,10), inertias);
@@ -87,7 +87,7 @@ plt.plot(range(1,10), inertias);
 
 # * 詳細說明文件，看 `KMeans?`
 
-# In[9]:
+# In[32]:
 
 
 get_ipython().run_line_magic('pinfo', 'KMeans')
@@ -98,7 +98,7 @@ get_ipython().run_line_magic('pinfo', 'KMeans')
 # * 這個應用蠻好玩的，我們可以對股票的 "走勢" 做分群。
 # * 資料如以下： 
 
-# In[10]:
+# In[19]:
 
 
 movements = pd.read_csv("data/company-stock-movements.csv", index_col = 0)
@@ -114,7 +114,7 @@ movements.head()
 #   * 所以，我如果先對列做標準化，那兩個公司的數值就都變成 [-0.39, -1.37, -0.39, 0.58, 1.56]，一模模一樣樣，euclidean distance 變成 0，分群時一定放在一塊兒
 # * 所以，這一個例子，我們就要對 "列" 做標準化，那就要用到 `Normalizer` 這個 preprocessor:
 
-# In[11]:
+# In[29]:
 
 
 from sklearn.preprocessing import Normalizer
@@ -134,7 +134,7 @@ pipeline = make_pipeline(normalizer, kmeans)
 pipeline.fit(movements)
 
 
-# In[12]:
+# In[16]:
 
 
 # Predict the cluster labels: labels

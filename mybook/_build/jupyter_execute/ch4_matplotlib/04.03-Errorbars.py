@@ -18,7 +18,7 @@ import numpy as np
 # * 首先來做一下資料： y = sin(x) + unif(0.8,-0.8)  
 # * 所以，y的誤差範圍在 +- 0.8 之間
 
-# In[2]:
+# In[10]:
 
 
 x = np.linspace(0, 10, 50)
@@ -32,7 +32,7 @@ plt.errorbar(x, y, yerr=dy, fmt='.k');
 
 # * 如果每個x的 errorbar 的長度不同，也沒關係，就是 dy 變成用 array 放入就好：
 
-# In[3]:
+# In[11]:
 
 
 dy2 = 0.8 * np.random.randn(50) # 這樣 dy 就有 50 個值，對應到每個x的誤差範圍
@@ -59,7 +59,7 @@ plt.errorbar(x, y, yerr=dy, fmt='o', color='black',
 # * 那如果我把幾乎無限多個連續的點所對應的error bar 給畫出來，就很醜，這時候，我想畫的其實是 error region
 # * 以下，很快的 做出一份假資料， fit GP後，畫出預測值與預測誤差：
 
-# In[5]:
+# In[12]:
 
 
 from sklearn.gaussian_process import GaussianProcessRegressor as GP
@@ -83,7 +83,7 @@ dyfit = 2 * np.sqrt(y_std)  # 2*sigma ~ 95% confidence region
 # * 我們還是可以用剛剛的方式(`plt.errorbar`)，畫出 1000 個 error bar  
 # * 但我不想這樣，因為很醜，我想用 `plt.fill_between` 的方式，把誤差區域填滿顏色就好. 
 
-# In[6]:
+# In[13]:
 
 
 # Visualize the result

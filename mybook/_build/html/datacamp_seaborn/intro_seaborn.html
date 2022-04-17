@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="12. Supervised Learning with scikit-learn" href="../datacamp_su/datacamp_su.html" />
+    <link rel="next" title="12. K-Means" href="../clustering/KMeans.html" />
     <link rel="prev" title="10. Multiple Subplots" href="../ch4_matplotlib/04.08-Multiple-Subplots.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -181,23 +181,52 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/KMeans.html">
+   12. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/GMM.html">
+   13. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  unsupervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_unsu/clusters.html">
+   14. Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   supervised learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   12. Supervised Learning with scikit-learn
+   15. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   13. Classification Trees
+   16. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   14. Permutation Importance vs Random Forest Feature Importance (MDI)
+   17. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -1399,7 +1428,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1325f9ee0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x12af1dc70&gt;
 </pre></div>
 </div>
 <img alt="../_images/intro_seaborn_45_1.png" src="../_images/intro_seaborn_45_1.png" />
@@ -1847,10 +1876,10 @@ memory usage: 35.6+ KB
             <p class="prev-next-title"><span class="section-number">10. </span>Multiple Subplots</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../datacamp_su/datacamp_su.html" title="next page">
+    <a class='right-next' id="next-link" href="../clustering/KMeans.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Supervised Learning with scikit-learn</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>K-Means</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

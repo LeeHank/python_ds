@@ -233,7 +233,7 @@ plt.show()
 
 # ##### 分 train/test
 
-# In[17]:
+# In[57]:
 
 
 # 分 train/test
@@ -254,7 +254,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # * 對 knn 這種依賴 euclidean distance 的演算法，必須先做 normalization，再開始算距離，所以 pipeline寫成這樣：
 
-# In[18]:
+# In[58]:
 
 
 from sklearn.pipeline import Pipeline
@@ -278,7 +278,7 @@ my_pipe = Pipeline([
 
 # * 先來做 grid_search
 
-# In[19]:
+# In[43]:
 
 
 from sklearn.model_selection import GridSearchCV
@@ -294,7 +294,7 @@ grid_cv.fit(X_train, y_train);
 # * 這邊看一下，第二列的 parameters 裡面，"knn__"的knn，是用我的 my_pipe 物件裡的名稱 ("knn"); "n_neighbors" 是超參數的名稱
 # * 做完 fitting 後的物件就是 grid_cv 了，我們可以看最佳參數是多少：
 
-# In[20]:
+# In[44]:
 
 
 grid_cv.best_params_
@@ -302,19 +302,19 @@ grid_cv.best_params_
 
 # * 可以知道，最佳參數是 17. 
 
-# In[21]:
+# In[45]:
 
 
 get_ipython().run_line_magic('pinfo', 'ref')
 
 
-# In[22]:
+# In[46]:
 
 
 get_ipython().run_line_magic('pinfo', 'GridSearchCV')
 
 
-# In[23]:
+# In[47]:
 
 
 grid_cv.cv_results_
@@ -326,7 +326,7 @@ grid_cv.cv_results_
 
 # ##### 用 testing set 做 predict
 
-# In[24]:
+# In[49]:
 
 
 pred_label_test = grid_cv.predict(X_test)
@@ -335,7 +335,7 @@ pred_prob_test = grid_cv.predict_proba(X_test)
 
 # ##### 效果評估
 
-# In[25]:
+# In[51]:
 
 
 # 評估結果
@@ -350,7 +350,7 @@ print(classification_report(y_test, pred_label_test))
 
 # * 要來引入數字辨認資料集
 
-# In[26]:
+# In[27]:
 
 
 from sklearn import datasets
@@ -362,7 +362,7 @@ digits = datasets.load_digits()
 #   * data: 每張 image 拉成 64 個 column，所以變成 1797x64 的 2d-array
 # * 看一下 shape 是不是真的是這樣：
 
-# In[27]:
+# In[28]:
 
 
 print(digits.images.shape)
@@ -371,7 +371,7 @@ print(digits.data.shape)
 
 # * 我們可以看一張圖片：
 
-# In[28]:
+# In[29]:
 
 
 plt.imshow(digits.images[1010], cmap=plt.cm.gray_r, interpolation='nearest');
@@ -381,7 +381,7 @@ plt.imshow(digits.images[1010], cmap=plt.cm.gray_r, interpolation='nearest');
 
 # #### fit model & predict
 
-# In[29]:
+# In[30]:
 
 
 # 切資料
@@ -416,7 +416,7 @@ print(classification_report(y_test, pred_label_test))
 
 # * 最後，我們來玩點新的，看看 overfitting 的狀況
 
-# In[30]:
+# In[31]:
 
 
 neighbors = np.arange(1, 9) # knn的 k，從複雜(1)到簡單(9)
@@ -434,7 +434,7 @@ for i, k in enumerate(neighbors):
 
 # * 畫個圖看看
 
-# In[31]:
+# In[32]:
 
 
 fig, ax = plt.subplots()
@@ -452,14 +452,14 @@ ax.set(
 
 # #### 讀資料集
 
-# In[32]:
+# In[52]:
 
 
 diabetes = pd.read_csv("data/diabetes.csv")
 diabetes
 
 
-# In[33]:
+# In[54]:
 
 
 diabetes.info()
@@ -467,7 +467,7 @@ diabetes.info()
 
 # #### fit, predict, and evaluate
 
-# In[34]:
+# In[55]:
 
 
 # 切資料
@@ -541,7 +541,7 @@ print(roc_auc_score(y_test, y_pred))
 
 # ### DecisionTree (binary)
 
-# In[35]:
+# In[62]:
 
 
 # 切資料
@@ -611,7 +611,7 @@ plt.show()
 
 # ### SVC (binary)
 
-# In[36]:
+# In[74]:
 
 
 # Import necessary modules
@@ -663,7 +663,7 @@ print(classification_report(y_test, y_pred))
 
 # ### Gapminder Data
 
-# In[37]:
+# In[63]:
 
 
 import pandas as pd
@@ -671,7 +671,7 @@ gapminder = pd.read_csv("data/gm_2008_region.csv")
 gapminder.head()
 
 
-# In[38]:
+# In[64]:
 
 
 gapminder.info()
@@ -681,7 +681,7 @@ gapminder.info()
 
 # #### train/test
 
-# In[39]:
+# In[65]:
 
 
 from sklearn.model_selection import train_test_split
@@ -712,7 +712,7 @@ print("Root Mean Squared Error: {}".format(rmse))
 
 # #### CV
 
-# In[40]:
+# In[66]:
 
 
 from sklearn.linear_model import LinearRegression
@@ -732,7 +732,7 @@ print(f"Average 5-Fold CV Score: {str(np.mean(cv_scores))}")
 
 # ### Lasso Regression
 
-# In[41]:
+# In[67]:
 
 
 # Import Lasso
@@ -759,7 +759,7 @@ print("Root Mean Squared Error: {}".format(rmse))
 
 # * 看一下哪些變數被 shrinkage 到 0 ，哪些變數最重要：
 
-# In[42]:
+# In[68]:
 
 
 # Compute and print the coefficients
@@ -775,7 +775,7 @@ plt.margins(0.02)
 
 # ### Ridge Regression
 
-# In[43]:
+# In[69]:
 
 
 def display_plot(cv_scores, cv_scores_std):
@@ -794,7 +794,7 @@ def display_plot(cv_scores, cv_scores_std):
     plt.show()
 
 
-# In[44]:
+# In[70]:
 
 
 # Import necessary modules
@@ -835,7 +835,7 @@ display_plot(ridge_scores, ridge_scores_std)
 
 # ### Elastic net
 
-# In[45]:
+# In[75]:
 
 
 # Import necessary modules

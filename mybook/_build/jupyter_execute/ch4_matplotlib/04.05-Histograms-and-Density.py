@@ -25,7 +25,7 @@ plt.hist(data);
 
 # * 我們還有很多客製化的參數可以下：
 
-# In[3]:
+# In[8]:
 
 
 plt.hist(data, 
@@ -38,7 +38,7 @@ plt.hist(data,
 
 # * 如果想得到分類後的數據就好，那可以這樣做
 
-# In[4]:
+# In[13]:
 
 
 counts, bin_edges = np.histogram(data, bins=5)
@@ -48,7 +48,7 @@ print(counts) # 每個 bin 對應到的次數
 
 # * 如果要同時畫多個 histogram，那就多做幾次 `plt.hist()` 就好:
 
-# In[5]:
+# In[10]:
 
 
 x1 = np.random.normal(0, 0.8, 1000)
@@ -64,7 +64,7 @@ plt.hist(x3, **kwargs);
 
 # ## 二維的直方圖
 
-# In[6]:
+# In[14]:
 
 
 # 生出二維常態的資料
@@ -77,7 +77,7 @@ x, y = np.random.multivariate_normal(mean, cov, 10000).T
 
 # * 剛剛一維的 histogram，是用 `plt.hist()` 來畫，現在二維的 histogram，是用 `plt.hist2d()` 來畫. 
 
-# In[7]:
+# In[15]:
 
 
 plt.hist2d(x, y, bins=30, cmap='Blues')
@@ -87,13 +87,13 @@ cb.set_label('counts in bin')
 
 # * 就像剛剛可以用 `np.histogram()` 來得到組別和各組的count的訊息，現在可以用 `np.histogram2d()` 來得到各組的組別(就是x和y的range)以及組別的count。作法如下：
 
-# In[8]:
+# In[16]:
 
 
 counts, xedges, yedges = np.histogram2d(x, y, bins=30)
 
 
-# In[9]:
+# In[17]:
 
 
 print(counts)
@@ -101,7 +101,7 @@ print(xedges)
 print(yedges)
 
 
-# In[10]:
+# In[18]:
 
 
 plt.hexbin(x, y, gridsize=30, cmap='Blues')
@@ -113,7 +113,7 @@ cb = plt.colorbar(label='count in bin')
 # * 我們也可以去估計二維分配的 density，例如，我假設資料服從二維常態，然後去估計他
 # * 我們可以用 `scipy.stats` 這個 module
 
-# In[11]:
+# In[20]:
 
 
 from scipy.stats import gaussian_kde

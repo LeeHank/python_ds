@@ -246,7 +246,7 @@ sns.relplot(x="G1", y="G3", # 第一學期 和 第三學期 的成績
 
 # ### 基本 countplot
 
-# In[18]:
+# In[19]:
 
 
 sns.countplot(x = "school", 
@@ -255,7 +255,7 @@ sns.countplot(x = "school",
 
 # ### 兩維的 countplot
 
-# In[19]:
+# In[20]:
 
 
 palette_colors = {"Rural": "green", "Urban": "blue"}
@@ -266,20 +266,20 @@ sns.countplot(x = "school",
               palette = palette_colors);
 
 
-# In[20]:
+# In[22]:
 
 
 countries = pd.read_csv("data/countries-of-the-world.csv")
 countries
 
 
-# In[21]:
+# In[9]:
 
 
 countries.info()
 
 
-# In[22]:
+# In[23]:
 
 
 sns.scatterplot(x = "GDP ($ per capita)", y = "Literacy (%)", data = countries);

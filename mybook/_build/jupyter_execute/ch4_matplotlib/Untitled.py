@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 import matplotlib.pyplot as plt
@@ -12,20 +12,20 @@ import pandas as pd
 # * ax 是 part of the page that holds data, it is the canvas
 # * adding data to axes
 
-# In[2]:
+# In[5]:
 
 
 seattle_weather = pd.read_csv("data/seattle_weather.csv")
 austin_weather = pd.read_csv("data/austin_weather.csv")
 
 
-# In[3]:
+# In[6]:
 
 
 seattle_weather
 
 
-# In[4]:
+# In[18]:
 
 
 # Import the matplotlib.pyplot submodule and name it plt
@@ -61,13 +61,13 @@ ax.set_title("Weather patterns in Austin and Seattle")
 plt.show()
 
 
-# In[5]:
+# In[3]:
 
 
 fig, ax = plt.subplots(3, 2)
 
 
-# In[6]:
+# In[4]:
 
 
 fig, ax = plt.subplots(2,1)

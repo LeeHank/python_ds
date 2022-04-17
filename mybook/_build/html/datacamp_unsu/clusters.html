@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>12. Clustering &#8212; My sample book</title>
+    <title>14. Clustering &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13. Supervised Learning with scikit-learn" href="../datacamp_su/datacamp_su.html" />
-    <link rel="prev" title="11. Introduction to Seaborn" href="../datacamp_seaborn/intro_seaborn.html" />
+    <link rel="next" title="15. Supervised Learning with scikit-learn" href="../datacamp_su/datacamp_su.html" />
+    <link rel="prev" title="13. Gaussian Mixture Model (GMM)" href="../clustering/GMM.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -181,13 +181,30 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/KMeans.html">
+   12. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/GMM.html">
+   13. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   unsupervised learning
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   12. Clustering
+   14. Clustering
   </a>
  </li>
 </ul>
@@ -199,17 +216,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   13. Supervised Learning with scikit-learn
+   15. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   14. Classification Trees
+   16. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   15. Permutation Importance vs Random Forest Feature Importance (MDI)
+   17. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -318,17 +335,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#k-means">
-   12.1. K-Means
+   14.1. K-Means
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#toy-example-iris">
-     12.1.1. toy-example (iris)
+     14.1.1. toy-example (iris)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stock-movement">
-     12.1.2. stock movement
+     14.1.2. stock movement
     </a>
    </li>
   </ul>
@@ -355,17 +372,17 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#k-means">
-   12.1. K-Means
+   14.1. K-Means
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#toy-example-iris">
-     12.1.1. toy-example (iris)
+     14.1.1. toy-example (iris)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stock-movement">
-     12.1.2. stock movement
+     14.1.2. stock movement
     </a>
    </li>
   </ul>
@@ -380,7 +397,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="clustering">
-<h1><span class="section-number">12. </span>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">14. </span>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -393,9 +410,9 @@
 </div>
 </div>
 <div class="section" id="k-means">
-<h2><span class="section-number">12.1. </span>K-Means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">14.1. </span>K-Means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="toy-example-iris">
-<h3><span class="section-number">12.1.1. </span>toy-example (iris)<a class="headerlink" href="#toy-example-iris" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">14.1.1. </span>toy-example (iris)<a class="headerlink" href="#toy-example-iris" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>出動 iris 資料集吧</p></li>
 </ul>
@@ -631,10 +648,175 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span>
+KMeans<span class=" -Color -Color-Blue">(</span>
+    n_clusters<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">8</span><span class=" -Color -Color-Blue">,</span>
+    <span class=" -Color -Color-Blue">*,</span>
+    init<span class=" -Color -Color-Blue">=&#39;k-means++&#39;,</span>
+    n_init<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">10</span><span class=" -Color -Color-Blue">,</span>
+    max_iter<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">300</span><span class=" -Color -Color-Blue">,</span>
+    tol<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0.0001</span><span class=" -Color -Color-Blue">,</span>
+    verbose<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
+    random_state<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    copy_x<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    algorithm<span class=" -Color -Color-Blue">=&#39;auto&#39;,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>     
+K-Means clustering.
+
+Read more in the :ref:`User Guide &lt;k_means&gt;`.
+
+Parameters
+----------
+
+n_clusters : int, default=8
+    The number of clusters to form as well as the number of
+    centroids to generate.
+
+init : {&#39;k-means++&#39;, &#39;random&#39;}, callable or array-like of shape             (n_clusters, n_features), default=&#39;k-means++&#39;
+    Method for initialization:
+
+    &#39;k-means++&#39; : selects initial cluster centers for k-mean
+    clustering in a smart way to speed up convergence. See section
+    Notes in k_init for more details.
+
+    &#39;random&#39;: choose `n_clusters` observations (rows) at random from data
+    for the initial centroids.
+
+    If an array is passed, it should be of shape (n_clusters, n_features)
+    and gives the initial centers.
+
+    If a callable is passed, it should take arguments X, n_clusters and a
+    random state and return an initialization.
+
+n_init : int, default=10
+    Number of time the k-means algorithm will be run with different
+    centroid seeds. The final results will be the best output of
+    n_init consecutive runs in terms of inertia.
+
+max_iter : int, default=300
+    Maximum number of iterations of the k-means algorithm for a
+    single run.
+
+tol : float, default=1e-4
+    Relative tolerance with regards to Frobenius norm of the difference
+    in the cluster centers of two consecutive iterations to declare
+    convergence.
+
+verbose : int, default=0
+    Verbosity mode.
+
+random_state : int, RandomState instance or None, default=None
+    Determines random number generation for centroid initialization. Use
+    an int to make the randomness deterministic.
+    See :term:`Glossary &lt;random_state&gt;`.
+
+copy_x : bool, default=True
+    When pre-computing distances it is more numerically accurate to center
+    the data first. If copy_x is True (default), then the original data is
+    not modified. If False, the original data is modified, and put back
+    before the function returns, but small numerical differences may be
+    introduced by subtracting and then adding the data mean. Note that if
+    the original data is not C-contiguous, a copy will be made even if
+    copy_x is False. If the original data is sparse, but not in CSR format,
+    a copy will be made even if copy_x is False.
+
+algorithm : {&quot;auto&quot;, &quot;full&quot;, &quot;elkan&quot;}, default=&quot;auto&quot;
+    K-means algorithm to use. The classical EM-style algorithm is &quot;full&quot;.
+    The &quot;elkan&quot; variation is more efficient on data with well-defined
+    clusters, by using the triangle inequality. However it&#39;s more memory
+    intensive due to the allocation of an extra array of shape
+    (n_samples, n_clusters).
+
+    For now &quot;auto&quot; (kept for backward compatibility) chooses &quot;elkan&quot; but it
+    might change in the future for a better heuristic.
+
+    .. versionchanged:: 0.18
+        Added Elkan algorithm
+
+Attributes
+----------
+cluster_centers_ : ndarray of shape (n_clusters, n_features)
+    Coordinates of cluster centers. If the algorithm stops before fully
+    converging (see ``tol`` and ``max_iter``), these will not be
+    consistent with ``labels_``.
+
+labels_ : ndarray of shape (n_samples,)
+    Labels of each point
+
+inertia_ : float
+    Sum of squared distances of samples to their closest cluster center,
+    weighted by the sample weights if provided.
+
+n_iter_ : int
+    Number of iterations run.
+
+n_features_in_ : int
+    Number of features seen during :term:`fit`.
+
+    .. versionadded:: 0.24
+
+feature_names_in_ : ndarray of shape (`n_features_in_`,)
+    Names of features seen during :term:`fit`. Defined only when `X`
+    has feature names that are all strings.
+
+    .. versionadded:: 1.0
+
+See Also
+--------
+MiniBatchKMeans : Alternative online implementation that does incremental
+    updates of the centers positions using mini-batches.
+    For large scale learning (say n_samples &gt; 10k) MiniBatchKMeans is
+    probably much faster than the default batch implementation.
+
+Notes
+-----
+The k-means problem is solved using either Lloyd&#39;s or Elkan&#39;s algorithm.
+
+The average complexity is given by O(k n T), where n is the number of
+samples and T is the number of iteration.
+
+The worst case complexity is given by O(n^(k+2/p)) with
+n = n_samples, p = n_features. (D. Arthur and S. Vassilvitskii,
+&#39;How slow is the k-means method?&#39; SoCG2006)
+
+In practice, the k-means algorithm is very fast (one of the fastest
+clustering algorithms available), but it falls in local minima. That&#39;s why
+it can be useful to restart it several times.
+
+If the algorithm stops before fully converging (because of ``tol`` or
+``max_iter``), ``labels_`` and ``cluster_centers_`` will not be consistent,
+i.e. the ``cluster_centers_`` will not be the means of the points in each
+cluster. Also, the estimator will reassign ``labels_`` after the last
+iteration to make ``labels_`` consistent with ``predict`` on the training
+set.
+
+Examples
+--------
+
+&gt;&gt;&gt; from sklearn.cluster import KMeans
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; X = np.array([[1, 2], [1, 4], [1, 0],
+...               [10, 2], [10, 4], [10, 0]])
+&gt;&gt;&gt; kmeans = KMeans(n_clusters=2, random_state=0).fit(X)
+&gt;&gt;&gt; kmeans.labels_
+array([1, 1, 1, 0, 0, 0], dtype=int32)
+&gt;&gt;&gt; kmeans.predict([[0, 0], [12, 3]])
+array([1, 0], dtype=int32)
+&gt;&gt;&gt; kmeans.cluster_centers_
+array([[10.,  2.],
+       [ 1.,  2.]])
+<span class=" -Color -Color-Red">File:</span>           /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py
+<span class=" -Color -Color-Red">Type:</span>           type
+<span class=" -Color -Color-Red">Subclasses:</span>     MiniBatchKMeans
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="stock-movement">
-<h3><span class="section-number">12.1.2. </span>stock movement<a class="headerlink" href="#stock-movement" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">14.1.2. </span>stock movement<a class="headerlink" href="#stock-movement" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>這個應用蠻好玩的，我們可以對股票的 “走勢” 做分群。</p></li>
 <li><p>資料如以下：</p></li>
@@ -893,99 +1075,54 @@
   </thead>
   <tbody>
     <tr>
-      <th>22</th>
+      <th>20</th>
       <td>0</td>
-      <td>HP</td>
+      <td>Home Depot</td>
     </tr>
     <tr>
-      <th>14</th>
-      <td>0</td>
-      <td>Dell</td>
-    </tr>
-    <tr>
-      <th>43</th>
+      <th>29</th>
       <td>1</td>
-      <td>SAP</td>
+      <td>Lookheed Martin</td>
     </tr>
     <tr>
-      <th>46</th>
+      <th>36</th>
       <td>1</td>
-      <td>Sanofi-Aventis</td>
+      <td>Northrop Grumman</td>
     </tr>
     <tr>
-      <th>39</th>
+      <th>4</th>
       <td>1</td>
-      <td>Pfizer</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>1</td>
-      <td>Novartis</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1</td>
-      <td>British American Tobacco</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>1</td>
-      <td>Total</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>1</td>
-      <td>GlaxoSmithKline</td>
-    </tr>
-    <tr>
-      <th>52</th>
-      <td>1</td>
-      <td>Unilever</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>2</td>
-      <td>Mitsubishi</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>2</td>
-      <td>Toyota</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>2</td>
-      <td>Sony</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>2</td>
-      <td>Ford</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>2</td>
-      <td>Honda</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>Amazon</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>2</td>
-      <td>Cisco</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2</td>
-      <td>Canon</td>
+      <td>Boeing</td>
     </tr>
     <tr>
       <th>58</th>
-      <td>3</td>
+      <td>2</td>
       <td>Xerox</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2</td>
+      <td>General Electrics</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>Apple</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>3</td>
+      <td>Microsoft</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>3</td>
+      <td>Texas instruments</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>3</td>
+      <td>Taiwan Semiconductor Manufacturing</td>
     </tr>
     <tr>
       <th>47</th>
@@ -1013,9 +1150,24 @@
       <td>MasterCard</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>2</th>
       <td>3</td>
-      <td>DuPont de Nemours</td>
+      <td>Amazon</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>3</td>
+      <td>Intel</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>3</td>
+      <td>IBM</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>American express</td>
     </tr>
     <tr>
       <th>59</th>
@@ -1023,134 +1175,119 @@
       <td>Yahoo</td>
     </tr>
     <tr>
-      <th>50</th>
-      <td>3</td>
-      <td>Taiwan Semiconductor Manufacturing</td>
-    </tr>
-    <tr>
-      <th>51</th>
-      <td>3</td>
-      <td>Texas instruments</td>
-    </tr>
-    <tr>
       <th>8</th>
       <td>3</td>
       <td>Caterpillar</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>17</th>
       <td>3</td>
-      <td>Home Depot</td>
+      <td>Google/Alphabet</td>
     </tr>
     <tr>
-      <th>56</th>
-      <td>4</td>
-      <td>Wal-Mart</td>
+      <th>11</th>
+      <td>3</td>
+      <td>Cisco</td>
     </tr>
     <tr>
-      <th>27</th>
+      <th>13</th>
+      <td>3</td>
+      <td>DuPont de Nemours</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3</td>
+      <td>Dell</td>
+    </tr>
+    <tr>
+      <th>7</th>
       <td>4</td>
-      <td>Kimberly-Clark</td>
+      <td>Canon</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>4</td>
+      <td>Sony</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>4</td>
+      <td>Toyota</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>4</td>
+      <td>Ford</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>4</td>
+      <td>Mitsubishi</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>4</td>
+      <td>Honda</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>4</td>
+      <td>HP</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>4</td>
+      <td>5</td>
       <td>Colgate-Palmolive</td>
     </tr>
     <tr>
-      <th>25</th>
-      <td>4</td>
-      <td>Johnson &amp; Johnson</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>4</td>
-      <td>Procter Gamble</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>4</td>
-      <td>Pepsi</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>5</td>
-      <td>AIG</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>5</td>
-      <td>General Electrics</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>5</td>
-      <td>JPMorgan Chase</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>5</td>
-      <td>Goldman Sachs</td>
-    </tr>
-    <tr>
-      <th>55</th>
-      <td>5</td>
-      <td>Wells Fargo</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>5</td>
-      <td>Bank of America</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>5</td>
-      <td>American express</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>6</td>
-      <td>Walgreen</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>6</td>
-      <td>Lookheed Martin</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>6</td>
-      <td>Northrop Grumman</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>6</td>
-      <td>Boeing</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>7</td>
-      <td>Royal Dutch Shell</td>
-    </tr>
-    <tr>
       <th>28</th>
-      <td>7</td>
+      <td>5</td>
       <td>Coca Cola</td>
     </tr>
     <tr>
-      <th>53</th>
-      <td>7</td>
-      <td>Valero Energy</td>
+      <th>38</th>
+      <td>5</td>
+      <td>Pepsi</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>7</td>
-      <td>Chevron</td>
+      <th>52</th>
+      <td>6</td>
+      <td>Unilever</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>7</td>
-      <td>ConocoPhillips</td>
+      <th>46</th>
+      <td>6</td>
+      <td>Sanofi-Aventis</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>6</td>
+      <td>SAP</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>6</td>
+      <td>Royal Dutch Shell</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>6</td>
+      <td>GlaxoSmithKline</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>British American Tobacco</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>6</td>
+      <td>Novartis</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>6</td>
+      <td>Total</td>
     </tr>
     <tr>
       <th>57</th>
@@ -1158,39 +1295,84 @@
       <td>Exxon</td>
     </tr>
     <tr>
+      <th>41</th>
+      <td>7</td>
+      <td>Philip Morris</td>
+    </tr>
+    <tr>
       <th>44</th>
       <td>7</td>
       <td>Schlumberger</td>
     </tr>
     <tr>
-      <th>41</th>
+      <th>12</th>
+      <td>7</td>
+      <td>Chevron</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>7</td>
+      <td>Valero Energy</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7</td>
+      <td>ConocoPhillips</td>
+    </tr>
+    <tr>
+      <th>55</th>
       <td>8</td>
-      <td>Philip Morris</td>
+      <td>Wells Fargo</td>
     </tr>
     <tr>
-      <th>33</th>
-      <td>9</td>
-      <td>Microsoft</td>
+      <th>18</th>
+      <td>8</td>
+      <td>Goldman Sachs</td>
     </tr>
     <tr>
-      <th>24</th>
-      <td>9</td>
-      <td>Intel</td>
+      <th>1</th>
+      <td>8</td>
+      <td>AIG</td>
     </tr>
     <tr>
-      <th>23</th>
-      <td>9</td>
-      <td>IBM</td>
+      <th>26</th>
+      <td>8</td>
+      <td>JPMorgan Chase</td>
     </tr>
     <tr>
-      <th>17</th>
-      <td>9</td>
-      <td>Google/Alphabet</td>
+      <th>5</th>
+      <td>8</td>
+      <td>Bank of America</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>27</th>
       <td>9</td>
-      <td>Apple</td>
+      <td>Kimberly-Clark</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>9</td>
+      <td>Walgreen</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>9</td>
+      <td>Johnson &amp; Johnson</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>9</td>
+      <td>Wal-Mart</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>9</td>
+      <td>Procter Gamble</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>9</td>
+      <td>Pfizer</td>
     </tr>
   </tbody>
 </table>
@@ -1225,17 +1407,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../datacamp_seaborn/intro_seaborn.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../clustering/GMM.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">11. </span>Introduction to Seaborn</p>
+            <p class="prev-next-title"><span class="section-number">13. </span>Gaussian Mixture Model (GMM)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../datacamp_su/datacamp_su.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Supervised Learning with scikit-learn</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Supervised Learning with scikit-learn</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

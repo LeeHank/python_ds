@@ -6,7 +6,7 @@
 # * 這章要來講怎麼畫出 $y = f(x)$ 圖形  
 # * 首先來做些畫圖前的設定 (這邊用 `seaborn-whitegrid` 的 style)
 
-# In[1]:
+# In[21]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -18,7 +18,7 @@ import numpy as np
 # * 對於所有的 matplotlib plots，都是先建立 `figure` 和 `axis`  
 # * 我們可以建立最簡單的 figure 和 axis 如下
 
-# In[2]:
+# In[4]:
 
 
 fig = plt.figure()
@@ -29,7 +29,7 @@ ax = plt.axes()
 # * `axes` 是 an instance of the class `plt.Axes`，也就是我們看到的，具有刻度(ticks)和標籤(label)的bounding box。最終，axes會包含我們畫上去的元素，組出我們要看到的視覺內容。(所以，我覺得 axes 根本就是一張圖的意思啊...)(axes是axis的複數，所以隱含多個軸的意思)  
 # * 一旦我們建立了一個 axes，我們就可以用 `axes.plot()`來畫圖。例如，來畫 sin 的圖形吧：
 
-# In[3]:
+# In[24]:
 
 
 fig = plt.figure()
@@ -41,7 +41,7 @@ ax.plot(x, np.sin(x));
 
 # * 此外，我們也可以用 `pylab` 介面，讓 figure 和 axes 在背景中建立：
 
-# In[4]:
+# In[6]:
 
 
 plt.plot(x, np.sin(x));
@@ -54,7 +54,7 @@ plt.plot(x, np.sin(x));
 
 # * 如果要畫多個線條，就 call 多個 `plt.plot()` 就好  
 
-# In[5]:
+# In[7]:
 
 
 plt.plot(x, np.sin(x))
@@ -68,7 +68,7 @@ plt.plot(x, np.cos(x));
 
 # * 調整 color 的部分，有以下這些方法：
 
-# In[6]:
+# In[8]:
 
 
 plt.plot(x, np.sin(x - 0), color='blue')        # 用 color name
@@ -81,7 +81,7 @@ plt.plot(x, np.sin(x - 5), color='chartreuse'); # all HTML color names supported
 
 # * 調整 linestyle 的部分，有以下這些方法：
 
-# In[7]:
+# In[9]:
 
 
 plt.plot(x, x + 0, linestyle='solid')
@@ -90,7 +90,7 @@ plt.plot(x, x + 2, linestyle='dashdot')
 plt.plot(x, x + 3, linestyle='dotted');
 
 
-# In[8]:
+# In[10]:
 
 
 # 也可以用這種簡單的表示方式：
@@ -102,7 +102,7 @@ plt.plot(x, x + 7, linestyle=':');  # dotted
 
 # If you would like to be extremely terse, these ``linestyle`` and ``color`` codes can be combined into a single non-keyword argument to the ``plt.plot()`` function:
 
-# In[9]:
+# In[11]:
 
 
 plt.plot(x, x + 0, '-g')  # solid green
@@ -115,7 +115,7 @@ plt.plot(x, x + 3, ':r');  # dotted red
 # 
 # * 可以用 `plt.xlim()` and `plt.ylim()` methods:  
 
-# In[10]:
+# In[12]:
 
 
 plt.plot(x, np.sin(x))
@@ -126,7 +126,7 @@ plt.ylim(-1.5, 1.5);
 
 # * 如果要把軸反轉(基於不知道啥的原因)，就把參數由大寫到小就好：
 
-# In[11]:
+# In[13]:
 
 
 plt.plot(x, np.sin(x))
@@ -137,7 +137,7 @@ plt.ylim(1.2, -1.2);
 
 # * 因為 axes 是 axis 的複數，所以也可以用 `plt.axes([xmin, xmax, ymin, ymax])` 的方式來設定兩個軸的 range
 
-# In[12]:
+# In[14]:
 
 
 plt.plot(x, np.sin(x))
@@ -146,7 +146,7 @@ plt.axis([-1, 11, -1.5, 1.5]);
 
 # * `plt.axis()` (小心，是 axis，不是axes) 有一些高階參數，例如，讓圖形緊密(tight)一點：
 
-# In[13]:
+# In[15]:
 
 
 plt.plot(x, np.sin(x))
@@ -155,7 +155,7 @@ plt.axis('tight');
 
 # * 我們可以讓 x 和 y 的刻度一樣：
 
-# In[14]:
+# In[16]:
 
 
 plt.plot(x, np.sin(x))
@@ -164,7 +164,7 @@ plt.axis('equal');
 
 # * 別忘了，可以用 `plt.axis?` 來查詢更細節的用法
 
-# In[15]:
+# In[17]:
 
 
 get_ipython().run_line_magic('pinfo', 'plt.axis')
@@ -175,7 +175,7 @@ get_ipython().run_line_magic('pinfo', 'plt.axis')
 # * label 就包含： `xlabel`, `ylabel` , `title`, 以及 legend 要用的 label. 
 # * 來看範例：
 
-# In[16]:
+# In[18]:
 
 
 plt.plot(x, np.sin(x))
@@ -186,7 +186,7 @@ plt.ylabel("sin(x)");
 
 # * 要畫 legend 的話，簡單的做法，是在每張圖上先幫他加上 label，最後再用 `plt.legend()`，他就會幫你做出來：
 
-# In[17]:
+# In[19]:
 
 
 plt.plot(x, np.sin(x), '-g', label='sin(x)')
@@ -209,7 +209,7 @@ plt.legend();
 # 
 # * 但其實用 oop 介面來畫圖時，很少直接 call 上面那些 methods，而是直接用`ax.set()` 把該設定的 properties 一次設定完：
 
-# In[18]:
+# In[20]:
 
 
 ax = plt.axes()

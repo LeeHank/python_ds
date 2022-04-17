@@ -181,23 +181,52 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/KMeans.html">
+   12. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/GMM.html">
+   13. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  unsupervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_unsu/clusters.html">
+   14. Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   supervised learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   12. Supervised Learning with scikit-learn
+   15. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   13. Classification Trees
+   16. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   14. Permutation Importance vs Random Forest Feature Importance (MDI)
+   17. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -745,9 +774,6 @@ use pyplot functions for plotting.</p></li>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_17_0.png" src="../_images/usage_17_0.png" />
-</div>
 </div>
 <p>or the pyplot-style:</p>
 <div class="cell docutils container">
@@ -764,9 +790,6 @@ use pyplot functions for plotting.</p></li>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_19_0.png" src="../_images/usage_19_0.png" />
 </div>
 </div>
 <p>(In addition, there is a third approach, for the case when embedding
@@ -808,9 +831,6 @@ signature function below.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_23_0.png" src="../_images/usage_23_0.png" />
-</div>
 </div>
 <p>Note that if you want to install these as a python package, or any other
 customizations you could use one of the many templates on the web;
@@ -834,9 +854,6 @@ after the fact with <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_25_0.png" src="../_images/usage_25_0.png" />
-</div>
 </div>
 <div class="section" id="colors">
 <h3>Colors<a class="headerlink" href="#colors" title="Permalink to this headline">¶</a></h3>
@@ -851,9 +868,6 @@ from the interior:</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_27_0.png" src="../_images/usage_27_0.png" />
 </div>
 </div>
 </div>
@@ -879,9 +893,6 @@ users can define their own <code class="docutils literal notranslate"><span clas
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_29_0.png" src="../_images/usage_29_0.png" />
 </div>
 </div>
 </div>
@@ -910,9 +921,6 @@ for more discussion).  Text can also be directly added to plots using
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_31_0.png" src="../_images/usage_31_0.png" />
 </div>
 </div>
 <p>All of the <code class="docutils literal notranslate"><span class="pre">~.Axes.text</span></code> functions return a <code class="docutils literal notranslate"><span class="pre">matplotlib.text.Text</span></code>
@@ -957,9 +965,6 @@ to <em>xy</em>, to a piece of text at <em>xytext</em>:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_33_0.png" src="../_images/usage_33_0.png" />
-</div>
 </div>
 <p>In this basic example, both <em>xy</em> and <em>xytext</em> are in data coordinates.
 There are a variety of other coordinate systems one can choose – see
@@ -979,9 +984,6 @@ details.  More examples also can be found in
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_35_0.png" src="../_images/usage_35_0.png" />
 </div>
 </div>
 <p>Legends in Matplotlib are quite flexible in layout, placement, and what
@@ -1015,9 +1017,6 @@ manually:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_37_0.png" src="../_images/usage_37_0.png" />
-</div>
 </div>
 <p>The scale sets the mapping from data values to spacing along the Axis. This
 happens in both directions, and gets combined into a <em>transform</em>, which
@@ -1041,9 +1040,6 @@ Axis objects to put tick marks.  A simple interface to this is
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Manual ticks&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_39_0.png" src="../_images/usage_39_0.png" />
 </div>
 </div>
 <p>Different scales can have different locators and formatters; for instance
@@ -1069,9 +1065,6 @@ as appropriate.  For dates:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_41_0.png" src="../_images/usage_41_0.png" />
-</div>
 </div>
 <p>For more information see the date examples
 (e.g. :doc:<code class="docutils literal notranslate"><span class="pre">/gallery/text_labels_and_annotations/date</span></code>)</p>
@@ -1085,9 +1078,6 @@ as appropriate.  For dates:</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">)));</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_43_0.png" src="../_images/usage_43_0.png" />
 </div>
 </div>
 <p>One caveat about categorical plotting is that some methods of parsing
@@ -1122,12 +1112,6 @@ examples.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Angle [rad]&#39;)
-</pre></div>
-</div>
-<img alt="../_images/usage_45_1.png" src="../_images/usage_45_1.png" />
-</div>
 </div>
 </div>
 </div>
@@ -1159,9 +1143,6 @@ a colormap. Matplotlib has a number of plot types that do this:</p>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;scatter()&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_47_0.png" src="../_images/usage_47_0.png" />
 </div>
 </div>
 <div class="section" id="colormaps">
@@ -1212,9 +1193,6 @@ with Axes objects spanning columns or rows, using <code class="docutils literal 
 <span class="n">axd</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/usage_49_0.png" src="../_images/usage_49_0.png" />
 </div>
 </div>
 <p>Matplotlib has quite sophisticated tools for arranging Axes: See

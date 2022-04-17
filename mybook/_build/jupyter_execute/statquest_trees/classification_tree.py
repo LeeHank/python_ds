@@ -61,7 +61,7 @@ get_ipython().system('jupyter nbextension enable --py widgetsnbextension')
 # <a id="download-the-data"></a>
 # ## Import the data
 
-# In[4]:
+# In[17]:
 
 
 df = pd.read_csv('processed.cleveland.data', 
@@ -128,7 +128,7 @@ df.head()
 
 # * 我先將資料類型整理如下：
 
-# In[5]:
+# In[21]:
 
 
 categorical_columns = ["sex", "cp", "fbs", "restecg", "exang", "slope", "thal"]
@@ -137,7 +137,7 @@ numerical_columns = ["age", "restbp", "chol", "thalach", "oldpeak", "ca"]
 
 # * 來看一下目前的資料 type
 
-# In[6]:
+# In[22]:
 
 
 df.info()
@@ -145,7 +145,7 @@ df.info()
 
 # * 發現蠻怪的，剛剛看表格，全都是數字，所以應該都要被判讀為 float64，但 **ca** and **thal**, 卻呈現是`object`，表示資料裡面有 mixtures of things (例如數字 + 字母)，但，**ca(幾條血管被螢光劑染色)** 和 **thal(心機灌流掃描的結果)** 應該就是數值，所以我們來檢查看看
 
-# In[7]:
+# In[23]:
 
 
 df['ca'].unique()
@@ -153,7 +153,7 @@ df['ca'].unique()
 
 # * 我們發現，**ca** 應該只有 0, 3, 2, 1 這四種值，但多出來 `?` ，可見 `?` 就是個 missing data
 
-# In[8]:
+# In[24]:
 
 
 df['thal'].unique()
@@ -170,7 +170,7 @@ df['thal'].unique()
 #   * R 的 is.na() 在 python 叫 isnull()，他會偵測出 None 和 np.nan
 #   * R 的 !is.na() 在 python 叫 notnull()
 
-# In[9]:
+# In[25]:
 
 
 df.loc[df.ca == "?", "ca"] = None 
@@ -184,7 +184,7 @@ df.info()
 
 # * 因為 missing 的很少，所以這邊直接整列刪除就
 
-# In[10]:
+# In[75]:
 
 
 df_no_missing = df.dropna()
@@ -194,7 +194,7 @@ print("nonmissing rows: ", len(df_no_missing))
 
 # ----
 
-# In[11]:
+# In[78]:
 
 
 cat_cols = ['cp', 'restecg', 'slope', 'thal']
@@ -211,20 +211,20 @@ df_no_missing.info()
 # 
 # **ALSO NOTE:** In the code below we are using `copy()` to copy the data *by value*. By default, pandas uses copy *by reference*. Using `copy()` ensures that the original data `df_no_missing` is not modified when we modify `X` or `y`. In other words, if we make a mistake when we are formatting the columns for classification trees, we can just re-copy `df_no_missing`, rather than reload the original data and remove the missing values etc.
 
-# In[12]:
+# In[80]:
 
 
 X = df_no_missing.drop('hd', axis=1).copy() # 用 copy 的方式來做，才不會等等改 X 時， df_nomissing 跟著變
 y = df_no_missing['hd'].copy()
 
 
-# In[13]:
+# In[81]:
 
 
 y[y>0] = 1
 
 
-# In[14]:
+# In[82]:
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
@@ -232,7 +232,7 @@ clf_dt = DecisionTreeClassifier(random_state=42, ccp_alpha=0.014)
 clf_dt = clf_dt.fit(X_train, y_train)
 
 
-# In[15]:
+# In[83]:
 
 
 plt.figure(figsize=(15, 7.5))
@@ -285,7 +285,7 @@ plot_tree(clf_dt,
 # 
 # Now, just to review, let's look at the data types in `X` to remember how python is seeing the data right now.
 
-# In[16]:
+# In[17]:
 
 
 X.dtypes
@@ -304,7 +304,7 @@ X.dtypes
 # Now let's inspect and, if needed, convert the columns that contain categorical and integer data into the correct datatypes. We'll start with **cp** (chest pain) by inspecting all of its unique values:
 # <!-- We'll start with the three colunms that should only contain 0s and 1s. **sex**. First, let's make sure it only contains `0` (for **female**) and `1` (for **male**). -->
 
-# In[17]:
+# In[18]:
 
 
 X['cp'].unique()
@@ -318,7 +318,7 @@ X['cp'].unique()
 # 
 # First, before we commit to converting **cp** with **One-Hot Encoding**, let's just see what happens when we convert **cp** without saving the results. This will make it easy to see how `get_dummies()` works.
 
-# In[18]:
+# In[19]:
 
 
 ## For this tutorial, we will use get_dummies() to do One-Hot Encoding,
@@ -333,7 +333,7 @@ pd.get_dummies(X, columns=['cp']).head()
 # **NOTE:** In a real situation (not a tutorial like this), you should verify all 5 of these columns
 # only contain the accepted categories. However, for this tutorial, I've already done that for us, so we can skip that step.
 
-# In[19]:
+# In[20]:
 
 
 X_encoded = pd.get_dummies(X, columns=['cp', 
@@ -350,7 +350,7 @@ X_encoded.head()
 
 # Now, one last thing before we build a **Classification Tree**.  `y` doesn't just contain **0**s and **1**s. Instead, it has **5** different levels of heart disease. **0 =** no heart disease and **1-4** are various degrees of heart disease. We can see this with `unique()`:
 
-# In[20]:
+# In[21]:
 
 
 y.unique()
@@ -358,7 +358,7 @@ y.unique()
 
 # In this tutorial we're only making a tree that does simple classification and only care if someone has heart disease or not, so we need to convert all numbers **> 0** to **1**.
 
-# In[21]:
+# In[22]:
 
 
 y_not_zero_index = y > 0 # get the index for each non-zero value in y
@@ -376,7 +376,7 @@ y.unique()               # verify that y only contains 0 and 1.
 # ## Build A Preliminary Classification Tree
 # At long last, the data are correctly formatted for making a **Classification Tree**. Now we simply split the data into **training** and **testing** sets and build the tree.
 
-# In[22]:
+# In[23]:
 
 
 ## split the data into training and testing sets
@@ -387,7 +387,7 @@ clf_dt = DecisionTreeClassifier(random_state=42)
 clf_dt = clf_dt.fit(X_train, y_train)
 
 
-# In[23]:
+# In[24]:
 
 
 ## NOTE: We can plot the tree and it is huge!
@@ -401,7 +401,7 @@ plot_tree(clf_dt,
 
 # OK, we've built a **Classification Tree** for classification. Let's see how it performs on the **Testing Dataset** by running the **Testing Dataset** down the tree and drawing a **Confusion Matrix**.
 
-# In[24]:
+# In[25]:
 
 
 ## plot_confusion_matrix() will run the test data down the tree and draw
@@ -422,7 +422,7 @@ plot_confusion_matrix(clf_dt, X_test, y_test, display_labels=["Does not have HD"
 # 
 # First, let's extract the different values of `alpha` that are available for this tree and build a pruned tree for each value for `alpha`. **NOTE:** We omit the maximum value for alpha with `ccp_alphas = ccp_alphas[:-1]` because it would prune all leaves, leaving us with only a root instead of a tree.
 
-# In[25]:
+# In[48]:
 
 
 path = clf_dt.cost_complexity_pruning_path(X_train, y_train) # determine values for alpha

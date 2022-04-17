@@ -16,7 +16,7 @@ import numpy as np
 # 
 # * 作法和剛剛的線圖幾乎一樣
 
-# In[2]:
+# In[7]:
 
 
 x = np.linspace(0, 10, 30)
@@ -29,7 +29,7 @@ plt.plot(x, y, 'o', color='black');
 # * 至於有多少 marker 可以用，可以查 `plt.plot` 或 Matplotlib的說明文件
 # * 這邊舉例如下：
 
-# In[3]:
+# In[10]:
 
 
 rng = np.random.RandomState(0)
@@ -42,7 +42,7 @@ plt.xlim(0, 1.8);
 
 # * 我們可以在 marker 的地方，一次定義多個特性(我要線條(-), 點(o), 以及黑色 (k))
 
-# In[4]:
+# In[11]:
 
 
 plt.plot(x, y, '-ok'); # line (-), circle marker (o), black (k)
@@ -50,7 +50,7 @@ plt.plot(x, y, '-ok'); # line (-), circle marker (o), black (k)
 
 # * 還有一些額外的參數，可以做更多的設定：
 
-# In[5]:
+# In[12]:
 
 
 plt.plot(x, y, '-p', color='gray',
@@ -65,7 +65,7 @@ plt.ylim(-1.2, 1.2);
 
 # * 另一種畫散布圖的方式是 `plt.scatter`，語法幾乎一樣：
 
-# In[6]:
+# In[13]:
 
 
 plt.scatter(x, y, marker='o');
@@ -74,7 +74,7 @@ plt.scatter(x, y, marker='o');
 # * 那，`plt.plot()` 和 `plt.scatter()` 差在哪？ 差在， `plt.scatter()` 可以控制 "每一個點" 屬性(大小, 顏色, 框線...)
 # * 例如下例，我要畫 100 個點，然後我想要讓這 100 個點的大小和顏色都不同：  
 
-# In[7]:
+# In[16]:
 
 
 rng = np.random.RandomState(0);
@@ -99,7 +99,7 @@ plt.colorbar();  # show color scale
 # * 再來，看一個統計畫圖常用的技巧，除了 (x,y) 描點外，點的大小 depend on 某個連續變數，點的顏色 depend on 某個類別變數. 
 # * 用 iris data 來當例子
 
-# In[8]:
+# In[24]:
 
 
 from sklearn.datasets import load_iris
@@ -112,7 +112,7 @@ iris.feature_names
 # * 點的大小用 `features[2]` (petal length，花瓣長度)
 # * 點的顏色，用 response variable : iris.target (花的種類)
 
-# In[9]:
+# In[25]:
 
 
 plt.scatter(features[0], 

@@ -73,7 +73,7 @@ fig
 
 # * 舉例來說，我畫了3條線圖，但我 legend 中只想標註2條，那我就第三條不要標 label 就好：
 
-# In[6]:
+# In[10]:
 
 
 x = np.linspace(0, 10, 1000)
@@ -91,7 +91,7 @@ plt.legend(framealpha=1, frameon=True);
 # Here is an example where we'll use the size of points to indicate populations of California cities.
 # We'd like a legend that specifies the scale of the sizes of the points, and we'll accomplish this by plotting some labeled data with no entries:
 
-# In[7]:
+# In[14]:
 
 
 import pandas as pd
@@ -130,7 +130,7 @@ plt.title('California Cities: Area and Population');
 # * 如果我想加上多個 legend 的話，照預設的做法是行不通的，後面的 legend 會蓋過前面的 
 # * 所以，這邊就得多做點客製化了，要用低階的 `ax.add_artist()` 來新增，如下例：
 
-# In[8]:
+# In[15]:
 
 
 fig, ax = plt.subplots()

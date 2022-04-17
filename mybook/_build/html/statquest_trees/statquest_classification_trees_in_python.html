@@ -120,13 +120,89 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.00-matplotlib_intro.html">
+   3. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   4. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   5. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.03-Errorbars.html">
+   6. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   7. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.06-Legends.html">
+   8. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.07-Colorbars.html">
+   9. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   10. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Seaborn
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
-   3. Introduction to Seaborn
+   11. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/KMeans.html">
+   12. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/GMM.html">
+   13. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  unsupervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_unsu/clusters.html">
+   14. Clustering
   </a>
  </li>
 </ul>
@@ -138,17 +214,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   4. Supervised Learning with scikit-learn
+   15. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="classification_tree.html">
-   5. Classification Trees
+   16. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   15. Permutation Importance vs Random Forest Feature Importance (MDI)
+   17. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -1861,7 +1937,7 @@ only contain the accepted categories. However, for this tutorial, I’ve already
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x12d26e160&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x7fe5f105c050&gt;
 </pre></div>
 </div>
 <img alt="../_images/statquest_classification_trees_in_python_63_1.png" src="../_images/statquest_classification_trees_in_python_63_1.png" />
@@ -1941,7 +2017,7 @@ the **Decision Tree** algorithm will not do this for us, `alpha` is called a **H
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;tree&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe5b05d4e10&gt;
 </pre></div>
 </div>
 <img alt="../_images/statquest_classification_trees_in_python_75_1.png" src="../_images/statquest_classification_trees_in_python_75_1.png" />
@@ -1975,7 +2051,7 @@ the **Decision Tree** algorithm will not do this for us, `alpha` is called a **H
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;alpha&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe5d0ba9150&gt;
 </pre></div>
 </div>
 <img alt="../_images/statquest_classification_trees_in_python_77_1.png" src="../_images/statquest_classification_trees_in_python_77_1.png" />
@@ -2085,7 +2161,7 @@ Name: alpha, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x12d6d1c10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x7fe5b05d4510&gt;
 </pre></div>
 </div>
 <img alt="../_images/statquest_classification_trees_in_python_89_1.png" src="../_images/statquest_classification_trees_in_python_89_1.png" />

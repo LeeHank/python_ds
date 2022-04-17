@@ -8,7 +8,7 @@
 # help you get started with Matplotlib.
 # 
 
-# In[1]:
+# In[7]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -22,7 +22,7 @@ import pandas as pd
 
 # * 先快速畫一張圖，再來講內容：
 
-# In[2]:
+# In[4]:
 
 
 fig, ax = plt.subplots()  # Create a figure containing a single axes.
@@ -56,7 +56,7 @@ ax.plot([1, 2, 3, 4],
 
 
 
-# In[3]:
+# In[9]:
 
 
 # numpy.array objects
@@ -72,7 +72,7 @@ ax.set_xlabel('entry a')
 ax.set_ylabel('entry b');
 
 
-# In[4]:
+# In[10]:
 
 
 # dictionary
@@ -88,7 +88,7 @@ ax.set_xlabel('entry a')
 ax.set_ylabel('entry b');
 
 
-# In[5]:
+# In[11]:
 
 
 # pandas.DataFrame
@@ -127,7 +127,7 @@ ax.set_ylabel('entry b');
 
 
 
-# In[6]:
+# In[ ]:
 
 
 x = np.linspace(0, 2, 100)  # Sample data.
@@ -147,7 +147,7 @@ ax.legend();  # Add a legend.
 # 
 # 
 
-# In[7]:
+# In[ ]:
 
 
 x = np.linspace(0, 2, 100)  # Sample data.
@@ -184,7 +184,7 @@ plt.legend();
 # 
 # 
 
-# In[8]:
+# In[ ]:
 
 
 def my_plotter(ax, data1, data2, param_dict):
@@ -199,7 +199,7 @@ def my_plotter(ax, data1, data2, param_dict):
 # 
 # 
 
-# In[9]:
+# In[ ]:
 
 
 data1, data2, data3, data4 = np.random.randn(4, 100)  # make 4 random data sets
@@ -224,7 +224,7 @@ my_plotter(ax2, data3, data4, {'marker': 'o'});
 # 
 # 
 
-# In[10]:
+# In[ ]:
 
 
 fig, ax = plt.subplots(figsize=(5, 2.7))
@@ -244,7 +244,7 @@ l.set_linestyle(':');
 # 
 # 
 
-# In[11]:
+# In[ ]:
 
 
 fig, ax = plt.subplots(figsize=(5, 2.7))
@@ -268,7 +268,7 @@ ax.scatter(data1, data2, s=50, facecolor='C0', edgecolor='k');
 # 
 # 
 
-# In[12]:
+# In[ ]:
 
 
 fig, ax = plt.subplots(figsize=(5, 2.7))
@@ -290,7 +290,7 @@ ax.legend();
 # 
 # 
 
-# In[13]:
+# In[ ]:
 
 
 mu, sigma = 115, 15
@@ -339,7 +339,7 @@ ax.grid(True);
 # 
 # 
 
-# In[14]:
+# In[ ]:
 
 
 fig, ax = plt.subplots(figsize=(5, 2.7))
@@ -366,7 +366,7 @@ ax.set_ylim(-2, 2);
 # 
 # 
 
-# In[15]:
+# In[ ]:
 
 
 fig, ax = plt.subplots(figsize=(5, 2.7))
@@ -398,7 +398,7 @@ ax.legend();
 # 
 # 
 
-# In[16]:
+# In[ ]:
 
 
 fig, axs = plt.subplots(1, 2, figsize=(5, 2.7), layout='constrained')
@@ -423,7 +423,7 @@ axs[1].plot(xdata, data);
 # 
 # 
 
-# In[17]:
+# In[ ]:
 
 
 fig, axs = plt.subplots(2, 1, layout='constrained')
@@ -450,7 +450,7 @@ axs[1].set_title('Manual ticks');
 # 
 # 
 
-# In[18]:
+# In[ ]:
 
 
 fig, ax = plt.subplots(figsize=(5, 2.7), layout='constrained')
@@ -470,7 +470,7 @@ ax.xaxis.set_major_formatter(cdf);
 # 
 # 
 
-# In[19]:
+# In[ ]:
 
 
 fig, ax = plt.subplots(figsize=(5, 2.7), layout='constrained')
@@ -501,7 +501,7 @@ ax.bar(categories, np.random.rand(len(categories)));
 # 
 # 
 
-# In[20]:
+# In[ ]:
 
 
 fig, (ax1, ax3) = plt.subplots(1, 2, figsize=(8, 2.7), layout='constrained')
@@ -523,7 +523,7 @@ ax4.set_xlabel('Angle [rad]')
 # 
 # 
 
-# In[21]:
+# In[ ]:
 
 
 X, Y = np.meshgrid(np.linspace(-3, 3, 128), np.linspace(-3, 3, 128))
@@ -592,7 +592,7 @@ axs[1, 1].set_title('scatter()');
 # 
 # 
 
-# In[22]:
+# In[ ]:
 
 
 fig, axd = plt.subplot_mosaic([['upleft', 'right'],

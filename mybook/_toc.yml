@@ -27,6 +27,11 @@ parts:
     numbered: true
     chapters: 
     - file: datacamp_seaborn/intro_seaborn
+  - caption: Clustering
+    numbered: true
+    chapters:
+    - file: clustering/KMeans
+    - file: clustering/GMM
   - caption: unsupervised learning
     numbered: true
     chapters:
