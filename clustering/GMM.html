@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="14. Clustering" href="../datacamp_unsu/clusters.html" />
+    <link rel="next" title="14. Supervised Learning with scikit-learn" href="../datacamp_su/datacamp_su.html" />
     <link rel="prev" title="12. K-Means" href="KMeans.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -200,35 +200,23 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  unsupervised learning
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../datacamp_unsu/clusters.html">
-   14. Clustering
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   supervised learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   15. Supervised Learning with scikit-learn
+   14. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   16. Classification Trees
+   15. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   17. Permutation Importance vs Random Forest Feature Importance (MDI)
+   16. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -475,13 +463,18 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#olivetti">
+     13.4.1. [影像分群] Olivetti
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#density-estimation-moon-data">
-     13.4.1. [Density Estimation] moon data
+     13.4.2. [Density Estimation] moon data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#digits-number">
-     13.4.2. [影像生成] Digits Number
+     13.4.3. [影像生成] Digits Number
     </a>
    </li>
   </ul>
@@ -651,13 +644,18 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#olivetti">
+     13.4.1. [影像分群] Olivetti
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#density-estimation-moon-data">
-     13.4.1. [Density Estimation] moon data
+     13.4.2. [Density Estimation] moon data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#digits-number">
-     13.4.2. [影像生成] Digits Number
+     13.4.3. [影像生成] Digits Number
     </a>
    </li>
   </ul>
@@ -1650,8 +1648,406 @@ best_covariance_type:  tied
 </div>
 <div class="section" id="real-world-examples">
 <h2><span class="section-number">13.4. </span>Real world examples<a class="headerlink" href="#real-world-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="olivetti">
+<h3><span class="section-number">13.4.1. </span>[影像分群] Olivetti<a class="headerlink" href="#olivetti" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_olivetti_faces</span>
+
+<span class="n">olivetti</span> <span class="o">=</span> <span class="n">fetch_olivetti_faces</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">olivetti</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">olivetti</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  1  1  2  2  2  2
+  2  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4  4  4  4
+  4  4  5  5  5  5  5  5  5  5  5  5  6  6  6  6  6  6  6  6  6  6  7  7
+  7  7  7  7  7  7  7  7  8  8  8  8  8  8  8  8  8  8  9  9  9  9  9  9
+  9  9  9  9 10 10 10 10 10 10 10 10 10 10 11 11 11 11 11 11 11 11 11 11
+ 12 12 12 12 12 12 12 12 12 12 13 13 13 13 13 13 13 13 13 13 14 14 14 14
+ 14 14 14 14 14 14 15 15 15 15 15 15 15 15 15 15 16 16 16 16 16 16 16 16
+ 16 16 17 17 17 17 17 17 17 17 17 17 18 18 18 18 18 18 18 18 18 18 19 19
+ 19 19 19 19 19 19 19 19 20 20 20 20 20 20 20 20 20 20 21 21 21 21 21 21
+ 21 21 21 21 22 22 22 22 22 22 22 22 22 22 23 23 23 23 23 23 23 23 23 23
+ 24 24 24 24 24 24 24 24 24 24 25 25 25 25 25 25 25 25 25 25 26 26 26 26
+ 26 26 26 26 26 26 27 27 27 27 27 27 27 27 27 27 28 28 28 28 28 28 28 28
+ 28 28 29 29 29 29 29 29 29 29 29 29 30 30 30 30 30 30 30 30 30 30 31 31
+ 31 31 31 31 31 31 31 31 32 32 32 32 32 32 32 32 32 32 33 33 33 33 33 33
+ 33 33 33 33 34 34 34 34 34 34 34 34 34 34 35 35 35 35 35 35 35 35 35 35
+ 36 36 36 36 36 36 36 36 36 36 37 37 37 37 37 37 37 37 37 37 38 38 38 38
+ 38 38 38 38 38 38 39 39 39 39 39 39 39 39 39 39]
+(400, 4096)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Olivetti 臉譜資料，有 40 個人，每個人都拍 10 張照片，共有 400 張 64x64 的灰階人臉照片。</p></li>
+<li><p>每張照片都被 flatten 為 4096 維的 1D 向量，</p></li>
+<li><p>每張照片，都已經被 normalize 到 0~1 之間</p></li>
+<li><p>這組資料常被用來作為訓練看照片判斷是誰的人臉.</p></li>
+<li><p>這邊我們要練習分群，看用 GMM 分完群後，是不是每一群裡的人臉長的都差不多</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先用分層隨機抽樣，將資料分成 train, valid, 和 test</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedShuffleSplit</span>
+
+<span class="n">strat_split</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">train_valid_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">strat_split</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">olivetti</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">olivetti</span><span class="o">.</span><span class="n">target</span><span class="p">))</span>
+<span class="n">X_train_valid</span> <span class="o">=</span> <span class="n">olivetti</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">train_valid_idx</span><span class="p">]</span>
+<span class="n">y_train_valid</span> <span class="o">=</span> <span class="n">olivetti</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">train_valid_idx</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">olivetti</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">olivetti</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+
+<span class="n">strat_split</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">43</span><span class="p">)</span>
+<span class="n">train_idx</span><span class="p">,</span> <span class="n">valid_idx</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">strat_split</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_train_valid</span><span class="p">,</span> <span class="n">y_train_valid</span><span class="p">))</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train_valid</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train_valid</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+<span class="n">X_valid</span> <span class="o">=</span> <span class="n">X_train_valid</span><span class="p">[</span><span class="n">valid_idx</span><span class="p">]</span>
+<span class="n">y_valid</span> <span class="o">=</span> <span class="n">y_train_valid</span><span class="p">[</span><span class="n">valid_idx</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(280, 4096) (280,)
+(80, 4096) (80,)
+(40, 4096) (40,)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>先做 PCA，把維度從 4096 維降下來 (這一步，就和 auto-encoder要取 feature 一樣)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mf">0.99</span><span class="p">)</span>
+<span class="n">X_train_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_valid_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_valid</span><span class="p">)</span>
+<span class="n">X_test_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">pca</span><span class="o">.</span><span class="n">n_components_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>199
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，4096維被降到199維.</p></li>
+<li><p>接下來，做 GMM</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm2</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">gm2</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm2</span><span class="o">.</span><span class="n">bic</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3897195.689701972
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
+
+<span class="c1"># 選 best k, covariance_type. </span>
+<span class="n">bic_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">aic_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">converage_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="n">min_bic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">infty</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">covariance_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;full&quot;</span><span class="p">,</span> <span class="s2">&quot;tied&quot;</span><span class="p">,</span> <span class="s2">&quot;spherical&quot;</span><span class="p">,</span> <span class="s2">&quot;diag&quot;</span><span class="p">):</span>
+        
+        <span class="n">gmm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                              <span class="n">covariance_type</span><span class="o">=</span><span class="n">covariance_type</span><span class="p">,</span>
+                              <span class="c1">#reg_covar = 1e-5,</span>
+                              <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">bic_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gmm</span><span class="o">.</span><span class="n">bic</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]))</span>
+        <span class="n">aic_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gmm</span><span class="o">.</span><span class="n">aic</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]))</span>
+        <span class="n">converage_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gmm</span><span class="o">.</span><span class="n">converged_</span><span class="p">)</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;k = </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> completed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k = 5 completed
+k = 10 completed
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">256</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="k">for</span> <span class="n">covariance_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;full&quot;</span><span class="p">,</span> <span class="s2">&quot;tied&quot;</span><span class="p">,</span> <span class="s2">&quot;spherical&quot;</span><span class="p">,</span> <span class="s2">&quot;diag&quot;</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>         <span class="n">gmm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>                               <span class="n">covariance_type</span><span class="o">=</span><span class="n">covariance_type</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>                               <span class="c1">#reg_covar = 1e-5,</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>                               <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="n">bic_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gmm</span><span class="o">.</span><span class="n">bic</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]))</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span>         <span class="n">aic_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gmm</span><span class="o">.</span><span class="n">aic</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]))</span>
+
+<span class="nn">File /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/mixture/_base.py:198,</span> in <span class="ni">BaseMixture.fit</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span> <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="sd">&quot;&quot;&quot;Estimate model parameters with the EM algorithm.</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span><span class="sd">     The method fits the model ``n_init`` times and sets the parameters with</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span><span class="sd">         The fitted mixture.</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">198</span>     <span class="bp">self</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="k">return</span> <span class="bp">self</span>
+
+<span class="nn">File /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/mixture/_base.py:251,</span> in <span class="ni">BaseMixture.fit_predict</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">248</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_verbose_msg_init_beg</span><span class="p">(</span><span class="n">init</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span> <span class="k">if</span> <span class="n">do_init</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">251</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_parameters</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">random_state</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">253</span> <span class="n">lower_bound</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="k">if</span> <span class="n">do_init</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">lower_bound_</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span> <span class="k">for</span> <span class="n">n_iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+
+<span class="nn">File /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/mixture/_base.py:158,</span> in <span class="ni">BaseMixture._initialize_parameters</span><span class="nt">(self, X, random_state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">154</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">155</span>         <span class="s2">&quot;Unimplemented initialization method &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_params</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">158</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">resp</span><span class="p">)</span>
+
+<span class="nn">File /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/mixture/_gaussian_mixture.py:716,</span> in <span class="ni">GaussianMixture._initialize</span><span class="nt">(self, X, resp)</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">precisions_init</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span>     <span class="bp">self</span><span class="o">.</span><span class="n">covariances_</span> <span class="o">=</span> <span class="n">covariances</span>
+<span class="ne">--&gt; </span><span class="mi">716</span>     <span class="bp">self</span><span class="o">.</span><span class="n">precisions_cholesky_</span> <span class="o">=</span> <span class="n">_compute_precision_cholesky</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">717</span>         <span class="n">covariances</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">covariance_type</span>
+<span class="g g-Whitespace">    </span><span class="mi">718</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">719</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">covariance_type</span> <span class="o">==</span> <span class="s2">&quot;full&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span>     <span class="bp">self</span><span class="o">.</span><span class="n">precisions_cholesky_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span>         <span class="p">[</span>
+<span class="g g-Whitespace">    </span><span class="mi">722</span>             <span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">prec_init</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">723</span>             <span class="k">for</span> <span class="n">prec_init</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">precisions_init</span>
+<span class="g g-Whitespace">    </span><span class="mi">724</span>         <span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="p">)</span>
+
+<span class="nn">File /Volumes/GoogleDrive/我的雲端硬碟/0. codepool_python/python_ds/python_ds_env/lib/python3.8/site-packages/sklearn/mixture/_gaussian_mixture.py:347,</span> in <span class="ni">_compute_precision_cholesky</span><span class="nt">(covariances, covariance_type)</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">346</span>     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">less_equal</span><span class="p">(</span><span class="n">covariances</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)):</span>
+<span class="ne">--&gt; </span><span class="mi">347</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">estimate_precision_error_message</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span>     <span class="n">precisions_chol</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">covariances</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span> <span class="k">return</span> <span class="n">precisions_chol</span>
+
+<span class="ne">ValueError</span>: Fitting the mixture model failed because some components have ill-defined empirical covariance (for instance caused by singleton or collapsed samples). Try to decrease the number of components, or increase reg_covar.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">bic_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>116
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bic_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bic_list</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aic_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">aic_list</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">bic_list</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bic_list</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4020766.2213028464
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bic_list</span><span class="p">[:,</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13972b730&gt;]
+</pre></div>
+</div>
+<img alt="../_images/GMM_109_1.png" src="../_images/GMM_109_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">bic_list</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0, 28, 28,  0]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">bic_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
+
+<span class="c1"># 選 best k, covariance_type. </span>
+<span class="n">min_bic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">infty</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">covariance_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;full&quot;</span><span class="p">,</span> <span class="s2">&quot;tied&quot;</span><span class="p">,</span> <span class="s2">&quot;spherical&quot;</span><span class="p">,</span> <span class="s2">&quot;diag&quot;</span><span class="p">):</span>
+        <span class="n">bic</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                              <span class="n">covariance_type</span><span class="o">=</span><span class="n">covariance_type</span><span class="p">,</span>
+                              <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">bic</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bic</span> <span class="o">&lt;</span> <span class="n">min_bic</span><span class="p">:</span>
+            <span class="n">min_bic</span> <span class="o">=</span> <span class="n">bic</span>
+            <span class="n">best_k</span> <span class="o">=</span> <span class="n">k</span>
+            <span class="n">best_covariance_type</span> <span class="o">=</span> <span class="n">covariance_type</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;k = </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> completed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k = 5 completed
+k = 10 completed
+k = 15 completed
+k = 20 completed
+k = 25 completed
+k = 30 completed
+k = 35 completed
+k = 40 completed
+k = 45 completed
+k = 50 completed
+k = 55 completed
+k = 60 completed
+k = 65 completed
+k = 70 completed
+k = 75 completed
+k = 80 completed
+k = 85 completed
+k = 90 completed
+k = 95 completed
+k = 100 completed
+k = 105 completed
+k = 110 completed
+k = 115 completed
+k = 120 completed
+k = 125 completed
+k = 130 completed
+k = 135 completed
+k = 140 completed
+k = 145 completed
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_k</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_covariance_type</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;tied&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">best_k</span><span class="p">,</span> <span class="n">covariance_type</span> <span class="o">=</span> <span class="n">best_covariance_type</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">gm</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="density-estimation-moon-data">
-<h3><span class="section-number">13.4.1. </span>[Density Estimation] moon data<a class="headerlink" href="#density-estimation-moon-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.4.2. </span>[Density Estimation] moon data<a class="headerlink" href="#density-estimation-moon-data" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>GMM 不只可以拿來做 Clustering，還可以拿來估計出一組多變量資料的 jpdf</p></li>
 <li><p>以 moon 資料集來說：</p></li>
@@ -1665,7 +2061,7 @@ best_covariance_type:  tied
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/GMM_94_0.png" src="../_images/GMM_94_0.png" />
+<img alt="../_images/GMM_118_0.png" src="../_images/GMM_118_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1680,7 +2076,7 @@ best_covariance_type:  tied
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/GMM_96_0.png" src="../_images/GMM_96_0.png" />
+<img alt="../_images/GMM_120_0.png" src="../_images/GMM_120_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1711,7 +2107,7 @@ best_covariance_type:  tied
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>arg_min_bic:  10
 </pre></div>
 </div>
-<img alt="../_images/GMM_98_1.png" src="../_images/GMM_98_1.png" />
+<img alt="../_images/GMM_122_1.png" src="../_images/GMM_122_1.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1726,7 +2122,7 @@ best_covariance_type:  tied
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/GMM_100_0.png" src="../_images/GMM_100_0.png" />
+<img alt="../_images/GMM_124_0.png" src="../_images/GMM_124_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1741,7 +2137,7 @@ best_covariance_type:  tied
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/GMM_102_0.png" src="../_images/GMM_102_0.png" />
+<img alt="../_images/GMM_126_0.png" src="../_images/GMM_126_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1749,7 +2145,7 @@ best_covariance_type:  tied
 </ul>
 </div>
 <div class="section" id="digits-number">
-<h3><span class="section-number">13.4.2. </span>[影像生成] Digits Number<a class="headerlink" href="#digits-number" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.4.3. </span>[影像生成] Digits Number<a class="headerlink" href="#digits-number" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>假設我們已經有一組資料了(Digits Number資料集)</p></li>
 </ul>
@@ -1785,7 +2181,7 @@ best_covariance_type:  tied
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/GMM_108_0.png" src="../_images/GMM_108_0.png" />
+<img alt="../_images/GMM_132_0.png" src="../_images/GMM_132_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1837,7 +2233,7 @@ best_covariance_type:  tied
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>arg_min_bic:  70
 </pre></div>
 </div>
-<img alt="../_images/GMM_112_1.png" src="../_images/GMM_112_1.png" />
+<img alt="../_images/GMM_136_1.png" src="../_images/GMM_136_1.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1877,7 +2273,7 @@ best_covariance_type:  tied
 (100, 64)
 </pre></div>
 </div>
-<img alt="../_images/GMM_116_1.png" src="../_images/GMM_116_1.png" />
+<img alt="../_images/GMM_140_1.png" src="../_images/GMM_140_1.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1958,10 +2354,10 @@ best_covariance_type:  tied
             <p class="prev-next-title"><span class="section-number">12. </span>K-Means</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../datacamp_unsu/clusters.html" title="next page">
+    <a class='right-next' id="next-link" href="../datacamp_su/datacamp_su.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>Clustering</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Supervised Learning with scikit-learn</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

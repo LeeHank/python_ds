@@ -200,35 +200,23 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  unsupervised learning
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../datacamp_unsu/clusters.html">
-   14. Clustering
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   supervised learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   15. Supervised Learning with scikit-learn
+   14. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   16. Classification Trees
+   15. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   17. Permutation Importance vs Random Forest Feature Importance (MDI)
+   16. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -522,12 +510,17 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
-     12.4.4. [影像半監督學習] Number Digits
+     12.4.4. [影像分類前處理] Olivetti
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
-     12.4.5. [影像分割]
+     12.4.5. [影像半監督學習] Number Digits
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     12.4.6. [影像分割]
     </a>
    </li>
   </ul>
@@ -739,12 +732,17 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
-     12.4.4. [影像半監督學習] Number Digits
+     12.4.4. [影像分類前處理] Olivetti
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
-     12.4.5. [影像分割]
+     12.4.5. [影像半監督學習] Number Digits
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     12.4.6. [影像分割]
     </a>
    </li>
   </ul>
@@ -2476,21 +2474,788 @@ array([[10.,  2.],
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_olivetti_faces</span>
 
 <span class="n">olivetti</span> <span class="o">=</span> <span class="n">fetch_olivetti_faces</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">olivetti</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">olivetti</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>downloading Olivetti faces from https://ndownloader.figshare.com/files/5976027 to /Users/hanklee/scikit_learn_data
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  1  1  2  2  2  2
+  2  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4  4  4  4
+  4  4  5  5  5  5  5  5  5  5  5  5  6  6  6  6  6  6  6  6  6  6  7  7
+  7  7  7  7  7  7  7  7  8  8  8  8  8  8  8  8  8  8  9  9  9  9  9  9
+  9  9  9  9 10 10 10 10 10 10 10 10 10 10 11 11 11 11 11 11 11 11 11 11
+ 12 12 12 12 12 12 12 12 12 12 13 13 13 13 13 13 13 13 13 13 14 14 14 14
+ 14 14 14 14 14 14 15 15 15 15 15 15 15 15 15 15 16 16 16 16 16 16 16 16
+ 16 16 17 17 17 17 17 17 17 17 17 17 18 18 18 18 18 18 18 18 18 18 19 19
+ 19 19 19 19 19 19 19 19 20 20 20 20 20 20 20 20 20 20 21 21 21 21 21 21
+ 21 21 21 21 22 22 22 22 22 22 22 22 22 22 23 23 23 23 23 23 23 23 23 23
+ 24 24 24 24 24 24 24 24 24 24 25 25 25 25 25 25 25 25 25 25 26 26 26 26
+ 26 26 26 26 26 26 27 27 27 27 27 27 27 27 27 27 28 28 28 28 28 28 28 28
+ 28 28 29 29 29 29 29 29 29 29 29 29 30 30 30 30 30 30 30 30 30 30 31 31
+ 31 31 31 31 31 31 31 31 32 32 32 32 32 32 32 32 32 32 33 33 33 33 33 33
+ 33 33 33 33 34 34 34 34 34 34 34 34 34 34 35 35 35 35 35 35 35 35 35 35
+ 36 36 36 36 36 36 36 36 36 36 37 37 37 37 37 37 37 37 37 37 38 38 38 38
+ 38 38 38 38 38 38 39 39 39 39 39 39 39 39 39 39]
+(400, 4096)
 </pre></div>
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>Olivetti 臉譜資料，有 40 個人，每個人都拍 10 張照片，共有 400 張 64x64 的灰階人臉照片。</p></li>
+<li><p>每張照片都被 flatten 為 4096 維的 1D 向量，</p></li>
+<li><p>每張照片，都已經被 normalize 到 0~1 之間</p></li>
+<li><p>這組資料常被用來作為訓練看照片判斷是誰的人臉.</p></li>
+<li><p>這邊我們要練習分群，看用 KMeans 分完群後，是不是每一群裡的人臉長的都差不多</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先用分層隨機抽樣，將資料分成 train, valid, 和 test</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedShuffleSplit</span>
+
+<span class="n">strat_split</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">train_valid_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">strat_split</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">olivetti</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">olivetti</span><span class="o">.</span><span class="n">target</span><span class="p">))</span>
+<span class="n">X_train_valid</span> <span class="o">=</span> <span class="n">olivetti</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">train_valid_idx</span><span class="p">]</span>
+<span class="n">y_train_valid</span> <span class="o">=</span> <span class="n">olivetti</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">train_valid_idx</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">olivetti</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">olivetti</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+
+<span class="n">strat_split</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">43</span><span class="p">)</span>
+<span class="n">train_idx</span><span class="p">,</span> <span class="n">valid_idx</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">strat_split</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_train_valid</span><span class="p">,</span> <span class="n">y_train_valid</span><span class="p">))</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train_valid</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train_valid</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+<span class="n">X_valid</span> <span class="o">=</span> <span class="n">X_train_valid</span><span class="p">[</span><span class="n">valid_idx</span><span class="p">]</span>
+<span class="n">y_valid</span> <span class="o">=</span> <span class="n">y_train_valid</span><span class="p">[</span><span class="n">valid_idx</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(280, 4096) (280,)
+(80, 4096) (80,)
+(40, 4096) (40,)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>先做 PCA，把維度從 4096 維降下來 (這一步，就和 auto-encoder要取 feature 一樣)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mf">0.99</span><span class="p">)</span>
+<span class="n">X_train_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_valid_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_valid</span><span class="p">)</span>
+<span class="n">X_test_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">pca</span><span class="o">.</span><span class="n">n_components_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>199
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，4096維被降到199維.</p></li>
+<li><p>接下來，做 KMeans</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">kmeans_per_k</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;k=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">)</span>
+    <span class="n">kmeans_per_k</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kmeans</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k=5
+k=10
+k=15
+k=20
+k=25
+k=30
+k=35
+k=40
+k=45
+k=50
+k=55
+k=60
+k=65
+k=70
+k=75
+k=80
+k=85
+k=90
+k=95
+k=100
+k=105
+k=110
+k=115
+k=120
+k=125
+k=130
+k=135
+k=140
+k=145
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>接著，用 silhouette_score 來選最佳群數.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
+
+<span class="n">silhouette_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+                     <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">kmeans_per_k</span><span class="p">]</span>
+<span class="n">best_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">silhouette_scores</span><span class="p">)</span>
+<span class="n">best_k</span> <span class="o">=</span> <span class="n">k_range</span><span class="p">[</span><span class="n">best_index</span><span class="p">]</span>
+<span class="n">best_score</span> <span class="o">=</span> <span class="n">silhouette_scores</span><span class="p">[</span><span class="n">best_index</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">best_k</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_range</span><span class="p">,</span> <span class="n">silhouette_scores</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$k$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Silhouette score&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">best_k</span><span class="p">,</span> <span class="n">best_score</span><span class="p">,</span> <span class="s2">&quot;rs&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120
+</pre></div>
+</div>
+<img alt="../_images/KMeans_118_1.png" src="../_images/KMeans_118_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，最佳的群數，是分成 120 群</p></li>
+<li><p>如果用 Inertia 來分，看得更不清楚</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inertias</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">inertia_</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">kmeans_per_k</span><span class="p">]</span>
+<span class="n">best_inertia</span> <span class="o">=</span> <span class="n">inertias</span><span class="p">[</span><span class="n">best_index</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_range</span><span class="p">,</span> <span class="n">inertias</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$k$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Inertia&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">best_k</span><span class="p">,</span> <span class="n">best_inertia</span><span class="p">,</span> <span class="s2">&quot;rs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1302e0be0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/KMeans_120_1.png" src="../_images/KMeans_120_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>雖然最後分成 120 群，不是我們預想的 40 群 (因為有 40 個人)，但這也正常，因為同一個人，可能在不同張照片看起來不同(e.g. 有時候有戴眼鏡，有時沒戴，或是照片有左或右的shift)</p></li>
+<li><p>我們 keep 這個分群 model，並看看群內的照片是不是都很像</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_model</span> <span class="o">=</span> <span class="n">kmeans_per_k</span><span class="p">[</span><span class="n">best_index</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_faces</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">n_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">faces</span> <span class="o">=</span> <span class="n">faces</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+    <span class="n">n_rows</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">faces</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">n_cols</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">n_cols</span><span class="p">,</span> <span class="n">n_rows</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">labels</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">cluster_id</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">best_model</span><span class="o">.</span><span class="n">labels_</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster&quot;</span><span class="p">,</span> <span class="n">cluster_id</span><span class="p">)</span>
+    <span class="n">in_cluster</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">labels_</span><span class="o">==</span><span class="n">cluster_id</span>
+    <span class="n">faces</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">in_cluster</span><span class="p">]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="n">in_cluster</span><span class="p">]</span>
+    <span class="n">plot_faces</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 0
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_1.png" src="../_images/KMeans_123_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 1
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_3.png" src="../_images/KMeans_123_3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 2
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_5.png" src="../_images/KMeans_123_5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 3
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_7.png" src="../_images/KMeans_123_7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 4
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_9.png" src="../_images/KMeans_123_9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 5
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_11.png" src="../_images/KMeans_123_11.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 6
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_13.png" src="../_images/KMeans_123_13.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 7
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_15.png" src="../_images/KMeans_123_15.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 8
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_17.png" src="../_images/KMeans_123_17.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 9
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_19.png" src="../_images/KMeans_123_19.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 10
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_21.png" src="../_images/KMeans_123_21.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 11
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_23.png" src="../_images/KMeans_123_23.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 12
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_25.png" src="../_images/KMeans_123_25.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 13
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_27.png" src="../_images/KMeans_123_27.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 14
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_29.png" src="../_images/KMeans_123_29.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 15
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_31.png" src="../_images/KMeans_123_31.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 16
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_33.png" src="../_images/KMeans_123_33.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 17
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_35.png" src="../_images/KMeans_123_35.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 18
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_37.png" src="../_images/KMeans_123_37.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 19
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_39.png" src="../_images/KMeans_123_39.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 20
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_41.png" src="../_images/KMeans_123_41.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 21
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_43.png" src="../_images/KMeans_123_43.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 22
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_45.png" src="../_images/KMeans_123_45.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 23
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_47.png" src="../_images/KMeans_123_47.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 24
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_49.png" src="../_images/KMeans_123_49.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 25
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_51.png" src="../_images/KMeans_123_51.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 26
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_53.png" src="../_images/KMeans_123_53.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 27
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_55.png" src="../_images/KMeans_123_55.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 28
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_57.png" src="../_images/KMeans_123_57.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 29
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_59.png" src="../_images/KMeans_123_59.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 30
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_61.png" src="../_images/KMeans_123_61.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 31
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_63.png" src="../_images/KMeans_123_63.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 32
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_65.png" src="../_images/KMeans_123_65.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 33
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_67.png" src="../_images/KMeans_123_67.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 34
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_69.png" src="../_images/KMeans_123_69.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 35
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_71.png" src="../_images/KMeans_123_71.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 36
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_73.png" src="../_images/KMeans_123_73.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 37
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_75.png" src="../_images/KMeans_123_75.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 38
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_77.png" src="../_images/KMeans_123_77.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 39
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_79.png" src="../_images/KMeans_123_79.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 40
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_81.png" src="../_images/KMeans_123_81.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 41
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_83.png" src="../_images/KMeans_123_83.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 42
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_85.png" src="../_images/KMeans_123_85.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 43
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_87.png" src="../_images/KMeans_123_87.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 44
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_89.png" src="../_images/KMeans_123_89.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 45
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_91.png" src="../_images/KMeans_123_91.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 46
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_93.png" src="../_images/KMeans_123_93.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 47
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_95.png" src="../_images/KMeans_123_95.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 48
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_97.png" src="../_images/KMeans_123_97.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 49
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_99.png" src="../_images/KMeans_123_99.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 50
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_101.png" src="../_images/KMeans_123_101.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 51
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_103.png" src="../_images/KMeans_123_103.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 52
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_105.png" src="../_images/KMeans_123_105.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 53
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_107.png" src="../_images/KMeans_123_107.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 54
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_109.png" src="../_images/KMeans_123_109.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 55
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_111.png" src="../_images/KMeans_123_111.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 56
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_113.png" src="../_images/KMeans_123_113.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 57
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_115.png" src="../_images/KMeans_123_115.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 58
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_117.png" src="../_images/KMeans_123_117.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 59
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_119.png" src="../_images/KMeans_123_119.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 60
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_121.png" src="../_images/KMeans_123_121.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 61
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_123.png" src="../_images/KMeans_123_123.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 62
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_125.png" src="../_images/KMeans_123_125.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 63
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_127.png" src="../_images/KMeans_123_127.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 64
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_129.png" src="../_images/KMeans_123_129.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 65
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_131.png" src="../_images/KMeans_123_131.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 66
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_133.png" src="../_images/KMeans_123_133.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 67
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_135.png" src="../_images/KMeans_123_135.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 68
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_137.png" src="../_images/KMeans_123_137.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 69
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_139.png" src="../_images/KMeans_123_139.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 70
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_141.png" src="../_images/KMeans_123_141.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 71
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_143.png" src="../_images/KMeans_123_143.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 72
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_145.png" src="../_images/KMeans_123_145.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 73
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_147.png" src="../_images/KMeans_123_147.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 74
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_149.png" src="../_images/KMeans_123_149.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 75
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_151.png" src="../_images/KMeans_123_151.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 76
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_153.png" src="../_images/KMeans_123_153.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 77
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_155.png" src="../_images/KMeans_123_155.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 78
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_157.png" src="../_images/KMeans_123_157.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 79
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_159.png" src="../_images/KMeans_123_159.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 80
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_161.png" src="../_images/KMeans_123_161.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 81
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_163.png" src="../_images/KMeans_123_163.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 82
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_165.png" src="../_images/KMeans_123_165.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 83
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_167.png" src="../_images/KMeans_123_167.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 84
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_169.png" src="../_images/KMeans_123_169.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 85
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_171.png" src="../_images/KMeans_123_171.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 86
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_173.png" src="../_images/KMeans_123_173.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 87
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_175.png" src="../_images/KMeans_123_175.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 88
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_177.png" src="../_images/KMeans_123_177.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 89
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_179.png" src="../_images/KMeans_123_179.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 90
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_181.png" src="../_images/KMeans_123_181.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 91
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_183.png" src="../_images/KMeans_123_183.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 92
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_185.png" src="../_images/KMeans_123_185.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 93
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_187.png" src="../_images/KMeans_123_187.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 94
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_189.png" src="../_images/KMeans_123_189.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 95
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_191.png" src="../_images/KMeans_123_191.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 96
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_193.png" src="../_images/KMeans_123_193.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 97
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_195.png" src="../_images/KMeans_123_195.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 98
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_197.png" src="../_images/KMeans_123_197.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 99
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_199.png" src="../_images/KMeans_123_199.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 100
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_201.png" src="../_images/KMeans_123_201.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 101
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_203.png" src="../_images/KMeans_123_203.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 102
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_205.png" src="../_images/KMeans_123_205.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 103
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_207.png" src="../_images/KMeans_123_207.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 104
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_209.png" src="../_images/KMeans_123_209.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 105
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_211.png" src="../_images/KMeans_123_211.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 106
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_213.png" src="../_images/KMeans_123_213.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 107
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_215.png" src="../_images/KMeans_123_215.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 108
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_217.png" src="../_images/KMeans_123_217.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 109
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_219.png" src="../_images/KMeans_123_219.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 110
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_221.png" src="../_images/KMeans_123_221.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 111
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_223.png" src="../_images/KMeans_123_223.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 112
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_225.png" src="../_images/KMeans_123_225.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 113
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_227.png" src="../_images/KMeans_123_227.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 114
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_229.png" src="../_images/KMeans_123_229.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 115
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_231.png" src="../_images/KMeans_123_231.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 116
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_233.png" src="../_images/KMeans_123_233.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 117
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_235.png" src="../_images/KMeans_123_235.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 118
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_237.png" src="../_images/KMeans_123_237.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster 119
+</pre></div>
+</div>
+<img alt="../_images/KMeans_123_239.png" src="../_images/KMeans_123_239.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>大概有 2/3 的 cluster 是有用的： 因為至少包含兩張同一個人的照片。</p></li>
+<li><p>大概有 1/2 的 cluster，不是只有一張照片，就是混雜多個人，就沒那麼有用了.</p></li>
+<li><p>像這樣把照片分群，雖然很不準確，但他最大的用處是幫我們加速 labeling。有了這個基礎後再去 label 是可以變快很多的。</p></li>
+</ul>
 </div>
 <div class="section" id="id14">
-<h3><span class="section-number">12.4.4. </span>[影像半監督學習] Number Digits<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">12.4.4. </span>[影像分類前處理] Olivetti<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>延續剛剛，如果我們把它改成分類問題。然後，拿 KMeans 分群後的結果，當新的 feature，看看效果如何</p></li>
+<li><p>先 train 一個 randomforest 的分類器 (feature 一樣用 PCA 降下來的 199 維當 feature</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_valid_pca</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.925
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>預測準確率有 92.5%</p></li>
+<li><p>接下來，用分群結果當 feature，看結果會不會比較好</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_extended</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">)]</span>
+<span class="n">X_valid_extended</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">X_valid_pca</span><span class="p">,</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid_pca</span><span class="p">)]</span>
+<span class="n">X_test_extended</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">X_test_pca</span><span class="p">,</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_pca</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_extended</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_valid_extended</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9375
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>有些微提升了.</p></li>
+</ul>
 </div>
 <div class="section" id="id15">
-<h3><span class="section-number">12.4.5. </span>[影像分割]<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">12.4.5. </span>[影像半監督學習] Number Digits<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id16">
+<h3><span class="section-number">12.4.6. </span>[影像分割]<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
