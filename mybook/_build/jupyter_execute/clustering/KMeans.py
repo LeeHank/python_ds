@@ -3,7 +3,7 @@
 
 # # K-Means
 
-# In[93]:
+# In[143]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -606,13 +606,192 @@ accuracy_score(digits.target, labels)
 
 # ### [影像分群] Olivetti 臉譜分群
 
-# In[142]:
+# In[146]:
 
 
 from sklearn.datasets import fetch_olivetti_faces
 
 olivetti = fetch_olivetti_faces()
 
+print(olivetti.target)
+print(olivetti.data.shape)
+
+
+# * Olivetti 臉譜資料，有 40 個人，每個人都拍 10 張照片，共有 400 張 64x64 的灰階人臉照片。  
+# * 每張照片都被 flatten 為 4096 維的 1D 向量，
+# * 每張照片，都已經被 normalize 到 0~1 之間
+# * 這組資料常被用來作為訓練看照片判斷是誰的人臉. 
+# * 這邊我們要練習分群，看用 KMeans 分完群後，是不是每一群裡的人臉長的都差不多
+
+# In[148]:
+
+
+# 先用分層隨機抽樣，將資料分成 train, valid, 和 test
+
+from sklearn.model_selection import StratifiedShuffleSplit
+
+strat_split = StratifiedShuffleSplit(n_splits=1, test_size=40, random_state=42)
+train_valid_idx, test_idx = next(strat_split.split(olivetti.data, olivetti.target))
+X_train_valid = olivetti.data[train_valid_idx]
+y_train_valid = olivetti.target[train_valid_idx]
+X_test = olivetti.data[test_idx]
+y_test = olivetti.target[test_idx]
+
+strat_split = StratifiedShuffleSplit(n_splits=1, test_size=80, random_state=43)
+train_idx, valid_idx = next(strat_split.split(X_train_valid, y_train_valid))
+X_train = X_train_valid[train_idx]
+y_train = y_train_valid[train_idx]
+X_valid = X_train_valid[valid_idx]
+y_valid = y_train_valid[valid_idx]
+
+
+# In[149]:
+
+
+print(X_train.shape, y_train.shape)
+print(X_valid.shape, y_valid.shape)
+print(X_test.shape, y_test.shape)
+
+
+# * 先做 PCA，把維度從 4096 維降下來 (這一步，就和 auto-encoder要取 feature 一樣)
+
+# In[150]:
+
+
+from sklearn.decomposition import PCA
+
+pca = PCA(0.99)
+X_train_pca = pca.fit_transform(X_train)
+X_valid_pca = pca.transform(X_valid)
+X_test_pca = pca.transform(X_test)
+
+pca.n_components_
+
+
+# * 可以看到，4096維被降到199維. 
+# * 接下來，做 KMeans
+
+# In[151]:
+
+
+from sklearn.cluster import KMeans
+
+k_range = range(5, 150, 5)
+kmeans_per_k = []
+for k in k_range:
+    print("k={}".format(k))
+    kmeans = KMeans(n_clusters=k, random_state=42).fit(X_train_pca)
+    kmeans_per_k.append(kmeans)
+
+
+# * 接著，用 silhouette_score 來選最佳群數. 
+
+# In[155]:
+
+
+from sklearn.metrics import silhouette_score
+
+silhouette_scores = [silhouette_score(X_train_pca, model.labels_)
+                     for model in kmeans_per_k]
+best_index = np.argmax(silhouette_scores)
+best_k = k_range[best_index]
+best_score = silhouette_scores[best_index]
+
+print(best_k)
+
+plt.figure(figsize=(8, 3))
+plt.plot(k_range, silhouette_scores, "bo-")
+plt.xlabel("$k$", fontsize=14)
+plt.ylabel("Silhouette score", fontsize=14)
+plt.plot(best_k, best_score, "rs");
+
+
+# * 可以看到，最佳的群數，是分成 120 群  
+# * 如果用 Inertia 來分，看得更不清楚
+
+# In[156]:
+
+
+inertias = [model.inertia_ for model in kmeans_per_k]
+best_inertia = inertias[best_index]
+
+plt.figure(figsize=(8, 3.5))
+plt.plot(k_range, inertias, "bo-")
+plt.xlabel("$k$", fontsize=14)
+plt.ylabel("Inertia", fontsize=14)
+plt.plot(best_k, best_inertia, "rs")
+
+
+# * 雖然最後分成 120 群，不是我們預想的 40 群 (因為有 40 個人)，但這也正常，因為同一個人，可能在不同張照片看起來不同(e.g. 有時候有戴眼鏡，有時沒戴，或是照片有左或右的shift)
+# * 我們 keep 這個分群 model，並看看群內的照片是不是都很像
+
+# In[157]:
+
+
+best_model = kmeans_per_k[best_index]
+
+
+# In[158]:
+
+
+def plot_faces(faces, labels, n_cols=5):
+    faces = faces.reshape(-1, 64, 64)
+    n_rows = (len(faces) - 1) // n_cols + 1
+    plt.figure(figsize=(n_cols, n_rows * 1.1))
+    for index, (face, label) in enumerate(zip(faces, labels)):
+        plt.subplot(n_rows, n_cols, index + 1)
+        plt.imshow(face, cmap="gray")
+        plt.axis("off")
+        plt.title(label)
+    plt.show()
+
+for cluster_id in np.unique(best_model.labels_):
+    print("Cluster", cluster_id)
+    in_cluster = best_model.labels_==cluster_id
+    faces = X_train[in_cluster]
+    labels = y_train[in_cluster]
+    plot_faces(faces, labels)
+
+
+# * 大概有 2/3 的 cluster 是有用的： 因為至少包含兩張同一個人的照片。  
+# * 大概有 1/2 的 cluster，不是只有一張照片，就是混雜多個人，就沒那麼有用了. 
+# * 像這樣把照片分群，雖然很不準確，但他最大的用處是幫我們加速 labeling。有了這個基礎後再去 label 是可以變快很多的。
+
+# ### [影像分類前處理] Olivetti
+
+# * 延續剛剛，如果我們把它改成分類問題。然後，拿 KMeans 分群後的結果，當新的 feature，看看效果如何
+# * 先 train 一個 randomforest 的分類器 (feature 一樣用 PCA 降下來的 199 維當 feature
+
+# In[159]:
+
+
+from sklearn.ensemble import RandomForestClassifier
+
+clf = RandomForestClassifier(n_estimators=150, random_state=42)
+clf.fit(X_train_pca, y_train)
+clf.score(X_valid_pca, y_valid)
+
+
+# * 預測準確率有 92.5%  
+# * 接下來，用分群結果當 feature，看結果會不會比較好
+
+# In[169]:
+
+
+X_train_extended = np.c_[X_train_pca, best_model.predict(X_train_pca)]
+X_valid_extended = np.c_[X_valid_pca, best_model.predict(X_valid_pca)]
+X_test_extended = np.c_[X_test_pca, best_model.predict(X_test_pca)]
+
+
+# In[170]:
+
+
+clf = RandomForestClassifier(n_estimators=150, random_state=42)
+clf.fit(X_train_extended, y_train)
+clf.score(X_valid_extended, y_valid)
+
+
+# * 有些微提升了. 
 
 # ### [影像半監督學習] Number Digits
 

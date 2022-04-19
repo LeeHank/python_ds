@@ -3,7 +3,7 @@
 
 # # Gaussian Mixture Model (GMM)
 
-# In[25]:
+# In[193]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -24,7 +24,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 
 
-# In[7]:
+# In[194]:
 
 
 from scipy.spatial.distance import cdist
@@ -45,7 +45,7 @@ def plot_kmeans(kmeans, X, n_clusters=4, rseed=0, ax=None):
         ax.add_patch(plt.Circle(c, r, fc='#CCCCCC', lw=3, alpha=0.8, zorder=1))
 
 
-# In[125]:
+# In[195]:
 
 
 from matplotlib.patches import Ellipse
@@ -636,6 +636,207 @@ anomalies
 # ## 推薦的 workflow
 
 # ## Real world examples
+
+# ### [影像分群] Olivetti
+
+# In[196]:
+
+
+from sklearn.datasets import fetch_olivetti_faces
+
+olivetti = fetch_olivetti_faces()
+
+print(olivetti.target)
+print(olivetti.data.shape)
+
+
+# * Olivetti 臉譜資料，有 40 個人，每個人都拍 10 張照片，共有 400 張 64x64 的灰階人臉照片。  
+# * 每張照片都被 flatten 為 4096 維的 1D 向量，
+# * 每張照片，都已經被 normalize 到 0~1 之間
+# * 這組資料常被用來作為訓練看照片判斷是誰的人臉. 
+# * 這邊我們要練習分群，看用 GMM 分完群後，是不是每一群裡的人臉長的都差不多
+
+# In[198]:
+
+
+# 先用分層隨機抽樣，將資料分成 train, valid, 和 test
+
+from sklearn.model_selection import StratifiedShuffleSplit
+
+strat_split = StratifiedShuffleSplit(n_splits=1, test_size=40, random_state=42)
+train_valid_idx, test_idx = next(strat_split.split(olivetti.data, olivetti.target))
+X_train_valid = olivetti.data[train_valid_idx]
+y_train_valid = olivetti.target[train_valid_idx]
+X_test = olivetti.data[test_idx]
+y_test = olivetti.target[test_idx]
+
+strat_split = StratifiedShuffleSplit(n_splits=1, test_size=80, random_state=43)
+train_idx, valid_idx = next(strat_split.split(X_train_valid, y_train_valid))
+X_train = X_train_valid[train_idx]
+y_train = y_train_valid[train_idx]
+X_valid = X_train_valid[valid_idx]
+y_valid = y_train_valid[valid_idx]
+
+
+# In[199]:
+
+
+print(X_train.shape, y_train.shape)
+print(X_valid.shape, y_valid.shape)
+print(X_test.shape, y_test.shape)
+
+
+# * 先做 PCA，把維度從 4096 維降下來 (這一步，就和 auto-encoder要取 feature 一樣)
+
+# In[200]:
+
+
+from sklearn.decomposition import PCA
+
+pca = PCA(0.99)
+X_train_pca = pca.fit_transform(X_train)
+X_valid_pca = pca.transform(X_valid)
+X_test_pca = pca.transform(X_test)
+
+pca.n_components_
+
+
+# * 可以看到，4096維被降到199維. 
+# * 接下來，做 GMM
+
+# In[242]:
+
+
+gm2 = GaussianMixture(n_components=40, random_state=42)
+y_pred = gm2.fit_predict(X_train_pca)
+
+
+# In[243]:
+
+
+gm2.bic(X_train_pca)
+
+
+# In[ ]:
+
+
+
+
+
+# In[256]:
+
+
+from sklearn.mixture import GaussianMixture
+
+# 選 best k, covariance_type. 
+bic_list = []
+aic_list = []
+converage_list = []
+
+
+min_bic = np.infty
+
+for k in range(5, 150, 5):
+    for covariance_type in ("full", "tied", "spherical", "diag"):
+        
+        gmm = GaussianMixture(n_components=k, n_init=10,
+                              covariance_type=covariance_type,
+                              #reg_covar = 1e-5,
+                              random_state=42).fit(X_train_pca[:,:2])
+        bic_list.append(gmm.bic(X_train_pca[:,:2]))
+        aic_list.append(gmm.aic(X_train_pca[:,:2]))
+        converage_list.append(gmm.converged_)
+        
+    print(f"k = {k} completed")
+
+
+# In[213]:
+
+
+len(bic_list)
+
+
+# In[252]:
+
+
+bic_list = np.array(bic_list).reshape(29, 4)
+
+
+# In[253]:
+
+
+aic_list = np.array(aic_list).reshape(29, 4)
+
+
+# In[232]:
+
+
+np.argmin(bic_list[:,0])
+
+
+# In[246]:
+
+
+bic_list[7,0]
+
+
+# In[255]:
+
+
+plt.plot(bic_list[:,3])
+
+
+# In[217]:
+
+
+np.argmin(bic_list, axis = 1)
+
+
+# In[209]:
+
+
+len(bic_list)
+
+
+# In[202]:
+
+
+from sklearn.mixture import GaussianMixture
+
+# 選 best k, covariance_type. 
+min_bic = np.infty
+
+for k in range(5, 150, 5):
+    for covariance_type in ("full", "tied", "spherical", "diag"):
+        bic = GaussianMixture(n_components=k, n_init=10,
+                              covariance_type=covariance_type,
+                              random_state=42).fit(X).bic(X)
+        if bic < min_bic:
+            min_bic = bic
+            best_k = k
+            best_covariance_type = covariance_type
+        
+    print(f"k = {k} completed")
+
+
+# In[203]:
+
+
+best_k
+
+
+# In[204]:
+
+
+best_covariance_type
+
+
+# In[ ]:
+
+
+gm = GaussianMixture(n_components=best_k, covariance_type = best_covariance_type, random_state=42)
+y_pred = gm.fit_predict(X_train_pca)
+
 
 # ### [Density Estimation] moon data
 

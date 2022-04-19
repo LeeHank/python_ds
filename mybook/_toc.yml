@@ -32,10 +32,10 @@ parts:
     chapters:
     - file: clustering/KMeans
     - file: clustering/GMM
-  - caption: unsupervised learning
-    numbered: true
-    chapters:
-    - file: datacamp_unsu/clusters
+  # - caption: unsupervised learning
+  #   numbered: true
+  #   chapters:
+  #   - file: datacamp_unsu/clusters
   - caption: supervised learning
     numbered: true
     chapters:
