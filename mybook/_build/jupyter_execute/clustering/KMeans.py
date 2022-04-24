@@ -3,7 +3,7 @@
 
 # # K-Means
 
-# In[143]:
+# In[1]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -19,7 +19,7 @@ import pandas as pd
 
 # * 我們用內建的 function，來產出一筆模擬資料
 
-# In[116]:
+# In[2]:
 
 
 # from sklearn.datasets.samples_generator import make_blobs # 舊版寫法，已不能使用
@@ -28,7 +28,7 @@ X, y_true = make_blobs(n_samples=300, centers=4,
                        cluster_std=0.60, random_state=0)
 
 
-# In[117]:
+# In[3]:
 
 
 # 看資料的維度
@@ -37,7 +37,7 @@ print(X.shape)
 print(X[:5]) 
 
 
-# In[118]:
+# In[4]:
 
 
 ax = plt.gca()
@@ -55,7 +55,7 @@ ax.scatter(X[:, 0], X[:, 1], s=40, cmap='viridis', zorder=2);
 
 # #### training
 
-# In[119]:
+# In[5]:
 
 
 # 必要參數，我想分成幾群
@@ -71,7 +71,7 @@ kmeans.fit(X);
 #   * 最後得到的那些 centers，座標分別是多少？ -> 用 `kmeans.cluster_centers_` 來查看. 
 #   * 最後分完全群後，`inertia` (i.e. Total within sum of square) 是多少 -> 用 `kmeans.inertia_` 來查看
 
-# In[120]:
+# In[6]:
 
 
 # centers 的座標
@@ -80,7 +80,7 @@ kmeans.cluster_centers_
 
 # #### 預測 目前/未來 的 instance 屬於哪一群
 
-# In[121]:
+# In[7]:
 
 
 # prediction
@@ -89,7 +89,7 @@ y_kmeans = kmeans.predict(X)
 
 # * 可以看到分群結果：
 
-# In[122]:
+# In[8]:
 
 
 y_kmeans
@@ -97,7 +97,7 @@ y_kmeans
 
 # #### 視覺化
 
-# In[129]:
+# In[9]:
 
 
 ax = plt.gca()
@@ -201,12 +201,12 @@ plot_kmeans(kmeans, X)
 #     * 每做一次，就算 inertia，然後看 inertia 在哪裡有拐點. 
 #   * 輪廓圖：
 
-# In[65]:
+# In[12]:
 
 
 inertia_list = []
-for k in range(10):
-    try_kmeans = KMeans(n_clusters= k+1)
+for k in range(1, 10):
+    try_kmeans = KMeans(n_clusters= k)
     try_kmeans.fit(X)
     inertia_list.append(try_kmeans.inertia_)
 plt.plot(inertia_list, '--bo');
@@ -214,8 +214,97 @@ plt.plot(inertia_list, '--bo');
 
 # * 可以看到，在第 4 個 點的時候，出現 elbow，所以適合用 k = 4 來當群數
 
+# * silhouette 的範例如下。算法是：  
+#   * 每一個 instance，先算出 silhouette score: (b-a) / max(b, a); 
+#     * a: 此 instance 和自己這群所有點的平均距離： 表示他和自己這群的平均距離 
+#     * b: 此 instance 與最接近的臨群的平均距離。最接近的臨群的定義，是可以讓 b 最小的群。這個指標可以想成，他距離最能跳槽的群的平均距離
+#     * 算出來的值介於 -1 ~ 1: 
+#       * 1 表示 b-a 的值很接近 b 了，表示 b 比 a 大很多，所以表示該 instance 被分的很好，就在自己的群裡
+#       * 0 表示，此 instance 在 decision boundary 上，因為 b 和 a 幾乎一樣大  
+#       * -1 表示，此 instance 應該被分到最近的臨群才合理，因為他離最接近臨群更近
+#   * 把所有 instance 的 silhouette 取平均，得到 silhouette coefficient
+
+# In[20]:
+
+
+from sklearn.metrics import silhouette_score
+
+kmeans_per_k = [KMeans(k).fit(X) for k in range(2,10)] # 從 k = 2 開始，因為 k = 1 無法算 Silhouette
+silhouette_scores = [silhouette_score(X, model.labels_) for model in kmeans_per_k]
+
+
+# In[21]:
+
+
+plt.figure(figsize=(8, 3))
+plt.plot(range(2, 10), silhouette_scores, "bo-")
+plt.xlabel("$k$", fontsize=14)
+plt.ylabel("Silhouette score", fontsize=14)
+#plt.axis([1.8, 8.5, 0.55, 0.7])
+#save_fig("silhouette_score_vs_k_plot")
+#plt.show()
+
+
+# * 從上圖可知，選 k = 3, 4, 5 都還 ok。訊息量就比 elbow 豐富了。
+# * 再來，畫個別的輪廓圖 (silhouette diagram)
+
+# In[22]:
+
+
+from sklearn.metrics import silhouette_samples
+from matplotlib.ticker import FixedLocator, FixedFormatter
+import matplotlib as mpl
+
+plt.figure(figsize=(11, 9))
+
+for k in (3, 4, 5, 6):
+    plt.subplot(2, 2, k - 2)
+    
+    y_pred = kmeans_per_k[k - 1].labels_
+    silhouette_coefficients = silhouette_samples(X, y_pred)
+
+    padding = len(X) // 30
+    pos = padding
+    ticks = []
+    for i in range(k):
+        coeffs = silhouette_coefficients[y_pred == i]
+        coeffs.sort()
+
+        color = mpl.cm.Spectral(i / k)
+        plt.fill_betweenx(np.arange(pos, pos + len(coeffs)), 0, coeffs,
+                          facecolor=color, edgecolor=color, alpha=0.7)
+        ticks.append(pos + len(coeffs) // 2)
+        pos += len(coeffs) + padding
+
+    plt.gca().yaxis.set_major_locator(FixedLocator(ticks))
+    plt.gca().yaxis.set_major_formatter(FixedFormatter(range(k)))
+    if k in (3, 5):
+        plt.ylabel("Cluster")
+    
+    if k in (5, 6):
+        plt.gca().set_xticks([-0.1, 0, 0.2, 0.4, 0.6, 0.8, 1])
+        plt.xlabel("Silhouette Coefficient")
+    else:
+        plt.tick_params(labelbottom=False)
+
+    plt.axvline(x=silhouette_scores[k - 2], color="red", linestyle="--")
+    plt.title("$k={}$".format(k), fontsize=16)
+
+#save_fig("silhouette_analysis_plot")
+#plt.show()
+
+
+# 
+
+# * 上圖的看法是：
+#   * 同一群中，從 silhou 由大到小，由上到下排列
+#   * 所以，刀的高度，表示 instance 的個數 (因為一個 instance 佔據一列)
+#   * 刀越鈍，越好，刀越鋒利，越不好
+#   * 紅色虛線是 overall 的平均值，我們希望，所有的刀，大部分都跨過紅線。以上圖來看，3其實就蠻好了。如果希望群內數量少一點(組數多一點)，那 k = 4 就是好選擇
+# * sklearn 官網也有範例可以看： https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html#sphx-glr-auto-examples-cluster-plot-kmeans-silhouette-analysis-py
+
 # * <span style="color: red"> 如果用了畫圖，和 elbow method，都還是很難決定群數，那可以考慮：  </span>
-#   * 用別的指標(e.g. AIC)來取代inertia： 例如改用 Gausian Mixture Model 來分群，他提供的 AIC 指標也許可以更好的選到 k 要幾群. 
+#   * 用別的指標(e.g. AIC)來取代inertia： 例如改用 Gausian Mixture Model 來分群，他提供的 AIC/BIC 指標也許可以更好的選到 k 要幾群. 
 #   * 用可以直接幫你找出群數的分群方法：  
 #     * Baysian 版的 GMM  
 #     * DBSCAN. 

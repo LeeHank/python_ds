@@ -7,31 +7,32 @@ parts:
   - caption: Numpy
     numbered: true
     chapters:
-    - file: ch2_numpy/official_beginner/official_beginner
+      - file: ch2_numpy/official_beginner/official_beginner
   - caption: Pandas
     numbered: true
     chapters:
-    - file: ch3_pandas/official_getting_started/getting_started
+      - file: ch3_pandas/official_getting_started/getting_started
   - caption: Matplotlib
     numbered: true
     chapters:
-    - file: ch4_matplotlib/04.00-matplotlib_intro
-    - file: ch4_matplotlib/04.01-Simple-Line-Plots
-    - file: ch4_matplotlib/04.02-Simple-Scatter-Plots
-    - file: ch4_matplotlib/04.03-Errorbars
-    - file: ch4_matplotlib/04.05-Histograms-and-Density
-    - file: ch4_matplotlib/04.06-Legends
-    - file: ch4_matplotlib/04.07-Colorbars
-    - file: ch4_matplotlib/04.08-Multiple-Subplots
+      - file: ch4_matplotlib/04.00-matplotlib_intro
+      - file: ch4_matplotlib/04.01-Simple-Line-Plots
+      - file: ch4_matplotlib/04.02-Simple-Scatter-Plots
+      - file: ch4_matplotlib/04.03-Errorbars
+      - file: ch4_matplotlib/04.05-Histograms-and-Density
+      - file: ch4_matplotlib/04.06-Legends
+      - file: ch4_matplotlib/04.07-Colorbars
+      - file: ch4_matplotlib/04.08-Multiple-Subplots
   - caption: Seaborn
     numbered: true
-    chapters: 
-    - file: datacamp_seaborn/intro_seaborn
+    chapters:
+      - file: datacamp_seaborn/intro_seaborn
   - caption: Clustering
     numbered: true
     chapters:
-    - file: clustering/KMeans
-    - file: clustering/GMM
+      - file: clustering/KMeans
+      - file: clustering/GMM
+      - file: clustering/HC
   # - caption: unsupervised learning
   #   numbered: true
   #   chapters:
@@ -39,7 +40,6 @@ parts:
   - caption: supervised learning
     numbered: true
     chapters:
-    - file: datacamp_su/datacamp_su
-    - file: statquest_trees/classification_tree
-    - file: sklearn_guide/rf_permutation_imp
-    
+      - file: datacamp_su/datacamp_su
+      - file: statquest_trees/classification_tree
+      - file: sklearn_guide/rf_permutation_imp
