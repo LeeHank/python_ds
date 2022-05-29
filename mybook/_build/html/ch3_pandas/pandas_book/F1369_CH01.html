@@ -1,0 +1,2785 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>第1章: DataFrame及Series的基本操作 &#8212; My sample book</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regex.html">
+   3. Regular Expression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/datacamp_matplotlib_intro.html">
+   4. Intro to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.00-matplotlib_intro.html">
+   5. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   6. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   7. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.03-Errorbars.html">
+   8. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   9. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.06-Legends.html">
+   10. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.07-Colorbars.html">
+   11. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   12. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../datacamp_seaborn/intro_seaborn.html">
+   13. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/KMeans.html">
+   14. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/GMM.html">
+   15. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/HC.html">
+   16. Hierarchical Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../datacamp_su/datacamp_su.html">
+   17. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statquest_trees/classification_tree.html">
+   18. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../sklearn_guide/rf_permutation_imp.html">
+   19. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/ch3_pandas/pandas_book/F1369_CH01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch3_pandas/pandas_book/F1369_CH01.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/ch3_pandas/pandas_book/F1369_CH01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series">
+   Series的相關操作
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-vectorize-broadcasting">
+     Series 有向量運算的特性 (可作 vectorize 運算, 有 broadcasting)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method">
+     把 運算符 改成 method, 可用方法
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.4 串連Series的方法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     可以直接一路
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .
+      </span>
+     </code>
+     下去
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#enter">
+     也可用括號括起來，就可以用 enter 來換行 (可註解)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     也可用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       \
+      </span>
+     </code>
+     來分隔 (不可註解)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   更改欄位名稱
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rename">
+     用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       rename
+      </span>
+     </code>
+     來改
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     清理不乾淨的欄位名稱
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#column">
+   刪除column
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   新增 column
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     直接用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       []
+      </span>
+     </code>
+     來處理
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assign-method">
+     用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .assign
+      </span>
+     </code>
+     method
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#assign">
+       先算好再 assign 進去
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>第1章: DataFrame及Series的基本操作</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series">
+   Series的相關操作
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-vectorize-broadcasting">
+     Series 有向量運算的特性 (可作 vectorize 運算, 有 broadcasting)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method">
+     把 運算符 改成 method, 可用方法
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.4 串連Series的方法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     可以直接一路
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .
+      </span>
+     </code>
+     下去
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#enter">
+     也可用括號括起來，就可以用 enter 來換行 (可註解)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     也可用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       \
+      </span>
+     </code>
+     來分隔 (不可註解)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   更改欄位名稱
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rename">
+     用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       rename
+      </span>
+     </code>
+     來改
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     清理不乾淨的欄位名稱
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#column">
+   刪除column
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   新增 column
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     直接用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       []
+      </span>
+     </code>
+     來處理
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assign-method">
+     用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .assign
+      </span>
+     </code>
+     method
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#assign">
+       先算好再 assign 進去
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="dataframeseries">
+<h1>第1章: DataFrame及Series的基本操作<a class="headerlink" href="#dataframeseries" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># pd.set_option(&#39;max_columns&#39;, 4, &#39;max_rows&#39;, 10, &#39;max_colwidth&#39;, 12)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="series">
+<h2>Series的相關操作<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="series-vectorize-broadcasting">
+<h3>Series 有向量運算的特性 (可作 vectorize 運算, 有 broadcasting)<a class="headerlink" href="#series-vectorize-broadcasting" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">)</span>
+<span class="n">imdb_score</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;imdb_score&#39;</span><span class="p">]</span>
+<span class="n">imdb_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       7.9
+1       7.1
+2       6.8
+3       8.5
+4       7.1
+       ... 
+4911    7.7
+4912    7.5
+4913    6.3
+4914    6.3
+4915    6.6
+Name: imdb_score, Length: 4916, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imdb_score</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># broadcasting</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       8.9
+1       8.1
+2       7.8
+3       9.5
+4       8.1
+       ... 
+4911    8.7
+4912    8.5
+4913    7.3
+4914    7.3
+4915    7.6
+Name: imdb_score, Length: 4916, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imdb_score</span> <span class="o">//</span> <span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       1.0
+1       1.0
+2       0.0
+3       1.0
+4       1.0
+       ... 
+4911    1.0
+4912    1.0
+4913    0.0
+4914    0.0
+4915    0.0
+Name: imdb_score, Length: 4916, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imdb_score</span> <span class="o">&gt;</span> <span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        True
+1        True
+2       False
+3        True
+4        True
+        ...  
+4911     True
+4912     True
+4913    False
+4914    False
+4915    False
+Name: imdb_score, Length: 4916, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">director</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;director_name&#39;</span><span class="p">]</span>
+<span class="n">director</span> <span class="o">==</span> <span class="s1">&#39;James Cameron&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        True
+1       False
+2       False
+3       False
+4       False
+        ...  
+4911    False
+4912    False
+4913    False
+4914    False
+4915    False
+Name: director_name, Length: 4916, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="method">
+<h3>把 運算符 改成 method, 可用方法<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>數值運算：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.add</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.sub</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.mul</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.div</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">//</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.floordiv</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.mod</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.pow</span></code></p></li>
+</ul>
+</li>
+<li><p>比較運算:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.lt</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.le</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.gt</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.ge</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.eq</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!=</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">.ne</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">money</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+<span class="n">money</span> <span class="o">-</span> <span class="mi">15</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    85.0
+1     5.0
+2     NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">money</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    85.0
+1     5.0
+2     NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">money</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">fill_value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># 先把 na 補 0 ，再計算</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    85.0
+1     5.0
+2   -15.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">money</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     True
+1     True
+2    False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>1.4 串連Series的方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">)</span>
+<span class="n">fb_likes</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">]</span>
+<span class="n">director</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;director_name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>可以直接一路<code class="docutils literal notranslate"><span class="pre">.</span></code>下去<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">director</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Steven Spielberg    26
+Woody Allen         22
+Martin Scorsese     20
+Name: director_name, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fb_likes</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="enter">
+<h3>也可用括號括起來，就可以用 enter 來換行 (可註解)<a class="headerlink" href="#enter" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">fb_likes</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     1000
+1    40000
+2    11000
+3    27000
+4      131
+Name: actor_1_facebook_likes, dtype: int32
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">fb_likes</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+         <span class="c1">#.astype(int)</span>
+         <span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     1000.0
+1    40000.0
+2    11000.0
+3    27000.0
+4      131.0
+Name: actor_1_facebook_likes, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>也可用 <code class="docutils literal notranslate"><span class="pre">\</span></code> 來分隔 (不可註解)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fb_likes</span> \
+    <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     1000
+1    40000
+2    11000
+3    27000
+4      131
+Name: actor_1_facebook_likes, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fb_likes</span> \
+    <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> \
+    <span class="c1">#.astype(int) \</span>
+    <span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">head</span><span class="p">()</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: unexpected indent
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>更改欄位名稱<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="rename">
+<h3>用 <code class="docutils literal notranslate"><span class="pre">rename</span></code> 來改<a class="headerlink" href="#rename" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;director_name&#39;</span><span class="p">:</span><span class="s1">&#39;Director Name&#39;</span><span class="p">}</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_map</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>Director Name</th>
+      <th>num_critic_for_reviews</th>
+      <th>duration</th>
+      <th>director_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>actor_2_name</th>
+      <th>actor_1_facebook_likes</th>
+      <th>gross</th>
+      <th>genres</th>
+      <th>...</th>
+      <th>num_user_for_reviews</th>
+      <th>language</th>
+      <th>country</th>
+      <th>content_rating</th>
+      <th>budget</th>
+      <th>title_year</th>
+      <th>actor_2_facebook_likes</th>
+      <th>imdb_score</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Color</td>
+      <td>James Cameron</td>
+      <td>723.0</td>
+      <td>178.0</td>
+      <td>0.0</td>
+      <td>855.0</td>
+      <td>Joel David Moore</td>
+      <td>1000.0</td>
+      <td>760505847.0</td>
+      <td>Action|Adventure|Fantasy|Sci-Fi</td>
+      <td>...</td>
+      <td>3054.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>237000000.0</td>
+      <td>2009.0</td>
+      <td>936.0</td>
+      <td>7.9</td>
+      <td>1.78</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Color</td>
+      <td>Gore Verbinski</td>
+      <td>302.0</td>
+      <td>169.0</td>
+      <td>563.0</td>
+      <td>1000.0</td>
+      <td>Orlando Bloom</td>
+      <td>40000.0</td>
+      <td>309404152.0</td>
+      <td>Action|Adventure|Fantasy</td>
+      <td>...</td>
+      <td>1238.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>300000000.0</td>
+      <td>2007.0</td>
+      <td>5000.0</td>
+      <td>7.1</td>
+      <td>2.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Color</td>
+      <td>Sam Mendes</td>
+      <td>602.0</td>
+      <td>148.0</td>
+      <td>0.0</td>
+      <td>161.0</td>
+      <td>Rory Kinnear</td>
+      <td>11000.0</td>
+      <td>200074175.0</td>
+      <td>Action|Adventure|Thriller</td>
+      <td>...</td>
+      <td>994.0</td>
+      <td>English</td>
+      <td>UK</td>
+      <td>PG-13</td>
+      <td>245000000.0</td>
+      <td>2015.0</td>
+      <td>393.0</td>
+      <td>6.8</td>
+      <td>2.35</td>
+      <td>85000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Color</td>
+      <td>Christopher Nolan</td>
+      <td>813.0</td>
+      <td>164.0</td>
+      <td>22000.0</td>
+      <td>23000.0</td>
+      <td>Christian Bale</td>
+      <td>27000.0</td>
+      <td>448130642.0</td>
+      <td>Action|Thriller</td>
+      <td>...</td>
+      <td>2701.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>250000000.0</td>
+      <td>2012.0</td>
+      <td>23000.0</td>
+      <td>8.5</td>
+      <td>2.35</td>
+      <td>164000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>Doug Walker</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>131.0</td>
+      <td>NaN</td>
+      <td>Rob Walker</td>
+      <td>131.0</td>
+      <td>NaN</td>
+      <td>Documentary</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>7.1</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 28 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>清理不乾淨的欄位名稱<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>例如，我想把現在的欄位名稱：</p>
+<ul>
+<li><p>前後的空白都去掉</p></li>
+<li><p>轉小寫</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">director.name</span></code> 的 <code class="docutils literal notranslate"><span class="pre">.</span></code> 改成 <code class="docutils literal notranslate"><span class="pre">_</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">director_name</span></code>.</p></li>
+</ul>
+</li>
+<li><p>那可以這樣做</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aa</span> <span class="o">=</span> <span class="s2">&quot;wHaT.ever  &quot;</span>
+<span class="n">aa</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;what_ever&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>就把上面的作法套到欄位名稱上就好：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">movies</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">movies</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
+<span class="n">movies</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>num_critic_for_reviews</th>
+      <th>duration</th>
+      <th>director_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>actor_2_name</th>
+      <th>actor_1_facebook_likes</th>
+      <th>gross</th>
+      <th>genres</th>
+      <th>...</th>
+      <th>num_user_for_reviews</th>
+      <th>language</th>
+      <th>country</th>
+      <th>content_rating</th>
+      <th>budget</th>
+      <th>title_year</th>
+      <th>actor_2_facebook_likes</th>
+      <th>imdb_score</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Color</td>
+      <td>James Cameron</td>
+      <td>723.0</td>
+      <td>178.0</td>
+      <td>0.0</td>
+      <td>855.0</td>
+      <td>Joel David Moore</td>
+      <td>1000.0</td>
+      <td>760505847.0</td>
+      <td>Action|Adventure|Fantasy|Sci-Fi</td>
+      <td>...</td>
+      <td>3054.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>237000000.0</td>
+      <td>2009.0</td>
+      <td>936.0</td>
+      <td>7.9</td>
+      <td>1.78</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Color</td>
+      <td>Gore Verbinski</td>
+      <td>302.0</td>
+      <td>169.0</td>
+      <td>563.0</td>
+      <td>1000.0</td>
+      <td>Orlando Bloom</td>
+      <td>40000.0</td>
+      <td>309404152.0</td>
+      <td>Action|Adventure|Fantasy</td>
+      <td>...</td>
+      <td>1238.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>300000000.0</td>
+      <td>2007.0</td>
+      <td>5000.0</td>
+      <td>7.1</td>
+      <td>2.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Color</td>
+      <td>Sam Mendes</td>
+      <td>602.0</td>
+      <td>148.0</td>
+      <td>0.0</td>
+      <td>161.0</td>
+      <td>Rory Kinnear</td>
+      <td>11000.0</td>
+      <td>200074175.0</td>
+      <td>Action|Adventure|Thriller</td>
+      <td>...</td>
+      <td>994.0</td>
+      <td>English</td>
+      <td>UK</td>
+      <td>PG-13</td>
+      <td>245000000.0</td>
+      <td>2015.0</td>
+      <td>393.0</td>
+      <td>6.8</td>
+      <td>2.35</td>
+      <td>85000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 28 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="column">
+<h2>刪除column<a class="headerlink" href="#column" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">)</span>
+<span class="n">movies</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;color&#39;, &#39;director_name&#39;, &#39;num_critic_for_reviews&#39;, &#39;duration&#39;,
+       &#39;director_facebook_likes&#39;, &#39;actor_3_facebook_likes&#39;, &#39;actor_2_name&#39;,
+       &#39;actor_1_facebook_likes&#39;, &#39;gross&#39;, &#39;genres&#39;, &#39;actor_1_name&#39;,
+       &#39;movie_title&#39;, &#39;num_voted_users&#39;, &#39;cast_total_facebook_likes&#39;,
+       &#39;actor_3_name&#39;, &#39;facenumber_in_poster&#39;, &#39;plot_keywords&#39;,
+       &#39;movie_imdb_link&#39;, &#39;num_user_for_reviews&#39;, &#39;language&#39;, &#39;country&#39;,
+       &#39;content_rating&#39;, &#39;budget&#39;, &#39;title_year&#39;, &#39;actor_2_facebook_likes&#39;,
+       &#39;imdb_score&#39;, &#39;aspect_ratio&#39;, &#39;movie_facebook_likes&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>刪掉第一個 column</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">movies</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">movies</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;director_name&#39;, &#39;num_critic_for_reviews&#39;, &#39;duration&#39;,
+       &#39;director_facebook_likes&#39;, &#39;actor_3_facebook_likes&#39;, &#39;actor_2_name&#39;,
+       &#39;actor_1_facebook_likes&#39;, &#39;gross&#39;, &#39;genres&#39;, &#39;actor_1_name&#39;,
+       &#39;movie_title&#39;, &#39;num_voted_users&#39;, &#39;cast_total_facebook_likes&#39;,
+       &#39;actor_3_name&#39;, &#39;facenumber_in_poster&#39;, &#39;plot_keywords&#39;,
+       &#39;movie_imdb_link&#39;, &#39;num_user_for_reviews&#39;, &#39;language&#39;, &#39;country&#39;,
+       &#39;content_rating&#39;, &#39;budget&#39;, &#39;title_year&#39;, &#39;actor_2_facebook_likes&#39;,
+       &#39;imdb_score&#39;, &#39;aspect_ratio&#39;, &#39;movie_facebook_likes&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>刪掉前五個 column</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">del_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;director_name&#39;</span><span class="p">,</span> <span class="s1">&#39;num_critic_for_reviews&#39;</span><span class="p">,</span> <span class="s1">&#39;duration&#39;</span><span class="p">]</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">movies</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">del_columns</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">movies</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;director_facebook_likes&#39;, &#39;actor_3_facebook_likes&#39;, &#39;actor_2_name&#39;,
+       &#39;actor_1_facebook_likes&#39;, &#39;gross&#39;, &#39;genres&#39;, &#39;actor_1_name&#39;,
+       &#39;movie_title&#39;, &#39;num_voted_users&#39;, &#39;cast_total_facebook_likes&#39;,
+       &#39;actor_3_name&#39;, &#39;facenumber_in_poster&#39;, &#39;plot_keywords&#39;,
+       &#39;movie_imdb_link&#39;, &#39;num_user_for_reviews&#39;, &#39;language&#39;, &#39;country&#39;,
+       &#39;content_rating&#39;, &#39;budget&#39;, &#39;title_year&#39;, &#39;actor_2_facebook_likes&#39;,
+       &#39;imdb_score&#39;, &#39;aspect_ratio&#39;, &#39;movie_facebook_likes&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>新增 column<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">)</span>
+<span class="n">target_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">]</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="n">target_columns</span><span class="p">]</span>
+<span class="n">movies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>actor_1_facebook_likes</th>
+      <th>actor_2_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>director_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1000.0</td>
+      <td>936.0</td>
+      <td>855.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>40000.0</td>
+      <td>5000.0</td>
+      <td>1000.0</td>
+      <td>563.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11000.0</td>
+      <td>393.0</td>
+      <td>161.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27000.0</td>
+      <td>23000.0</td>
+      <td>23000.0</td>
+      <td>22000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>131.0</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>131.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4911</th>
+      <td>637.0</td>
+      <td>470.0</td>
+      <td>318.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>4912</th>
+      <td>841.0</td>
+      <td>593.0</td>
+      <td>319.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4913</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4914</th>
+      <td>946.0</td>
+      <td>719.0</td>
+      <td>489.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4915</th>
+      <td>86.0</td>
+      <td>23.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>4916 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="id7">
+<h3>直接用 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 來處理<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>新增一個常數</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;has_seen&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">movies</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>actor_1_facebook_likes</th>
+      <th>actor_2_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>director_facebook_likes</th>
+      <th>has_seen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1000.0</td>
+      <td>936.0</td>
+      <td>855.0</td>
+      <td>0.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>40000.0</td>
+      <td>5000.0</td>
+      <td>1000.0</td>
+      <td>563.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11000.0</td>
+      <td>393.0</td>
+      <td>161.0</td>
+      <td>0.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27000.0</td>
+      <td>23000.0</td>
+      <td>23000.0</td>
+      <td>22000.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>131.0</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>131.0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>新增對各欄位做向量運算的結果 (加總觀眾對 3 個演員 + 1 個導演 的讚數)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加總法 1: 若欄位內有 NA，加總完會有 NA</span>
+<span class="n">total1</span> <span class="o">=</span> <span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span>
+         <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span> 
+         <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span> 
+         <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">])</span>
+
+<span class="c1"># 加總法 2: 用 dataframe 的 sum method，加總時就會把 NA 先補 0 再相加</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">]</span>
+<span class="n">total2</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+
+<span class="c1"># 新增欄位</span>
+<span class="n">movies</span><span class="p">[</span><span class="s2">&quot;total1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">total1</span>
+<span class="n">movies</span><span class="p">[</span><span class="s2">&quot;total2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">total2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 4916 entries, 0 to 4915
+Data columns (total 7 columns):
+ #   Column                   Non-Null Count  Dtype  
+---  ------                   --------------  -----  
+ 0   actor_1_facebook_likes   4909 non-null   float64
+ 1   actor_2_facebook_likes   4903 non-null   float64
+ 2   actor_3_facebook_likes   4893 non-null   float64
+ 3   director_facebook_likes  4814 non-null   float64
+ 4   has_seen                 4916 non-null   int64  
+ 5   total1                   4794 non-null   float64
+ 6   total2                   4916 non-null   float64
+dtypes: float64(6), int64(1)
+memory usage: 269.0 KB
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到 total1 和 total2 的 Non-Null Count 有差別</p></li>
+</ul>
+</div>
+<div class="section" id="assign-method">
+<h3>用 <code class="docutils literal notranslate"><span class="pre">.assign</span></code> method<a class="headerlink" href="#assign-method" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">)</span>
+<span class="n">target_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">]</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="n">target_columns</span><span class="p">]</span>
+<span class="n">movies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>actor_1_facebook_likes</th>
+      <th>actor_2_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>director_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1000.0</td>
+      <td>936.0</td>
+      <td>855.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>40000.0</td>
+      <td>5000.0</td>
+      <td>1000.0</td>
+      <td>563.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11000.0</td>
+      <td>393.0</td>
+      <td>161.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27000.0</td>
+      <td>23000.0</td>
+      <td>23000.0</td>
+      <td>22000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>131.0</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>131.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4911</th>
+      <td>637.0</td>
+      <td>470.0</td>
+      <td>318.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>4912</th>
+      <td>841.0</td>
+      <td>593.0</td>
+      <td>319.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4913</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4914</th>
+      <td>946.0</td>
+      <td>719.0</td>
+      <td>489.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4915</th>
+      <td>86.0</td>
+      <td>23.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>4916 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="assign">
+<h4>先算好再 assign 進去<a class="headerlink" href="#assign" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>作法和剛剛都一樣，都是先算出結果，再 assign 到新欄位</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加總法 1: 若欄位內有 NA，加總完會有 NA</span>
+<span class="n">total1</span> <span class="o">=</span> <span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span>
+         <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span> 
+         <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span> 
+         <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">])</span>
+
+<span class="c1"># 加總法 2: 用 dataframe 的 sum method，加總時就會把 NA 先補 0 再相加</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">]</span>
+<span class="n">total2</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+
+<span class="c1"># 新增欄位</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">movies</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">total1</span> <span class="o">=</span> <span class="n">total1</span><span class="p">,</span>
+                      <span class="n">total2</span> <span class="o">=</span> <span class="n">total2</span><span class="p">)</span>
+<span class="n">movies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>actor_1_facebook_likes</th>
+      <th>actor_2_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>director_facebook_likes</th>
+      <th>total1</th>
+      <th>total2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1000.0</td>
+      <td>936.0</td>
+      <td>855.0</td>
+      <td>0.0</td>
+      <td>2791.0</td>
+      <td>2791.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>40000.0</td>
+      <td>5000.0</td>
+      <td>1000.0</td>
+      <td>563.0</td>
+      <td>46563.0</td>
+      <td>46563.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11000.0</td>
+      <td>393.0</td>
+      <td>161.0</td>
+      <td>0.0</td>
+      <td>11554.0</td>
+      <td>11554.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27000.0</td>
+      <td>23000.0</td>
+      <td>23000.0</td>
+      <td>22000.0</td>
+      <td>95000.0</td>
+      <td>95000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>131.0</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>131.0</td>
+      <td>NaN</td>
+      <td>274.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4911</th>
+      <td>637.0</td>
+      <td>470.0</td>
+      <td>318.0</td>
+      <td>2.0</td>
+      <td>1427.0</td>
+      <td>1427.0</td>
+    </tr>
+    <tr>
+      <th>4912</th>
+      <td>841.0</td>
+      <td>593.0</td>
+      <td>319.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1753.0</td>
+    </tr>
+    <tr>
+      <th>4913</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4914</th>
+      <td>946.0</td>
+      <td>719.0</td>
+      <td>489.0</td>
+      <td>0.0</td>
+      <td>2154.0</td>
+      <td>2154.0</td>
+    </tr>
+    <tr>
+      <th>4915</th>
+      <td>86.0</td>
+      <td>23.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+      <td>141.0</td>
+      <td>141.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>4916 rows × 6 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>從這個角度來看，已經很像 R 的 mutate 做法了，可以這樣寫更像：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 原始資料</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">)</span>
+<span class="n">target_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">]</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="n">target_columns</span><span class="p">]</span>
+
+<span class="c1"># 開始做 mutate</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">movies</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+    <span class="n">total1</span> <span class="o">=</span> <span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span>
+         <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span> 
+         <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span> 
+         <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">]),</span>
+    <span class="n">total2</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">movies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>actor_1_facebook_likes</th>
+      <th>actor_2_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>director_facebook_likes</th>
+      <th>total1</th>
+      <th>total2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1000.0</td>
+      <td>936.0</td>
+      <td>855.0</td>
+      <td>0.0</td>
+      <td>2791.0</td>
+      <td>2791.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>40000.0</td>
+      <td>5000.0</td>
+      <td>1000.0</td>
+      <td>563.0</td>
+      <td>46563.0</td>
+      <td>46563.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11000.0</td>
+      <td>393.0</td>
+      <td>161.0</td>
+      <td>0.0</td>
+      <td>11554.0</td>
+      <td>11554.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27000.0</td>
+      <td>23000.0</td>
+      <td>23000.0</td>
+      <td>22000.0</td>
+      <td>95000.0</td>
+      <td>95000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>131.0</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>131.0</td>
+      <td>NaN</td>
+      <td>274.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4911</th>
+      <td>637.0</td>
+      <td>470.0</td>
+      <td>318.0</td>
+      <td>2.0</td>
+      <td>1427.0</td>
+      <td>1427.0</td>
+    </tr>
+    <tr>
+      <th>4912</th>
+      <td>841.0</td>
+      <td>593.0</td>
+      <td>319.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1753.0</td>
+    </tr>
+    <tr>
+      <th>4913</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4914</th>
+      <td>946.0</td>
+      <td>719.0</td>
+      <td>489.0</td>
+      <td>0.0</td>
+      <td>2154.0</td>
+      <td>2154.0</td>
+    </tr>
+    <tr>
+      <th>4915</th>
+      <td>86.0</td>
+      <td>23.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+      <td>141.0</td>
+      <td>141.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>4916 rows × 6 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>的確跟 R 很像了，但很討厭的就是，我還是要一直寫 dataframe 的名稱 <code class="docutils literal notranslate"><span class="pre">movies</span></code></p></li>
+<li><p>而且，如果想像 R 一路做 pipe 下去的話，那就 GG 了</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">)</span>
+<span class="n">target_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">]</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="n">target_columns</span><span class="p">]</span>
+<span class="n">movies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>actor_1_facebook_likes</th>
+      <th>actor_2_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>director_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1000.0</td>
+      <td>936.0</td>
+      <td>855.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>40000.0</td>
+      <td>5000.0</td>
+      <td>1000.0</td>
+      <td>563.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11000.0</td>
+      <td>393.0</td>
+      <td>161.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27000.0</td>
+      <td>23000.0</td>
+      <td>23000.0</td>
+      <td>22000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>131.0</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>131.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4911</th>
+      <td>637.0</td>
+      <td>470.0</td>
+      <td>318.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>4912</th>
+      <td>841.0</td>
+      <td>593.0</td>
+      <td>319.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4913</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4914</th>
+      <td>946.0</td>
+      <td>719.0</td>
+      <td>489.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4915</th>
+      <td>86.0</td>
+      <td>23.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>4916 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 原始資料</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">)</span>
+<span class="n">target_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">]</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="n">target_columns</span><span class="p">]</span>
+
+<span class="c1"># 開始做 mutate</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">movies</span>
+        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;director_facebook_likes &gt; 500&quot;</span><span class="p">)</span> <span class="c1"># 先篩選</span>
+        <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;director_facebook_likes&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">total1</span> <span class="o">=</span> 
+                   <span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span>
+                    <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span> 
+                    <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span> 
+                    <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">])</span>
+               <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">movies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>actor_1_facebook_likes</th>
+      <th>actor_2_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>director_facebook_likes</th>
+      <th>total1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>165</th>
+      <td>5000.0</td>
+      <td>808.0</td>
+      <td>91.0</td>
+      <td>503.0</td>
+      <td>6402.0</td>
+    </tr>
+    <tr>
+      <th>1877</th>
+      <td>264.0</td>
+      <td>139.0</td>
+      <td>108.0</td>
+      <td>503.0</td>
+      <td>1014.0</td>
+    </tr>
+    <tr>
+      <th>831</th>
+      <td>10000.0</td>
+      <td>593.0</td>
+      <td>467.0</td>
+      <td>503.0</td>
+      <td>11563.0</td>
+    </tr>
+    <tr>
+      <th>2220</th>
+      <td>2000.0</td>
+      <td>92.0</td>
+      <td>83.0</td>
+      <td>503.0</td>
+      <td>2678.0</td>
+    </tr>
+    <tr>
+      <th>1106</th>
+      <td>13000.0</td>
+      <td>929.0</td>
+      <td>795.0</td>
+      <td>503.0</td>
+      <td>15227.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27000.0</td>
+      <td>23000.0</td>
+      <td>23000.0</td>
+      <td>22000.0</td>
+      <td>95000.0</td>
+    </tr>
+    <tr>
+      <th>1222</th>
+      <td>23000.0</td>
+      <td>20000.0</td>
+      <td>19000.0</td>
+      <td>22000.0</td>
+      <td>84000.0</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>11000.0</td>
+      <td>11000.0</td>
+      <td>6000.0</td>
+      <td>22000.0</td>
+      <td>50000.0</td>
+    </tr>
+    <tr>
+      <th>1057</th>
+      <td>14000.0</td>
+      <td>509.0</td>
+      <td>319.0</td>
+      <td>22000.0</td>
+      <td>36828.0</td>
+    </tr>
+    <tr>
+      <th>3603</th>
+      <td>23000.0</td>
+      <td>19000.0</td>
+      <td>694.0</td>
+      <td>23000.0</td>
+      <td>65694.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>555 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 原始資料</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">)</span>
+<span class="n">target_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">,</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">]</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="n">target_columns</span><span class="p">]</span>
+
+<span class="c1"># 開始做 mutate</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">movies</span>
+        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;director_facebook_likes &gt; 500&quot;</span><span class="p">)</span> <span class="c1"># 先篩選</span>
+        <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;director_facebook_likes&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">total1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span>
+                   <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span>
+                    <span class="n">x</span><span class="p">[</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span> 
+                    <span class="n">x</span><span class="p">[</span><span class="s1">&#39;actor_3_facebook_likes&#39;</span><span class="p">]</span> <span class="o">+</span> 
+                    <span class="n">x</span><span class="p">[</span><span class="s1">&#39;director_facebook_likes&#39;</span><span class="p">])</span>
+               <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">movies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>actor_1_facebook_likes</th>
+      <th>actor_2_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>director_facebook_likes</th>
+      <th>total1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>165</th>
+      <td>5000.0</td>
+      <td>808.0</td>
+      <td>91.0</td>
+      <td>503.0</td>
+      <td>6402.0</td>
+    </tr>
+    <tr>
+      <th>1877</th>
+      <td>264.0</td>
+      <td>139.0</td>
+      <td>108.0</td>
+      <td>503.0</td>
+      <td>1014.0</td>
+    </tr>
+    <tr>
+      <th>831</th>
+      <td>10000.0</td>
+      <td>593.0</td>
+      <td>467.0</td>
+      <td>503.0</td>
+      <td>11563.0</td>
+    </tr>
+    <tr>
+      <th>2220</th>
+      <td>2000.0</td>
+      <td>92.0</td>
+      <td>83.0</td>
+      <td>503.0</td>
+      <td>2678.0</td>
+    </tr>
+    <tr>
+      <th>1106</th>
+      <td>13000.0</td>
+      <td>929.0</td>
+      <td>795.0</td>
+      <td>503.0</td>
+      <td>15227.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27000.0</td>
+      <td>23000.0</td>
+      <td>23000.0</td>
+      <td>22000.0</td>
+      <td>95000.0</td>
+    </tr>
+    <tr>
+      <th>1222</th>
+      <td>23000.0</td>
+      <td>20000.0</td>
+      <td>19000.0</td>
+      <td>22000.0</td>
+      <td>84000.0</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>11000.0</td>
+      <td>11000.0</td>
+      <td>6000.0</td>
+      <td>22000.0</td>
+      <td>50000.0</td>
+    </tr>
+    <tr>
+      <th>1057</th>
+      <td>14000.0</td>
+      <td>509.0</td>
+      <td>319.0</td>
+      <td>22000.0</td>
+      <td>36828.0</td>
+    </tr>
+    <tr>
+      <th>3603</th>
+      <td>23000.0</td>
+      <td>19000.0</td>
+      <td>694.0</td>
+      <td>23000.0</td>
+      <td>65694.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>555 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_likes</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+               <span class="k">if</span> <span class="s1">&#39;like&#39;</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">movies</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">total_likes</span><span class="o">=</span><span class="n">sum_likes</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>...</th>
+      <th>has_seen</th>
+      <th>total_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Color</td>
+      <td>James Ca...</td>
+      <td>...</td>
+      <td>0</td>
+      <td>40625.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Color</td>
+      <td>Gore Ver...</td>
+      <td>...</td>
+      <td>0</td>
+      <td>94913.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Color</td>
+      <td>Sam Mendes</td>
+      <td>...</td>
+      <td>0</td>
+      <td>108254.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Color</td>
+      <td>Christop...</td>
+      <td>...</td>
+      <td>0</td>
+      <td>365759.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>Doug Walker</td>
+      <td>...</td>
+      <td>0</td>
+      <td>417.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 30 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cast_like_gt_actor_director</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;cast_total_facebook_likes&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;total_likes&#39;</span><span class="p">]</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="p">(</span><span class="n">movies</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">total_likes</span><span class="o">=</span><span class="n">total</span><span class="p">,</span>
+                     <span class="n">is_cast_likes_more</span> <span class="o">=</span> <span class="n">cast_like_gt_actor_director</span><span class="p">)</span>
+      <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;is_cast_likes_more&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;total_likes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actor_sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">movies</span><span class="p">[[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">movies</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;actor_&#39;</span> <span class="ow">in</span> <span class="n">c</span> <span class="ow">and</span> <span class="s1">&#39;_likes&#39;</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]]</span>
+             <span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">))</span>
+
+<span class="n">actor_sum</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     2791.0
+1    46000.0
+2    11554.0
+3    73000.0
+4      143.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;cast_total_facebook_likes&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">actor_sum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       True
+1       True
+2       True
+3       True
+4       True
+        ... 
+4911    True
+4912    True
+4913    True
+4914    True
+4915    True
+Length: 4916, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;cast_total_facebook_likes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="n">actor_sum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       True
+1       True
+2       True
+3       True
+4       True
+        ... 
+4911    True
+4912    True
+4913    True
+4914    True
+4915    True
+Length: 4916, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;cast_total_facebook_likes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="n">actor_sum</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pct_like</span> <span class="o">=</span> <span class="p">(</span><span class="n">actor_sum</span>
+            <span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;cast_total_facebook_likes&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pct_like</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    4883.000000
+mean        0.833279
+std         0.140566
+min         0.300767
+25%         0.735284
+50%         0.869289
+75%         0.954774
+max         1.000000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pct_like</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+          <span class="n">index</span><span class="o">=</span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;movie_title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Avatar                                        0.577369
+Pirates of the Caribbean: At World&#39;s End      0.951396
+Spectre                                       0.987521
+The Dark Knight Rises                         0.683783
+Star Wars: Episode VII - The Force Awakens    1.000000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">profit_index</span> <span class="o">=</span> <span class="n">movies</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;gross&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">profit_index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movies</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">profit_index</span><span class="p">,</span>
+              <span class="n">column</span><span class="o">=</span><span class="s1">&#39;profit&#39;</span><span class="p">,</span>
+              <span class="n">value</span><span class="o">=</span><span class="n">movies</span><span class="p">[</span><span class="s1">&#39;gross&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;budget&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">movies</span><span class="p">[</span><span class="s1">&#39;director_name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./ch3_pandas/pandas_book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

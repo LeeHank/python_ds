@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>13. Gaussian Mixture Model (GMM) &#8212; My sample book</title>
+    <title>15. Gaussian Mixture Model (GMM) &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="14. Supervised Learning with scikit-learn" href="../datacamp_su/datacamp_su.html" />
-    <link rel="prev" title="12. K-Means" href="KMeans.html" />
+    <link rel="next" title="16. Hierarchical Clustering" href="HC.html" />
+    <link rel="prev" title="14. K-Means" href="KMeans.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -121,6 +121,11 @@
    2. Getting Started (official)
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/regex.html">
+   3. Regular Expression
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -129,43 +134,48 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/datacamp_matplotlib_intro.html">
+   4. Intro to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.00-matplotlib_intro.html">
-   3. Matplotlib 簡介與常用技巧
+   5. Matplotlib 簡介與常用技巧
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.01-Simple-Line-Plots.html">
-   4. Simple Line Plots
+   6. Simple Line Plots
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
-   5. Simple Scatter Plots
+   7. Simple Scatter Plots
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.03-Errorbars.html">
-   6. Error bars &amp; Error region
+   8. Error bars &amp; Error region
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.05-Histograms-and-Density.html">
-   7. Histograms and Density
+   9. Histograms and Density
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.06-Legends.html">
-   8. Legends
+   10. Legends
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.07-Colorbars.html">
-   9. Colorbars
+   11. Colorbars
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.08-Multiple-Subplots.html">
-   10. Multiple Subplots
+   12. Multiple Subplots
   </a>
  </li>
 </ul>
@@ -177,7 +187,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
-   11. Introduction to Seaborn
+   13. Introduction to Seaborn
   </a>
  </li>
 </ul>
@@ -189,12 +199,17 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="KMeans.html">
-   12. K-Means
+   14. K-Means
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   13. Gaussian Mixture Model (GMM)
+   15. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="HC.html">
+   16. Hierarchical Clustering
   </a>
  </li>
 </ul>
@@ -206,17 +221,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   14. Supervised Learning with scikit-learn
+   17. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   15. Classification Trees
+   18. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   16. Permutation Importance vs Random Forest Feature Importance (MDI)
+   19. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -325,27 +340,27 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#toy-example">
-   13.1. Toy Example (多維, 多群)
+   15.1. Toy Example (多維, 多群)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kmeans">
-     13.1.1. 產生資料並先試試 KMeans
+     15.1.1. 產生資料並先試試 KMeans
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kmeans-gmm">
-     13.1.2. 從 KMeans 改到 GMM 的動機
+     15.1.2. 從 KMeans 改到 GMM 的動機
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     13.1.3. 概念講解
+     15.1.3. 概念講解
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#span-style-color-blue-span">
-       13.1.3.1.
+       15.1.3.1.
        <span style="color: blue">
         資料生成模型
        </span>
@@ -353,7 +368,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       13.1.3.2.
+       15.1.3.2.
        <span style="color: blue">
         參數估計
        </span>
@@ -361,7 +376,7 @@
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#span-style-color-blue-sigma-span">
-         13.1.3.2.1.
+         15.1.3.2.1.
          <span style="color: blue">
           選
           <span class="math notranslate nohighlight">
@@ -373,7 +388,7 @@
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#span-style-color-blue-k-span">
-         13.1.3.2.2.
+         15.1.3.2.2.
          <span style="color: blue">
           選 k
          </span>
@@ -383,7 +398,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id3">
-       13.1.3.3.
+       15.1.3.3.
        <span style="color: blue">
         預測(分群)
        </span>
@@ -393,47 +408,47 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#code">
-     13.1.4. code 實作
+     15.1.4. code 實作
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id4">
-       13.1.4.1. 資料
+       15.1.4.1. 資料
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#training">
-       13.1.4.2. training
+       15.1.4.2. training
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#prediction">
-       13.1.4.3. prediction(分群)
+       15.1.4.3. prediction(分群)
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id5">
-       13.1.4.4. 視覺化
+       15.1.4.4. 視覺化
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#covariance">
-       13.1.4.5. 不同 covariance 限制式的影響
+       15.1.4.5. 不同 covariance 限制式的影響
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#cov">
-       13.1.4.6. 選群數，選 cov 限制式
+       15.1.4.6. 選群數，選 cov 限制式
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#density-estimation">
-       13.1.4.7. 產生資料 與 density estimation
+       15.1.4.7. 產生資料 與 density estimation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#anomaly-detection">
-       13.1.4.8. anomaly detection
+       15.1.4.8. anomaly detection
       </a>
      </li>
     </ul>
@@ -442,46 +457,46 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   13.2. 細節討論
+   15.2. 細節討論
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nonlinear-pattern">
-     13.2.1. 對 nonlinear 的 pattern 一樣沒轍
+     15.2.1. 對 nonlinear 的 pattern 一樣沒轍
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#workflow">
-   13.3. 推薦的 workflow
+   15.3. 推薦的 workflow
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#real-world-examples">
-   13.4. Real world examples
+   15.4. Real world examples
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#olivetti">
-     13.4.1. [影像分群] Olivetti
+     15.4.1. [影像分群] Olivetti
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#density-estimation-moon-data">
-     13.4.2. [Density Estimation] moon data
+     15.4.2. [Density Estimation] moon data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#digits-number">
-     13.4.3. [影像生成] Digits Number
+     15.4.3. [影像生成] Digits Number
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   13.5. 要再看的資源
+   15.5. 要再看的資源
   </a>
  </li>
 </ul>
@@ -506,27 +521,27 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#toy-example">
-   13.1. Toy Example (多維, 多群)
+   15.1. Toy Example (多維, 多群)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kmeans">
-     13.1.1. 產生資料並先試試 KMeans
+     15.1.1. 產生資料並先試試 KMeans
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kmeans-gmm">
-     13.1.2. 從 KMeans 改到 GMM 的動機
+     15.1.2. 從 KMeans 改到 GMM 的動機
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     13.1.3. 概念講解
+     15.1.3. 概念講解
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#span-style-color-blue-span">
-       13.1.3.1.
+       15.1.3.1.
        <span style="color: blue">
         資料生成模型
        </span>
@@ -534,7 +549,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       13.1.3.2.
+       15.1.3.2.
        <span style="color: blue">
         參數估計
        </span>
@@ -542,7 +557,7 @@
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#span-style-color-blue-sigma-span">
-         13.1.3.2.1.
+         15.1.3.2.1.
          <span style="color: blue">
           選
           <span class="math notranslate nohighlight">
@@ -554,7 +569,7 @@
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#span-style-color-blue-k-span">
-         13.1.3.2.2.
+         15.1.3.2.2.
          <span style="color: blue">
           選 k
          </span>
@@ -564,7 +579,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id3">
-       13.1.3.3.
+       15.1.3.3.
        <span style="color: blue">
         預測(分群)
        </span>
@@ -574,47 +589,47 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#code">
-     13.1.4. code 實作
+     15.1.4. code 實作
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id4">
-       13.1.4.1. 資料
+       15.1.4.1. 資料
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#training">
-       13.1.4.2. training
+       15.1.4.2. training
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#prediction">
-       13.1.4.3. prediction(分群)
+       15.1.4.3. prediction(分群)
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id5">
-       13.1.4.4. 視覺化
+       15.1.4.4. 視覺化
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#covariance">
-       13.1.4.5. 不同 covariance 限制式的影響
+       15.1.4.5. 不同 covariance 限制式的影響
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#cov">
-       13.1.4.6. 選群數，選 cov 限制式
+       15.1.4.6. 選群數，選 cov 限制式
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#density-estimation">
-       13.1.4.7. 產生資料 與 density estimation
+       15.1.4.7. 產生資料 與 density estimation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#anomaly-detection">
-       13.1.4.8. anomaly detection
+       15.1.4.8. anomaly detection
       </a>
      </li>
     </ul>
@@ -623,46 +638,46 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   13.2. 細節討論
+   15.2. 細節討論
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nonlinear-pattern">
-     13.2.1. 對 nonlinear 的 pattern 一樣沒轍
+     15.2.1. 對 nonlinear 的 pattern 一樣沒轍
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#workflow">
-   13.3. 推薦的 workflow
+   15.3. 推薦的 workflow
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#real-world-examples">
-   13.4. Real world examples
+   15.4. Real world examples
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#olivetti">
-     13.4.1. [影像分群] Olivetti
+     15.4.1. [影像分群] Olivetti
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#density-estimation-moon-data">
-     13.4.2. [Density Estimation] moon data
+     15.4.2. [Density Estimation] moon data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#digits-number">
-     13.4.3. [影像生成] Digits Number
+     15.4.3. [影像生成] Digits Number
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   13.5. 要再看的資源
+   15.5. 要再看的資源
   </a>
  </li>
 </ul>
@@ -675,7 +690,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="gaussian-mixture-model-gmm">
-<h1><span class="section-number">13. </span>Gaussian Mixture Model (GMM)<a class="headerlink" href="#gaussian-mixture-model-gmm" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">15. </span>Gaussian Mixture Model (GMM)<a class="headerlink" href="#gaussian-mixture-model-gmm" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -773,9 +788,9 @@
 </div>
 </div>
 <div class="section" id="toy-example">
-<h2><span class="section-number">13.1. </span>Toy Example (多維, 多群)<a class="headerlink" href="#toy-example" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">15.1. </span>Toy Example (多維, 多群)<a class="headerlink" href="#toy-example" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="kmeans">
-<h3><span class="section-number">13.1.1. </span>產生資料並先試試 KMeans<a class="headerlink" href="#kmeans" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.1.1. </span>產生資料並先試試 KMeans<a class="headerlink" href="#kmeans" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
@@ -904,7 +919,7 @@ cor of two feature:
 </ul>
 </div>
 <div class="section" id="kmeans-gmm">
-<h3><span class="section-number">13.1.2. </span>從 KMeans 改到 GMM 的動機<a class="headerlink" href="#kmeans-gmm" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.1.2. </span>從 KMeans 改到 GMM 的動機<a class="headerlink" href="#kmeans-gmm" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>從上面的範例，大概可以了解 KMeans 的致命缺點了：</p>
 <ul>
@@ -921,12 +936,12 @@ cor of two feature:
 </ul>
 </div>
 <div class="section" id="id1">
-<h3><span class="section-number">13.1.3. </span>概念講解<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.1.3. </span>概念講解<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>之後整理，我覺得重點是以下幾個：</p></li>
 </ul>
 <div class="section" id="span-style-color-blue-span">
-<h4><span class="section-number">13.1.3.1. </span><span style="color: blue">資料生成模型</span><a class="headerlink" href="#span-style-color-blue-span" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.3.1. </span><span style="color: blue">資料生成模型</span><a class="headerlink" href="#span-style-color-blue-span" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>每一個資料點，都假設來自以下的 mixture of Gaussian distribution:</p>
 <ul>
@@ -955,7 +970,7 @@ cor of two feature:
 </ul>
 </div>
 <div class="section" id="id2">
-<h4><span class="section-number">13.1.3.2. </span><span style="color: blue">參數估計</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.3.2. </span><span style="color: blue">參數估計</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>要估計的參數，包括：</p>
 <ul>
@@ -988,7 +1003,7 @@ L(\Theta | X) = \prod_{i=1}^N f_{Mix}(x_i|\Theta)
 </li>
 </ul>
 <div class="section" id="span-style-color-blue-sigma-span">
-<h5><span class="section-number">13.1.3.2.1. </span><span style="color: blue"> 選 <span class="math notranslate nohighlight">\(\Sigma\)</span> 限制式</span><a class="headerlink" href="#span-style-color-blue-sigma-span" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.3.2.1. </span><span style="color: blue"> 選 <span class="math notranslate nohighlight">\(\Sigma\)</span> 限制式</span><a class="headerlink" href="#span-style-color-blue-sigma-span" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>剛剛在做參數估計時，對 <span class="math notranslate nohighlight">\(\Sigma\)</span>，是沒有限制式的。</p></li>
 <li><p>但其實沒有限制式的話，很可能造成要估計的參數過多(大過sample數)，而造成無法估計。</p></li>
@@ -1038,7 +1053,7 @@ L(\Theta | X) = \prod_{i=1}^N f_{Mix}(x_i|\Theta)
 </table>
 </div>
 <div class="section" id="span-style-color-blue-k-span">
-<h5><span class="section-number">13.1.3.2.2. </span><span style="color: blue"> 選 k </span><a class="headerlink" href="#span-style-color-blue-k-span" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.3.2.2. </span><span style="color: blue"> 選 k </span><a class="headerlink" href="#span-style-color-blue-k-span" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>給定一個 k 後，就可以做上面的參數估計，估計完後，就可以得到 max liklihood 的值</p></li>
 <li><p>可以想像， k 如果給越大， likelihood 會越好，但就越容易 overfitting.</p></li>
@@ -1052,7 +1067,7 @@ L(\Theta | X) = \prod_{i=1}^N f_{Mix}(x_i|\Theta)
 </div>
 </div>
 <div class="section" id="id3">
-<h4><span class="section-number">13.1.3.3. </span><span style="color: blue">預測(分群)</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.3.3. </span><span style="color: blue">預測(分群)</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>再來，就可以預估手上這筆 data，來自各群的可能性了，怎做？ -&gt; 用 posterior distribution 來處理：</p></li>
 </ul>
@@ -1072,9 +1087,9 @@ L(\Theta | X) = \prod_{i=1}^N f_{Mix}(x_i|\Theta)
 </div>
 </div>
 <div class="section" id="code">
-<h3><span class="section-number">13.1.4. </span>code 實作<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.1.4. </span>code 實作<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id4">
-<h4><span class="section-number">13.1.4.1. </span>資料<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.4.1. </span>資料<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>再來看一下剛剛的範例資料：</p></li>
 </ul>
@@ -1104,7 +1119,7 @@ L(\Theta | X) = \prod_{i=1}^N f_{Mix}(x_i|\Theta)
 </div>
 </div>
 <div class="section" id="training">
-<h4><span class="section-number">13.1.4.2. </span>training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.4.2. </span>training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -1177,7 +1192,7 @@ Sigma hat:
 </ul>
 </div>
 <div class="section" id="prediction">
-<h4><span class="section-number">13.1.4.3. </span>prediction(分群)<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.4.3. </span>prediction(分群)<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>我們可以先做 軟分群：</p></li>
 </ul>
@@ -1256,7 +1271,7 @@ Sigma hat:
 </div>
 </div>
 <div class="section" id="id5">
-<h4><span class="section-number">13.1.4.4. </span>視覺化<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.4.4. </span>視覺化<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -1273,7 +1288,7 @@ Sigma hat:
 </ul>
 </div>
 <div class="section" id="covariance">
-<h4><span class="section-number">13.1.4.5. </span>不同 covariance 限制式的影響<a class="headerlink" href="#covariance" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.4.5. </span>不同 covariance 限制式的影響<a class="headerlink" href="#covariance" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>剛剛在估計 covariance matrix 時，是沒有設限制式的。</p></li>
 <li><p>我們現在來試試看，如果用和 KMeans 幾乎等價的限制式 (covariance_type = ‘spherical’) 會怎麼樣：</p></li>
@@ -1338,7 +1353,7 @@ Sigma hat:
 </ul>
 </div>
 <div class="section" id="cov">
-<h4><span class="section-number">13.1.4.6. </span>選群數，選 cov 限制式<a class="headerlink" href="#cov" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.4.6. </span>選群數，選 cov 限制式<a class="headerlink" href="#cov" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>剛剛都是直接指定 k = 4，現在來用 AIC 和 BIC 選選看：</p></li>
 </ul>
@@ -1435,7 +1450,7 @@ best_covariance_type:  tied
 </ul>
 </div>
 <div class="section" id="density-estimation">
-<h4><span class="section-number">13.1.4.7. </span>產生資料 與 density estimation<a class="headerlink" href="#density-estimation" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.4.7. </span>產生資料 與 density estimation<a class="headerlink" href="#density-estimation" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>當我們 fit 完 GMM 後，等於得到了一個 pdf.</p></li>
 <li><p>有這個 pdf，我要生成新資料，或是去算 density 就都很方便了：</p></li>
@@ -1592,7 +1607,7 @@ best_covariance_type:  tied
 </div>
 </div>
 <div class="section" id="anomaly-detection">
-<h4><span class="section-number">13.1.4.8. </span>anomaly detection<a class="headerlink" href="#anomaly-detection" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.4.8. </span>anomaly detection<a class="headerlink" href="#anomaly-detection" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>因為有 pdf，就可以算尾機率。</p></li>
 <li><p>所以，我們可以定義，4% 左右的產品是有缺陷的，那我就想抓出 4% 左右的 outlier.</p></li>
@@ -1638,18 +1653,18 @@ best_covariance_type:  tied
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">13.2. </span>細節討論<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">15.2. </span>細節討論<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="nonlinear-pattern">
-<h3><span class="section-number">13.2.1. </span>對 nonlinear 的 pattern 一樣沒轍<a class="headerlink" href="#nonlinear-pattern" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.2.1. </span>對 nonlinear 的 pattern 一樣沒轍<a class="headerlink" href="#nonlinear-pattern" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="workflow">
-<h2><span class="section-number">13.3. </span>推薦的 workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">15.3. </span>推薦的 workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="real-world-examples">
-<h2><span class="section-number">13.4. </span>Real world examples<a class="headerlink" href="#real-world-examples" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">15.4. </span>Real world examples<a class="headerlink" href="#real-world-examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="olivetti">
-<h3><span class="section-number">13.4.1. </span>[影像分群] Olivetti<a class="headerlink" href="#olivetti" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.4.1. </span>[影像分群] Olivetti<a class="headerlink" href="#olivetti" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_olivetti_faces</span>
@@ -2047,7 +2062,7 @@ k = 145 completed
 </div>
 </div>
 <div class="section" id="density-estimation-moon-data">
-<h3><span class="section-number">13.4.2. </span>[Density Estimation] moon data<a class="headerlink" href="#density-estimation-moon-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.4.2. </span>[Density Estimation] moon data<a class="headerlink" href="#density-estimation-moon-data" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>GMM 不只可以拿來做 Clustering，還可以拿來估計出一組多變量資料的 jpdf</p></li>
 <li><p>以 moon 資料集來說：</p></li>
@@ -2145,7 +2160,7 @@ k = 145 completed
 </ul>
 </div>
 <div class="section" id="digits-number">
-<h3><span class="section-number">13.4.3. </span>[影像生成] Digits Number<a class="headerlink" href="#digits-number" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.4.3. </span>[影像生成] Digits Number<a class="headerlink" href="#digits-number" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>假設我們已經有一組資料了(Digits Number資料集)</p></li>
 </ul>
@@ -2296,7 +2311,7 @@ k = 145 completed
 </div>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">13.5. </span>要再看的資源<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">15.5. </span>要再看的資源<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>讀完 Olivetti 資料 (p269)</p></li>
 <li><p>看其他 anomaly detection 的資料.</p>
@@ -2351,13 +2366,13 @@ k = 145 completed
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">12. </span>K-Means</p>
+            <p class="prev-next-title"><span class="section-number">14. </span>K-Means</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../datacamp_su/datacamp_su.html" title="next page">
+    <a class='right-next' id="next-link" href="HC.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>Supervised Learning with scikit-learn</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Hierarchical Clustering</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

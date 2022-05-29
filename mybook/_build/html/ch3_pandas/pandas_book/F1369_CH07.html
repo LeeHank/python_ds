@@ -1,0 +1,3606 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>第7章：用布林陣列篩選特定的資料 &#8212; My sample book</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regex.html">
+   3. Regular Expression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/datacamp_matplotlib_intro.html">
+   4. Intro to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.00-matplotlib_intro.html">
+   5. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   6. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   7. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.03-Errorbars.html">
+   8. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   9. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.06-Legends.html">
+   10. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.07-Colorbars.html">
+   11. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   12. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../datacamp_seaborn/intro_seaborn.html">
+   13. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/KMeans.html">
+   14. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/GMM.html">
+   15. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/HC.html">
+   16. Hierarchical Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../datacamp_su/datacamp_su.html">
+   17. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statquest_trees/classification_tree.html">
+   18. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../sklearn_guide/rf_permutation_imp.html">
+   19. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/ch3_pandas/pandas_book/F1369_CH07.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch3_pandas/pandas_book/F1369_CH07.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/ch3_pandas/pandas_book/F1369_CH07.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   7.1 計算布林陣列的統計資訊
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   7.2 設定多個布林條件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   7.3  以布林陣列來進行過濾
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vs">
+   布林選取 vs 索引選取
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   7.5 用唯一或已排序的索引標籤來選取資料
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandassql">
+   7.6 利用Pandas實現SQL中的功能
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#query">
+   7.7 使用query方法提高布林選取的可讀性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-series">
+   7.8 使用where()維持Series的大小
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe">
+   7.9 對DataFrame的列進行遮罩
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   7.10 以布林陣列、位置數字和標籤選擇資料
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>第7章：用布林陣列篩選特定的資料</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   7.1 計算布林陣列的統計資訊
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   7.2 設定多個布林條件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   7.3  以布林陣列來進行過濾
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vs">
+   布林選取 vs 索引選取
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   7.5 用唯一或已排序的索引標籤來選取資料
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandassql">
+   7.6 利用Pandas實現SQL中的功能
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#query">
+   7.7 使用query方法提高布林選取的可讀性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-series">
+   7.8 使用where()維持Series的大小
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe">
+   7.9 對DataFrame的列進行遮罩
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   7.10 以布林陣列、位置數字和標籤選擇資料
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>第7章：用布林陣列篩選特定的資料<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>7.1 計算布林陣列的統計資訊<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;max_columns&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;max_rows&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;max_colwidth&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="n">movie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;movie_title&#39;</span><span class="p">)</span>
+<span class="n">movie</span><span class="p">[[</span><span class="s1">&#39;duration&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>duration</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Avatar</th>
+      <td>178.0</td>
+    </tr>
+    <tr>
+      <th>Pirates of the Caribbean: At World's End</th>
+      <td>169.0</td>
+    </tr>
+    <tr>
+      <th>Spectre</th>
+      <td>148.0</td>
+    </tr>
+    <tr>
+      <th>The Dark Knight Rises</th>
+      <td>164.0</td>
+    </tr>
+    <tr>
+      <th>Star Wars: Episode VII - The Force Awakens</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>John Carter</th>
+      <td>132.0</td>
+    </tr>
+    <tr>
+      <th>Spider-Man 3</th>
+      <td>156.0</td>
+    </tr>
+    <tr>
+      <th>Tangled</th>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <th>Avengers: Age of Ultron</th>
+      <td>141.0</td>
+    </tr>
+    <tr>
+      <th>Harry Potter and the Half-Blood Prince</th>
+      <td>153.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_2_hours</span> <span class="o">=</span> <span class="n">movie</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">120</span>
+<span class="n">movie_2_hours</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>movie_title
+Avatar                                         True
+Pirates of the Caribbean: At World&#39;s End       True
+Spectre                                        True
+The Dark Knight Rises                          True
+Star Wars: Episode VII - The Force Awakens    False
+John Carter                                    True
+Spider-Man 3                                   True
+Tangled                                       False
+Avengers: Age of Ultron                        True
+Harry Potter and the Half-Blood Prince         True
+Name: duration, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_2_hours</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1039
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_2_hours</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.13506916192026
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.199755152009793
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_2_hours</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count      4916
+unique        2
+top       False
+freq       3877
+Name: duration, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_2_hours</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    4916.000000
+mean        0.211351
+std         0.408308
+min         0.000000
+25%         0.000000
+50%         0.000000
+75%         0.000000
+max         1.000000
+Name: duration, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    0.788002
+True     0.211998
+Name: duration, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actors</span> <span class="o">=</span> <span class="n">movie</span><span class="p">[[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="p">(</span><span class="n">actors</span><span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">actors</span><span class="p">[</span><span class="s1">&#39;actor_2_facebook_likes&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9777687130328371
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>7.2 設定多個布林條件<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;movie_title&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criteria1</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">imdb_score</span> <span class="o">&gt;</span> <span class="mi">8</span>
+<span class="n">criteria2</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">content_rating</span> <span class="o">==</span> <span class="s1">&#39;PG-13&#39;</span>
+<span class="n">criteria3</span> <span class="o">=</span> <span class="p">((</span><span class="n">movie</span><span class="o">.</span><span class="n">title_year</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">movie</span><span class="o">.</span><span class="n">title_year</span> <span class="o">&gt;</span> <span class="mi">2009</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criteria_final</span> <span class="o">=</span> <span class="n">criteria1</span> <span class="o">&amp;</span> <span class="n">criteria2</span> <span class="o">&amp;</span> <span class="n">criteria3</span>
+<span class="n">criteria_final</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>movie_title
+Avatar                                        False
+Pirates of the Caribbean: At World&#39;s End      False
+Spectre                                       False
+The Dark Knight Rises                          True
+Star Wars: Episode VII - The Force Awakens    False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="ow">and</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># movie.title_year &lt; 2000 | movie.title_year &gt; 2009</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>7.3  以布林陣列來進行過濾<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;movie_title&#39;</span><span class="p">)</span>
+<span class="n">crit_a1</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">imdb_score</span> <span class="o">&gt;</span> <span class="mi">8</span>
+<span class="n">crit_a2</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">content_rating</span> <span class="o">==</span> <span class="s1">&#39;PG-13&#39;</span>
+<span class="n">crit_a3</span> <span class="o">=</span> <span class="p">(</span><span class="n">movie</span><span class="o">.</span><span class="n">title_year</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">movie</span><span class="o">.</span><span class="n">title_year</span> <span class="o">&gt;</span> <span class="mi">2009</span><span class="p">)</span>
+<span class="n">final_crit_a</span> <span class="o">=</span> <span class="n">crit_a1</span> <span class="o">&amp;</span> <span class="n">crit_a2</span> <span class="o">&amp;</span> <span class="n">crit_a3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crit_b1</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">imdb_score</span> <span class="o">&lt;</span> <span class="mi">5</span>
+<span class="n">crit_b2</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">content_rating</span> <span class="o">==</span> <span class="s1">&#39;R&#39;</span>
+<span class="n">crit_b3</span> <span class="o">=</span> <span class="p">((</span><span class="n">movie</span><span class="o">.</span><span class="n">title_year</span> <span class="o">&gt;=</span> <span class="mi">2000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">movie</span><span class="o">.</span><span class="n">title_year</span> <span class="o">&lt;=</span> <span class="mi">2010</span><span class="p">))</span>
+<span class="n">final_crit_b</span> <span class="o">=</span> <span class="n">crit_b1</span> <span class="o">&amp;</span> <span class="n">crit_b2</span> <span class="o">&amp;</span> <span class="n">crit_b3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_crit_all</span> <span class="o">=</span> <span class="n">final_crit_a</span> <span class="o">|</span> <span class="n">final_crit_b</span>
+<span class="n">final_crit_all</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>movie_title
+Avatar                                        False
+Pirates of the Caribbean: At World&#39;s End      False
+Spectre                                       False
+The Dark Knight Rises                          True
+Star Wars: Episode VII - The Force Awakens    False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span><span class="p">[</span><span class="n">final_crit_all</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>...</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>The Dark Knight Rises</th>
+      <td>Color</td>
+      <td>Christop...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>164000</td>
+    </tr>
+    <tr>
+      <th>The Avengers</th>
+      <td>Color</td>
+      <td>Joss Whedon</td>
+      <td>...</td>
+      <td>1.85</td>
+      <td>123000</td>
+    </tr>
+    <tr>
+      <th>Captain America: Civil War</th>
+      <td>Color</td>
+      <td>Anthony ...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>72000</td>
+    </tr>
+    <tr>
+      <th>Guardians of the Galaxy</th>
+      <td>Color</td>
+      <td>James Gunn</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>96000</td>
+    </tr>
+    <tr>
+      <th>Interstellar</th>
+      <td>Color</td>
+      <td>Christop...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>349000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">final_crit_all</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>...</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>The Dark Knight Rises</th>
+      <td>Color</td>
+      <td>Christop...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>164000</td>
+    </tr>
+    <tr>
+      <th>The Avengers</th>
+      <td>Color</td>
+      <td>Joss Whedon</td>
+      <td>...</td>
+      <td>1.85</td>
+      <td>123000</td>
+    </tr>
+    <tr>
+      <th>Captain America: Civil War</th>
+      <td>Color</td>
+      <td>Anthony ...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>72000</td>
+    </tr>
+    <tr>
+      <th>Guardians of the Galaxy</th>
+      <td>Color</td>
+      <td>James Gunn</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>96000</td>
+    </tr>
+    <tr>
+      <th>Interstellar</th>
+      <td>Color</td>
+      <td>Christop...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>349000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;imdb_score&#39;</span><span class="p">,</span> <span class="s1">&#39;content_rating&#39;</span><span class="p">,</span> <span class="s1">&#39;title_year&#39;</span><span class="p">]</span>
+<span class="n">movie_filtered</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">final_crit_all</span><span class="p">,</span> <span class="n">cols</span><span class="p">]</span>
+<span class="n">movie_filtered</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>imdb_score</th>
+      <th>content_rating</th>
+      <th>title_year</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>The Dark Knight Rises</th>
+      <td>8.5</td>
+      <td>PG-13</td>
+      <td>2012.0</td>
+    </tr>
+    <tr>
+      <th>The Avengers</th>
+      <td>8.1</td>
+      <td>PG-13</td>
+      <td>2012.0</td>
+    </tr>
+    <tr>
+      <th>Captain America: Civil War</th>
+      <td>8.2</td>
+      <td>PG-13</td>
+      <td>2016.0</td>
+    </tr>
+    <tr>
+      <th>Guardians of the Galaxy</th>
+      <td>8.1</td>
+      <td>PG-13</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>Interstellar</th>
+      <td>8.6</td>
+      <td>PG-13</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>Inception</th>
+      <td>8.8</td>
+      <td>PG-13</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>The Martian</th>
+      <td>8.1</td>
+      <td>PG-13</td>
+      <td>2015.0</td>
+    </tr>
+    <tr>
+      <th>Town &amp; Country</th>
+      <td>4.4</td>
+      <td>R</td>
+      <td>2001.0</td>
+    </tr>
+    <tr>
+      <th>Sex and the City 2</th>
+      <td>4.3</td>
+      <td>R</td>
+      <td>2010.0</td>
+    </tr>
+    <tr>
+      <th>Rollerball</th>
+      <td>3.0</td>
+      <td>R</td>
+      <td>2002.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># movie.iloc[final_crit_all]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">final_crit_all</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>...</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>The Dark Knight Rises</th>
+      <td>Color</td>
+      <td>Christop...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>164000</td>
+    </tr>
+    <tr>
+      <th>The Avengers</th>
+      <td>Color</td>
+      <td>Joss Whedon</td>
+      <td>...</td>
+      <td>1.85</td>
+      <td>123000</td>
+    </tr>
+    <tr>
+      <th>Captain America: Civil War</th>
+      <td>Color</td>
+      <td>Anthony ...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>72000</td>
+    </tr>
+    <tr>
+      <th>Guardians of the Galaxy</th>
+      <td>Color</td>
+      <td>James Gunn</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>96000</td>
+    </tr>
+    <tr>
+      <th>Interstellar</th>
+      <td>Color</td>
+      <td>Christop...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>349000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>The Young Unknowns</th>
+      <td>Color</td>
+      <td>Catherin...</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Bled</th>
+      <td>Color</td>
+      <td>Christop...</td>
+      <td>...</td>
+      <td>1.85</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>Hoop Dreams</th>
+      <td>Color</td>
+      <td>Steve James</td>
+      <td>...</td>
+      <td>1.33</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Death Calls</th>
+      <td>Color</td>
+      <td>Ken Del ...</td>
+      <td>...</td>
+      <td>1.85</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>The Legend of God's Gun</th>
+      <td>Color</td>
+      <td>Mike Bruce</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+<p>86 rows × 27 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="vs">
+<h2>布林選取 vs 索引選取<a class="headerlink" href="#vs" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/college.csv&#39;</span><span class="p">)</span>
+<span class="n">college</span><span class="p">[</span><span class="n">college</span><span class="p">[</span><span class="s1">&#39;STABBR&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>INSTNM</th>
+      <th>CITY</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3610</th>
+      <td>Abilene ...</td>
+      <td>Abilene</td>
+      <td>...</td>
+      <td>40200</td>
+      <td>25985</td>
+    </tr>
+    <tr>
+      <th>3611</th>
+      <td>Alvin Co...</td>
+      <td>Alvin</td>
+      <td>...</td>
+      <td>34500</td>
+      <td>6750</td>
+    </tr>
+    <tr>
+      <th>3612</th>
+      <td>Amarillo...</td>
+      <td>Amarillo</td>
+      <td>...</td>
+      <td>31700</td>
+      <td>10950</td>
+    </tr>
+    <tr>
+      <th>3613</th>
+      <td>Angelina...</td>
+      <td>Lufkin</td>
+      <td>...</td>
+      <td>26900</td>
+      <td>PrivacyS...</td>
+    </tr>
+    <tr>
+      <th>3614</th>
+      <td>Angelo S...</td>
+      <td>San Angelo</td>
+      <td>...</td>
+      <td>37700</td>
+      <td>21319.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college2</span> <span class="o">=</span> <span class="n">college</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;STABBR&#39;</span><span class="p">)</span>
+<span class="n">college2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;TX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>INSTNM</th>
+      <th>CITY</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>STABBR</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>TX</th>
+      <td>Abilene ...</td>
+      <td>Abilene</td>
+      <td>...</td>
+      <td>40200</td>
+      <td>25985</td>
+    </tr>
+    <tr>
+      <th>TX</th>
+      <td>Alvin Co...</td>
+      <td>Alvin</td>
+      <td>...</td>
+      <td>34500</td>
+      <td>6750</td>
+    </tr>
+    <tr>
+      <th>TX</th>
+      <td>Amarillo...</td>
+      <td>Amarillo</td>
+      <td>...</td>
+      <td>31700</td>
+      <td>10950</td>
+    </tr>
+    <tr>
+      <th>TX</th>
+      <td>Angelina...</td>
+      <td>Lufkin</td>
+      <td>...</td>
+      <td>26900</td>
+      <td>PrivacyS...</td>
+    </tr>
+    <tr>
+      <th>TX</th>
+      <td>Angelo S...</td>
+      <td>San Angelo</td>
+      <td>...</td>
+      <td>37700</td>
+      <td>21319.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 26 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> college[college[&#39;STABBR&#39;] == &#39;TX&#39;]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.56 ms ± 169 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> college2.loc[&#39;TX&#39;]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>978 µs ± 176 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> college2 = college.set_index(&#39;STABBR&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.76 ms ± 421 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TX&#39;</span><span class="p">,</span> <span class="s1">&#39;CA&#39;</span><span class="p">,</span> <span class="s1">&#39;NY&#39;</span><span class="p">]</span>
+<span class="n">college</span><span class="p">[</span><span class="n">college</span><span class="p">[</span><span class="s1">&#39;STABBR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">states</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>INSTNM</th>
+      <th>CITY</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>192</th>
+      <td>Academy ...</td>
+      <td>San Fran...</td>
+      <td>...</td>
+      <td>36000</td>
+      <td>35093</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>ITT Tech...</td>
+      <td>Rancho C...</td>
+      <td>...</td>
+      <td>38800</td>
+      <td>25827.5</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>Academy ...</td>
+      <td>Oakland</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>PrivacyS...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>The Acad...</td>
+      <td>Huntingt...</td>
+      <td>...</td>
+      <td>28400</td>
+      <td>9500</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Avalon S...</td>
+      <td>Alameda</td>
+      <td>...</td>
+      <td>21600</td>
+      <td>9860</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>7528</th>
+      <td>WestMed ...</td>
+      <td>Merced</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>15623.5</td>
+    </tr>
+    <tr>
+      <th>7529</th>
+      <td>Vantage ...</td>
+      <td>El Paso</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>9500</td>
+    </tr>
+    <tr>
+      <th>7530</th>
+      <td>SAE Inst...</td>
+      <td>Emeryville</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>9500</td>
+    </tr>
+    <tr>
+      <th>7533</th>
+      <td>Bay Area...</td>
+      <td>San Jose</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>PrivacyS...</td>
+    </tr>
+    <tr>
+      <th>7534</th>
+      <td>Excel Le...</td>
+      <td>San Antonio</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>12125</td>
+    </tr>
+  </tbody>
+</table>
+<p>1704 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">states</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>INSTNM</th>
+      <th>CITY</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>STABBR</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>TX</th>
+      <td>Abilene ...</td>
+      <td>Abilene</td>
+      <td>...</td>
+      <td>40200</td>
+      <td>25985</td>
+    </tr>
+    <tr>
+      <th>TX</th>
+      <td>Alvin Co...</td>
+      <td>Alvin</td>
+      <td>...</td>
+      <td>34500</td>
+      <td>6750</td>
+    </tr>
+    <tr>
+      <th>TX</th>
+      <td>Amarillo...</td>
+      <td>Amarillo</td>
+      <td>...</td>
+      <td>31700</td>
+      <td>10950</td>
+    </tr>
+    <tr>
+      <th>TX</th>
+      <td>Angelina...</td>
+      <td>Lufkin</td>
+      <td>...</td>
+      <td>26900</td>
+      <td>PrivacyS...</td>
+    </tr>
+    <tr>
+      <th>TX</th>
+      <td>Angelo S...</td>
+      <td>San Angelo</td>
+      <td>...</td>
+      <td>37700</td>
+      <td>21319.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>NY</th>
+      <td>Briarcli...</td>
+      <td>Patchogue</td>
+      <td>...</td>
+      <td>38200</td>
+      <td>28720.5</td>
+    </tr>
+    <tr>
+      <th>NY</th>
+      <td>Jamestow...</td>
+      <td>Salamanca</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>12050</td>
+    </tr>
+    <tr>
+      <th>NY</th>
+      <td>Pratt Ma...</td>
+      <td>New York</td>
+      <td>...</td>
+      <td>40900</td>
+      <td>26691</td>
+    </tr>
+    <tr>
+      <th>NY</th>
+      <td>Saint Jo...</td>
+      <td>Patchogue</td>
+      <td>...</td>
+      <td>52000</td>
+      <td>22143.5</td>
+    </tr>
+    <tr>
+      <th>NY</th>
+      <td>Franklin...</td>
+      <td>Brooklyn</td>
+      <td>...</td>
+      <td>20000</td>
+      <td>PrivacyS...</td>
+    </tr>
+  </tbody>
+</table>
+<p>1704 rows × 26 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>7.5 用唯一或已排序的索引標籤來選取資料<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/college.csv&#39;</span><span class="p">)</span>
+<span class="n">college2</span> <span class="o">=</span> <span class="n">college</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;STABBR&#39;</span><span class="p">)</span>
+<span class="n">college2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_monotonic</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college3</span> <span class="o">=</span> <span class="n">college2</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">college3</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_monotonic</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> college[college[&#39;STABBR&#39;] == &#39;TX&#39;]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.52 ms ± 145 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> college2.loc[&#39;TX&#39;]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>782 µs ± 120 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> college3.loc[&#39;TX&#39;]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>237 µs ± 20.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college_unique</span> <span class="o">=</span> <span class="n">college</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;INSTNM&#39;</span><span class="p">)</span>
+<span class="n">college_unique</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_unique</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="p">[</span><span class="n">college</span><span class="p">[</span><span class="s1">&#39;INSTNM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Stanford University&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>INSTNM</th>
+      <th>CITY</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4217</th>
+      <td>Stanford...</td>
+      <td>Stanford</td>
+      <td>...</td>
+      <td>86000</td>
+      <td>12782</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college_unique</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Stanford University&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CITY                  Stanford
+STABBR                      CA
+HBCU                         0
+MENONLY                      0
+WOMENONLY                    0
+                        ...   
+PCTPELL                 0.1556
+PCTFLOAN                0.1256
+UG25ABV                 0.0401
+MD_EARN_WNE_P10          86000
+GRAD_DEBT_MDN_SUPP       12782
+Name: Stanford University, Length: 26, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college_unique</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;Stanford University&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Stanford University</th>
+      <td>Stanford</td>
+      <td>CA</td>
+      <td>...</td>
+      <td>86000</td>
+      <td>12782</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 26 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> college[college[&#39;INSTNM&#39;] == &#39;Stanford University&#39;]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.11 ms ± 19.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> college_unique.loc[[&#39;Stanford University&#39;]]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>790 µs ± 74.7 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">college</span><span class="p">[</span><span class="s1">&#39;CITY&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="n">college</span><span class="p">[</span><span class="s1">&#39;STABBR&#39;</span><span class="p">]</span>
+<span class="n">college</span> <span class="o">=</span> <span class="n">college</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">college</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>INSTNM</th>
+      <th>CITY</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ARTESIA, CA</th>
+      <td>Angeles ...</td>
+      <td>ARTESIA</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>16850</td>
+    </tr>
+    <tr>
+      <th>Aberdeen, SD</th>
+      <td>Presenta...</td>
+      <td>Aberdeen</td>
+      <td>...</td>
+      <td>35900</td>
+      <td>25000</td>
+    </tr>
+    <tr>
+      <th>Aberdeen, SD</th>
+      <td>Northern...</td>
+      <td>Aberdeen</td>
+      <td>...</td>
+      <td>33600</td>
+      <td>24847</td>
+    </tr>
+    <tr>
+      <th>Aberdeen, WA</th>
+      <td>Grays Ha...</td>
+      <td>Aberdeen</td>
+      <td>...</td>
+      <td>27000</td>
+      <td>11490</td>
+    </tr>
+    <tr>
+      <th>Abilene, TX</th>
+      <td>Hardin-S...</td>
+      <td>Abilene</td>
+      <td>...</td>
+      <td>38700</td>
+      <td>25864</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Miami, FL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>INSTNM</th>
+      <th>CITY</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Miami, FL</th>
+      <td>New Prof...</td>
+      <td>Miami</td>
+      <td>...</td>
+      <td>18700</td>
+      <td>8682</td>
+    </tr>
+    <tr>
+      <th>Miami, FL</th>
+      <td>Manageme...</td>
+      <td>Miami</td>
+      <td>...</td>
+      <td>PrivacyS...</td>
+      <td>12182</td>
+    </tr>
+    <tr>
+      <th>Miami, FL</th>
+      <td>Strayer ...</td>
+      <td>Miami</td>
+      <td>...</td>
+      <td>49200</td>
+      <td>36173.5</td>
+    </tr>
+    <tr>
+      <th>Miami, FL</th>
+      <td>Keiser U...</td>
+      <td>Miami</td>
+      <td>...</td>
+      <td>29700</td>
+      <td>26063</td>
+    </tr>
+    <tr>
+      <th>Miami, FL</th>
+      <td>George T...</td>
+      <td>Miami</td>
+      <td>...</td>
+      <td>38600</td>
+      <td>PrivacyS...</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">crit1</span> <span class="o">=</span> <span class="n">college</span><span class="p">[</span><span class="s1">&#39;CITY&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Miami&#39;</span>
+<span class="n">crit2</span> <span class="o">=</span> <span class="n">college</span><span class="p">[</span><span class="s1">&#39;STABBR&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;FL&#39;</span>
+<span class="n">college</span><span class="p">[</span><span class="n">crit1</span> <span class="o">&amp;</span> <span class="n">crit2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.24 ms ± 226 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> college.loc[&#39;Miami, FL&#39;]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>291 µs ± 97.6 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pandassql">
+<h2>7.6 利用Pandas實現SQL中的功能<a class="headerlink" href="#pandassql" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employee</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/employee.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employee</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UNIQUE_ID              int64
+POSITION_TITLE        object
+DEPARTMENT            object
+BASE_SALARY          float64
+RACE                  object
+EMPLOYMENT_TYPE       object
+GENDER                object
+EMPLOYMENT_STATUS     object
+HIRE_DATE             object
+JOB_DATE              object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employee</span><span class="o">.</span><span class="n">DEPARTMENT</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Houston Police Department-HPD     638
+Houston Fire Department (HFD)     384
+Public Works &amp; Engineering-PWE    343
+Health &amp; Human Services           110
+Houston Airport System (HAS)      106
+Name: DEPARTMENT, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employee</span><span class="o">.</span><span class="n">GENDER</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Male      1397
+Female     603
+Name: GENDER, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employee</span><span class="o">.</span><span class="n">BASE_SALARY</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    1886.000000
+mean     55767.93...
+std      21693.70...
+min      24960.00...
+25%      40170.00...
+50%      54461.00...
+75%      66614.00...
+max      275000.0...
+Name: BASE_SALARY, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">depts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Houston Police Department-HPD&#39;</span><span class="p">,</span> <span class="s1">&#39;Houston Fire Department (HFD)&#39;</span><span class="p">]</span>
+<span class="n">criteria_dept</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">DEPARTMENT</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">depts</span><span class="p">)</span>
+<span class="n">criteria_gender</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">GENDER</span> <span class="o">==</span> <span class="s1">&#39;Female&#39;</span>
+<span class="n">criteria_sal</span> <span class="o">=</span> <span class="p">((</span><span class="n">employee</span><span class="o">.</span><span class="n">BASE_SALARY</span> <span class="o">&gt;=</span> <span class="mi">80000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">employee</span><span class="o">.</span><span class="n">BASE_SALARY</span> <span class="o">&lt;=</span> <span class="mi">120000</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criteria_final</span> <span class="o">=</span> <span class="p">(</span><span class="n">criteria_dept</span> <span class="o">&amp;</span>
+                  <span class="n">criteria_gender</span> <span class="o">&amp;</span>
+                  <span class="n">criteria_sal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;UNIQUE_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;DEPARTMENT&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;GENDER&#39;</span><span class="p">,</span> <span class="s1">&#39;BASE_SALARY&#39;</span><span class="p">]</span>
+<span class="n">employee</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">criteria_final</span><span class="p">,</span> <span class="n">select_columns</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UNIQUE_ID</th>
+      <th>DEPARTMENT</th>
+      <th>GENDER</th>
+      <th>BASE_SALARY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>61</th>
+      <td>61</td>
+      <td>Houston ...</td>
+      <td>Female</td>
+      <td>96668.0</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>136</td>
+      <td>Houston ...</td>
+      <td>Female</td>
+      <td>81239.0</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>367</td>
+      <td>Houston ...</td>
+      <td>Female</td>
+      <td>86534.0</td>
+    </tr>
+    <tr>
+      <th>474</th>
+      <td>474</td>
+      <td>Houston ...</td>
+      <td>Female</td>
+      <td>91181.0</td>
+    </tr>
+    <tr>
+      <th>513</th>
+      <td>513</td>
+      <td>Houston ...</td>
+      <td>Female</td>
+      <td>81239.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criteria_sal</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">BASE_SALARY</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">80_000</span><span class="p">,</span> <span class="mi">120_000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_5_depts</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">DEPARTMENT</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">criteria</span> <span class="o">=</span> <span class="o">~</span><span class="n">employee</span><span class="o">.</span><span class="n">DEPARTMENT</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_5_depts</span><span class="p">)</span>
+<span class="n">employee</span><span class="p">[</span><span class="n">criteria</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UNIQUE_ID</th>
+      <th>POSITION_TITLE</th>
+      <th>...</th>
+      <th>HIRE_DATE</th>
+      <th>JOB_DATE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>ASSISTAN...</td>
+      <td>...</td>
+      <td>2006-06-12</td>
+      <td>2012-10-13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>LIBRARY ...</td>
+      <td>...</td>
+      <td>2000-07-19</td>
+      <td>2010-09-18</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>ELECTRICIAN</td>
+      <td>...</td>
+      <td>1989-06-19</td>
+      <td>1994-10-22</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>18</td>
+      <td>MAINTENA...</td>
+      <td>...</td>
+      <td>2008-12-29</td>
+      <td>2008-12-29</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>32</td>
+      <td>SENIOR A...</td>
+      <td>...</td>
+      <td>1991-02-11</td>
+      <td>2016-02-13</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1976</th>
+      <td>1976</td>
+      <td>SENIOR S...</td>
+      <td>...</td>
+      <td>2015-07-20</td>
+      <td>2016-01-30</td>
+    </tr>
+    <tr>
+      <th>1983</th>
+      <td>1983</td>
+      <td>ADMINIST...</td>
+      <td>...</td>
+      <td>2006-10-16</td>
+      <td>2006-10-16</td>
+    </tr>
+    <tr>
+      <th>1985</th>
+      <td>1985</td>
+      <td>TRUCK DR...</td>
+      <td>...</td>
+      <td>2013-06-10</td>
+      <td>2015-08-01</td>
+    </tr>
+    <tr>
+      <th>1988</th>
+      <td>1988</td>
+      <td>SENIOR A...</td>
+      <td>...</td>
+      <td>2013-01-23</td>
+      <td>2013-03-02</td>
+    </tr>
+    <tr>
+      <th>1990</th>
+      <td>1990</td>
+      <td>BUILDING...</td>
+      <td>...</td>
+      <td>1995-10-14</td>
+      <td>2010-03-20</td>
+    </tr>
+  </tbody>
+</table>
+<p>419 rows × 10 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="query">
+<h2>7.7 使用query方法提高布林選取的可讀性<a class="headerlink" href="#query" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employee</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/employee.csv&#39;</span><span class="p">)</span>
+<span class="n">depts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Houston Police Department-HPD&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Houston Fire Department (HFD)&#39;</span><span class="p">]</span>
+<span class="n">select_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;UNIQUE_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;DEPARTMENT&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;GENDER&#39;</span><span class="p">,</span> <span class="s1">&#39;BASE_SALARY&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qs</span> <span class="o">=</span> <span class="s2">&quot;DEPARTMENT in @depts &quot;</span>\
+     <span class="s2">&quot; and GENDER == &#39;Female&#39; &quot;</span>\
+     <span class="s2">&quot; and 80000 &lt;= BASE_SALARY &lt;= 120000&quot;</span>
+<span class="n">emp_filtered</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
+<span class="n">emp_filtered</span><span class="p">[</span><span class="n">select_columns</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UNIQUE_ID</th>
+      <th>DEPARTMENT</th>
+      <th>GENDER</th>
+      <th>BASE_SALARY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>61</th>
+      <td>61</td>
+      <td>Houston ...</td>
+      <td>Female</td>
+      <td>96668.0</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>136</td>
+      <td>Houston ...</td>
+      <td>Female</td>
+      <td>81239.0</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>367</td>
+      <td>Houston ...</td>
+      <td>Female</td>
+      <td>86534.0</td>
+    </tr>
+    <tr>
+      <th>474</th>
+      <td>474</td>
+      <td>Houston ...</td>
+      <td>Female</td>
+      <td>91181.0</td>
+    </tr>
+    <tr>
+      <th>513</th>
+      <td>513</td>
+      <td>Houston ...</td>
+      <td>Female</td>
+      <td>81239.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top10_depts</span> <span class="o">=</span> <span class="p">(</span><span class="n">employee</span><span class="o">.</span><span class="n">DEPARTMENT</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> 
+               <span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+              <span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="s2">&quot;DEPARTMENT not in @top10_depts and GENDER == &#39;Female&#39;&quot;</span>
+<span class="n">employee_filtered2</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
+<span class="n">employee_filtered2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UNIQUE_ID</th>
+      <th>POSITION_TITLE</th>
+      <th>...</th>
+      <th>HIRE_DATE</th>
+      <th>JOB_DATE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>ASSISTAN...</td>
+      <td>...</td>
+      <td>2006-06-12</td>
+      <td>2012-10-13</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>73</td>
+      <td>ADMINIST...</td>
+      <td>...</td>
+      <td>2011-12-19</td>
+      <td>2013-11-23</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>96</td>
+      <td>ASSISTAN...</td>
+      <td>...</td>
+      <td>2013-06-10</td>
+      <td>2013-06-10</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>117</td>
+      <td>SENIOR A...</td>
+      <td>...</td>
+      <td>1998-03-20</td>
+      <td>2012-07-21</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>146</td>
+      <td>SENIOR S...</td>
+      <td>...</td>
+      <td>2014-03-17</td>
+      <td>2014-03-17</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 10 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="where-series">
+<h2>7.8 使用where()維持Series的大小<a class="headerlink" href="#where-series" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;movie_title&#39;</span><span class="p">)</span>
+<span class="n">fb_likes</span> <span class="o">=</span> <span class="n">movie</span><span class="p">[</span><span class="s1">&#39;actor_1_facebook_likes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">fb_likes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>movie_title
+Avatar                                         1000.0
+Pirates of the Caribbean: At World&#39;s End      40000.0
+Spectre                                       11000.0
+The Dark Knight Rises                         27000.0
+Star Wars: Episode VII - The Force Awakens      131.0
+Name: actor_1_facebook_likes, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fb_likes</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    4909.000000
+mean     6494.488491
+std      15106.98...
+min         0.000000
+25%       607.000000
+50%       982.000000
+75%      11000.00...
+max      640000.0...
+Name: actor_1_facebook_likes, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">fb_likes</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12de6fc46d0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH07_68_1.png" src="../../_images/F1369_CH07_68_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criteria_high</span> <span class="o">=</span> <span class="n">fb_likes</span> <span class="o">&lt;</span> <span class="mi">20_000</span>
+<span class="n">criteria_high</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90.85353432470971
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fb_likes</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">criteria_high</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>movie_title
+Avatar                                         1000.0
+Pirates of the Caribbean: At World&#39;s End          NaN
+Spectre                                       11000.0
+The Dark Knight Rises                             NaN
+Star Wars: Episode VII - The Force Awakens      131.0
+Name: actor_1_facebook_likes, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fb_likes</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">criteria_high</span><span class="p">,</span> <span class="n">other</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>movie_title
+Avatar                                         1000.0
+Pirates of the Caribbean: At World&#39;s End      20000.0
+Spectre                                       11000.0
+The Dark Knight Rises                         20000.0
+Star Wars: Episode VII - The Force Awakens      131.0
+Name: actor_1_facebook_likes, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criteria_low</span> <span class="o">=</span> <span class="n">fb_likes</span> <span class="o">&gt;</span> <span class="mi">300</span>
+<span class="n">fb_likes_cap</span> <span class="o">=</span> <span class="p">(</span><span class="n">fb_likes</span>
+                <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">criteria_high</span><span class="p">,</span> <span class="n">other</span><span class="o">=</span><span class="mi">20_000</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">criteria_low</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+               <span class="p">)</span> 
+<span class="n">fb_likes_cap</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>movie_title
+Avatar                                         1000.0
+Pirates of the Caribbean: At World&#39;s End      20000.0
+Spectre                                       11000.0
+The Dark Knight Rises                         20000.0
+Star Wars: Episode VII - The Force Awakens      300.0
+Name: actor_1_facebook_likes, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">fb_likes</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">fb_likes_cap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4909, 4909)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">fb_likes_cap</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12de70aeeb0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH07_74_1.png" src="../../_images/F1369_CH07_74_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fb_likes_cap2</span> <span class="o">=</span> <span class="n">fb_likes</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span>
+<span class="n">fb_likes_cap2</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">fb_likes_cap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dataframe">
+<h2>7.9 對DataFrame的列進行遮罩<a class="headerlink" href="#dataframe" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;movie_title&#39;</span><span class="p">)</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">movie</span><span class="p">[</span><span class="s1">&#39;title_year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2010</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">movie</span><span class="p">[</span><span class="s1">&#39;title_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+<span class="n">criteria</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">|</span> <span class="n">c2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">criteria</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>...</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Avatar</th>
+      <td>Color</td>
+      <td>James Ca...</td>
+      <td>...</td>
+      <td>1.78</td>
+      <td>33000.0</td>
+    </tr>
+    <tr>
+      <th>Pirates of the Caribbean: At World's End</th>
+      <td>Color</td>
+      <td>Gore Ver...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Spectre</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>The Dark Knight Rises</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Star Wars: Episode VII - The Force Awakens</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">movie</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">criteria</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">))</span>
+<span class="n">movie_mask</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>...</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Avatar</th>
+      <td>Color</td>
+      <td>James Ca...</td>
+      <td>...</td>
+      <td>1.78</td>
+      <td>33000.0</td>
+    </tr>
+    <tr>
+      <th>Pirates of the Caribbean: At World's End</th>
+      <td>Color</td>
+      <td>Gore Ver...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Spider-Man 3</th>
+      <td>Color</td>
+      <td>Sam Raimi</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Harry Potter and the Half-Blood Prince</th>
+      <td>Color</td>
+      <td>David Yates</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>10000.0</td>
+    </tr>
+    <tr>
+      <th>Superman Returns</th>
+      <td>Color</td>
+      <td>Bryan Si...</td>
+      <td>...</td>
+      <td>2.35</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_boolean</span> <span class="o">=</span> <span class="n">movie</span><span class="p">[</span><span class="n">movie</span><span class="p">[</span><span class="s1">&#39;title_year&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2010</span><span class="p">]</span>
+<span class="n">movie_mask</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">movie_boolean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_mask</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">movie_boolean</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_mask</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="n">movie_boolean</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>color                       True
+director_name               True
+num_critic_for_reviews      True
+duration                    True
+director_facebook_likes     True
+                           ...  
+title_year                  True
+actor_2_facebook_likes      True
+imdb_score                  True
+aspect_ratio                True
+movie_facebook_likes       False
+Length: 27, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.testing</span> <span class="kn">import</span> <span class="n">assert_frame_equal</span>
+<span class="n">assert_frame_equal</span><span class="p">(</span><span class="n">movie_boolean</span><span class="p">,</span> <span class="n">movie_mask</span><span class="p">,</span>
+                   <span class="n">check_dtype</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> movie.mask(criteria).dropna(how=&#39;all&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16 ms ± 1.37 ms per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> movie[movie[&#39;title_year&#39;] &lt; 2010]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.89 ms ± 92.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>7.10 以布林陣列、位置數字和標籤選擇資料<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/movie.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;movie_title&#39;</span><span class="p">)</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">movie</span><span class="p">[</span><span class="s1">&#39;content_rating&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;G&#39;</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">movie</span><span class="p">[</span><span class="s1">&#39;imdb_score&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">4</span>
+<span class="n">criteria</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">&amp;</span> <span class="n">c2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_loc</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">criteria</span><span class="p">]</span>
+<span class="n">movie_loc</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>...</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>The True Story of Puss'N Boots</th>
+      <td>Color</td>
+      <td>Jérôme D...</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>Doogal</th>
+      <td>Color</td>
+      <td>Dave Bor...</td>
+      <td>...</td>
+      <td>1.85</td>
+      <td>346</td>
+    </tr>
+    <tr>
+      <th>Thomas and the Magic Railroad</th>
+      <td>Color</td>
+      <td>Britt Al...</td>
+      <td>...</td>
+      <td>1.85</td>
+      <td>663</td>
+    </tr>
+    <tr>
+      <th>Barney's Great Adventure</th>
+      <td>Color</td>
+      <td>Steve Gomer</td>
+      <td>...</td>
+      <td>1.85</td>
+      <td>436</td>
+    </tr>
+    <tr>
+      <th>Justin Bieber: Never Say Never</th>
+      <td>Color</td>
+      <td>Jon M. Chu</td>
+      <td>...</td>
+      <td>1.85</td>
+      <td>62000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_loc</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">movie</span><span class="p">[</span><span class="n">criteria</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># movie_iloc = movie.iloc[criteria]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_iloc</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">criteria</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()]</span>
+<span class="n">movie_iloc</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">movie_loc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criteria_col</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span>
+<span class="n">criteria_col</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>color                      False
+director_name              False
+num_critic_for_reviews     False
+duration                   False
+director_facebook_likes    False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">criteria_col</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>num_voted_users</th>
+      <th>cast_total_facebook_likes</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Avatar</th>
+      <td>886204</td>
+      <td>4834</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>Pirates of the Caribbean: At World's End</th>
+      <td>471220</td>
+      <td>48350</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Spectre</th>
+      <td>275868</td>
+      <td>11700</td>
+      <td>85000</td>
+    </tr>
+    <tr>
+      <th>The Dark Knight Rises</th>
+      <td>1144337</td>
+      <td>106759</td>
+      <td>164000</td>
+    </tr>
+    <tr>
+      <th>Star Wars: Episode VII - The Force Awakens</th>
+      <td>8</td>
+      <td>143</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">criteria_col</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>num_voted_users</th>
+      <th>cast_total_facebook_likes</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Avatar</th>
+      <td>886204</td>
+      <td>4834</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>Pirates of the Caribbean: At World's End</th>
+      <td>471220</td>
+      <td>48350</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Spectre</th>
+      <td>275868</td>
+      <td>11700</td>
+      <td>85000</td>
+    </tr>
+    <tr>
+      <th>The Dark Knight Rises</th>
+      <td>1144337</td>
+      <td>106759</td>
+      <td>164000</td>
+    </tr>
+    <tr>
+      <th>Star Wars: Episode VII - The Force Awakens</th>
+      <td>8</td>
+      <td>143</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;content_rating&#39;</span><span class="p">,</span> <span class="s1">&#39;imdb_score&#39;</span><span class="p">,</span> <span class="s1">&#39;title_year&#39;</span><span class="p">,</span> <span class="s1">&#39;gross&#39;</span><span class="p">]</span>
+<span class="n">movie</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">criteria</span><span class="p">,</span> <span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;imdb_score&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>content_rating</th>
+      <th>imdb_score</th>
+      <th>title_year</th>
+      <th>gross</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Justin Bieber: Never Say Never</th>
+      <td>G</td>
+      <td>1.6</td>
+      <td>2011.0</td>
+      <td>73000942.0</td>
+    </tr>
+    <tr>
+      <th>Sunday School Musical</th>
+      <td>G</td>
+      <td>2.5</td>
+      <td>2008.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Doogal</th>
+      <td>G</td>
+      <td>2.8</td>
+      <td>2006.0</td>
+      <td>7382993.0</td>
+    </tr>
+    <tr>
+      <th>Barney's Great Adventure</th>
+      <td>G</td>
+      <td>2.8</td>
+      <td>1998.0</td>
+      <td>11144518.0</td>
+    </tr>
+    <tr>
+      <th>The True Story of Puss'N Boots</th>
+      <td>G</td>
+      <td>2.9</td>
+      <td>2009.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Thomas and the Magic Railroad</th>
+      <td>G</td>
+      <td>3.6</td>
+      <td>2000.0</td>
+      <td>15911333.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_index</span> <span class="o">=</span> <span class="p">[</span><span class="n">movie</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">]</span>
+<span class="n">col_index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[20, 24, 22, 8]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">criteria</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">col_index</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;imdb_score&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>content_rating</th>
+      <th>imdb_score</th>
+      <th>title_year</th>
+      <th>gross</th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Justin Bieber: Never Say Never</th>
+      <td>G</td>
+      <td>1.6</td>
+      <td>2011.0</td>
+      <td>73000942.0</td>
+    </tr>
+    <tr>
+      <th>Sunday School Musical</th>
+      <td>G</td>
+      <td>2.5</td>
+      <td>2008.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Doogal</th>
+      <td>G</td>
+      <td>2.8</td>
+      <td>2006.0</td>
+      <td>7382993.0</td>
+    </tr>
+    <tr>
+      <th>Barney's Great Adventure</th>
+      <td>G</td>
+      <td>2.8</td>
+      <td>1998.0</td>
+      <td>11144518.0</td>
+    </tr>
+    <tr>
+      <th>The True Story of Puss'N Boots</th>
+      <td>G</td>
+      <td>2.9</td>
+      <td>2009.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Thomas and the Magic Railroad</th>
+      <td>G</td>
+      <td>3.6</td>
+      <td>2000.0</td>
+      <td>15911333.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">criteria</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">a</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False, False, False, False, False])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">criteria</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4916, 4916)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+    <tr>
+      <th>movie_title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Avatar</th>
+    </tr>
+    <tr>
+      <th>Pirates of the Caribbean: At World's End</th>
+    </tr>
+    <tr>
+      <th>Spectre</th>
+    </tr>
+    <tr>
+      <th>The Dark Knight Rises</th>
+    </tr>
+    <tr>
+      <th>Star Wars: Episode VII - The Force Awakens</th>
+    </tr>
+    <tr>
+      <th>...</th>
+    </tr>
+    <tr>
+      <th>Signed Sealed Delivered</th>
+    </tr>
+    <tr>
+      <th>The Following</th>
+    </tr>
+    <tr>
+      <th>A Plague So Pleasant</th>
+    </tr>
+    <tr>
+      <th>Shanghai Calling</th>
+    </tr>
+    <tr>
+      <th>My Date with Drew</th>
+    </tr>
+  </tbody>
+</table>
+<p>4916 rows × 0 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ch3_pandas/pandas_book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

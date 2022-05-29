@@ -1,0 +1,2480 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>第6章：選取資料的子集 &#8212; My sample book</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regex.html">
+   3. Regular Expression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/datacamp_matplotlib_intro.html">
+   4. Intro to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.00-matplotlib_intro.html">
+   5. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   6. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   7. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.03-Errorbars.html">
+   8. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   9. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.06-Legends.html">
+   10. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.07-Colorbars.html">
+   11. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   12. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../datacamp_seaborn/intro_seaborn.html">
+   13. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/KMeans.html">
+   14. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/GMM.html">
+   15. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/HC.html">
+   16. Hierarchical Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../datacamp_su/datacamp_su.html">
+   17. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statquest_trees/classification_tree.html">
+   18. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../sklearn_guide/rf_permutation_imp.html">
+   19. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/ch3_pandas/pandas_book/F1369_CH06.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch3_pandas/pandas_book/F1369_CH06.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/ch3_pandas/pandas_book/F1369_CH06.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series">
+   6.1 選取一筆或多筆Series資料
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe">
+   6.2 選取DataFrame的列
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   6.3 同時選取DataFrame的列與欄位
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   6.4 混用位置與標籤來選取資料
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   6.5 按標籤的字母順序進行切片
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>第6章：選取資料的子集</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series">
+   6.1 選取一筆或多筆Series資料
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe">
+   6.2 選取DataFrame的列
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   6.3 同時選取DataFrame的列與欄位
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   6.4 混用位置與標籤來選取資料
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   6.5 按標籤的字母順序進行切片
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>第6章：選取資料的子集<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="series">
+<h2>6.1 選取一筆或多筆Series資料<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;max_columns&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;max_rows&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;max_colwidth&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="n">college</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/college.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;INSTNM&#39;</span><span class="p">)</span>
+<span class="n">city</span> <span class="o">=</span> <span class="n">college</span><span class="p">[</span><span class="s1">&#39;CITY&#39;</span><span class="p">]</span>
+<span class="n">city</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University                                       Normal
+University of Alabama at Birmingham                        Birmingham
+Amridge University                                         Montgomery
+University of Alabama in Huntsville                        Huntsville
+Alabama State University                                   Montgomery
+                                                             ...     
+SAE Institute of Technology  San Francisco                 Emeryville
+Rasmussen College - Overland Park                         Overland...
+National Personal Training Institute of Cleveland         Highland...
+Bay Area Medical Academy - San Jose Satellite Location       San Jose
+Excel Learning Center-San Antonio South                   San Antonio
+Name: CITY, Length: 7535, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="p">[</span><span class="s1">&#39;Alabama A &amp; M University&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Normal&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Alabama A &amp; M University&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Normal&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Normal&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="p">[[</span><span class="s1">&#39;Alabama A &amp; M University&#39;</span><span class="p">,</span> <span class="s1">&#39;Alabama State University&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University        Normal
+Alabama State University    Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;Alabama A &amp; M University&#39;</span><span class="p">,</span> <span class="s1">&#39;Alabama State University&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University        Normal
+Alabama State University    Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University        Normal
+Alabama State University    Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="p">[</span><span class="s1">&#39;Alabama A &amp; M University&#39;</span><span class="p">:</span> <span class="s1">&#39;Alabama State University&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University                   Normal
+University of Alabama at Birmingham    Birmingham
+Amridge University                     Montgomery
+University of Alabama in Huntsville    Huntsville
+Alabama State University               Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University                   Normal
+University of Alabama at Birmingham    Birmingham
+Amridge University                     Montgomery
+University of Alabama in Huntsville    Huntsville
+Alabama State University               Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Alabama A &amp; M University&#39;</span><span class="p">:</span> <span class="s1">&#39;Alabama State University&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University                   Normal
+University of Alabama at Birmingham    Birmingham
+Amridge University                     Montgomery
+University of Alabama in Huntsville    Huntsville
+Alabama State University               Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University                   Normal
+University of Alabama at Birmingham    Birmingham
+Amridge University                     Montgomery
+University of Alabama in Huntsville    Huntsville
+Alabama State University               Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alabama_mask</span> <span class="o">=</span> <span class="n">city</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Birmingham&#39;</span><span class="p">,</span> <span class="s1">&#39;Montgomery&#39;</span><span class="p">])</span>
+<span class="n">alabama_mask</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University                                  False
+University of Alabama at Birmingham                        True
+Amridge University                                         True
+University of Alabama in Huntsville                       False
+Alabama State University                                   True
+                                                          ...  
+SAE Institute of Technology  San Francisco                False
+Rasmussen College - Overland Park                         False
+National Personal Training Institute of Cleveland         False
+Bay Area Medical Academy - San Jose Satellite Location    False
+Excel Learning Center-San Antonio South                   False
+Name: CITY, Length: 7535, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="p">[</span><span class="n">alabama_mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+University of Alabama at Birmingham    Birmingham
+Amridge University                     Montgomery
+Alabama State University               Montgomery
+Auburn University at Montgomery        Montgomery
+Birmingham Southern College            Birmingham
+                                          ...    
+Fortis Institute-Birmingham            Birmingham
+Hair Academy                           Montgomery
+Brown Mackie College-Birmingham        Birmingham
+Nunation School of Cosmetology         Birmingham
+Troy University-Montgomery Campus      Montgomery
+Name: CITY, Length: 26, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">28</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5    10
+2    20
+3    35
+1    28
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5    10
+2    20
+3    35
+1    28
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Alabama A &amp; M University&#39;</span><span class="p">,</span> <span class="s1">&#39;CITY&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Normal&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Normal&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;Alabama A &amp; M University&#39;</span><span class="p">,</span> <span class="s1">&#39;Alabama State University&#39;</span><span class="p">],</span> <span class="s1">&#39;CITY&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University        Normal
+Alabama State University    Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University        Normal
+Alabama State University    Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Alabama A &amp; M University&#39;</span><span class="p">:</span> <span class="s1">&#39;Alabama State University&#39;</span><span class="p">,</span> <span class="s1">&#39;CITY&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University                   Normal
+University of Alabama at Birmingham    Birmingham
+Amridge University                     Montgomery
+University of Alabama in Huntsville    Huntsville
+Alabama State University               Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Alabama A &amp; M University                   Normal
+University of Alabama at Birmingham    Birmingham
+Amridge University                     Montgomery
+University of Alabama in Huntsville    Huntsville
+Alabama State University               Montgomery
+Name: CITY, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Reid State Technical College&#39;</span><span class="p">:</span>
+         <span class="s1">&#39;Alabama State University&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Series([], Name: CITY, dtype: object)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dataframe">
+<h2>6.2 選取DataFrame的列<a class="headerlink" href="#dataframe" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/college.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;INSTNM&#39;</span><span class="p">)</span>
+<span class="n">college</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama A &amp; M University</th>
+      <td>Normal</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>30300</td>
+      <td>33888</td>
+    </tr>
+    <tr>
+      <th>University of Alabama at Birmingham</th>
+      <td>Birmingham</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>39700</td>
+      <td>21941.5</td>
+    </tr>
+    <tr>
+      <th>Amridge University</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>40100</td>
+      <td>23370</td>
+    </tr>
+    <tr>
+      <th>University of Alabama in Huntsville</th>
+      <td>Huntsville</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>45500</td>
+      <td>24097</td>
+    </tr>
+    <tr>
+      <th>Alabama State University</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>26600</td>
+      <td>33118.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 26 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CITY                  Normal
+STABBR                    AL
+HBCU                       1
+MENONLY                    0
+WOMENONLY                  0
+                       ...  
+PCTPELL               0.7356
+PCTFLOAN              0.8284
+UG25ABV               0.1049
+MD_EARN_WNE_P10        30300
+GRAD_DEBT_MDN_SUPP     33888
+Name: Alabama A &amp; M University, Length: 26, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Alabama A &amp; M University&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CITY                  Normal
+STABBR                    AL
+HBCU                       1
+MENONLY                    0
+WOMENONLY                  0
+                       ...  
+PCTPELL               0.7356
+PCTFLOAN              0.8284
+UG25ABV               0.1049
+MD_EARN_WNE_P10        30300
+GRAD_DEBT_MDN_SUPP     33888
+Name: Alabama A &amp; M University, Length: 26, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>University of Alaska Anchorage</th>
+      <td>Anchorage</td>
+      <td>AK</td>
+      <td>...</td>
+      <td>42500</td>
+      <td>19449.5</td>
+    </tr>
+    <tr>
+      <th>International Academy of Hair Design</th>
+      <td>Tempe</td>
+      <td>AZ</td>
+      <td>...</td>
+      <td>22200</td>
+      <td>10556</td>
+    </tr>
+    <tr>
+      <th>University of Alabama in Huntsville</th>
+      <td>Huntsville</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>45500</td>
+      <td>24097</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 26 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;University of Alaska Anchorage&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;International Academy of Hair Design&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;University of Alabama in Huntsville&#39;</span><span class="p">]</span>
+<span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>University of Alaska Anchorage</th>
+      <td>Anchorage</td>
+      <td>AK</td>
+      <td>...</td>
+      <td>42500</td>
+      <td>19449.5</td>
+    </tr>
+    <tr>
+      <th>International Academy of Hair Design</th>
+      <td>Tempe</td>
+      <td>AZ</td>
+      <td>...</td>
+      <td>22200</td>
+      <td>10556</td>
+    </tr>
+    <tr>
+      <th>University of Alabama in Huntsville</th>
+      <td>Huntsville</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>45500</td>
+      <td>24097</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 26 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">99</span><span class="p">:</span><span class="mi">102</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>International Academy of Hair Design</th>
+      <td>Tempe</td>
+      <td>AZ</td>
+      <td>...</td>
+      <td>22200</td>
+      <td>10556</td>
+    </tr>
+    <tr>
+      <th>GateWay Community College</th>
+      <td>Phoenix</td>
+      <td>AZ</td>
+      <td>...</td>
+      <td>29800</td>
+      <td>7283</td>
+    </tr>
+    <tr>
+      <th>Mesa Community College</th>
+      <td>Mesa</td>
+      <td>AZ</td>
+      <td>...</td>
+      <td>35200</td>
+      <td>8000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 26 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;International Academy of Hair Design&#39;</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="s1">&#39;Mesa Community College&#39;</span>
+<span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>International Academy of Hair Design</th>
+      <td>Tempe</td>
+      <td>AZ</td>
+      <td>...</td>
+      <td>22200</td>
+      <td>10556</td>
+    </tr>
+    <tr>
+      <th>GateWay Community College</th>
+      <td>Phoenix</td>
+      <td>AZ</td>
+      <td>...</td>
+      <td>29800</td>
+      <td>7283</td>
+    </tr>
+    <tr>
+      <th>Mesa Community College</th>
+      <td>Mesa</td>
+      <td>AZ</td>
+      <td>...</td>
+      <td>35200</td>
+      <td>8000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 26 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>6.3 同時選取DataFrame的列與欄位<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/college.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;INSTNM&#39;</span><span class="p">)</span>
+<span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>HBCU</th>
+      <th>MENONLY</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama A &amp; M University</th>
+      <td>Normal</td>
+      <td>AL</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>University of Alabama at Birmingham</th>
+      <td>Birmingham</td>
+      <td>AL</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Amridge University</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;Amridge University&#39;</span><span class="p">,</span> <span class="p">:</span><span class="s1">&#39;MENONLY&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>HBCU</th>
+      <th>MENONLY</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama A &amp; M University</th>
+      <td>Normal</td>
+      <td>AL</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>University of Alabama at Birmingham</th>
+      <td>Birmingham</td>
+      <td>AL</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Amridge University</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>WOMENONLY</th>
+      <th>SATVRMID</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama A &amp; M University</th>
+      <td>0.0</td>
+      <td>424.0</td>
+    </tr>
+    <tr>
+      <th>University of Alabama at Birmingham</th>
+      <td>0.0</td>
+      <td>570.0</td>
+    </tr>
+    <tr>
+      <th>Amridge University</th>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>University of Alabama in Huntsville</th>
+      <td>0.0</td>
+      <td>595.0</td>
+    </tr>
+    <tr>
+      <th>Alabama State University</th>
+      <td>0.0</td>
+      <td>425.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;WOMENONLY&#39;</span><span class="p">,</span> <span class="s1">&#39;SATVRMID&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>WOMENONLY</th>
+      <th>SATVRMID</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama A &amp; M University</th>
+      <td>0.0</td>
+      <td>424.0</td>
+    </tr>
+    <tr>
+      <th>University of Alabama at Birmingham</th>
+      <td>0.0</td>
+      <td>570.0</td>
+    </tr>
+    <tr>
+      <th>Amridge University</th>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>University of Alabama in Huntsville</th>
+      <td>0.0</td>
+      <td>595.0</td>
+    </tr>
+    <tr>
+      <th>Alabama State University</th>
+      <td>0.0</td>
+      <td>425.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.401
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;The University of Alabama&#39;</span><span class="p">,</span> <span class="s1">&#39;PCTFLOAN&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.401
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Birmingham Southern College             1
+Concordia College Alabama               1
+Enterprise State Community College      0
+Faulkner University                     1
+New Beginning College of Cosmetology    0
+Name: RELAFFIL, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;Birmingham Southern College&#39;</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="s1">&#39;New Beginning College of Cosmetology&#39;</span>
+<span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;RELAFFIL&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSTNM
+Birmingham Southern College             1
+Concordia College Alabama               1
+Enterprise State Community College      0
+Faulkner University                     1
+New Beginning College of Cosmetology    0
+Name: RELAFFIL, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama A &amp; M University</th>
+      <td>Normal</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>30300</td>
+      <td>33888</td>
+    </tr>
+    <tr>
+      <th>University of Alabama at Birmingham</th>
+      <td>Birmingham</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>39700</td>
+      <td>21941.5</td>
+    </tr>
+    <tr>
+      <th>Amridge University</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>40100</td>
+      <td>23370</td>
+    </tr>
+    <tr>
+      <th>University of Alabama in Huntsville</th>
+      <td>Huntsville</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>45500</td>
+      <td>24097</td>
+    </tr>
+    <tr>
+      <th>Alabama State University</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>26600</td>
+      <td>33118.5</td>
+    </tr>
+    <tr>
+      <th>The University of Alabama</th>
+      <td>Tuscaloosa</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>41900</td>
+      <td>23750</td>
+    </tr>
+    <tr>
+      <th>Central Alabama Community College</th>
+      <td>Alexande...</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>27500</td>
+      <td>16127</td>
+    </tr>
+    <tr>
+      <th>Athens State University</th>
+      <td>Athens</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>39000</td>
+      <td>18595</td>
+    </tr>
+    <tr>
+      <th>Auburn University at Montgomery</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>35000</td>
+      <td>21335</td>
+    </tr>
+    <tr>
+      <th>Auburn University</th>
+      <td>Auburn</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>45700</td>
+      <td>21831</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 26 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama A &amp; M University</th>
+      <td>Normal</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>30300</td>
+      <td>33888</td>
+    </tr>
+    <tr>
+      <th>University of Alabama at Birmingham</th>
+      <td>Birmingham</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>39700</td>
+      <td>21941.5</td>
+    </tr>
+    <tr>
+      <th>Amridge University</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>40100</td>
+      <td>23370</td>
+    </tr>
+    <tr>
+      <th>University of Alabama in Huntsville</th>
+      <td>Huntsville</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>45500</td>
+      <td>24097</td>
+    </tr>
+    <tr>
+      <th>Alabama State University</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>26600</td>
+      <td>33118.5</td>
+    </tr>
+    <tr>
+      <th>The University of Alabama</th>
+      <td>Tuscaloosa</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>41900</td>
+      <td>23750</td>
+    </tr>
+    <tr>
+      <th>Central Alabama Community College</th>
+      <td>Alexande...</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>27500</td>
+      <td>16127</td>
+    </tr>
+    <tr>
+      <th>Athens State University</th>
+      <td>Athens</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>39000</td>
+      <td>18595</td>
+    </tr>
+    <tr>
+      <th>Auburn University at Montgomery</th>
+      <td>Montgomery</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>35000</td>
+      <td>21335</td>
+    </tr>
+    <tr>
+      <th>Auburn University</th>
+      <td>Auburn</td>
+      <td>AL</td>
+      <td>...</td>
+      <td>45700</td>
+      <td>21831</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 26 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>6.4 混用位置與標籤來選取資料<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/college.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;INSTNM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_start</span> <span class="o">=</span> <span class="n">college</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;UGDS_WHITE&#39;</span><span class="p">)</span>
+<span class="n">col_end</span> <span class="o">=</span> <span class="n">college</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;UGDS_UNKN&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">col_start</span><span class="p">,</span> <span class="n">col_end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10, 19)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="n">col_start</span><span class="p">:</span><span class="n">col_end</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UGDS_WHITE</th>
+      <th>UGDS_BLACK</th>
+      <th>...</th>
+      <th>UGDS_NRA</th>
+      <th>UGDS_UNKN</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama A &amp; M University</th>
+      <td>0.0333</td>
+      <td>0.9353</td>
+      <td>...</td>
+      <td>0.0059</td>
+      <td>0.0138</td>
+    </tr>
+    <tr>
+      <th>University of Alabama at Birmingham</th>
+      <td>0.5922</td>
+      <td>0.2600</td>
+      <td>...</td>
+      <td>0.0179</td>
+      <td>0.0100</td>
+    </tr>
+    <tr>
+      <th>Amridge University</th>
+      <td>0.2990</td>
+      <td>0.4192</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.2715</td>
+    </tr>
+    <tr>
+      <th>University of Alabama in Huntsville</th>
+      <td>0.6988</td>
+      <td>0.1255</td>
+      <td>...</td>
+      <td>0.0332</td>
+      <td>0.0350</td>
+    </tr>
+    <tr>
+      <th>Alabama State University</th>
+      <td>0.0158</td>
+      <td>0.9208</td>
+      <td>...</td>
+      <td>0.0243</td>
+      <td>0.0137</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row_start</span> <span class="o">=</span> <span class="n">college</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">row_end</span> <span class="o">=</span> <span class="n">college</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span>
+<span class="n">row_start</span><span class="p">,</span> <span class="n">row_end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Birmingham Southern College&#39;, &#39;James H Faulkner State Community College&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row_start</span><span class="p">:</span><span class="n">row_end</span><span class="p">,</span> <span class="s1">&#39;UGDS_WHITE&#39;</span><span class="p">:</span><span class="s1">&#39;UGDS_UNKN&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UGDS_WHITE</th>
+      <th>UGDS_BLACK</th>
+      <th>...</th>
+      <th>UGDS_NRA</th>
+      <th>UGDS_UNKN</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Birmingham Southern College</th>
+      <td>0.7983</td>
+      <td>0.1102</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0051</td>
+    </tr>
+    <tr>
+      <th>Chattahoochee Valley Community College</th>
+      <td>0.4661</td>
+      <td>0.4372</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0139</td>
+    </tr>
+    <tr>
+      <th>Concordia College Alabama</th>
+      <td>0.0280</td>
+      <td>0.8758</td>
+      <td>...</td>
+      <td>0.0466</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>South University-Montgomery</th>
+      <td>0.3046</td>
+      <td>0.6054</td>
+      <td>...</td>
+      <td>0.0019</td>
+      <td>0.0326</td>
+    </tr>
+    <tr>
+      <th>Enterprise State Community College</th>
+      <td>0.6408</td>
+      <td>0.2435</td>
+      <td>...</td>
+      <td>0.0012</td>
+      <td>0.0069</td>
+    </tr>
+    <tr>
+      <th>James H Faulkner State Community College</th>
+      <td>0.6979</td>
+      <td>0.2259</td>
+      <td>...</td>
+      <td>0.0007</td>
+      <td>0.0009</td>
+    </tr>
+  </tbody>
+</table>
+<p>6 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># college.ix[10:16, &#39;UGDS_WHITE&#39;:&#39;UGDS_UNKN&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;UGDS_WHITE&#39;</span><span class="p">:</span><span class="s1">&#39;UGDS_UNKN&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>UGDS_WHITE</th>
+      <th>UGDS_BLACK</th>
+      <th>...</th>
+      <th>UGDS_NRA</th>
+      <th>UGDS_UNKN</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Birmingham Southern College</th>
+      <td>0.7983</td>
+      <td>0.1102</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0051</td>
+    </tr>
+    <tr>
+      <th>Chattahoochee Valley Community College</th>
+      <td>0.4661</td>
+      <td>0.4372</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0139</td>
+    </tr>
+    <tr>
+      <th>Concordia College Alabama</th>
+      <td>0.0280</td>
+      <td>0.8758</td>
+      <td>...</td>
+      <td>0.0466</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>South University-Montgomery</th>
+      <td>0.3046</td>
+      <td>0.6054</td>
+      <td>...</td>
+      <td>0.0019</td>
+      <td>0.0326</td>
+    </tr>
+    <tr>
+      <th>Enterprise State Community College</th>
+      <td>0.6408</td>
+      <td>0.2435</td>
+      <td>...</td>
+      <td>0.0012</td>
+      <td>0.0069</td>
+    </tr>
+    <tr>
+      <th>James H Faulkner State Community College</th>
+      <td>0.6979</td>
+      <td>0.2259</td>
+      <td>...</td>
+      <td>0.0007</td>
+      <td>0.0009</td>
+    </tr>
+  </tbody>
+</table>
+<p>6 rows × 9 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>6.5 按標籤的字母順序進行切片<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/college.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;INSTNM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># college.loc[&#39;Sp&#39;:&#39;Su&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span> <span class="o">=</span> <span class="n">college</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Sp&#39;</span><span class="p">:</span><span class="s1">&#39;Su&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Spa Tech Institute-Ipswich</th>
+      <td>Ipswich</td>
+      <td>MA</td>
+      <td>...</td>
+      <td>21500</td>
+      <td>6333</td>
+    </tr>
+    <tr>
+      <th>Spa Tech Institute-Plymouth</th>
+      <td>Plymouth</td>
+      <td>MA</td>
+      <td>...</td>
+      <td>21500</td>
+      <td>6333</td>
+    </tr>
+    <tr>
+      <th>Spa Tech Institute-Westboro</th>
+      <td>Westboro</td>
+      <td>MA</td>
+      <td>...</td>
+      <td>21500</td>
+      <td>6333</td>
+    </tr>
+    <tr>
+      <th>Spa Tech Institute-Westbrook</th>
+      <td>Westbrook</td>
+      <td>ME</td>
+      <td>...</td>
+      <td>21500</td>
+      <td>6333</td>
+    </tr>
+    <tr>
+      <th>Spalding University</th>
+      <td>Louisville</td>
+      <td>KY</td>
+      <td>...</td>
+      <td>41700</td>
+      <td>25000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Studio Academy of Beauty</th>
+      <td>Chandler</td>
+      <td>AZ</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>6333</td>
+    </tr>
+    <tr>
+      <th>Studio Jewelers</th>
+      <td>New York</td>
+      <td>NY</td>
+      <td>...</td>
+      <td>PrivacyS...</td>
+      <td>PrivacyS...</td>
+    </tr>
+    <tr>
+      <th>Stylemaster College of Hair Design</th>
+      <td>Longview</td>
+      <td>WA</td>
+      <td>...</td>
+      <td>17000</td>
+      <td>13320</td>
+    </tr>
+    <tr>
+      <th>Styles and Profiles Beauty College</th>
+      <td>Selmer</td>
+      <td>TN</td>
+      <td>...</td>
+      <td>PrivacyS...</td>
+      <td>PrivacyS...</td>
+    </tr>
+    <tr>
+      <th>Styletrends Barber and Hairstyling Academy</th>
+      <td>Rock Hill</td>
+      <td>SC</td>
+      <td>...</td>
+      <td>PrivacyS...</td>
+      <td>9495.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>201 rows × 26 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span> <span class="o">=</span> <span class="n">college</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">college</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_monotonic_decreasing</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">college</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">:</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY</th>
+      <th>STABBR</th>
+      <th>...</th>
+      <th>MD_EARN_WNE_P10</th>
+      <th>GRAD_DEBT_MDN_SUPP</th>
+    </tr>
+    <tr>
+      <th>INSTNM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Dyersburg State Community College</th>
+      <td>Dyersburg</td>
+      <td>TN</td>
+      <td>...</td>
+      <td>26800</td>
+      <td>7475</td>
+    </tr>
+    <tr>
+      <th>Dutchess Community College</th>
+      <td>Poughkee...</td>
+      <td>NY</td>
+      <td>...</td>
+      <td>32500</td>
+      <td>10250</td>
+    </tr>
+    <tr>
+      <th>Dutchess BOCES-Practical Nursing Program</th>
+      <td>Poughkee...</td>
+      <td>NY</td>
+      <td>...</td>
+      <td>36500</td>
+      <td>9500</td>
+    </tr>
+    <tr>
+      <th>Durham Technical Community College</th>
+      <td>Durham</td>
+      <td>NC</td>
+      <td>...</td>
+      <td>27200</td>
+      <td>11069.5</td>
+    </tr>
+    <tr>
+      <th>Durham Beauty Academy</th>
+      <td>Durham</td>
+      <td>NC</td>
+      <td>...</td>
+      <td>PrivacyS...</td>
+      <td>15332</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Bacone College</th>
+      <td>Muskogee</td>
+      <td>OK</td>
+      <td>...</td>
+      <td>29700</td>
+      <td>26350</td>
+    </tr>
+    <tr>
+      <th>Babson College</th>
+      <td>Wellesley</td>
+      <td>MA</td>
+      <td>...</td>
+      <td>86700</td>
+      <td>27000</td>
+    </tr>
+    <tr>
+      <th>BJ's Beauty &amp; Barber College</th>
+      <td>Auburn</td>
+      <td>WA</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>PrivacyS...</td>
+    </tr>
+    <tr>
+      <th>BIR Training Center</th>
+      <td>Chicago</td>
+      <td>IL</td>
+      <td>...</td>
+      <td>PrivacyS...</td>
+      <td>15394</td>
+    </tr>
+    <tr>
+      <th>B M Spurr School of Practical Nursing</th>
+      <td>Glen Dale</td>
+      <td>WV</td>
+      <td>...</td>
+      <td>PrivacyS...</td>
+      <td>PrivacyS...</td>
+    </tr>
+  </tbody>
+</table>
+<p>1411 rows × 26 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./ch3_pandas/pandas_book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

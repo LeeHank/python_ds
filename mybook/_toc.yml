@@ -12,9 +12,11 @@ parts:
     numbered: true
     chapters:
       - file: ch3_pandas/official_getting_started/getting_started
+      - file: ch3_pandas/regex
   - caption: Matplotlib
     numbered: true
     chapters:
+      - file: ch4_matplotlib/datacamp_matplotlib_intro
       - file: ch4_matplotlib/04.00-matplotlib_intro
       - file: ch4_matplotlib/04.01-Simple-Line-Plots
       - file: ch4_matplotlib/04.02-Simple-Scatter-Plots

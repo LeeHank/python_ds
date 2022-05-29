@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9. Colorbars &#8212; My sample book</title>
+    <title>11. Colorbars &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. Multiple Subplots" href="04.08-Multiple-Subplots.html" />
-    <link rel="prev" title="8. Legends" href="04.06-Legends.html" />
+    <link rel="next" title="12. Multiple Subplots" href="04.08-Multiple-Subplots.html" />
+    <link rel="prev" title="10. Legends" href="04.06-Legends.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,6 +119,11 @@
    2. Getting Started (official)
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/regex.html">
+   3. Regular Expression
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -127,43 +132,48 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="datacamp_matplotlib_intro.html">
+   4. Intro to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="04.00-matplotlib_intro.html">
-   3. Matplotlib 簡介與常用技巧
+   5. Matplotlib 簡介與常用技巧
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.01-Simple-Line-Plots.html">
-   4. Simple Line Plots
+   6. Simple Line Plots
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.02-Simple-Scatter-Plots.html">
-   5. Simple Scatter Plots
+   7. Simple Scatter Plots
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.03-Errorbars.html">
-   6. Error bars &amp; Error region
+   8. Error bars &amp; Error region
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.05-Histograms-and-Density.html">
-   7. Histograms and Density
+   9. Histograms and Density
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.06-Legends.html">
-   8. Legends
+   10. Legends
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   9. Colorbars
+   11. Colorbars
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.08-Multiple-Subplots.html">
-   10. Multiple Subplots
+   12. Multiple Subplots
   </a>
  </li>
 </ul>
@@ -175,7 +185,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
-   11. Introduction to Seaborn
+   13. Introduction to Seaborn
   </a>
  </li>
 </ul>
@@ -187,24 +197,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../clustering/KMeans.html">
-   12. K-Means
+   14. K-Means
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../clustering/GMM.html">
-   13. Gaussian Mixture Model (GMM)
+   15. Gaussian Mixture Model (GMM)
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  unsupervised learning
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../datacamp_unsu/clusters.html">
-   14. Clustering
+  <a class="reference internal" href="../clustering/HC.html">
+   16. Hierarchical Clustering
   </a>
  </li>
 </ul>
@@ -216,17 +219,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   15. Supervised Learning with scikit-learn
+   17. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   16. Classification Trees
+   18. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   17. Permutation Importance vs Random Forest Feature Importance (MDI)
+   19. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -335,46 +338,46 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#customizing-colorbars">
-   9.1. Customizing Colorbars
+   11.1. Customizing Colorbars
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#color-bars-color-map">
-     9.1.1. color bars 要用的顏色(color map)
+     11.1.1. color bars 要用的顏色(color map)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       9.1.1.1. 連續的色彩
+       11.1.1.1. 連續的色彩
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       9.1.1.2. 給兩個顏色
+       11.1.1.2. 給兩個顏色
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id3">
-       9.1.1.3. 無特定順序
+       11.1.1.3. 無特定順序
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#color-limits-and-extensions">
-     9.1.2. Color limits and extensions
+     11.1.2. Color limits and extensions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#color-bars">
-     9.1.3. 離散的 color bars
+     11.1.3. 離散的 color bars
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-handwritten-digits">
-   9.2. Example: Handwritten Digits
+   11.2. Example: Handwritten Digits
   </a>
  </li>
 </ul>
@@ -399,46 +402,46 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#customizing-colorbars">
-   9.1. Customizing Colorbars
+   11.1. Customizing Colorbars
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#color-bars-color-map">
-     9.1.1. color bars 要用的顏色(color map)
+     11.1.1. color bars 要用的顏色(color map)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       9.1.1.1. 連續的色彩
+       11.1.1.1. 連續的色彩
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       9.1.1.2. 給兩個顏色
+       11.1.1.2. 給兩個顏色
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id3">
-       9.1.1.3. 無特定順序
+       11.1.1.3. 無特定順序
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#color-limits-and-extensions">
-     9.1.2. Color limits and extensions
+     11.1.2. Color limits and extensions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#color-bars">
-     9.1.3. 離散的 color bars
+     11.1.3. 離散的 color bars
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-handwritten-digits">
-   9.2. Example: Handwritten Digits
+   11.2. Example: Handwritten Digits
   </a>
  </li>
 </ul>
@@ -451,7 +454,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="colorbars">
-<h1><span class="section-number">9. </span>Colorbars<a class="headerlink" href="#colorbars" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">11. </span>Colorbars<a class="headerlink" href="#colorbars" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -481,7 +484,7 @@
 </div>
 <p>接下來來講些客製化細節吧</p>
 <div class="section" id="customizing-colorbars">
-<h2><span class="section-number">9.1. </span>Customizing Colorbars<a class="headerlink" href="#customizing-colorbars" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.1. </span>Customizing Colorbars<a class="headerlink" href="#customizing-colorbars" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>畫圖的時候， <code class="docutils literal notranslate"><span class="pre">cmap</span></code> 這個 argument 是 color map (色彩對應表) 的縮寫，他可以決定我的圖的顏色</p></li>
 <li><p>例如，我改成灰階 (數字由小到大，對應到顏色由黑到白)</p></li>
@@ -501,7 +504,7 @@
 <li><p>至於 <code class="docutils literal notranslate"><span class="pre">cmap</span></code> 可下的參數有哪些，可按 Tab 鍵看到跳出的結果：  <code class="docutils literal notranslate"><span class="pre">plt.cm.&lt;TAB&gt;</span></code>.</p></li>
 </ul>
 <div class="section" id="color-bars-color-map">
-<h3><span class="section-number">9.1.1. </span>color bars 要用的顏色(color map)<a class="headerlink" href="#color-bars-color-map" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.1. </span>color bars 要用的顏色(color map)<a class="headerlink" href="#color-bars-color-map" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>大概有三種 colormap 的設定方式</p>
 <ul>
@@ -524,7 +527,7 @@
 </div>
 </div>
 <div class="section" id="id1">
-<h4><span class="section-number">9.1.1.1. </span>連續的色彩<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.1.1. </span>連續的色彩<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view_colormap</span><span class="p">(</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span> <span class="c1"># 預設的</span>
@@ -547,7 +550,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h4><span class="section-number">9.1.1.2. </span>給兩個顏色<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.1.2. </span>給兩個顏色<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view_colormap</span><span class="p">(</span><span class="s2">&quot;RdBu&quot;</span><span class="p">)</span>
@@ -560,7 +563,7 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h4><span class="section-number">9.1.1.3. </span>無特定順序<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.1.3. </span>無特定順序<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view_colormap</span><span class="p">(</span><span class="s2">&quot;rainbow&quot;</span><span class="p">)</span>
@@ -584,7 +587,7 @@
 </div>
 </div>
 <div class="section" id="color-limits-and-extensions">
-<h3><span class="section-number">9.1.2. </span>Color limits and extensions<a class="headerlink" href="#color-limits-and-extensions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.2. </span>Color limits and extensions<a class="headerlink" href="#color-limits-and-extensions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">colorbar</span></code> 本身就是 <code class="docutils literal notranslate"><span class="pre">plt.Axes</span></code> 這個 class 的一個 instance.</p></li>
 <li><p>所以，所有的 axes 和 tick 都是可以設定的.</p></li>
@@ -644,7 +647,7 @@
 </div>
 </div>
 <div class="section" id="color-bars">
-<h3><span class="section-number">9.1.3. </span>離散的 color bars<a class="headerlink" href="#color-bars" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.3. </span>離散的 color bars<a class="headerlink" href="#color-bars" title="Permalink to this headline">¶</a></h3>
 <p>Colormaps are by default continuous, but sometimes you’d like to represent discrete values.
 The easiest way to do this is to use the <code class="docutils literal notranslate"><span class="pre">plt.cm.get_cmap()</span></code> function, and pass the name of a suitable colormap along with the number of desired bins:</p>
 <div class="cell docutils container">
@@ -663,7 +666,7 @@ The easiest way to do this is to use the <code class="docutils literal notransla
 </div>
 </div>
 <div class="section" id="example-handwritten-digits">
-<h2><span class="section-number">9.2. </span>Example: Handwritten Digits<a class="headerlink" href="#example-handwritten-digits" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.2. </span>Example: Handwritten Digits<a class="headerlink" href="#example-handwritten-digits" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>我們來看一下手寫資料視覺化的例子.</p></li>
 <li><p>這些資料在 scikit-learn 中可以找到，有接近 2000 個 8x8 的圖片.</p></li>
@@ -763,13 +766,13 @@ The easiest way to do this is to use the <code class="docutils literal notransla
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8. </span>Legends</p>
+            <p class="prev-next-title"><span class="section-number">10. </span>Legends</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="04.08-Multiple-Subplots.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Multiple Subplots</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Multiple Subplots</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -1,0 +1,1633 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. Intro to matplotlib &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Matplotlib 簡介與常用技巧" href="04.00-matplotlib_intro.html" />
+    <link rel="prev" title="3. Regular Expression" href="../ch3_pandas/regex.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/regex.html">
+   3. Regular Expression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Intro to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.00-matplotlib_intro.html">
+   5. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.01-Simple-Line-Plots.html">
+   6. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.02-Simple-Scatter-Plots.html">
+   7. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.03-Errorbars.html">
+   8. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.05-Histograms-and-Density.html">
+   9. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.06-Legends.html">
+   10. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.07-Colorbars.html">
+   11. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04.08-Multiple-Subplots.html">
+   12. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
+   13. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/KMeans.html">
+   14. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/GMM.html">
+   15. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/HC.html">
+   16. Hierarchical Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_su/datacamp_su.html">
+   17. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statquest_trees/classification_tree.html">
+   18. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
+   19. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ch4_matplotlib/datacamp_matplotlib_intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch4_matplotlib/datacamp_matplotlib_intro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/ch4_matplotlib/datacamp_matplotlib_intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intro">
+   4.1. Intro
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fig-ax-plt-subplots">
+     4.1.1. fig, ax, &amp; plt.subplots()
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#customize">
+     4.1.2. customize
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#small-multiples">
+     4.1.3. small multiples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-data">
+   4.2. Time- series data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     4.2.1. 雙軸圖
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#annotation">
+     4.2.2. 加上 annotation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-plots">
+   4.3. Statistical plots
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bar-chart">
+     4.3.1. Bar chart
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simple-bar-chart">
+       4.3.1.1. Simple bar chart
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stack-bar-chart">
+       4.3.1.2. stack bar chart
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histogram">
+     4.3.2. Histogram
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-bars">
+     4.3.3. Error bars
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boxplot">
+     4.3.4. Boxplot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot">
+     4.3.5. scatter plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-files">
+   4.4. Saving files
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Intro to matplotlib</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intro">
+   4.1. Intro
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fig-ax-plt-subplots">
+     4.1.1. fig, ax, &amp; plt.subplots()
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#customize">
+     4.1.2. customize
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#small-multiples">
+     4.1.3. small multiples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-data">
+   4.2. Time- series data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     4.2.1. 雙軸圖
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#annotation">
+     4.2.2. 加上 annotation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-plots">
+   4.3. Statistical plots
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bar-chart">
+     4.3.1. Bar chart
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simple-bar-chart">
+       4.3.1.1. Simple bar chart
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stack-bar-chart">
+       4.3.1.2. stack bar chart
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histogram">
+     4.3.2. Histogram
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-bars">
+     4.3.3. Error bars
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boxplot">
+     4.3.4. Boxplot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot">
+     4.3.5. scatter plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-files">
+   4.4. Saving files
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="intro-to-matplotlib">
+<h1><span class="section-number">4. </span>Intro to matplotlib<a class="headerlink" href="#intro-to-matplotlib" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="intro">
+<h2><span class="section-number">4.1. </span>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fig-ax-plt-subplots">
+<h3><span class="section-number">4.1.1. </span>fig, ax, &amp; plt.subplots()<a class="headerlink" href="#fig-ax-plt-subplots" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>先來介紹 oo 的寫法</p></li>
+<li><p>一率先用 <code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots()</span></code> 當開頭</p>
+<ul>
+<li><p>fig 是 container which hold everything you see on the page</p></li>
+<li><p>ax 是 part of the page that holds data, it is the canvas</p></li>
+</ul>
+</li>
+<li><p>所以，在我們還沒有 assign data 給 ax 前，畫出來的圖，就是白的：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># subplots 裡面沒寫參數，預設就是 1 ，表示你只要畫 1 張 subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/datacamp_matplotlib_intro_5_0.png" src="../_images/datacamp_matplotlib_intro_5_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>接著，我們把 data 加進 ax 裡面</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seattle_weather</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/seattle_weather.csv&quot;</span><span class="p">)</span>
+<span class="n">sub_data</span> <span class="o">=</span> <span class="n">seattle_weather</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">seattle_weather</span><span class="o">.</span><span class="n">STATION</span> <span class="o">==</span> <span class="s2">&quot;USC00456295&quot;</span><span class="p">]</span>
+<span class="n">sub_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">,</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">]]</span> <span class="c1"># prcp = precipitation (inches) 的縮寫，雨量</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>MLY-PRCP-NORMAL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>11.03</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>7.74</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>9.08</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>7.37</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>6.39</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>5.34</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>2.55</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>2.56</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>3.95</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>7.29</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>12.58</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>9.85</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>adding data to axes</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x120efd5b0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_9_1.png" src="../_images/datacamp_matplotlib_intro_9_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>那如果我想在這張圖上，再加上其他的 line ，我該怎麼做呢？</p></li>
+<li><p>答案是：一直 <code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code> 下去就好</p></li>
+<li><p>例如剛剛這條線，我在資料中，還有 PR25, PR75 的資料，所以我可以畫出這個區間:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-25PCTL&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-75PCTL&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1210de190&gt;]
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_11_1.png" src="../_images/datacamp_matplotlib_intro_11_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>不錯，有上下限了，但不太美觀，下一節開始 customize 一些細節</p></li>
+</ul>
+</div>
+<div class="section" id="customize">
+<h3><span class="section-number">4.1.2. </span>customize<a class="headerlink" href="#customize" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>但因為這張圖，資料點其實只出現在 “月份” 上，所以最好加上 marker ，讓讀者知道資料出現在哪</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-25PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-75PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1210f08b0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_15_1.png" src="../_images/datacamp_matplotlib_intro_15_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>我們也可以改變線條的 linestyle:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-25PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-75PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1211a8850&gt;]
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_17_1.png" src="../_images/datacamp_matplotlib_intro_17_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>也可以改顏色</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-25PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-75PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x121214a30&gt;]
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_19_1.png" src="../_images/datacamp_matplotlib_intro_19_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>改 x label, y label, title</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-25PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-75PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (months)&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Precipitation (inches)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Weather in Seattle&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/datacamp_matplotlib_intro_21_0.png" src="../_images/datacamp_matplotlib_intro_21_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="small-multiples">
+<h3><span class="section-number">4.1.3. </span>small multiples<a class="headerlink" href="#small-multiples" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/datacamp_matplotlib_intro_23_0.png" src="../_images/datacamp_matplotlib_intro_23_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>此時，ax 變成 array object，可以確認看看：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>所以，我等等要畫圖時，我要指名我要對 ax 這個 array 中的哪個 ax 畫圖</p></li>
+<li><p>例如，我要對 (0,0) 畫圖，那就要寫 <code class="docutils literal notranslate"><span class="pre">ax[0,0].plot()</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-25PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">sub_data</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-75PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (months)&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Precipitation (inches)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Weather in Seattle&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/datacamp_matplotlib_intro_27_0.png" src="../_images/datacamp_matplotlib_intro_27_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>要注意的是，如果你的 subplot 只有一行或一列，那 ax 會退化到 1d array (而不是剛剛的 2d array)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 畫出 2 列 1 行</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 畫出 1 列 2 行</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2,)
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_30_1.png" src="../_images/datacamp_matplotlib_intro_30_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>所以在畫圖時，就要用 <code class="docutils literal notranslate"><span class="pre">ax[0].plot</span></code>, <code class="docutils literal notranslate"><span class="pre">ax[1].plot</span></code> 來指定畫圖</p></li>
+<li><p>舉例來說，我取兩個城市的資料來畫圖：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seattle_weather</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/seattle_weather.csv&quot;</span><span class="p">)</span>
+<span class="n">austin_weather</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/austin_weather.csv&quot;</span><span class="p">)</span>
+
+<span class="n">seattle_sub</span> <span class="o">=</span> <span class="n">seattle_weather</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">seattle_weather</span><span class="o">.</span><span class="n">STATION</span> <span class="o">==</span> <span class="s2">&quot;USC00456295&quot;</span><span class="p">]</span>
+<span class="n">austin_sub</span> <span class="o">=</span> <span class="n">austin_weather</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">austin_weather</span><span class="o">.</span><span class="n">STATION</span> <span class="o">==</span> <span class="s2">&quot;USW00013904&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 畫出 2 列 1 行</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-25PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-75PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-25PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-75PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Precipitation (inches)&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Precipitation (inches)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/datacamp_matplotlib_intro_33_0.png" src="../_images/datacamp_matplotlib_intro_33_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>雖然累了點，很多 重複性高 的 code，但結果跟預期差不多</p></li>
+<li><p>但我們有發現， y 軸的 scale 不同，所以，我可以用 <code class="docutils literal notranslate"><span class="pre">plt.subplots(2,</span> <span class="pre">1,</span> <span class="pre">sharey</span> <span class="pre">=</span> <span class="pre">True)</span></code>，來強制 y 軸做 share (相同 scale)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharey</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># 畫出 2 列 1 行</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-25PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-75PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-NORMAL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-25PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;MLY-PRCP-75PCTL&quot;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Precipitation (inches)&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Precipitation (inches)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/datacamp_matplotlib_intro_35_0.png" src="../_images/datacamp_matplotlib_intro_35_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="time-series-data">
+<h2><span class="section-number">4.2. </span>Time- series data<a class="headerlink" href="#time-series-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">climate_change</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;data/climate_change.csv&quot;</span><span class="p">,</span> 
+    <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> 
+    <span class="n">index_col</span> <span class="o">=</span> <span class="s2">&quot;date&quot;</span>
+<span class="p">)</span>
+<span class="n">climate_change</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>co2</th>
+      <th>relative_temp</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1958-03-06</th>
+      <td>315.71</td>
+      <td>0.10</td>
+    </tr>
+    <tr>
+      <th>1958-04-06</th>
+      <td>317.45</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>1958-05-06</th>
+      <td>317.50</td>
+      <td>0.08</td>
+    </tr>
+    <tr>
+      <th>1958-06-06</th>
+      <td>NaN</td>
+      <td>-0.05</td>
+    </tr>
+    <tr>
+      <th>1958-07-06</th>
+      <td>315.86</td>
+      <td>0.06</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2016-08-06</th>
+      <td>402.27</td>
+      <td>0.98</td>
+    </tr>
+    <tr>
+      <th>2016-09-06</th>
+      <td>401.05</td>
+      <td>0.87</td>
+    </tr>
+    <tr>
+      <th>2016-10-06</th>
+      <td>401.59</td>
+      <td>0.89</td>
+    </tr>
+    <tr>
+      <th>2016-11-06</th>
+      <td>403.55</td>
+      <td>0.93</td>
+    </tr>
+    <tr>
+      <th>2016-12-06</th>
+      <td>404.45</td>
+      <td>0.81</td>
+    </tr>
+  </tbody>
+</table>
+<p>706 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="o">.</span><span class="n">relative_temp</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Relative temperature (Celsius)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Relative temperature (Celsius)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_38_1.png" src="../_images/datacamp_matplotlib_intro_38_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>把時間軸 zoom in 一下 (因為時間現在是 index，所以可以很方便的做 subset)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">seventies</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;1970-01-01&quot;</span><span class="p">:</span><span class="s2">&quot;1979-12-31&quot;</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">seventies</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">seventies</span><span class="p">[</span><span class="s2">&quot;co2&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x122da67c0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_40_1.png" src="../_images/datacamp_matplotlib_intro_40_1.png" />
+</div>
+</div>
+<div class="section" id="id1">
+<h3><span class="section-number">4.2.1. </span>雙軸圖<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;co2&quot;</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;CO2 (ppm)&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;relative_temp&quot;</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Relative temperature (Celsius)&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/datacamp_matplotlib_intro_42_0.png" src="../_images/datacamp_matplotlib_intro_42_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>來寫個 function，讓我們可以做得更快一點</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_timeseries</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">):</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="p">)</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plot_timeseries</span><span class="p">(</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> 
+    <span class="n">x</span> <span class="o">=</span> <span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
+    <span class="n">y</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;co2&quot;</span><span class="p">],</span> 
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;CO2 (ppm)&quot;</span>
+<span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">plot_timeseries</span><span class="p">(</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">ax2</span><span class="p">,</span> 
+    <span class="n">x</span> <span class="o">=</span> <span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
+    <span class="n">y</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;relative_temp&quot;</span><span class="p">],</span> 
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Relative temperature (Celsius)&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/datacamp_matplotlib_intro_45_0.png" src="../_images/datacamp_matplotlib_intro_45_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="annotation">
+<h3><span class="section-number">4.2.2. </span>加上 annotation<a class="headerlink" href="#annotation" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plot_timeseries</span><span class="p">(</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> 
+    <span class="n">x</span> <span class="o">=</span> <span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
+    <span class="n">y</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;co2&quot;</span><span class="p">],</span> 
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;CO2 (ppm)&quot;</span>
+<span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">plot_timeseries</span><span class="p">(</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">ax2</span><span class="p">,</span> 
+    <span class="n">x</span> <span class="o">=</span> <span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
+    <span class="n">y</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;relative_temp&quot;</span><span class="p">],</span> 
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Relative temperature (Celsius)&quot;</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&gt;1 degree&quot;</span><span class="p">,</span> <span class="c1"># annotation 的文字</span>
+             <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2015-10-06&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span> <span class="c1"># annotation 的點所在的座標</span>
+             <span class="n">xytext</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2008-10-06&#39;</span><span class="p">),</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">),</span> <span class="c1"># 要顯示的文字所在的座標</span>
+             <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="c1"># 箭頭，從文字指向要標記的點</span>
+                         <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;gray&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(2008-10-06 00:00:00, -0.2, &#39;&gt;1 degree&#39;)
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_47_1.png" src="../_images/datacamp_matplotlib_intro_47_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="statistical-plots">
+<h2><span class="section-number">4.3. </span>Statistical plots<a class="headerlink" href="#statistical-plots" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">medals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/medals_by_country_2016.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">medals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bronze</th>
+      <th>Gold</th>
+      <th>Silver</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>United States</th>
+      <td>67</td>
+      <td>137</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>Germany</th>
+      <td>67</td>
+      <td>47</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>Great Britain</th>
+      <td>26</td>
+      <td>64</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>Russia</th>
+      <td>35</td>
+      <td>50</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>China</th>
+      <td>35</td>
+      <td>44</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>France</th>
+      <td>21</td>
+      <td>20</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>Australia</th>
+      <td>25</td>
+      <td>23</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>Italy</th>
+      <td>24</td>
+      <td>8</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>Canada</th>
+      <td>61</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Japan</th>
+      <td>34</td>
+      <td>17</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="bar-chart">
+<h3><span class="section-number">4.3.1. </span>Bar chart<a class="headerlink" href="#bar-chart" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="simple-bar-chart">
+<h4><span class="section-number">4.3.1.1. </span>Simple bar chart<a class="headerlink" href="#simple-bar-chart" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>我們想畫出，各國的金牌數量</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">&quot;Gold&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 10 artists&gt;
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_53_1.png" src="../_images/datacamp_matplotlib_intro_53_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>xlabel 都重疊再一起，我們把它轉 90 度</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">();</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">&quot;Gold&quot;</span><span class="p">]);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">90</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Number of medals&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j9/71c8r2vs343cb9329xbww0240000gn/T/ipykernel_71988/528635632.py:3: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels(medals.index, rotation = 90);
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_55_1.png" src="../_images/datacamp_matplotlib_intro_55_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="stack-bar-chart">
+<h4><span class="section-number">4.3.1.2. </span>stack bar chart<a class="headerlink" href="#stack-bar-chart" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>我們可以做 stack bar chart</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">();</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">&quot;Gold&quot;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Gold&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">&quot;Silver&quot;</span><span class="p">],</span> <span class="n">bottom</span> <span class="o">=</span> <span class="n">medals</span><span class="p">[</span><span class="s2">&quot;Gold&quot;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Silver&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">medals</span><span class="p">[</span><span class="s2">&quot;Bronze&quot;</span><span class="p">],</span>
+       <span class="n">bottom</span> <span class="o">=</span> <span class="n">medals</span><span class="p">[</span><span class="s2">&quot;Gold&quot;</span><span class="p">]</span><span class="o">+</span><span class="n">medals</span><span class="p">[</span><span class="s2">&quot;Silver&quot;</span><span class="p">],</span> 
+       <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Bronze&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">medals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">90</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Number of medals&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j9/71c8r2vs343cb9329xbww0240000gn/T/ipykernel_71988/3216558047.py:8: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels(medals.index, rotation = 90);
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x122fc2b80&gt;
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_58_2.png" src="../_images/datacamp_matplotlib_intro_58_2.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="histogram">
+<h3><span class="section-number">4.3.2. </span>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/summer2016.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">mens_rowing</span> <span class="o">=</span> <span class="n">tt</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;(Sex == &#39;M&#39;) &amp; (Sport == &#39;Rowing&#39;)&quot;</span><span class="p">)</span>
+<span class="n">mens_gymnastic</span> <span class="o">=</span> <span class="n">tt</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;(Sex == &#39;M&#39;) &amp; (Sport == &#39;Gymnastics&#39;)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_rowing</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Rowing&quot;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mens_gymnastic</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Gymnastics&quot;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;# of observations&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x123066910&gt;
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_61_1.png" src="../_images/datacamp_matplotlib_intro_61_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="error-bars">
+<h3><span class="section-number">4.3.3. </span>Error bars<a class="headerlink" href="#error-bars" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>幫 bar chart 加上 error bar</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="s2">&quot;Rowing&quot;</span><span class="p">,</span> 
+       <span class="n">mens_rowing</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+       <span class="n">yerr</span> <span class="o">=</span> <span class="n">mens_rowing</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="s2">&quot;Gymnastics&quot;</span><span class="p">,</span>
+    <span class="n">mens_gymnastic</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="n">yerr</span> <span class="o">=</span> <span class="n">mens_gymnastic</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 1 artists&gt;
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_64_1.png" src="../_images/datacamp_matplotlib_intro_64_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>我們也可以用迴圈，畫完所有運動員的 bar chart with error bar</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/summer2016.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">sports</span> <span class="o">=</span> <span class="n">tt</span><span class="o">.</span><span class="n">Sport</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">sport</span> <span class="ow">in</span> <span class="n">sports</span><span class="p">:</span>
+    <span class="n">sport_df</span> <span class="o">=</span> <span class="n">tt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tt</span><span class="o">.</span><span class="n">Sport</span> <span class="o">==</span> <span class="n">sport</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">sport</span><span class="p">,</span> <span class="n">sport_df</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">yerr</span> <span class="o">=</span> <span class="n">sport_df</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">sports</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j9/71c8r2vs343cb9329xbww0240000gn/T/ipykernel_71988/1536233426.py:11: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels(sports, rotation = 90)
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_66_1.png" src="../_images/datacamp_matplotlib_intro_66_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>幫 line chart 加上 error bar</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span>
+    <span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span>
+    <span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;MLY-TAVG-NORMAL&quot;</span><span class="p">],</span>
+    <span class="n">yerr</span> <span class="o">=</span> <span class="n">seattle_sub</span><span class="p">[</span><span class="s2">&quot;MLY-TAVG-STDDEV&quot;</span><span class="p">],</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Seattle&quot;</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span>
+    <span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span>
+    <span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;MLY-TAVG-NORMAL&quot;</span><span class="p">],</span>
+    <span class="n">yerr</span> <span class="o">=</span> <span class="n">austin_sub</span><span class="p">[</span><span class="s2">&quot;MLY-TAVG-STDDEV&quot;</span><span class="p">],</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Austin&quot;</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (Fahrenheit&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1234a0820&gt;
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_68_1.png" src="../_images/datacamp_matplotlib_intro_68_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="boxplot">
+<h3><span class="section-number">4.3.4. </span>Boxplot<a class="headerlink" href="#boxplot" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">mens_rowing</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">],</span> <span class="n">mens_gymnastic</span><span class="p">[</span><span class="s2">&quot;Height&quot;</span><span class="p">]])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s2">&quot;Rowing&quot;</span><span class="p">,</span> <span class="s2">&quot;Gymnastics&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Height (cm)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_70_1.png" src="../_images/datacamp_matplotlib_intro_70_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="scatter-plot">
+<h3><span class="section-number">4.3.5. </span>scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;co2&quot;</span><span class="p">],</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;relative_temp&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;CO2 (ppm)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Relative temperature (Celsius)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Relative temperature (Celsius)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_72_1.png" src="../_images/datacamp_matplotlib_intro_72_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eighties</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;1980-01-01&quot;</span><span class="p">:</span><span class="s2">&quot;1989-12-31&quot;</span><span class="p">]</span>
+<span class="n">nineties</span> <span class="o">=</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;1990-01-01&quot;</span><span class="p">:</span><span class="s2">&quot;1999-12-31&quot;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">eighties</span><span class="p">[</span><span class="s2">&quot;co2&quot;</span><span class="p">],</span> <span class="n">eighties</span><span class="p">[</span><span class="s2">&quot;relative_temp&quot;</span><span class="p">],</span>
+           <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;eighties&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">nineties</span><span class="p">[</span><span class="s2">&quot;co2&quot;</span><span class="p">],</span> <span class="n">nineties</span><span class="p">[</span><span class="s2">&quot;relative_temp&quot;</span><span class="p">],</span>
+           <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;nineties&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;CO2 (ppm)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Relative temperature (Celsius)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Relative temperature (Celsius)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_73_1.png" src="../_images/datacamp_matplotlib_intro_73_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;co2&quot;</span><span class="p">],</span> <span class="n">climate_change</span><span class="p">[</span><span class="s2">&quot;relative_temp&quot;</span><span class="p">],</span>
+           <span class="n">c</span> <span class="o">=</span> <span class="n">climate_change</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;CO2 (ppm)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Relative temperature (Celsius)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Relative temperature (Celsius)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/datacamp_matplotlib_intro_74_1.png" src="../_images/datacamp_matplotlib_intro_74_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="saving-files">
+<h2><span class="section-number">4.4. </span>Saving files<a class="headerlink" href="#saving-files" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># fig.savefig(&quot;gold_medals.png&quot;)</span>
+<span class="c1"># fig.savefig(&quot;gold_medals.jpg&quot;)</span>
+<span class="c1"># fig.savefig(&quot;gold_medals.svg&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1"># width, height</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./ch4_matplotlib"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../ch3_pandas/regex.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Regular Expression</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="04.00-matplotlib_intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Matplotlib 簡介與常用技巧</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
