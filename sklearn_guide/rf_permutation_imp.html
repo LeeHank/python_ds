@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>17. Permutation Importance vs Random Forest Feature Importance (MDI) &#8212; My sample book</title>
+    <title>19. Permutation Importance vs Random Forest Feature Importance (MDI) &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="16. Classification Trees" href="../statquest_trees/classification_tree.html" />
+    <link rel="prev" title="18. Classification Trees" href="../statquest_trees/classification_tree.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,6 +118,11 @@
    2. Getting Started (official)
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/regex.html">
+   3. Regular Expression
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -126,43 +131,48 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/datacamp_matplotlib_intro.html">
+   4. Intro to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.00-matplotlib_intro.html">
-   3. Matplotlib 簡介與常用技巧
+   5. Matplotlib 簡介與常用技巧
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.01-Simple-Line-Plots.html">
-   4. Simple Line Plots
+   6. Simple Line Plots
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
-   5. Simple Scatter Plots
+   7. Simple Scatter Plots
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.03-Errorbars.html">
-   6. Error bars &amp; Error region
+   8. Error bars &amp; Error region
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.05-Histograms-and-Density.html">
-   7. Histograms and Density
+   9. Histograms and Density
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.06-Legends.html">
-   8. Legends
+   10. Legends
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.07-Colorbars.html">
-   9. Colorbars
+   11. Colorbars
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch4_matplotlib/04.08-Multiple-Subplots.html">
-   10. Multiple Subplots
+   12. Multiple Subplots
   </a>
  </li>
 </ul>
@@ -174,7 +184,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
-   11. Introduction to Seaborn
+   13. Introduction to Seaborn
   </a>
  </li>
 </ul>
@@ -186,17 +196,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../clustering/KMeans.html">
-   12. K-Means
+   14. K-Means
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../clustering/GMM.html">
-   13. Gaussian Mixture Model (GMM)
+   15. Gaussian Mixture Model (GMM)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../clustering/HC.html">
-   14. Hierarchical Clustering
+   16. Hierarchical Clustering
   </a>
  </li>
 </ul>
@@ -208,17 +218,17 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   15. Supervised Learning with scikit-learn
+   17. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   16. Classification Trees
+   18. Classification Trees
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   17. Permutation Importance vs Random Forest Feature Importance (MDI)
+   19. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -327,17 +337,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-loading-and-feature-engineering">
-   17.1. Data Loading and Feature Engineering
+   19.1. Data Loading and Feature Engineering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accuracy-of-the-model">
-   17.2. Accuracy of the Model
+   19.2. Accuracy of the Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tree-s-feature-importance-from-mean-decrease-in-impurity-mdi">
-   17.3. Tree’s Feature Importance from Mean Decrease in Impurity (MDI)
+   19.3. Tree’s Feature Importance from Mean Decrease in Impurity (MDI)
   </a>
  </li>
 </ul>
@@ -362,17 +372,17 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-loading-and-feature-engineering">
-   17.1. Data Loading and Feature Engineering
+   19.1. Data Loading and Feature Engineering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accuracy-of-the-model">
-   17.2. Accuracy of the Model
+   19.2. Accuracy of the Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tree-s-feature-importance-from-mean-decrease-in-impurity-mdi">
-   17.3. Tree’s Feature Importance from Mean Decrease in Impurity (MDI)
+   19.3. Tree’s Feature Importance from Mean Decrease in Impurity (MDI)
   </a>
  </li>
 </ul>
@@ -392,7 +402,7 @@
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="permutation-importance-vs-random-forest-feature-importance-mdi">
-<h1><span class="section-number">17. </span>Permutation Importance vs Random Forest Feature Importance (MDI)<a class="headerlink" href="#permutation-importance-vs-random-forest-feature-importance-mdi" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">19. </span>Permutation Importance vs Random Forest Feature Importance (MDI)<a class="headerlink" href="#permutation-importance-vs-random-forest-feature-importance-mdi" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>在這個範例中，我們要比較以下這兩種方法，在 <code class="docutils literal notranslate"><span class="pre">titanic</span></code> dataset 這個分類問題中的變數重要性結果：</p>
 <ul>
@@ -436,7 +446,7 @@
 </div>
 </div>
 <div class="section" id="data-loading-and-feature-engineering">
-<h2><span class="section-number">17.1. </span>Data Loading and Feature Engineering<a class="headerlink" href="#data-loading-and-feature-engineering" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">19.1. </span>Data Loading and Feature Engineering<a class="headerlink" href="#data-loading-and-feature-engineering" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>我們先 load 資料集</p></li>
 </ul>
@@ -649,7 +659,7 @@ Name: random_cat, dtype: int64
 </div>
 </div>
 <div class="section" id="accuracy-of-the-model">
-<h2><span class="section-number">17.2. </span>Accuracy of the Model<a class="headerlink" href="#accuracy-of-the-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">19.2. </span>Accuracy of the Model<a class="headerlink" href="#accuracy-of-the-model" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>在檢查變數重要性前，我們要先確認 model 夠準了。因為如果不準的話，我們對於變數重要性的探索是沒啥興趣的。</p></li>
 </ul>
@@ -674,7 +684,7 @@ RF test accuracy: 0.8170731707317073
 </ul>
 </div>
 <div class="section" id="tree-s-feature-importance-from-mean-decrease-in-impurity-mdi">
-<h2><span class="section-number">17.3. </span>Tree’s Feature Importance from Mean Decrease in Impurity (MDI)<a class="headerlink" href="#tree-s-feature-importance-from-mean-decrease-in-impurity-mdi" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">19.3. </span>Tree’s Feature Importance from Mean Decrease in Impurity (MDI)<a class="headerlink" href="#tree-s-feature-importance-from-mean-decrease-in-impurity-mdi" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ohe</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;preprocess&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">]</span> <span class="c1"># 取出 one-hot encoding 的 transformer</span>
@@ -792,7 +802,7 @@ RF test accuracy: 0.8170731707317073
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">16. </span>Classification Trees</p>
+            <p class="prev-next-title"><span class="section-number">18. </span>Classification Trees</p>
         </div>
     </a>
 </div>

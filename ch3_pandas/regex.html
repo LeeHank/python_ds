@@ -1,0 +1,1709 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Regular Expression &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Intro to matplotlib" href="../ch4_matplotlib/datacamp_matplotlib_intro.html" />
+    <link rel="prev" title="2. Getting Started (official)" href="official_getting_started/getting_started.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Regular Expression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/datacamp_matplotlib_intro.html">
+   4. Intro to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.00-matplotlib_intro.html">
+   5. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   6. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   7. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.03-Errorbars.html">
+   8. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   9. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.06-Legends.html">
+   10. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.07-Colorbars.html">
+   11. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   12. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
+   13. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/KMeans.html">
+   14. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/GMM.html">
+   15. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/HC.html">
+   16. Hierarchical Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_su/datacamp_su.html">
+   17. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statquest_trees/classification_tree.html">
+   18. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
+   19. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ch3_pandas/regex.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch3_pandas/regex.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/ch3_pandas/regex.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regex-101">
+   3.1. regex 101
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-re-module">
+   3.2. python 的
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     re
+    </span>
+   </code>
+   module
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-search">
+     3.2.1. re.search
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-match">
+     3.2.2. re.match
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-fullmatch">
+     3.2.3. re.fullmatch()
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-findall-returns-a-list-of-all-matches-of-a-regex-in-a-string">
+     3.2.4.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       re.findall()
+      </span>
+     </code>
+     returns a list of all matches of a regex in a string
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-findall-group">
+     3.2.5. re.findall + group
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-raw-string">
+   3.3. python 的逃脫字元 與 raw string
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   3.4. 查找和替換
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-sub-match">
+     3.4.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       re.sub()
+      </span>
+     </code>
+     找到 match 的，幫你替換完，再回傳
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-subn-re-sub">
+     3.4.2. re.subn() 做完 re.sub 的侍候，再回傳給你它取代了幾筆
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#group">
+     3.4.3. 加上 group
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function">
+     3.4.4. 加上 function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   3.5. 字串分割
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flags">
+   3.6. flags 的使用
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flags-re-ignorecase">
+     3.6.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       flags
+      </span>
+      <span class="pre">
+       =
+      </span>
+      <span class="pre">
+       re.IGNORECASE
+      </span>
+     </code>
+     可忽略大小寫
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flags-re-multiline">
+     3.6.2.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       flags
+      </span>
+      <span class="pre">
+       =
+      </span>
+      <span class="pre">
+       re.MULTILINE
+      </span>
+     </code>
+     會把換行後的字串當新的一行
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-verbose-regex">
+     3.6.3.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       re.VERBOSE
+      </span>
+     </code>
+     可以處理 多行+註解 的 regex
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#re-compile-regex-object">
+   3.7. 用
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     re.compile
+    </span>
+   </code>
+   把 regex 變成 object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   3.8. Exercise
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Regular Expression</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regex-101">
+   3.1. regex 101
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-re-module">
+   3.2. python 的
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     re
+    </span>
+   </code>
+   module
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-search">
+     3.2.1. re.search
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-match">
+     3.2.2. re.match
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-fullmatch">
+     3.2.3. re.fullmatch()
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-findall-returns-a-list-of-all-matches-of-a-regex-in-a-string">
+     3.2.4.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       re.findall()
+      </span>
+     </code>
+     returns a list of all matches of a regex in a string
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-findall-group">
+     3.2.5. re.findall + group
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-raw-string">
+   3.3. python 的逃脫字元 與 raw string
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   3.4. 查找和替換
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-sub-match">
+     3.4.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       re.sub()
+      </span>
+     </code>
+     找到 match 的，幫你替換完，再回傳
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-subn-re-sub">
+     3.4.2. re.subn() 做完 re.sub 的侍候，再回傳給你它取代了幾筆
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#group">
+     3.4.3. 加上 group
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#function">
+     3.4.4. 加上 function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   3.5. 字串分割
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flags">
+   3.6. flags 的使用
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flags-re-ignorecase">
+     3.6.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       flags
+      </span>
+      <span class="pre">
+       =
+      </span>
+      <span class="pre">
+       re.IGNORECASE
+      </span>
+     </code>
+     可忽略大小寫
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flags-re-multiline">
+     3.6.2.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       flags
+      </span>
+      <span class="pre">
+       =
+      </span>
+      <span class="pre">
+       re.MULTILINE
+      </span>
+     </code>
+     會把換行後的字串當新的一行
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#re-verbose-regex">
+     3.6.3.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       re.VERBOSE
+      </span>
+     </code>
+     可以處理 多行+註解 的 regex
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#re-compile-regex-object">
+   3.7. 用
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     re.compile
+    </span>
+   </code>
+   把 regex 變成 object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   3.8. Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="regular-expression">
+<h1><span class="section-number">3. </span>Regular Expression<a class="headerlink" href="#regular-expression" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>regular expression 使用場景：</p>
+<ul>
+<li><p>text matching: e.g. 大量文本中，matching 出合法的 email 地址</p></li>
+<li><p>verifying input: e.g. 檢查密碼是否包含大小寫字母與特殊符號</p></li>
+<li><p>search and replace</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="regex-101">
+<h2><span class="section-number">3.1. </span>regex 101<a class="headerlink" href="#regex-101" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">abc</span></code>: <code class="docutils literal notranslate"><span class="pre">abc</span></code>def</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">123</span></code>: 34<code class="docutils literal notranslate"><span class="pre">123</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\d</span></code>, <code class="docutils literal notranslate"><span class="pre">[0-9]</span></code>, <code class="docutils literal notranslate"><span class="pre">[&quot;digit:]</span></code>: any digits -&gt; <code class="docutils literal notranslate"><span class="pre">8</span></code>a997b</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\D</span></code>: any non-digit -&gt; 8<code class="docutils literal notranslate"><span class="pre">a</span></code>997b</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\w</span></code>, <code class="docutils literal notranslate"><span class="pre">[A-Za-z0-9_]</span></code>: any alpha, numeric</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code>: any character -&gt; <code class="docutils literal notranslate"><span class="pre">a</span></code>pple, <code class="docutils literal notranslate"><span class="pre">p</span></code>ig</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[abc]</span></code>: only a or b or c -&gt; <code class="docutils literal notranslate"><span class="pre">[cmf]an</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">can</span></code>, <code class="docutils literal notranslate"><span class="pre">man</span></code>, <code class="docutils literal notranslate"><span class="pre">fan</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[^abc]</span></code>: not a, b, nor c -&gt; <code class="docutils literal notranslate"><span class="pre">[^b]og</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">hog</span></code>, <code class="docutils literal notranslate"><span class="pre">dog</span></code>, bog</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{m}</span></code>: m repetitions -&gt; <code class="docutils literal notranslate"><span class="pre">\d{3}</span></code> 連續3個數字; <code class="docutils literal notranslate"><span class="pre">a{3}</span></code> 連續 3 個 a</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{m,</span> <span class="pre">n}</span></code>: 出現 m ~ n 次 -&gt; <code class="docutils literal notranslate"><span class="pre">\d{3,5}</span></code> 連續 3 or 4 or 5 個數字</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>: 0 or more repetitions -&gt; <code class="docutils literal notranslate"><span class="pre">\a*</span></code> 出現 0次以上的 a -&gt;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code>: 0 or 1 repetition -&gt; <code class="docutils literal notranslate"><span class="pre">colou?r</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">colour</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\s</span></code>: 空格 或 tab: <code class="docutils literal notranslate"><span class="pre">\s+</span></code> 一個或多個空白 -&gt; <code class="docutils literal notranslate"> <span class="pre">abc</span></code>, <code class="docutils literal notranslate">&#160; <span class="pre">abc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code>: start with</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code>: end with</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(...)</span></code> capture group: <code class="docutils literal notranslate"><span class="pre">(^file.*)\.pdf$</span></code> 表示我要找 file 開頭，任意字0 or 多個，點pdf結尾。那除了會 match 到 <code class="docutils literal notranslate"><span class="pre">file_record_transcript.pdf</span></code> 外，他還抓到 <code class="docutils literal notranslate"><span class="pre">file_record_transcript</span></code> 這個 group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(a(bc))</span></code> capture sub-group: e.g. <code class="docutils literal notranslate"><span class="pre">([:alpha:]{3}\s(\d{4}))</span></code> 就是要抓 任意字母3個，空白1個，數字4個，所以可以抓到 <code class="docutils literal notranslate"><span class="pre">Jan</span> <span class="pre">1987</span></code>，然後加上有外和內括號，所以capture到整個group <code class="docutils literal notranslate"><span class="pre">Jan</span> <span class="pre">1987</span></code> 和 sub-group <code class="docutils literal notranslate"><span class="pre">1987</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(abc|def)</span></code> match abc or def</p></li>
+</ul>
+</div>
+<div class="section" id="python-re-module">
+<h2><span class="section-number">3.2. </span>python 的 <code class="docutils literal notranslate"><span class="pre">re</span></code> module<a class="headerlink" href="#python-re-module" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="re-search">
+<h3><span class="section-number">3.2.1. </span>re.search<a class="headerlink" href="#re-search" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>查詢結果，會回傳一個物件。e.g. <code class="docutils literal notranslate"><span class="pre">res</span> <span class="pre">=</span> <span class="pre">re.search(&quot;ap&quot;,</span> <span class="pre">&quot;apple)</span></code></p></li>
+<li><p>它的功能，像是 R 的</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">str_detect</span></code> (有沒有 match 到): 這邊用 <code class="docutils literal notranslate"><span class="pre">res</span> <span class="pre">==</span> <span class="pre">None</span></code> 來檢查，如果是 None，表示沒 match 到。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str_extract</span></code> (抓出 match 到的字串): 可用 <code class="docutils literal notranslate"><span class="pre">res.span()</span></code> 得知 match 到的部分，是在原自串的第幾個位置到第幾個位置; <code class="docutils literal notranslate"><span class="pre">res.group()</span></code> 可以抓出 match 到的字。</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo123bar&quot;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(3, 6), match=&#39;123&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，回傳一個物件，而此物件就有很多 method 和 attribute 可以用</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">span</span><span class="p">())</span> <span class="c1"># match 的位置是原字串的哪裡到哪裡</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">start</span><span class="p">())</span> <span class="c1"># match 的位置的 start 是哪裡</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">end</span><span class="p">())</span> <span class="c1"># match 的位置的 end 是哪裡</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">string</span><span class="p">)</span> <span class="c1"># 要被 match 的字串是哪個</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 6)
+3
+6
+foo123bar
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;1234&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c1"># 如果 match 不到，會回傳 None</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">==</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo123oof&quot;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 1), match=&#39;f&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo123&quot;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;fo*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c1"># o* 表示 o 可以重複 0 ~ 多次</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 3), match=&#39;foo&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo123&quot;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;fo+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c1"># o+ 表後面 1 個或多個o</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 3), match=&#39;foo&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;o{1,2}&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(1, 3), match=&#39;oo&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo123bar&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\D+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(3, 6), match=&#39;123&#39;&gt;
+&lt;re.Match object; span=(0, 3), match=&#39;foo&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;one, two, three&quot;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(\w+), (\w+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 8), match=&#39;one, two&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, 8)
+(&#39;one&#39;, &#39;two&#39;)
+one, two
+one
+two
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Sep 2010&quot;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(?P&lt;month&gt;\w+)\s(?P&lt;year&gt;\d+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c1"># 幫 group 命名，用 `?P&lt;name&gt;&lt;regex&gt;`</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">groupdict</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()[</span><span class="s2">&quot;month&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()[</span><span class="s2">&quot;year&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 8), match=&#39;Sep 2010&#39;&gt;
+{&#39;month&#39;: &#39;Sep&#39;, &#39;year&#39;: &#39;2010&#39;}
+Sep
+2010
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="re-match">
+<h3><span class="section-number">3.2.2. </span>re.match<a class="headerlink" href="#re-match" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>match 和 search 的差別是，他是從第一個字母就開始比對</p></li>
+<li><p>所以，下面這個例子，他反而 match 不到</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo123bar&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">==</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">match</span></code> 主要用在輸入合法性檢查</p></li>
+<li><p>例如輸入的自串，是否為 email 形式</p></li>
+</ul>
+</div>
+<div class="section" id="re-fullmatch">
+<h3><span class="section-number">3.2.3. </span>re.fullmatch()<a class="headerlink" href="#re-fullmatch" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>fullmatch 就是完全 match</p></li>
+<li><p>例如，要搜尋全都是數字的字串</p>
+<ul>
+<li><p>用 <code class="docutils literal notranslate"><span class="pre">re.search</span></code> 會寫成 <code class="docutils literal notranslate"><span class="pre">re.search(r&quot;^\d+$&quot;)</span></code> ，表示數字開頭，1個數字以上都納入，數字結尾。</p></li>
+<li><p>用 <code class="docutils literal notranslate"><span class="pre">re.fullmatch</span></code> 就只要寫成 <code class="docutils literal notranslate"><span class="pre">re.fullmatch(r&quot;\d+&quot;)</span></code> 就 ok 了</p></li>
+</ul>
+</li>
+<li><p>看例子：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;123foo&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;foo123&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;123&quot;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d+$&quot;</span><span class="p">,</span> <span class="s2">&quot;123foo&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d+$&quot;</span><span class="p">,</span> <span class="s2">&quot;foo123&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d+$&quot;</span><span class="p">,</span> <span class="s2">&quot;123&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+None
+&lt;re.Match object; span=(0, 3), match=&#39;123&#39;&gt;
+None
+None
+&lt;re.Match object; span=(0, 3), match=&#39;123&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="re-findall-returns-a-list-of-all-matches-of-a-regex-in-a-string">
+<h3><span class="section-number">3.2.4. </span><code class="docutils literal notranslate"><span class="pre">re.findall()</span></code> returns a list of all matches of a regex in a string<a class="headerlink" href="#re-findall-returns-a-list-of-all-matches-of-a-regex-in-a-string" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;123foo456bar&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 3), match=&#39;123&#39;&gt;
+&lt;re.Match object; span=(0, 3), match=&#39;123&#39;&gt;
+None
+[&#39;123&#39;, &#39;456&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以清楚看到:</p>
+<ul>
+<li><p>用之前學的 search, match，都是找到第一組符合的就停止</p></li>
+<li><p>fullmatch要全都符合才算，所以找不到。</p></li>
+<li><p>而 findall 是會繼續往下找，並回給你 list</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="re-findall-group">
+<h3><span class="section-number">3.2.5. </span>re.findall + group<a class="headerlink" href="#re-findall-group" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>這邊澆了這種用法，可以學一下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;tom,hanks,aaron,tsai,ian,chen&quot;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\w+),(\w+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;tom&#39;, &#39;hanks&#39;), (&#39;aaron&#39;, &#39;tsai&#39;), (&#39;ian&#39;, &#39;chen&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，我們用 findall，來讓搜尋可以一路查到底</p></li>
+<li><p>然後 regex 用 <code class="docutils literal notranslate"><span class="pre">\w+</span></code>，表示1個以上的 alphanumeric 都可。中間用逗點隔開，所以我想找 <code class="docutils literal notranslate"><span class="pre">alphanumeric,</span> <span class="pre">alphanumeric</span></code> 這種 pattern</p></li>
+<li><p>最後，我加了兩個括號，所以，他會幫我抓出兩個 group</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="python-raw-string">
+<h2><span class="section-number">3.3. </span>python 的逃脫字元 與 raw string<a class="headerlink" href="#python-raw-string" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>直接講結論，在搜尋時，用 <code class="docutils literal notranslate"><span class="pre">r&quot;&quot;</span></code> 來寫，就可以維持和 regex 一致的寫法</p></li>
+<li><p>例如下例：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;abc\def&quot;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\w+)</span><span class="se">\\</span><span class="s2">(\w+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 7), match=&#39;abc\\def&#39;&gt;
+(&#39;abc&#39;, &#39;def&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，regex，要搜尋特殊字元 <code class="docutils literal notranslate"><span class="pre">\</span></code> 時，前面要再加上逃脫字元 <code class="docutils literal notranslate"><span class="pre">\</span></code>，所以會寫成 <code class="docutils literal notranslate"><span class="pre">\\</span></code></p></li>
+<li><p>那我們在搜尋時，在字串前面加上 <code class="docutils literal notranslate"><span class="pre">r</span></code> ，是指 raw index，就可以讓我用 regex 的邏輯去做事</p></li>
+<li><p>如果沒加 <code class="docutils literal notranslate"><span class="pre">r</span></code>，就會出現 error</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;abc\def&quot;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(\w+)</span><span class="se">\\</span><span class="s2">(\w+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">error</span><span class="g g-Whitespace">                                     </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">Volumes</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">我的雲端硬碟</span><span class="o">/</span><span class="mf">0.</span> <span class="n">codepool_python</span><span class="o">/</span><span class="n">python_ds</span><span class="o">/</span><span class="n">mybook</span><span class="o">/</span><span class="n">ch3_pandas</span><span class="o">/</span><span class="n">regex</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">40</span><span class="s1">&#39; in &lt;module&gt;</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Volumes/GoogleDrive/</span><span class="si">%E</span><span class="s1">6</span><span class="si">%88%</span><span class="s1">91</span><span class="si">%E</span><span class="s1">7%9A</span><span class="si">%84%</span><span class="s1">E9%9B%B2</span><span class="si">%E</span><span class="s1">7%AB%AF</span><span class="si">%E</span><span class="s1">7%A1%AC</span><span class="si">%E</span><span class="s1">7%A2</span><span class="si">%9F</span><span class="s1">/0.</span><span class="si">%20c</span><span class="s1">odepool_python/python_ds/mybook/ch3_pandas/regex.ipynb#ch0000063?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;abc\def&quot;</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Volumes/GoogleDrive/</span><span class="si">%E</span><span class="s1">6</span><span class="si">%88%</span><span class="s1">91</span><span class="si">%E</span><span class="s1">7%9A</span><span class="si">%84%</span><span class="s1">E9%9B%B2</span><span class="si">%E</span><span class="s1">7%AB%AF</span><span class="si">%E</span><span class="s1">7%A1%AC</span><span class="si">%E</span><span class="s1">7%A2</span><span class="si">%9F</span><span class="s1">/0.</span><span class="si">%20c</span><span class="s1">odepool_python/python_ds/mybook/ch3_pandas/regex.ipynb#ch0000063?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(\w+)</span><span class="se">\\</span><span class="s2">(\w+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+<span class="nn">File ~/.pyenv/versions/3.8.0/lib/python3.8/re.py:199,</span> in <span class="ni">search</span><span class="nt">(pattern, string, flags)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/re.py?line=195&#39;</span><span class="o">&gt;</span><span class="mi">196</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/re.py?line=196&#39;</span><span class="o">&gt;</span><span class="mi">197</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="s2">&quot;&quot;&quot;Scan through string looking for a match to the pattern, returning</span>
+<span class="s2">    &lt;a href=&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/re.py?line=197&#39;&gt;198&lt;/a&gt;     a Match object, or None if no match was found.&quot;&quot;&quot;</span>
+<span class="o">--&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/re.py?line=198&#39;</span><span class="o">&gt;</span><span class="mi">199</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">return</span> <span class="n">_compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+
+<span class="nn">File ~/.pyenv/versions/3.8.0/lib/python3.8/re.py:302,</span> in <span class="ni">_compile</span><span class="nt">(pattern, flags)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/re.py?line=299&#39;</span><span class="o">&gt;</span><span class="mi">300</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">sre_compile</span><span class="o">.</span><span class="n">isstring</span><span class="p">(</span><span class="n">pattern</span><span class="p">):</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/re.py?line=300&#39;</span><span class="o">&gt;</span><span class="mi">301</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;first argument must be string or compiled pattern&quot;</span><span class="p">)</span>
+<span class="o">--&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/re.py?line=301&#39;</span><span class="o">&gt;</span><span class="mi">302</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sre_compile</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/re.py?line=302&#39;</span><span class="o">&gt;</span><span class="mi">303</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">DEBUG</span><span class="p">):</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/re.py?line=303&#39;</span><span class="o">&gt;</span><span class="mi">304</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_cache</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">_MAXCACHE</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/re.py?line=304&#39;</span><span class="o">&gt;</span><span class="mi">305</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>         <span class="c1"># Drop the oldest item</span>
+
+<span class="nn">File ~/.pyenv/versions/3.8.0/lib/python3.8/sre_compile.py:764,</span> in <span class="ni">compile</span><span class="nt">(p, flags)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/sre_compile.py?line=761&#39;</span><span class="o">&gt;</span><span class="mi">762</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="n">isstring</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/sre_compile.py?line=762&#39;</span><span class="o">&gt;</span><span class="mi">763</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">pattern</span> <span class="o">=</span> <span class="n">p</span>
+<span class="o">--&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/sre_compile.py?line=763&#39;</span><span class="o">&gt;</span><span class="mi">764</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">sre_parse</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/sre_compile.py?line=764&#39;</span><span class="o">&gt;</span><span class="mi">765</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">else</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/sre_compile.py?line=765&#39;</span><span class="o">&gt;</span><span class="mi">766</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">pattern</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="nn">File ~/.pyenv/versions/3.8.0/lib/python3.8/sre_parse.py:962,</span> in <span class="ni">parse</span><span class="nt">(str, flags, state)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/sre_parse.py?line=959&#39;</span><span class="o">&gt;</span><span class="mi">960</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">next</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/sre_parse.py?line=960&#39;</span><span class="o">&gt;</span><span class="mi">961</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">assert</span> <span class="n">source</span><span class="o">.</span><span class="n">next</span> <span class="o">==</span> <span class="s2">&quot;)&quot;</span>
+<span class="o">--&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/sre_parse.py?line=961&#39;</span><span class="o">&gt;</span><span class="mi">962</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">raise</span> <span class="n">source</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;unbalanced parenthesis&quot;</span><span class="p">)</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/sre_parse.py?line=963&#39;</span><span class="o">&gt;</span><span class="mi">964</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="n">flags</span> <span class="o">&amp;</span> <span class="n">SRE_FLAG_DEBUG</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;file:///Users/hanklee/.pyenv/versions/3.8.0/lib/python3.8/sre_parse.py?line=964&#39;</span><span class="o">&gt;</span><span class="mi">965</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">p</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+
+<span class="ne">error</span>: unbalanced parenthesis at position 10
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>因為，在 python 中，還要再加上兩個 <code class="docutils literal notranslate"><span class="pre">\</span></code> 來當逃脫字元 (怪…)</p></li>
+<li><p>所以，要寫成這樣才會對：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;abc\def&quot;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(\w+)</span><span class="se">\\\\</span><span class="s2">(\w+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 7), match=&#39;abc\\def&#39;&gt;
+(&#39;abc&#39;, &#39;def&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>所以，只要記得，寫 regex 時，都在最前面加上 <code class="docutils literal notranslate"><span class="pre">r&quot;&quot;</span></code>，就可以用與 regex 一致的寫法了</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">3.4. </span>查找和替換<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>之前在學 string 時，有學過 <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> 這個 method</p>
+<ul>
+<li><p>例如： <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">&quot;hank_lee&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">s.replace(&quot;_&quot;,</span> <span class="pre">&quot;~&quot;)</span></code></p></li>
+</ul>
+</li>
+<li><p>但這個 replace，只能做到完全 match，如果，我想用 regex 來做替換，那就要學這章教的 (補充： R 的話都統一在一起了，str_replace 時，後面可以直接指定要用 regex 來找)</p></li>
+</ul>
+<div class="section" id="re-sub-match">
+<h3><span class="section-number">3.4.1. </span><code class="docutils literal notranslate"><span class="pre">re.sub()</span></code> 找到 match 的，幫你替換完，再回傳<a class="headerlink" href="#re-sub-match" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo.123.bar.789,baz&quot;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;foo.#.bar.#,baz&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;*.123.*.789,*&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="re-subn-re-sub">
+<h3><span class="section-number">3.4.2. </span>re.subn() 做完 re.sub 的侍候，再回傳給你它取代了幾筆<a class="headerlink" href="#re-subn-re-sub" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[a-z]+&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;*.123.*.789,*&#39;, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，他最後回傳，取代了 3 筆</p></li>
+</ul>
+</div>
+<div class="section" id="group">
+<h3><span class="section-number">3.4.3. </span>加上 group<a class="headerlink" href="#group" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>我如果想把 <code class="docutils literal notranslate"><span class="pre">123abc456</span></code> 這個字串，轉成 <code class="docutils literal notranslate"><span class="pre">456abc123</span></code> 的話，要怎麼做？</p>
+<ul>
+<li><p>先用 group，抓出第一組123, 第二組456</p></li>
+<li><p>然後 replace 成：<code class="docutils literal notranslate"><span class="pre">第二組abc第一組</span></code>，就搞定了：</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;123abc456&quot;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)[a-z]+(\d+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;123&#39;, &#39;456&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)[a-z]+(\d+)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\2abc\1&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;456abc123&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>上面的 <code class="docutils literal notranslate"><span class="pre">\2</span></code> 就是指第二個group, <code class="docutils literal notranslate"><span class="pre">\1</span></code> 指第一個 group</p></li>
+</ul>
+</div>
+<div class="section" id="function">
+<h3><span class="section-number">3.4.4. </span>加上 function<a class="headerlink" href="#function" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>如果，我想把 <code class="docutils literal notranslate"><span class="pre">foo.10.bar.20.baz.30</span></code> 改成 <code class="docutils literal notranslate"><span class="pre">FOO.100.BAR.200.BAZ.300</span></code></p></li>
+<li><p>也就是，我想把英文都改大寫，數字都乘以10。那，怎麼做？</p></li>
+<li><p>這時就可以用 function</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">match_object</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">match_object</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo.10.bar.20.baz.30&quot;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+&quot;</span><span class="p">,</span> <span class="n">foo</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;FOO.100.BAR.200.BAZ.300&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">3.5. </span>字串分割<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>基本的做法：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo, bar, baz,  qux, quux,     corge&quot;</span>
+<span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;, &#39; qux&#39;, &#39;quux&#39;, &#39;    corge&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以看到，因為每個字在逗點後的空格數不同，所以導致切完後，每個字前面還會有不等長的空格</p></li>
+<li><p>這就要再做一次處理：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;, &#39;qux&#39;, &#39;quux&#39;, &#39;corge&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>那如果用 regex，就不用這麼麻煩了：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;,\s*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c1"># 切割的 pattern，是逗點後接 0 個以上的空格</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;, &#39;qux&#39;, &#39;quux&#39;, &#39;corge&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="flags">
+<h2><span class="section-number">3.6. </span>flags 的使用<a class="headerlink" href="#flags" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>剛剛學過的 <code class="docutils literal notranslate"><span class="pre">re.search</span></code>, <code class="docutils literal notranslate"><span class="pre">re.match</span></code>, <code class="docutils literal notranslate"><span class="pre">re.xxx</span></code> 裡面其實都還有一個參數 <code class="docutils literal notranslate"><span class="pre">flag</span> <span class="pre">=</span> </code> 我們沒用過</p></li>
+<li><p>現在就來介紹這個參數可以怎麼用</p></li>
+</ul>
+<div class="section" id="flags-re-ignorecase">
+<h3><span class="section-number">3.6.1. </span><code class="docutils literal notranslate"><span class="pre">flags</span> <span class="pre">=</span> <span class="pre">re.IGNORECASE</span></code> 可忽略大小寫<a class="headerlink" href="#flags-re-ignorecase" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;aaaAAA&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;a+&quot;</span><span class="p">,</span> <span class="n">string</span> <span class="o">=</span> <span class="n">s</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;A+&quot;</span><span class="p">,</span> <span class="n">string</span> <span class="o">=</span> <span class="n">s</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;a+&quot;</span><span class="p">,</span> <span class="n">string</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 3), match=&#39;aaa&#39;&gt;
+&lt;re.Match object; span=(3, 6), match=&#39;AAA&#39;&gt;
+&lt;re.Match object; span=(0, 6), match=&#39;aaaAAA&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="flags-re-multiline">
+<h3><span class="section-number">3.6.2. </span><code class="docutils literal notranslate"><span class="pre">flags</span> <span class="pre">=</span> <span class="pre">re.MULTILINE</span></code> 會把換行後的字串當新的一行<a class="headerlink" href="#flags-re-multiline" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>如下例，我的原始字串雖然有換行符號，但預設下，他還是只當成是一行</p></li>
+<li><p>這會造成，<code class="docutils literal notranslate"><span class="pre">bar</span></code> 是第二行的起頭，但我用 <code class="docutils literal notranslate"><span class="pre">^bar</span></code> 會抓不到他：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;foo</span><span class="se">\n</span><span class="s2">bar</span><span class="se">\n</span><span class="s2">baz&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^foo&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^bar&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 3), match=&#39;foo&#39;&gt;
+None
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>如果有加 <code class="docutils literal notranslate"><span class="pre">tags</span> <span class="pre">=</span> <span class="pre">re.MULTILINE</span></code>，就可以解決這個問題，因為他把換行後的字串當新的一行</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^bar&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(4, 7), match=&#39;bar&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="re-verbose-regex">
+<h3><span class="section-number">3.6.3. </span><code class="docutils literal notranslate"><span class="pre">re.VERBOSE</span></code> 可以處理 多行+註解 的 regex<a class="headerlink" href="#re-verbose-regex" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>有時候，regex會寫得很長，如果不加註解，也不換行，會非常難閱讀</p></li>
+<li><p>所以，regex 有可能寫成下面這樣：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    (\(\d</span><span class="si">{2}</span><span class="s1">\))? # (2個數字) 有或沒有都可以, 其實就是要抓區域碼，e.g. (02)</span>
+<span class="s1">    \s* # 0 個以上的空格</span>
+<span class="s1">    \d</span><span class="si">{4}</span><span class="s1"> # 3 個數字</span>
+<span class="s1">    [-.] # - 或 .</span>
+<span class="s1">    \d</span><span class="si">{4}</span><span class="s1"> # 4 個數字</span>
+<span class="s1">    $</span>
+<span class="s1">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="s2">&quot;2763-5735&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="s2">&quot;(02) 2763-5735&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+None
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>可以發現，都抓不到</p></li>
+<li><p>但如果加上 <code class="docutils literal notranslate"><span class="pre">flags</span> <span class="pre">=</span> <span class="pre">re.VERBOSE</span></code> 就 ok 了</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="s2">&quot;2763-5735&quot;</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="s2">&quot;(02) 2763-5735&quot;</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(0, 9), match=&#39;2763-5735&#39;&gt;
+&lt;re.Match object; span=(0, 14), match=&#39;(02) 2763-5735&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="re-compile-regex-object">
+<h2><span class="section-number">3.7. </span>用 <code class="docutils literal notranslate"><span class="pre">re.compile</span></code> 把 regex 變成 object<a class="headerlink" href="#re-compile-regex-object" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>有時候，我們同一個 regex，會在程式中多次被使用</p></li>
+<li><p>那如果我把它變成一個 object，那之後有需要修改時，我就只要改一開始定義好的 object 就 ok ，不用到程式裡面去一個一個修改 regex 字串</p></li>
+<li><p>作法如下：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">re_obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;ba[rz]&quot;</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span> <span class="c1"># 直接定義好，我的 regex 要找 bar 或 baz，然後忽略大小寫</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">re_obj</span><span class="p">,</span> <span class="s2">&quot;FOOBARBAZ&quot;</span><span class="p">))</span> <span class="c1"># 可以像這樣搜尋</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re_obj</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;FOOBARBAZ&quot;</span><span class="p">))</span> <span class="c1"># 也可以用 oo 的方式搜尋</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;re.Match object; span=(3, 6), match=&#39;BAR&#39;&gt;
+&lt;re.Match object; span=(3, 6), match=&#39;BAR&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h2><span class="section-number">3.8. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>假設我們拿到以下字串：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">interface Vlan8</span>
+<span class="s2"> ip address 192.168.3.50 255.255.255.240</span>
+<span class="s2"> no ip redirects</span>
+<span class="s2"> no ip unreachables</span>
+<span class="s2"> no ip proxy-arp</span>
+<span class="s2">!</span>
+<span class="s2">interface Vlan9</span>
+<span class="s2"> ip address 192.168.3.66 255.255.255.240</span>
+<span class="s2"> no ip redirects</span>
+<span class="s2"> no ip unreachables</span>
+<span class="s2"> no ip proxy-arp</span>
+<span class="s2">!</span>
+<span class="s2">interface Vlan10</span>
+<span class="s2"> ip address 192.168.3.82 255.255.255.240</span>
+<span class="s2"> no ip redirects</span>
+<span class="s2"> no ip unreachables</span>
+<span class="s2"> no ip proxy-arp</span>
+<span class="s2">!</span>
+<span class="s2">interface Vlan25</span>
+<span class="s2"> ip address 192.168.3.211 255.255.255.240</span>
+<span class="s2"> no ip redirects</span>
+<span class="s2"> no ip unreachables</span>
+<span class="s2"> no ip proxy-arp</span>
+<span class="s2">!</span>
+<span class="s2">interface Vlan26</span>
+<span class="s2"> ip address 192.168.3.227 255.255.255.240</span>
+<span class="s2"> no ip redirects</span>
+<span class="s2"> no ip unreachables</span>
+<span class="s2"> no ip proxy-arp</span>
+<span class="s2">!</span>
+<span class="s2">interface Vlan99</span>
+<span class="s2"> bandwidth 10000000</span>
+<span class="s2"> ip address 192.168.1.2 255.255.255.252</span>
+<span class="s2"> no ip redirects</span>
+<span class="s2"> no ip unreachables</span>
+<span class="s2"> no ip proxy-arp</span>
+<span class="s2">!</span>
+<span class="s2">interface Vlan100</span>
+<span class="s2"> ip address 192.168.192.2 255.255.255.248</span>
+<span class="s2"> no ip redirects</span>
+<span class="s2"> no ip unreachables</span>
+<span class="s2"> no ip proxy-arp</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>然後，我想找出：</p>
+<ul>
+<li><p>interface name (e.g. Vlan8, Vlan9, Vlan10)</p></li>
+<li><p>ip (e.g. 255.255.155.140, …)</p></li>
+<li><p>mask (e.g. 192.168.3.50)</p></li>
+</ul>
+</li>
+<li><p>並把結果寫成以下 dictionary</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Vlan8&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">:</span> <span class="s1">&#39;192.168.3.50&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="s1">&#39;255.255.255.240&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Vlan9&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">:</span> <span class="s1">&#39;192.168.3.66&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="s1">&#39;255.255.255.240&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Vlan10&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">:</span> <span class="s1">&#39;192.168.3.82&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="s1">&#39;255.255.255.240&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Vlan25&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">:</span> <span class="s1">&#39;192.168.3.211&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="s1">&#39;255.255.255.240&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Vlan26&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">:</span> <span class="s1">&#39;192.168.3.227&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="s1">&#39;255.255.255.240&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Vlan99&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">:</span> <span class="s1">&#39;192.168.1.2&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="s1">&#39;255.255.255.252&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Vlan100&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">:</span> <span class="s1">&#39;192.168.192.2&#39;</span><span class="p">,</span> <span class="s1">&#39;mask&#39;</span><span class="p">:</span> <span class="s1">&#39;255.255.255.248&#39;</span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>首先來看，我想找 interface name，可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^interface (?P&lt;name&gt;\w+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+<span class="n">res1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Vlan8&#39;, &#39;Vlan9&#39;, &#39;Vlan10&#39;, &#39;Vlan25&#39;, &#39;Vlan26&#39;, &#39;Vlan99&#39;, &#39;Vlan100&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>找 ip 可以這樣做</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;ip address (?P&lt;ip&gt;\d+\.\d+\.\d+\.\d+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+<span class="n">res2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;192.168.3.50&#39;,
+ &#39;192.168.3.66&#39;,
+ &#39;192.168.3.82&#39;,
+ &#39;192.168.3.211&#39;,
+ &#39;192.168.3.227&#39;,
+ &#39;192.168.1.2&#39;,
+ &#39;192.168.192.2&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>找 mask 可以這樣做</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res3</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;ip address [\d\.]+\s(?P&lt;mask&gt;\d+\.\d+\.\d+\.\d+)&quot;</span><span class="p">,</span> <span class="n">sm</span><span class="p">)</span>
+<span class="n">res3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;255.255.255.240&#39;,
+ &#39;255.255.255.240&#39;,
+ &#39;255.255.255.240&#39;,
+ &#39;255.255.255.240&#39;,
+ &#39;255.255.255.240&#39;,
+ &#39;255.255.255.252&#39;,
+ &#39;255.255.255.248&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>組起來</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ip</span><span class="p">,</span> <span class="n">mask</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">res1</span><span class="p">,</span> <span class="n">res2</span><span class="p">,</span> <span class="n">res3</span><span class="p">):</span>
+    <span class="n">temp_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">temp_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="n">temp_dict</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ip</span>
+    <span class="n">temp_dict</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_dict</span><span class="p">)</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;name&#39;: &#39;Vlan8&#39;, &#39;ip&#39;: &#39;192.168.3.50&#39;, &#39;mask&#39;: &#39;255.255.255.240&#39;},
+ {&#39;name&#39;: &#39;Vlan9&#39;, &#39;ip&#39;: &#39;192.168.3.66&#39;, &#39;mask&#39;: &#39;255.255.255.240&#39;},
+ {&#39;name&#39;: &#39;Vlan10&#39;, &#39;ip&#39;: &#39;192.168.3.82&#39;, &#39;mask&#39;: &#39;255.255.255.240&#39;},
+ {&#39;name&#39;: &#39;Vlan25&#39;, &#39;ip&#39;: &#39;192.168.3.211&#39;, &#39;mask&#39;: &#39;255.255.255.240&#39;},
+ {&#39;name&#39;: &#39;Vlan26&#39;, &#39;ip&#39;: &#39;192.168.3.227&#39;, &#39;mask&#39;: &#39;255.255.255.240&#39;},
+ {&#39;name&#39;: &#39;Vlan99&#39;, &#39;ip&#39;: &#39;192.168.1.2&#39;, &#39;mask&#39;: &#39;255.255.255.252&#39;},
+ {&#39;name&#39;: &#39;Vlan100&#39;, &#39;ip&#39;: &#39;192.168.192.2&#39;, &#39;mask&#39;: &#39;255.255.255.248&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>除了上面這種做法外，有另一個更快的，可以這樣做：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interface_descriptions</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span>
+    <span class="sa">r</span><span class="s2">&quot;^interface (?P&lt;name&gt;\w+)\n&quot;</span>
+    <span class="sa">r</span><span class="s2">&quot;( .*\n)*&quot;</span>
+    <span class="sa">r</span><span class="s2">&quot; ip address (?P&lt;ip&gt;\S+) (?P&lt;mask&gt;\S+)\n&quot;</span><span class="p">,</span>
+    <span class="n">s</span><span class="p">,</span>
+    <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">interface_descriptions</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">groupdict</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;name&#39;: &#39;Vlan8&#39;, &#39;ip&#39;: &#39;192.168.3.50&#39;, &#39;mask&#39;: &#39;255.255.255.240&#39;}
+{&#39;name&#39;: &#39;Vlan9&#39;, &#39;ip&#39;: &#39;192.168.3.66&#39;, &#39;mask&#39;: &#39;255.255.255.240&#39;}
+{&#39;name&#39;: &#39;Vlan10&#39;, &#39;ip&#39;: &#39;192.168.3.82&#39;, &#39;mask&#39;: &#39;255.255.255.240&#39;}
+{&#39;name&#39;: &#39;Vlan25&#39;, &#39;ip&#39;: &#39;192.168.3.211&#39;, &#39;mask&#39;: &#39;255.255.255.240&#39;}
+{&#39;name&#39;: &#39;Vlan26&#39;, &#39;ip&#39;: &#39;192.168.3.227&#39;, &#39;mask&#39;: &#39;255.255.255.240&#39;}
+{&#39;name&#39;: &#39;Vlan99&#39;, &#39;ip&#39;: &#39;192.168.1.2&#39;, &#39;mask&#39;: &#39;255.255.255.252&#39;}
+{&#39;name&#39;: &#39;Vlan100&#39;, &#39;ip&#39;: &#39;192.168.192.2&#39;, &#39;mask&#39;: &#39;255.255.255.248&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./ch3_pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="official_getting_started/getting_started.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Getting Started (official)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../ch4_matplotlib/datacamp_matplotlib_intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Intro to matplotlib</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

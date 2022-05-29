@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Matplotlib 簡介與常用技巧 &#8212; My sample book</title>
+    <title>5. Matplotlib 簡介與常用技巧 &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Simple Line Plots" href="04.01-Simple-Line-Plots.html" />
-    <link rel="prev" title="2. Getting Started (official)" href="../ch3_pandas/official_getting_started/getting_started.html" />
+    <link rel="next" title="6. Simple Line Plots" href="04.01-Simple-Line-Plots.html" />
+    <link rel="prev" title="4. Intro to matplotlib" href="datacamp_matplotlib_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,6 +119,11 @@
    2. Getting Started (official)
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/regex.html">
+   3. Regular Expression
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -126,44 +131,49 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="datacamp_matplotlib_intro.html">
+   4. Intro to matplotlib
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. Matplotlib 簡介與常用技巧
+   5. Matplotlib 簡介與常用技巧
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.01-Simple-Line-Plots.html">
-   4. Simple Line Plots
+   6. Simple Line Plots
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.02-Simple-Scatter-Plots.html">
-   5. Simple Scatter Plots
+   7. Simple Scatter Plots
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.03-Errorbars.html">
-   6. Error bars &amp; Error region
+   8. Error bars &amp; Error region
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.05-Histograms-and-Density.html">
-   7. Histograms and Density
+   9. Histograms and Density
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.06-Legends.html">
-   8. Legends
+   10. Legends
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.07-Colorbars.html">
-   9. Colorbars
+   11. Colorbars
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04.08-Multiple-Subplots.html">
-   10. Multiple Subplots
+   12. Multiple Subplots
   </a>
  </li>
 </ul>
@@ -175,7 +185,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
-   11. Introduction to Seaborn
+   13. Introduction to Seaborn
   </a>
  </li>
 </ul>
@@ -187,24 +197,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../clustering/KMeans.html">
-   12. K-Means
+   14. K-Means
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../clustering/GMM.html">
-   13. Gaussian Mixture Model (GMM)
+   15. Gaussian Mixture Model (GMM)
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  unsupervised learning
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../datacamp_unsu/clusters.html">
-   14. Clustering
+  <a class="reference internal" href="../clustering/HC.html">
+   16. Hierarchical Clustering
   </a>
  </li>
 </ul>
@@ -216,17 +219,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../datacamp_su/datacamp_su.html">
-   15. Supervised Learning with scikit-learn
+   17. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   16. Classification Trees
+   18. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   17. Permutation Importance vs Random Forest Feature Importance (MDI)
+   19. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -335,22 +338,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   3.1. 通用技巧
+   5.1. 通用技巧
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#importing-matplotlib">
-     3.1.1. Importing Matplotlib
+     5.1.1. Importing Matplotlib
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#setting-styles">
-     3.1.2. Setting Styles
+     5.1.2. Setting Styles
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#show-or-no-show">
-     3.1.3.
+     5.1.3.
      <code class="docutils literal notranslate">
       <span class="pre">
        show()
@@ -367,7 +370,7 @@
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#py-plt-show">
-       3.1.3.1. 在
+       5.1.3.1. 在
        <code class="docutils literal notranslate">
         <span class="pre">
          .py
@@ -384,7 +387,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#ipython-shell-matplotlib-plt-show">
-       3.1.3.2. 在 IPython shell中，用
+       5.1.3.2. 在 IPython shell中，用
        <code class="docutils literal notranslate">
         <span class="pre">
          %matplotlib
@@ -400,7 +403,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#jupyter-notbooke-matplotlib-inline">
-       3.1.3.3. 在 Jupyter notbooke 中，用
+       5.1.3.3. 在 Jupyter notbooke 中，用
        <code class="docutils literal notranslate">
         <span class="pre">
          %matplotlib
@@ -416,24 +419,24 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#saving-figures-to-file">
-     3.1.4. Saving Figures to File
+     5.1.4. Saving Figures to File
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   3.2. Matplotlib 的雙介面
+   5.2. Matplotlib 的雙介面
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matlab-style-interface">
-     3.2.1. MATLAB-style Interface
+     5.2.1. MATLAB-style Interface
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#object-oriented-interface">
-     3.2.2. Object-oriented interface
+     5.2.2. Object-oriented interface
     </a>
    </li>
   </ul>
@@ -460,22 +463,22 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   3.1. 通用技巧
+   5.1. 通用技巧
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#importing-matplotlib">
-     3.1.1. Importing Matplotlib
+     5.1.1. Importing Matplotlib
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#setting-styles">
-     3.1.2. Setting Styles
+     5.1.2. Setting Styles
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#show-or-no-show">
-     3.1.3.
+     5.1.3.
      <code class="docutils literal notranslate">
       <span class="pre">
        show()
@@ -492,7 +495,7 @@
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#py-plt-show">
-       3.1.3.1. 在
+       5.1.3.1. 在
        <code class="docutils literal notranslate">
         <span class="pre">
          .py
@@ -509,7 +512,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#ipython-shell-matplotlib-plt-show">
-       3.1.3.2. 在 IPython shell中，用
+       5.1.3.2. 在 IPython shell中，用
        <code class="docutils literal notranslate">
         <span class="pre">
          %matplotlib
@@ -525,7 +528,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#jupyter-notbooke-matplotlib-inline">
-       3.1.3.3. 在 Jupyter notbooke 中，用
+       5.1.3.3. 在 Jupyter notbooke 中，用
        <code class="docutils literal notranslate">
         <span class="pre">
          %matplotlib
@@ -541,24 +544,24 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#saving-figures-to-file">
-     3.1.4. Saving Figures to File
+     5.1.4. Saving Figures to File
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   3.2. Matplotlib 的雙介面
+   5.2. Matplotlib 的雙介面
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matlab-style-interface">
-     3.2.1. MATLAB-style Interface
+     5.2.1. MATLAB-style Interface
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#object-oriented-interface">
-     3.2.2. Object-oriented interface
+     5.2.2. Object-oriented interface
     </a>
    </li>
   </ul>
@@ -573,11 +576,11 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="matplotlib">
-<h1><span class="section-number">3. </span>Matplotlib 簡介與常用技巧<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span>Matplotlib 簡介與常用技巧<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2><span class="section-number">3.1. </span>通用技巧<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1. </span>通用技巧<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="importing-matplotlib">
-<h3><span class="section-number">3.1.1. </span>Importing Matplotlib<a class="headerlink" href="#importing-matplotlib" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.1. </span>Importing Matplotlib<a class="headerlink" href="#importing-matplotlib" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>標準的簡寫是 <code class="docutils literal notranslate"><span class="pre">mpl</span></code> 和 <code class="docutils literal notranslate"><span class="pre">plt</span></code></p></li>
 </ul>
@@ -591,7 +594,7 @@
 </div>
 </div>
 <div class="section" id="setting-styles">
-<h3><span class="section-number">3.1.2. </span>Setting Styles<a class="headerlink" href="#setting-styles" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.2. </span>Setting Styles<a class="headerlink" href="#setting-styles" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>繪圖的風格，可以用 <code class="docutils literal notranslate"><span class="pre">plt.style</span></code> 來設定，我們先用經典款 (<code class="docutils literal notranslate"><span class="pre">classic</span></code>) 的風格，就會很 matplotlib:</p></li>
 </ul>
@@ -604,7 +607,7 @@
 </div>
 </div>
 <div class="section" id="show-or-no-show">
-<h3><span class="section-number">3.1.3. </span><code class="docutils literal notranslate"><span class="pre">show()</span></code> or No <code class="docutils literal notranslate"><span class="pre">show()</span></code>?<a class="headerlink" href="#show-or-no-show" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.3. </span><code class="docutils literal notranslate"><span class="pre">show()</span></code> or No <code class="docutils literal notranslate"><span class="pre">show()</span></code>?<a class="headerlink" href="#show-or-no-show" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>有三個環境可以讓你用 matplotlib.</p>
 <ul>
@@ -615,7 +618,7 @@
 </li>
 </ul>
 <div class="section" id="py-plt-show">
-<h4><span class="section-number">3.1.3.1. </span>在 <code class="docutils literal notranslate"><span class="pre">.py</span></code> 文件中，要用 <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.<a class="headerlink" href="#py-plt-show" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.1.3.1. </span>在 <code class="docutils literal notranslate"><span class="pre">.py</span></code> 文件中，要用 <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.<a class="headerlink" href="#py-plt-show" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>如果是在 script 中使用 matplotlib，就可以善用 <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>。執行 code 後，他會彈出視窗來顯示。</p></li>
 <li><p>舉例來說，我有一個 <code class="docutils literal notranslate"><span class="pre">myplot.py</span></code> 這個 script 如下</p></li>
@@ -644,7 +647,7 @@
 </ul>
 </div>
 <div class="section" id="ipython-shell-matplotlib-plt-show">
-<h4><span class="section-number">3.1.3.2. </span>在 IPython shell中，用 <code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code> 就好，不用 <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code><a class="headerlink" href="#ipython-shell-matplotlib-plt-show" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.1.3.2. </span>在 IPython shell中，用 <code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code> 就好，不用 <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code><a class="headerlink" href="#ipython-shell-matplotlib-plt-show" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>在 Ipython shell 中，可以用 <code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code> 這個 magic command，例如以下：</p></li>
 </ul>
@@ -659,7 +662,7 @@
 </ul>
 </div>
 <div class="section" id="jupyter-notbooke-matplotlib-inline">
-<h4><span class="section-number">3.1.3.3. </span>在 Jupyter notbooke 中，用 <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> 將靜態圖型嵌入<a class="headerlink" href="#jupyter-notbooke-matplotlib-inline" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.1.3.3. </span>在 Jupyter notbooke 中，用 <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> 將靜態圖型嵌入<a class="headerlink" href="#jupyter-notbooke-matplotlib-inline" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>用 <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code>，可把靜態圖型嵌入，就不需要 <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> 了.</p></li>
 <li><p>用 <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">notebook</span></code>，可把互動式圖型嵌入，也不需要 <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.</p></li>
@@ -685,7 +688,7 @@
 </div>
 </div>
 <div class="section" id="saving-figures-to-file">
-<h3><span class="section-number">3.1.4. </span>Saving Figures to File<a class="headerlink" href="#saving-figures-to-file" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.4. </span>Saving Figures to File<a class="headerlink" href="#saving-figures-to-file" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>當我們用 <code class="docutils literal notranslate"><span class="pre">fig</span> <span class="pre">=</span> <span class="pre">plt.figure()</span></code> 去 initialize 一個 instance後，就可以用 <code class="docutils literal notranslate"><span class="pre">fig.savefig()</span></code>，把圖片存成各種格式 (e.g. <code class="docutils literal notranslate"><span class="pre">jpeg</span></code>, <code class="docutils literal notranslate"><span class="pre">jpg</span></code>, <code class="docutils literal notranslate"><span class="pre">png</span></code>, <code class="docutils literal notranslate"><span class="pre">pdf</span></code>, …;)</p></li>
 <li><p>要注意的是，不需要再寫 <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> 了</p></li>
@@ -739,7 +742,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">3.2. </span>Matplotlib 的雙介面<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2. </span>Matplotlib 的雙介面<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>matplotlib的雙介面蠻容易讓人搞混的：</p>
 <ul>
@@ -750,7 +753,7 @@
 <li><p>我們很快的來比較一下：</p></li>
 </ul>
 <div class="section" id="matlab-style-interface">
-<h3><span class="section-number">3.2.1. </span>MATLAB-style Interface<a class="headerlink" href="#matlab-style-interface" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.1. </span>MATLAB-style Interface<a class="headerlink" href="#matlab-style-interface" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Matplotlib原本是寫給 Python user 的一個 MATLAB 介面，所以語法都很像。</p></li>
 <li><p>例如下面的例子，就超 MATLAB</p></li>
@@ -789,7 +792,7 @@ AxesSubplot(0.125,0.125;0.775x0.352273)
 </ul>
 </div>
 <div class="section" id="object-oriented-interface">
-<h3><span class="section-number">3.2.2. </span>Object-oriented interface<a class="headerlink" href="#object-oriented-interface" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.2. </span>Object-oriented interface<a class="headerlink" href="#object-oriented-interface" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>物件導向的介面，可以讓你畫出更複雜的圖，也讓你對圖表又更多的控制</p></li>
 <li><p>舉例如下：</p></li>
@@ -843,17 +846,17 @@ AxesSubplot(0.125,0.125;0.775x0.352273)
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../ch3_pandas/official_getting_started/getting_started.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="datacamp_matplotlib_intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Getting Started (official)</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Intro to matplotlib</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="04.01-Simple-Line-Plots.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Simple Line Plots</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Simple Line Plots</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

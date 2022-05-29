@@ -1,0 +1,3606 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>第5章：探索式資料分析 &#8212; My sample book</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regex.html">
+   3. Regular Expression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/datacamp_matplotlib_intro.html">
+   4. Intro to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.00-matplotlib_intro.html">
+   5. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   6. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   7. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.03-Errorbars.html">
+   8. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   9. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.06-Legends.html">
+   10. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.07-Colorbars.html">
+   11. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   12. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../datacamp_seaborn/intro_seaborn.html">
+   13. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/KMeans.html">
+   14. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/GMM.html">
+   15. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../clustering/HC.html">
+   16. Hierarchical Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../datacamp_su/datacamp_su.html">
+   17. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../statquest_trees/classification_tree.html">
+   18. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../sklearn_guide/rf_permutation_imp.html">
+   19. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/ch3_pandas/pandas_book/F1369_CH05.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch3_pandas/pandas_book/F1369_CH05.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/ch3_pandas/pandas_book/F1369_CH05.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   摘要統計資訊
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.2 轉換欄位的資料型別
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   5.3 資料轉換與缺失值處理
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   5.4 檢視連續資料的分佈狀況
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   5.5 檢視不同分類的資料分佈
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   5.6 比較連續欄位間的關聯性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   5.7 比較分類欄位的關聯性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#profiling">
+   5.8 使用Profiling函式庫建立摘要報告
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>第5章：探索式資料分析</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   摘要統計資訊
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.2 轉換欄位的資料型別
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   5.3 資料轉換與缺失值處理
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   5.4 檢視連續資料的分佈狀況
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   5.5 檢視不同分類的資料分佈
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   5.6 比較連續欄位間的關聯性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   5.7 比較分類欄位的關聯性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#profiling">
+   5.8 使用Profiling函式庫建立摘要報告
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>第5章：探索式資料分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>摘要統計資訊<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># pd.set_option(&#39;max_columns&#39;, 4, &#39;max_rows&#39;, 10, &#39;max_colwidth&#39;, 12)</span>
+
+<span class="n">fueleco</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/vehicles.csv.zip&#39;</span><span class="p">)</span>
+<span class="n">fueleco</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j9/71c8r2vs343cb9329xbww0240000gn/T/ipykernel_1748/679157276.py:5: DtypeWarning: Columns (70,71,72,73,74,76,79) have mixed types. Specify dtype option on import or set low_memory=False.
+  fueleco = pd.read_csv(&#39;data/vehicles.csv.zip&#39;)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>barrels08</th>
+      <th>barrelsA08</th>
+      <th>charge120</th>
+      <th>charge240</th>
+      <th>city08</th>
+      <th>city08U</th>
+      <th>cityA08</th>
+      <th>cityA08U</th>
+      <th>cityCD</th>
+      <th>cityE</th>
+      <th>...</th>
+      <th>mfrCode</th>
+      <th>c240Dscr</th>
+      <th>charge240b</th>
+      <th>c240bDscr</th>
+      <th>createdOn</th>
+      <th>modifiedOn</th>
+      <th>startStop</th>
+      <th>phevCity</th>
+      <th>phevHwy</th>
+      <th>phevComb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>15.695714</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>19</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>29.964545</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>9</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12.207778</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>23</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>29.964545</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17.347895</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>17</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>39096</th>
+      <td>14.982273</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>19</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>39097</th>
+      <td>14.330870</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>39098</th>
+      <td>15.695714</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>18</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>39099</th>
+      <td>15.695714</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>18</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>39100</th>
+      <td>18.311667</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>16</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>39101 rows × 83 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>barrels08</th>
+      <td>39101.0</td>
+      <td>17.442712</td>
+      <td>4.580230</td>
+      <td>0.06</td>
+      <td>14.330870</td>
+      <td>17.347895</td>
+      <td>20.115000</td>
+      <td>47.087143</td>
+    </tr>
+    <tr>
+      <th>barrelsA08</th>
+      <td>39101.0</td>
+      <td>0.219276</td>
+      <td>1.143837</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>18.311667</td>
+    </tr>
+    <tr>
+      <th>charge120</th>
+      <td>39101.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>charge240</th>
+      <td>39101.0</td>
+      <td>0.029630</td>
+      <td>0.487408</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>12.000000</td>
+    </tr>
+    <tr>
+      <th>city08</th>
+      <td>39101.0</td>
+      <td>18.077799</td>
+      <td>6.970672</td>
+      <td>6.00</td>
+      <td>15.000000</td>
+      <td>17.000000</td>
+      <td>20.000000</td>
+      <td>150.000000</td>
+    </tr>
+    <tr>
+      <th>city08U</th>
+      <td>39101.0</td>
+      <td>5.040648</td>
+      <td>10.462790</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>150.000000</td>
+    </tr>
+    <tr>
+      <th>cityA08</th>
+      <td>39101.0</td>
+      <td>0.569883</td>
+      <td>4.297124</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>145.000000</td>
+    </tr>
+    <tr>
+      <th>cityA08U</th>
+      <td>39101.0</td>
+      <td>0.416097</td>
+      <td>4.093495</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>145.083500</td>
+    </tr>
+    <tr>
+      <th>cityCD</th>
+      <td>39101.0</td>
+      <td>0.000560</td>
+      <td>0.045392</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.350000</td>
+    </tr>
+    <tr>
+      <th>cityE</th>
+      <td>39101.0</td>
+      <td>0.225181</td>
+      <td>3.180894</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>122.000000</td>
+    </tr>
+    <tr>
+      <th>cityUF</th>
+      <td>39101.0</td>
+      <td>0.000975</td>
+      <td>0.022785</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.896000</td>
+    </tr>
+    <tr>
+      <th>co2</th>
+      <td>39101.0</td>
+      <td>72.538989</td>
+      <td>163.252019</td>
+      <td>-1.00</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>847.000000</td>
+    </tr>
+    <tr>
+      <th>co2A</th>
+      <td>39101.0</td>
+      <td>5.543950</td>
+      <td>55.956932</td>
+      <td>-1.00</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>713.000000</td>
+    </tr>
+    <tr>
+      <th>co2TailpipeAGpm</th>
+      <td>39101.0</td>
+      <td>17.826864</td>
+      <td>93.937414</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>713.000000</td>
+    </tr>
+    <tr>
+      <th>co2TailpipeGpm</th>
+      <td>39101.0</td>
+      <td>470.704841</td>
+      <td>122.351021</td>
+      <td>0.00</td>
+      <td>386.391304</td>
+      <td>459.000000</td>
+      <td>535.789474</td>
+      <td>1269.571429</td>
+    </tr>
+    <tr>
+      <th>comb08</th>
+      <td>39101.0</td>
+      <td>20.323828</td>
+      <td>6.882807</td>
+      <td>7.00</td>
+      <td>17.000000</td>
+      <td>20.000000</td>
+      <td>23.000000</td>
+      <td>136.000000</td>
+    </tr>
+    <tr>
+      <th>comb08U</th>
+      <td>39101.0</td>
+      <td>5.652724</td>
+      <td>11.231748</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>136.000000</td>
+    </tr>
+    <tr>
+      <th>combA08</th>
+      <td>39101.0</td>
+      <td>0.631160</td>
+      <td>4.395797</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>133.000000</td>
+    </tr>
+    <tr>
+      <th>combA08U</th>
+      <td>39101.0</td>
+      <td>0.453725</td>
+      <td>4.131767</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>133.266200</td>
+    </tr>
+    <tr>
+      <th>combE</th>
+      <td>39101.0</td>
+      <td>0.230912</td>
+      <td>3.244463</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>121.000000</td>
+    </tr>
+    <tr>
+      <th>combinedCD</th>
+      <td>39101.0</td>
+      <td>0.000459</td>
+      <td>0.040759</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4.800000</td>
+    </tr>
+    <tr>
+      <th>combinedUF</th>
+      <td>39101.0</td>
+      <td>0.000959</td>
+      <td>0.022392</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.888000</td>
+    </tr>
+    <tr>
+      <th>cylinders</th>
+      <td>38956.0</td>
+      <td>5.729105</td>
+      <td>1.754487</td>
+      <td>2.00</td>
+      <td>4.000000</td>
+      <td>6.000000</td>
+      <td>6.000000</td>
+      <td>16.000000</td>
+    </tr>
+    <tr>
+      <th>displ</th>
+      <td>38958.0</td>
+      <td>3.309829</td>
+      <td>1.361925</td>
+      <td>0.00</td>
+      <td>2.200000</td>
+      <td>3.000000</td>
+      <td>4.300000</td>
+      <td>8.400000</td>
+    </tr>
+    <tr>
+      <th>engId</th>
+      <td>39101.0</td>
+      <td>8582.377382</td>
+      <td>17606.675590</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>202.000000</td>
+      <td>4401.000000</td>
+      <td>69102.000000</td>
+    </tr>
+    <tr>
+      <th>feScore</th>
+      <td>39101.0</td>
+      <td>0.122580</td>
+      <td>2.516348</td>
+      <td>-1.00</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>10.000000</td>
+    </tr>
+    <tr>
+      <th>fuelCost08</th>
+      <td>39101.0</td>
+      <td>2242.470781</td>
+      <td>601.273869</td>
+      <td>500.00</td>
+      <td>1850.000000</td>
+      <td>2250.000000</td>
+      <td>2500.000000</td>
+      <td>6850.000000</td>
+    </tr>
+    <tr>
+      <th>fuelCostA08</th>
+      <td>39101.0</td>
+      <td>91.335260</td>
+      <td>479.485802</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>3850.000000</td>
+    </tr>
+    <tr>
+      <th>ghgScore</th>
+      <td>39101.0</td>
+      <td>0.120866</td>
+      <td>2.512612</td>
+      <td>-1.00</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>10.000000</td>
+    </tr>
+    <tr>
+      <th>ghgScoreA</th>
+      <td>39101.0</td>
+      <td>-0.923889</td>
+      <td>0.651017</td>
+      <td>-1.00</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>8.000000</td>
+    </tr>
+    <tr>
+      <th>highway08</th>
+      <td>39101.0</td>
+      <td>24.208588</td>
+      <td>7.128070</td>
+      <td>9.00</td>
+      <td>20.000000</td>
+      <td>24.000000</td>
+      <td>27.000000</td>
+      <td>122.000000</td>
+    </tr>
+    <tr>
+      <th>highway08U</th>
+      <td>39101.0</td>
+      <td>6.712736</td>
+      <td>12.809865</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>122.000000</td>
+    </tr>
+    <tr>
+      <th>highwayA08</th>
+      <td>39101.0</td>
+      <td>0.736452</td>
+      <td>4.694207</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>121.000000</td>
+    </tr>
+    <tr>
+      <th>highwayA08U</th>
+      <td>39101.0</td>
+      <td>0.523423</td>
+      <td>4.343967</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>121.200500</td>
+    </tr>
+    <tr>
+      <th>highwayCD</th>
+      <td>39101.0</td>
+      <td>0.000343</td>
+      <td>0.035457</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>4.060000</td>
+    </tr>
+    <tr>
+      <th>highwayE</th>
+      <td>39101.0</td>
+      <td>0.238526</td>
+      <td>3.342921</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>120.000000</td>
+    </tr>
+    <tr>
+      <th>highwayUF</th>
+      <td>39101.0</td>
+      <td>0.000938</td>
+      <td>0.021931</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.877000</td>
+    </tr>
+    <tr>
+      <th>hlv</th>
+      <td>39101.0</td>
+      <td>2.029539</td>
+      <td>5.959735</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>49.000000</td>
+    </tr>
+    <tr>
+      <th>hpv</th>
+      <td>39101.0</td>
+      <td>10.411243</td>
+      <td>28.167271</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>195.000000</td>
+    </tr>
+    <tr>
+      <th>id</th>
+      <td>39101.0</td>
+      <td>19662.541188</td>
+      <td>11413.329199</td>
+      <td>1.00</td>
+      <td>9776.000000</td>
+      <td>19552.000000</td>
+      <td>29555.000000</td>
+      <td>39483.000000</td>
+    </tr>
+    <tr>
+      <th>lv2</th>
+      <td>39101.0</td>
+      <td>1.834812</td>
+      <td>4.407887</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>41.000000</td>
+    </tr>
+    <tr>
+      <th>lv4</th>
+      <td>39101.0</td>
+      <td>6.155930</td>
+      <td>9.698101</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>13.000000</td>
+      <td>55.000000</td>
+    </tr>
+    <tr>
+      <th>pv2</th>
+      <td>39101.0</td>
+      <td>13.649574</td>
+      <td>31.214466</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>194.000000</td>
+    </tr>
+    <tr>
+      <th>pv4</th>
+      <td>39101.0</td>
+      <td>33.883711</td>
+      <td>45.991687</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>91.000000</td>
+      <td>192.000000</td>
+    </tr>
+    <tr>
+      <th>range</th>
+      <td>39101.0</td>
+      <td>0.500243</td>
+      <td>9.742080</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>335.000000</td>
+    </tr>
+    <tr>
+      <th>rangeCity</th>
+      <td>39101.0</td>
+      <td>0.458375</td>
+      <td>9.510276</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>333.100000</td>
+    </tr>
+    <tr>
+      <th>rangeCityA</th>
+      <td>39101.0</td>
+      <td>0.050978</td>
+      <td>1.383722</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>103.030000</td>
+    </tr>
+    <tr>
+      <th>rangeHwy</th>
+      <td>39101.0</td>
+      <td>0.450392</td>
+      <td>9.711025</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>346.900000</td>
+    </tr>
+    <tr>
+      <th>rangeHwyA</th>
+      <td>39101.0</td>
+      <td>0.046958</td>
+      <td>1.244770</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>90.550000</td>
+    </tr>
+    <tr>
+      <th>UCity</th>
+      <td>39101.0</td>
+      <td>22.789421</td>
+      <td>9.827224</td>
+      <td>0.00</td>
+      <td>18.000000</td>
+      <td>21.111100</td>
+      <td>25.475600</td>
+      <td>224.800000</td>
+    </tr>
+    <tr>
+      <th>UCityA</th>
+      <td>39101.0</td>
+      <td>0.723139</td>
+      <td>5.965565</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>207.262200</td>
+    </tr>
+    <tr>
+      <th>UHighway</th>
+      <td>39101.0</td>
+      <td>33.884375</td>
+      <td>10.399308</td>
+      <td>0.00</td>
+      <td>27.370400</td>
+      <td>33.000000</td>
+      <td>38.600000</td>
+      <td>182.700000</td>
+    </tr>
+    <tr>
+      <th>UHighwayA</th>
+      <td>39101.0</td>
+      <td>1.009562</td>
+      <td>6.642943</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>173.143600</td>
+    </tr>
+    <tr>
+      <th>year</th>
+      <td>39101.0</td>
+      <td>2000.635406</td>
+      <td>10.690422</td>
+      <td>1984.00</td>
+      <td>1991.000000</td>
+      <td>2001.000000</td>
+      <td>2010.000000</td>
+      <td>2018.000000</td>
+    </tr>
+    <tr>
+      <th>youSaveSpend</th>
+      <td>39101.0</td>
+      <td>-3459.572645</td>
+      <td>3010.284617</td>
+      <td>-26500.00</td>
+      <td>-4750.000000</td>
+      <td>-3500.000000</td>
+      <td>-1500.000000</td>
+      <td>5250.000000</td>
+    </tr>
+    <tr>
+      <th>charge240b</th>
+      <td>39101.0</td>
+      <td>0.005869</td>
+      <td>0.165399</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>7.000000</td>
+    </tr>
+    <tr>
+      <th>phevCity</th>
+      <td>39101.0</td>
+      <td>0.094703</td>
+      <td>2.279478</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>97.000000</td>
+    </tr>
+    <tr>
+      <th>phevHwy</th>
+      <td>39101.0</td>
+      <td>0.094269</td>
+      <td>2.191115</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>81.000000</td>
+    </tr>
+    <tr>
+      <th>phevComb</th>
+      <td>39101.0</td>
+      <td>0.094141</td>
+      <td>2.226500</td>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>88.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>unique</th>
+      <th>top</th>
+      <th>freq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>drive</th>
+      <td>37912</td>
+      <td>7</td>
+      <td>Front-Wheel Drive</td>
+      <td>13653</td>
+    </tr>
+    <tr>
+      <th>eng_dscr</th>
+      <td>23431</td>
+      <td>545</td>
+      <td>(FFS)</td>
+      <td>8827</td>
+    </tr>
+    <tr>
+      <th>fuelType</th>
+      <td>39101</td>
+      <td>14</td>
+      <td>Regular</td>
+      <td>25620</td>
+    </tr>
+    <tr>
+      <th>fuelType1</th>
+      <td>39101</td>
+      <td>6</td>
+      <td>Regular Gasoline</td>
+      <td>26931</td>
+    </tr>
+    <tr>
+      <th>make</th>
+      <td>39101</td>
+      <td>134</td>
+      <td>Chevrolet</td>
+      <td>3900</td>
+    </tr>
+    <tr>
+      <th>model</th>
+      <td>39101</td>
+      <td>3816</td>
+      <td>F150 Pickup 2WD</td>
+      <td>214</td>
+    </tr>
+    <tr>
+      <th>mpgData</th>
+      <td>39101</td>
+      <td>2</td>
+      <td>N</td>
+      <td>26400</td>
+    </tr>
+    <tr>
+      <th>trany</th>
+      <td>39090</td>
+      <td>37</td>
+      <td>Automatic 4-spd</td>
+      <td>11045</td>
+    </tr>
+    <tr>
+      <th>VClass</th>
+      <td>39101</td>
+      <td>34</td>
+      <td>Compact Cars</td>
+      <td>5661</td>
+    </tr>
+    <tr>
+      <th>guzzler</th>
+      <td>2335</td>
+      <td>3</td>
+      <td>G</td>
+      <td>1356</td>
+    </tr>
+    <tr>
+      <th>trans_dscr</th>
+      <td>15047</td>
+      <td>52</td>
+      <td>CLKUP</td>
+      <td>7809</td>
+    </tr>
+    <tr>
+      <th>tCharger</th>
+      <td>5816</td>
+      <td>1</td>
+      <td>T</td>
+      <td>5816</td>
+    </tr>
+    <tr>
+      <th>sCharger</th>
+      <td>738</td>
+      <td>1</td>
+      <td>S</td>
+      <td>738</td>
+    </tr>
+    <tr>
+      <th>atvType</th>
+      <td>3204</td>
+      <td>8</td>
+      <td>FFV</td>
+      <td>1383</td>
+    </tr>
+    <tr>
+      <th>fuelType2</th>
+      <td>1490</td>
+      <td>4</td>
+      <td>E85</td>
+      <td>1383</td>
+    </tr>
+    <tr>
+      <th>rangeA</th>
+      <td>1485</td>
+      <td>216</td>
+      <td>290</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>evMotor</th>
+      <td>644</td>
+      <td>125</td>
+      <td>288V Ni-MH</td>
+      <td>117</td>
+    </tr>
+    <tr>
+      <th>mfrCode</th>
+      <td>8289</td>
+      <td>46</td>
+      <td>GMX</td>
+      <td>1255</td>
+    </tr>
+    <tr>
+      <th>c240Dscr</th>
+      <td>53</td>
+      <td>5</td>
+      <td>standard charger</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>c240bDscr</th>
+      <td>51</td>
+      <td>4</td>
+      <td>80 amp dual charger</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>createdOn</th>
+      <td>39101</td>
+      <td>195</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>34199</td>
+    </tr>
+    <tr>
+      <th>modifiedOn</th>
+      <td>39101</td>
+      <td>68</td>
+      <td>Tue Jan 01 00:00:00 EST 2013</td>
+      <td>29438</td>
+    </tr>
+    <tr>
+      <th>startStop</th>
+      <td>7405</td>
+      <td>2</td>
+      <td>N</td>
+      <td>5176</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>5.2 轉換欄位的資料型別<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>barrels08     float64
+barrelsA08    float64
+charge120     float64
+charge240     float64
+city08          int64
+               ...   
+modifiedOn     object
+startStop      object
+phevCity        int64
+phevHwy         int64
+phevComb        int64
+Length: 83, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float64    32
+int64      27
+object     23
+bool        1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>...</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>city08</th>
+      <td>39101.0</td>
+      <td>18.077799</td>
+      <td>...</td>
+      <td>20.0</td>
+      <td>150.0</td>
+    </tr>
+    <tr>
+      <th>cityA08</th>
+      <td>39101.0</td>
+      <td>0.569883</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>145.0</td>
+    </tr>
+    <tr>
+      <th>co2</th>
+      <td>39101.0</td>
+      <td>72.538989</td>
+      <td>...</td>
+      <td>-1.0</td>
+      <td>847.0</td>
+    </tr>
+    <tr>
+      <th>co2A</th>
+      <td>39101.0</td>
+      <td>5.543950</td>
+      <td>...</td>
+      <td>-1.0</td>
+      <td>713.0</td>
+    </tr>
+    <tr>
+      <th>comb08</th>
+      <td>39101.0</td>
+      <td>20.323828</td>
+      <td>...</td>
+      <td>23.0</td>
+      <td>136.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>year</th>
+      <td>39101.0</td>
+      <td>2000.635406</td>
+      <td>...</td>
+      <td>2010.0</td>
+      <td>2018.0</td>
+    </tr>
+    <tr>
+      <th>youSaveSpend</th>
+      <td>39101.0</td>
+      <td>-3459.572645</td>
+      <td>...</td>
+      <td>-1500.0</td>
+      <td>5250.0</td>
+    </tr>
+    <tr>
+      <th>phevCity</th>
+      <td>39101.0</td>
+      <td>0.094703</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>97.0</td>
+    </tr>
+    <tr>
+      <th>phevHwy</th>
+      <td>39101.0</td>
+      <td>0.094269</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>81.0</td>
+    </tr>
+    <tr>
+      <th>phevComb</th>
+      <td>39101.0</td>
+      <td>0.094141</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>88.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>27 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iinfo(min=-128, max=127, dtype=int8)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iinfo(min=-32768, max=32767, dtype=int16)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="p">[[</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> <span class="s1">&#39;comb08&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 39101 entries, 0 to 39100
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   city08  39101 non-null  int64
+ 1   comb08  39101 non-null  int64
+dtypes: int64(2)
+memory usage: 611.1 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">fueleco</span>
+  <span class="p">[[</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> <span class="s1">&#39;comb08&#39;</span><span class="p">]]</span>
+  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">city08</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">),</span>
+          <span class="n">comb08</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">comb08</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">))</span>
+  <span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 39101 entries, 0 to 39100
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   city08  39101 non-null  int16
+ 1   comb08  39101 non-null  int16
+dtypes: int16(2)
+memory usage: 152.9 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>134
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3816
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="p">[[</span><span class="s1">&#39;make&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 39101 entries, 0 to 39100
+Data columns (total 1 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   make    39101 non-null  object
+dtypes: object(1)
+memory usage: 2.4 MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">fueleco</span>
+  <span class="p">[[</span><span class="s1">&#39;make&#39;</span><span class="p">]]</span>
+  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">make</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">))</span>
+  <span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 39101 entries, 0 to 39100
+Data columns (total 1 columns):
+ #   Column  Non-Null Count  Dtype   
+---  ------  --------------  -----   
+ 0   make    39101 non-null  category
+dtypes: category(1)
+memory usage: 82.5 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="p">[[</span><span class="s1">&#39;model&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 39101 entries, 0 to 39100
+Data columns (total 1 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   model   39101 non-null  object
+dtypes: object(1)
+memory usage: 2.5 MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">fueleco</span>
+  <span class="p">[[</span><span class="s1">&#39;model&#39;</span><span class="p">]]</span>
+  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">))</span>
+  <span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 39101 entries, 0 to 39100
+Data columns (total 1 columns):
+ #   Column  Non-Null Count  Dtype   
+---  ------  --------------  -----   
+ 0   model   39101 non-null  category
+dtypes: category(1)
+memory usage: 266.3 KB
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>5.3 資料轉換與缺失值處理<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;drive&#39;, &#39;eng_dscr&#39;, &#39;fuelType&#39;, &#39;fuelType1&#39;, &#39;make&#39;, &#39;model&#39;,
+       &#39;mpgData&#39;, &#39;trany&#39;, &#39;VClass&#39;, &#39;guzzler&#39;, &#39;trans_dscr&#39;, &#39;tCharger&#39;,
+       &#39;sCharger&#39;, &#39;atvType&#39;, &#39;fuelType2&#39;, &#39;rangeA&#39;, &#39;evMotor&#39;, &#39;mfrCode&#39;,
+       &#39;c240Dscr&#39;, &#39;c240bDscr&#39;, &#39;createdOn&#39;, &#39;modifiedOn&#39;, &#39;startStop&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4217     4-Wheel ...
+1736     4-Wheel ...
+36029    Rear-Whe...
+37631    Front-Wh...
+1668     Rear-Whe...
+Name: drive, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1189
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0408429451932175
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Front-Wheel Drive             13653
+Rear-Wheel Drive              13284
+4-Wheel or All-Wheel Drive     6648
+All-Wheel Drive                2401
+4-Wheel Drive                  1221
+2-Wheel Drive                   507
+Part-time 4-Wheel Drive         198
+Name: drive, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Front-Wheel Drive             13653
+Rear-Wheel Drive              13284
+4-Wheel or All-Wheel Drive     6648
+All-Wheel Drive                2401
+4-Wheel Drive                  1221
+NaN                            1189
+2-Wheel Drive                   507
+Part-time 4-Wheel Drive         198
+Name: drive, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_n</span> <span class="o">=</span> <span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>
+<span class="p">(</span><span class="n">fueleco</span>
+   <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">make</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+              <span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_n</span><span class="p">),</span> <span class="s1">&#39;Other&#39;</span><span class="p">))</span>
+   <span class="o">.</span><span class="n">make</span>
+   <span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Other        23211
+Chevrolet     3900
+Ford          3208
+Dodge         2557
+GMC           2442
+Toyota        1976
+BMW           1807
+Name: make, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">top_n</span> <span class="o">=</span> <span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>
+<span class="p">(</span><span class="n">fueleco</span>     
+   <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">make</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+              <span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_n</span><span class="p">),</span>
+              <span class="s1">&#39;Other&#39;</span><span class="p">))</span>
+   <span class="o">.</span><span class="n">make</span>
+   <span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+   <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x22890d918e0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_28_1.png" src="../../_images/F1369_CH05_28_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">top_n</span> <span class="o">=</span> <span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">,</span>     
+    <span class="n">data</span><span class="o">=</span> <span class="p">(</span><span class="n">fueleco</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">make</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                <span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_n</span><span class="p">),</span>
+                <span class="s1">&#39;Other&#39;</span><span class="p">))</span>
+  <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x22894fcc5b0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_29_1.png" src="../../_images/F1369_CH05_29_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">rangeA</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>290        74
+270        56
+280        53
+310        41
+277        38
+           ..
+256         1
+180         1
+240-420     1
+13          1
+219         1
+Name: rangeA, Length: 216, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">rangeA</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;([^0-9.])&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/    280
+-     71
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">rangeA</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">type</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{float, str}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">fueleco</span>
+  <span class="o">.</span><span class="n">rangeA</span>
+  <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        0.0
+1        0.0
+2        0.0
+3        0.0
+4        0.0
+        ... 
+39096    0.0
+39097    0.0
+39098    0.0
+39099    0.0
+39100    0.0
+Length: 39101, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">fueleco</span>
+  <span class="o">.</span><span class="n">rangeA</span>
+  <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ser_</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">ser_</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+  <span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.45, 44.95]     37688
+(269.7, 314.65]      559
+(314.65, 359.6]      352
+(359.6, 404.55]      205
+(224.75, 269.7]      181
+(404.55, 449.5]       82
+(89.9, 134.85]        12
+(179.8, 224.75]        9
+(44.95, 89.9]          8
+(134.85, 179.8]        5
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (fueleco</span>
+<span class="c1">#   .rangeA</span>
+<span class="c1">#   .fillna(&#39;0&#39;)</span>
+<span class="c1">#   .str.replace(&#39;-&#39;, &#39;/&#39;)</span>
+<span class="c1">#   .str.split(&#39;/&#39;, expand=True)</span>
+<span class="c1">#   .astype(float)</span>
+<span class="c1">#   .mean(axis=1)</span>
+<span class="c1">#   .pipe(lambda ser_: pd.qcut(ser_, 10))</span>
+<span class="c1">#   .value_counts()</span>
+<span class="c1"># )</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">fueleco</span>
+  <span class="o">.</span><span class="n">city08</span>
+  <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ser</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">ser</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+  <span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5.999, 13.0]    5939
+(19.0, 21.0]     4477
+(14.0, 15.0]     4381
+(17.0, 18.0]     3912
+(16.0, 17.0]     3881
+(15.0, 16.0]     3855
+(21.0, 24.0]     3676
+(24.0, 150.0]    3235
+(13.0, 14.0]     2898
+(18.0, 19.0]     2847
+Name: city08, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>5.4 檢視連續資料的分佈狀況<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>barrels08</th>
+      <th>barrelsA08</th>
+      <th>...</th>
+      <th>phevHwy</th>
+      <th>phevComb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>15.695714</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>29.964545</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12.207778</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>29.964545</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17.347895</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>39096</th>
+      <td>14.982273</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>39097</th>
+      <td>14.330870</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>39098</th>
+      <td>15.695714</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>39099</th>
+      <td>15.695714</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>39100</th>
+      <td>18.311667</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>39101 rows × 59 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4217     11
+1736     21
+36029    16
+37631    16
+1668     17
+Name: city08, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    39101.00...
+mean       18.077799
+std         6.970672
+min         6.000000
+25%        15.000000
+50%        17.000000
+75%        20.000000
+max       150.000000
+Name: city08, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x228968ec3d0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_43_1.png" src="../../_images/F1369_CH05_43_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x2289579bcd0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_44_1.png" src="../../_images/F1369_CH05_44_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="p">,</span> <span class="n">rug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x228950910d0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_45_1.png" src="../../_images/F1369_CH05_45_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x22897d8f700&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_46_1.png" src="../../_images/F1369_CH05_46_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="p">,</span> <span class="n">cdf</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KstestResult(statistic=0.9999999990134123, pvalue=0.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((array([-4.1352692 , -3.92687024, -3.81314873, ...,  3.81314873,
+          3.92687024,  4.1352692 ]),
+  array([  6,   6,   6, ..., 137, 138, 150], dtype=int64)),
+ (5.385946629915974, 18.077798521776934, 0.772587941459713))
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_48_1.png" src="../../_images/F1369_CH05_48_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>5.5 檢視不同分類的資料分佈<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">make</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        Alfa Romeo
+1           Ferrari
+2             Dodge
+3             Dodge
+4            Subaru
+            ...    
+39096        Subaru
+39097        Subaru
+39098        Subaru
+39099        Subaru
+39100        Subaru
+Name: make, Length: 39101, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Ford&#39;</span><span class="p">,</span> <span class="s1">&#39;Honda&#39;</span><span class="p">,</span> <span class="s1">&#39;Tesla&#39;</span><span class="p">,</span> <span class="s1">&#39;BMW&#39;</span><span class="p">])</span>
+<span class="n">fueleco</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;make&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+    </tr>
+    <tr>
+      <th>make</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>BMW</th>
+      <td>17.817377</td>
+      <td>7.372907</td>
+    </tr>
+    <tr>
+      <th>Ford</th>
+      <td>16.853803</td>
+      <td>6.701029</td>
+    </tr>
+    <tr>
+      <th>Honda</th>
+      <td>24.372973</td>
+      <td>9.154064</td>
+    </tr>
+    <tr>
+      <th>Tesla</th>
+      <td>92.826087</td>
+      <td>5.538970</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> 
+                <span class="n">data</span><span class="o">=</span><span class="n">fueleco</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/F1369_CH05_52_0.png" src="../../_images/F1369_CH05_52_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Ford&#39;</span><span class="p">,</span> <span class="s1">&#39;Honda&#39;</span><span class="p">,</span> <span class="s1">&#39;Tesla&#39;</span><span class="p">,</span> <span class="s1">&#39;BMW&#39;</span><span class="p">])</span>
+<span class="p">(</span><span class="n">fueleco</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;make&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make
+BMW      1807
+Ford     3208
+Honda     925
+Tesla      46
+Name: city08, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> 
+                <span class="n">data</span><span class="o">=</span><span class="n">fueleco</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span>    
+              <span class="n">data</span><span class="o">=</span><span class="n">fueleco</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x228997f4220&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_54_1.png" src="../../_images/F1369_CH05_54_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> 
+                <span class="n">data</span><span class="o">=</span><span class="n">fueleco</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">,</span>
+                <span class="n">col</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">col_order</span><span class="o">=</span><span class="p">[</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2018</span><span class="p">],</span>
+                <span class="n">col_wrap</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/F1369_CH05_55_0.png" src="../../_images/F1369_CH05_55_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> 
+                <span class="n">data</span><span class="o">=</span><span class="n">fueleco</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2018</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/F1369_CH05_56_0.png" src="../../_images/F1369_CH05_56_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Ford&#39;</span><span class="p">,</span> <span class="s1">&#39;Honda&#39;</span><span class="p">,</span> <span class="s1">&#39;Tesla&#39;</span><span class="p">,</span> <span class="s1">&#39;BMW&#39;</span><span class="p">])</span>
+<span class="p">(</span><span class="n">fueleco</span>
+  <span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+  <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;make&#39;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">city08</span>
+  <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">])</span>
+  <span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style  type="text/css" >
+    #T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row0_col0 {
+            background-color:  #700320;
+            color:  #f1f1f1;
+        }    #T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row0_col1 {
+            background-color:  #f5f6f7;
+            color:  #000000;
+        }    #T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row1_col0 {
+            background-color:  #67001f;
+            color:  #f1f1f1;
+        }    #T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row1_col1 {
+            background-color:  #f6b191;
+            color:  #000000;
+        }    #T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row2_col0 {
+            background-color:  #b1182b;
+            color:  #f1f1f1;
+        }    #T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row2_col1 {
+            background-color:  #053061;
+            color:  #f1f1f1;
+        }    #T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row3_col0 {
+            background-color:  #053061;
+            color:  #f1f1f1;
+        }    #T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row3_col1 {
+            background-color:  #67001f;
+            color:  #f1f1f1;
+        }</style><table id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >mean</th>        <th class="col_heading level0 col1" >std</th>    </tr>    <tr>        <th class="index_name level0" >make</th>        <th class="blank" ></th>        <th class="blank" ></th>    </tr></thead><tbody>
+                <tr>
+                        <th id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23level0_row0" class="row_heading level0 row0" >BMW</th>
+                        <td id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row0_col0" class="data row0 col0" >17.817377</td>
+                        <td id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row0_col1" class="data row0 col1" >7.372907</td>
+            </tr>
+            <tr>
+                        <th id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23level0_row1" class="row_heading level0 row1" >Ford</th>
+                        <td id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row1_col0" class="data row1 col0" >16.853803</td>
+                        <td id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row1_col1" class="data row1 col1" >6.701029</td>
+            </tr>
+            <tr>
+                        <th id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23level0_row2" class="row_heading level0 row2" >Honda</th>
+                        <td id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row2_col0" class="data row2 col0" >24.372973</td>
+                        <td id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row2_col1" class="data row2 col1" >9.154064</td>
+            </tr>
+            <tr>
+                        <th id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23level0_row3" class="row_heading level0 row3" >Tesla</th>
+                        <td id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row3_col0" class="data row3 col0" >92.826087</td>
+                        <td id="T_15a40425_2fd7_11ec_a84a_8ff7c717cb23row3_col1" class="data row3 col1" >5.538970</td>
+            </tr>
+    </tbody></table></div></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>5.6 比較連續欄位間的關聯性<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">highway08</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46.33326023673624
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">comb08</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.419946678190776
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">cylinders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-5.931560263764768
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">highway08</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.932494506228495
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">cylinders</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.7016548423827895
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">fueleco</span><span class="p">[[</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> <span class="s1">&#39;highway08&#39;</span><span class="p">,</span> <span class="s1">&#39;cylinders&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+<span class="n">mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">mask</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+            <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x228992a3eb0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_64_1.png" src="../../_images/F1369_CH05_64_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">fueleco</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;highway08&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x228993189a0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_65_1.png" src="../../_images/F1369_CH05_65_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">fueleco</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;cylinders&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x228994d11f0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_66_1.png" src="../../_images/F1369_CH05_66_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">cylinders</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>145
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="p">(</span><span class="n">fueleco</span>
+ <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">cylinders</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">cylinders</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+ <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;cylinders&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x2289938fd30&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_68_1.png" src="../../_images/F1369_CH05_68_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;highway08&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fueleco</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/F1369_CH05_69_0.png" src="../../_images/F1369_CH05_69_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">highway08</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.932494506228495
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">highway08</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>92.66652047347247
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;highway08&#39;</span><span class="p">,</span>
+                  <span class="n">data</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+                      <span class="n">cylinders</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">cylinders</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
+                  <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;barrels08&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/F1369_CH05_72_0.png" src="../../_images/F1369_CH05_72_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;city08&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;highway08&#39;</span><span class="p">,</span>
+  <span class="n">data</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+  <span class="n">cylinders</span><span class="o">=</span><span class="n">fueleco</span><span class="o">.</span><span class="n">cylinders</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
+  <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;barrels08&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+  <span class="n">col</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="n">col_order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ford&#39;</span><span class="p">,</span> <span class="s1">&#39;Tesla&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/F1369_CH05_73_0.png" src="../../_images/F1369_CH05_73_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fueleco</span><span class="o">.</span><span class="n">city08</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">fueleco</span><span class="o">.</span><span class="n">barrels08</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;spearman&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9743658646193255
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>5.7 比較分類欄位的關聯性<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generalize</span><span class="p">(</span><span class="n">ser</span><span class="p">,</span> <span class="n">match_name</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">match</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">match_name</span><span class="p">:</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">ser</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">seen</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">seen</span> <span class="o">=</span> <span class="n">mask</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">seen</span> <span class="o">|=</span> <span class="n">mask</span>
+        <span class="n">ser</span> <span class="o">=</span> <span class="n">ser</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">mask</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">ser</span> <span class="o">=</span> <span class="n">ser</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">seen</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ser</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">makes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Ford&#39;</span><span class="p">,</span> <span class="s1">&#39;Tesla&#39;</span><span class="p">,</span> <span class="s1">&#39;BMW&#39;</span><span class="p">,</span> <span class="s1">&#39;Toyota&#39;</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">fueleco</span>
+   <span class="p">[</span><span class="n">fueleco</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">makes</span><span class="p">)]</span>
+   <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">SClass</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df_</span><span class="p">:</span> <span class="n">generalize</span><span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">VClass</span><span class="p">,</span>
+    <span class="p">[(</span><span class="s1">&#39;Seaters&#39;</span><span class="p">,</span> <span class="s1">&#39;Car&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Car&#39;</span><span class="p">,</span> <span class="s1">&#39;Car&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Utility&#39;</span><span class="p">,</span> <span class="s1">&#39;SUV&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Truck&#39;</span><span class="p">,</span> <span class="s1">&#39;Truck&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Van&#39;</span><span class="p">,</span> <span class="s1">&#39;Van&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;van&#39;</span><span class="p">,</span> <span class="s1">&#39;Van&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;Wagon&#39;</span><span class="p">,</span> <span class="s1">&#39;Wagon&#39;</span><span class="p">)],</span> 
+    <span class="s1">&#39;other&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="s1">&#39;SClass&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>SClass</th>
+      <th>Car</th>
+      <th>SUV</th>
+      <th>...</th>
+      <th>Wagon</th>
+      <th>other</th>
+    </tr>
+    <tr>
+      <th>make</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>BMW</th>
+      <td>1557.0</td>
+      <td>158.0</td>
+      <td>...</td>
+      <td>92.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Ford</th>
+      <td>1075.0</td>
+      <td>372.0</td>
+      <td>...</td>
+      <td>155.0</td>
+      <td>234.0</td>
+    </tr>
+    <tr>
+      <th>Tesla</th>
+      <td>36.0</td>
+      <td>10.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Toyota</th>
+      <td>773.0</td>
+      <td>376.0</td>
+      <td>...</td>
+      <td>132.0</td>
+      <td>123.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>4 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">make</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">SClass</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>SClass</th>
+      <th>Car</th>
+      <th>SUV</th>
+      <th>...</th>
+      <th>Wagon</th>
+      <th>other</th>
+    </tr>
+    <tr>
+      <th>make</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>BMW</th>
+      <td>1557</td>
+      <td>158</td>
+      <td>...</td>
+      <td>92</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Ford</th>
+      <td>1075</td>
+      <td>372</td>
+      <td>...</td>
+      <td>155</td>
+      <td>234</td>
+    </tr>
+    <tr>
+      <th>Tesla</th>
+      <td>36</td>
+      <td>10</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Toyota</th>
+      <td>773</td>
+      <td>376</td>
+      <td>...</td>
+      <td>132</td>
+      <td>123</td>
+    </tr>
+  </tbody>
+</table>
+<p>4 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">([</span><span class="n">data</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">make</span><span class="p">],</span> <span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">SClass</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">VClass</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>SClass</th>
+      <th colspan="2" halign="left">Car</th>
+      <th>...</th>
+      <th colspan="2" halign="left">other</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>VClass</th>
+      <th>Compact Cars</th>
+      <th>Large Cars</th>
+      <th>...</th>
+      <th>Special Purpose Vehicle 4WD</th>
+      <th>Special Purpose Vehicles</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th>make</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">1984</th>
+      <th>BMW</th>
+      <td>6</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Ford</th>
+      <td>33</td>
+      <td>3</td>
+      <td>...</td>
+      <td>21</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>Toyota</th>
+      <td>13</td>
+      <td>0</td>
+      <td>...</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">1985</th>
+      <th>BMW</th>
+      <td>7</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Ford</th>
+      <td>31</td>
+      <td>2</td>
+      <td>...</td>
+      <td>9</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">2017</th>
+      <th>Tesla</th>
+      <td>0</td>
+      <td>8</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Toyota</th>
+      <td>3</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">2018</th>
+      <th>BMW</th>
+      <td>37</td>
+      <td>12</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Ford</th>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Toyota</th>
+      <td>4</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>111 rows × 29 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">ss</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">cramers_v</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">chi2</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">phi2</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">/</span><span class="n">n</span>
+    <span class="n">r</span><span class="p">,</span><span class="n">k</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">phi2corr</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">phi2</span><span class="o">-</span><span class="p">((</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">rcorr</span> <span class="o">=</span> <span class="n">r</span><span class="o">-</span><span class="p">((</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">kcorr</span> <span class="o">=</span> <span class="n">k</span><span class="o">-</span><span class="p">((</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">phi2corr</span><span class="o">/</span><span class="nb">min</span><span class="p">((</span><span class="n">kcorr</span><span class="o">-</span><span class="mi">1</span><span class="p">),(</span><span class="n">rcorr</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cramers_v</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">make</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">SClass</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2859720982171866
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">make</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">SClass</span><span class="p">,</span> <span class="n">cramers_v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2859720982171866
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df_</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">make</span><span class="p">,</span> <span class="n">df_</span><span class="o">.</span><span class="n">SClass</span><span class="p">))</span>
+     <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x2289a13c670&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_84_1.png" src="../../_images/F1369_CH05_84_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;SClass&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/F1369_CH05_85_0.png" src="../../_images/F1369_CH05_85_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="p">(</span><span class="n">data</span>
+ <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df_</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">make</span><span class="p">,</span> <span class="n">df_</span><span class="o">.</span><span class="n">SClass</span><span class="p">))</span>
+ <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df_</span><span class="p">:</span> <span class="n">df_</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+ <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x22899493a60&gt;
+</pre></div>
+</div>
+<img alt="../../_images/F1369_CH05_86_1.png" src="../../_images/F1369_CH05_86_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="profiling">
+<h2>5.8 使用Profiling函式庫建立摘要報告<a class="headerlink" href="#profiling" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span><span class="o">-</span><span class="n">profiling</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pandas-profiling in c:\users\admin\anaconda3\lib\site-packages (3.0.0)
+Requirement already satisfied: visions[type_image_path]==0.7.1 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (0.7.1)
+Requirement already satisfied: tangled-up-in-unicode==0.1.0 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (0.1.0)
+Requirement already satisfied: tqdm&gt;=4.48.2 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (4.59.0)
+Requirement already satisfied: missingno&gt;=0.4.2 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (0.5.0)
+Requirement already satisfied: phik&gt;=0.11.1 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (0.12.0)
+Requirement already satisfied: numpy&gt;=1.16.0 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (1.19.5)
+Requirement already satisfied: pandas!=1.0.0,!=1.0.1,!=1.0.2,!=1.1.0,&gt;=0.25.3 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (1.0.5)
+Requirement already satisfied: PyYAML&gt;=5.0.0 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (5.3.1)
+Requirement already satisfied: scipy&gt;=1.4.1 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (1.5.0)
+Requirement already satisfied: htmlmin&gt;=0.1.12 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (0.1.12)
+Requirement already satisfied: requests&gt;=2.24.0 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (2.24.0)
+Requirement already satisfied: seaborn&gt;=0.10.1 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (0.10.1)
+Requirement already satisfied: matplotlib&gt;=3.2.0 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (3.2.2)
+Requirement already satisfied: pydantic&gt;=1.8.1 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (1.8.2)
+Requirement already satisfied: jinja2&gt;=2.11.1 in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (2.11.2)
+Requirement already satisfied: joblib in c:\users\admin\anaconda3\lib\site-packages (from pandas-profiling) (0.16.0)
+Requirement already satisfied: bottleneck in c:\users\admin\anaconda3\lib\site-packages (from visions[type_image_path]==0.7.1-&gt;pandas-profiling) (1.3.2)
+Requirement already satisfied: networkx&gt;=2.4 in c:\users\admin\anaconda3\lib\site-packages (from visions[type_image_path]==0.7.1-&gt;pandas-profiling) (2.4)
+Requirement already satisfied: multimethod==1.4 in c:\users\admin\anaconda3\lib\site-packages (from visions[type_image_path]==0.7.1-&gt;pandas-profiling) (1.4)
+Requirement already satisfied: attrs&gt;=19.3.0 in c:\users\admin\anaconda3\lib\site-packages (from visions[type_image_path]==0.7.1-&gt;pandas-profiling) (19.3.0)
+Requirement already satisfied: Pillow; extra == &quot;type_image_path&quot; in c:\users\admin\anaconda3\lib\site-packages (from visions[type_image_path]==0.7.1-&gt;pandas-profiling) (7.2.0)
+Requirement already satisfied: imagehash; extra == &quot;type_image_path&quot; in c:\users\admin\anaconda3\lib\site-packages (from visions[type_image_path]==0.7.1-&gt;pandas-profiling) (4.2.1)
+Requirement already satisfied: pytz&gt;=2017.2 in c:\users\admin\anaconda3\lib\site-packages (from pandas!=1.0.0,!=1.0.1,!=1.0.2,!=1.1.0,&gt;=0.25.3-&gt;pandas-profiling) (2020.1)
+Requirement already satisfied: python-dateutil&gt;=2.6.1 in c:\users\admin\anaconda3\lib\site-packages (from pandas!=1.0.0,!=1.0.1,!=1.0.2,!=1.1.0,&gt;=0.25.3-&gt;pandas-profiling) (2.8.1)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in c:\users\admin\anaconda3\lib\site-packages (from requests&gt;=2.24.0-&gt;pandas-profiling) (1.25.9)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\admin\anaconda3\lib\site-packages (from requests&gt;=2.24.0-&gt;pandas-profiling) (2020.6.20)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in c:\users\admin\anaconda3\lib\site-packages (from requests&gt;=2.24.0-&gt;pandas-profiling) (2.10)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in c:\users\admin\anaconda3\lib\site-packages (from requests&gt;=2.24.0-&gt;pandas-profiling) (3.0.4)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\admin\anaconda3\lib\site-packages (from matplotlib&gt;=3.2.0-&gt;pandas-profiling) (0.10.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in c:\users\admin\anaconda3\lib\site-packages (from matplotlib&gt;=3.2.0-&gt;pandas-profiling) (2.4.7)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\admin\anaconda3\lib\site-packages (from matplotlib&gt;=3.2.0-&gt;pandas-profiling) (1.2.0)
+Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in c:\users\admin\anaconda3\lib\site-packages (from pydantic&gt;=1.8.1-&gt;pandas-profiling) (3.10.0.2)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in c:\users\admin\anaconda3\lib\site-packages (from jinja2&gt;=2.11.1-&gt;pandas-profiling) (1.1.1)
+Requirement already satisfied: decorator&gt;=4.3.0 in c:\users\admin\anaconda3\lib\site-packages (from networkx&gt;=2.4-&gt;visions[type_image_path]==0.7.1-&gt;pandas-profiling) (4.4.2)
+Requirement already satisfied: six in c:\users\admin\anaconda3\lib\site-packages (from imagehash; extra == &quot;type_image_path&quot;-&gt;visions[type_image_path]==0.7.1-&gt;pandas-profiling) (1.15.0)
+Requirement already satisfied: PyWavelets in c:\users\admin\anaconda3\lib\site-packages (from imagehash; extra == &quot;type_image_path&quot;-&gt;visions[type_image_path]==0.7.1-&gt;pandas-profiling) (1.1.1)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_profiling</span> <span class="k">as</span> <span class="nn">pp</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">ProfileReport</span><span class="p">(</span><span class="n">fueleco</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "ba307a36993246a7946b853176cfcc34", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">ProfileReport</span><span class="p">(</span><span class="n">fueleco</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;fuel.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./ch3_pandas/pandas_book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
