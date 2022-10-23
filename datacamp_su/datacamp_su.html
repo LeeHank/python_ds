@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>17. Supervised Learning with scikit-learn &#8212; My sample book</title>
+    <title>18. Supervised Learning with scikit-learn &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="18. Classification Trees" href="../statquest_trees/classification_tree.html" />
-    <link rel="prev" title="16. Hierarchical Clustering" href="../clustering/HC.html" />
+    <link rel="next" title="19. Classification Trees" href="../statquest_trees/classification_tree.html" />
+    <link rel="prev" title="17. Hierarchical Clustering" href="../clustering/HC.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -191,23 +191,35 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  SQL
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interact_w_sql/pandas_sqlalchemy.html">
+   14. Pandas + SQLAlchemy
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Clustering
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../clustering/KMeans.html">
-   14. K-Means
+   15. K-Means
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../clustering/GMM.html">
-   15. Gaussian Mixture Model (GMM)
+   16. Gaussian Mixture Model (GMM)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../clustering/HC.html">
-   16. Hierarchical Clustering
+   17. Hierarchical Clustering
   </a>
  </li>
 </ul>
@@ -219,17 +231,17 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   17. Supervised Learning with scikit-learn
+   18. Supervised Learning with scikit-learn
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../statquest_trees/classification_tree.html">
-   18. Classification Trees
+   19. Classification Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
-   19. Permutation Importance vs Random Forest Feature Importance (MDI)
+   20. Permutation Importance vs Random Forest Feature Importance (MDI)
   </a>
  </li>
 </ul>
@@ -338,84 +350,84 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification">
-   17.1. Classification
+   18.1. Classification
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#knn-binary">
-     17.1.1. KNN (binary)
+     18.1.1. KNN (binary)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       17.1.1.1. 讀資料集
+       18.1.1.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       17.1.1.2. 最簡單流程
+       18.1.1.2. 最簡單流程
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#train-test">
-         17.1.1.2.1. 分 train/test
+         18.1.1.2.1. 分 train/test
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#pipeline">
-         17.1.1.2.2. 做 pipeline
+         18.1.1.2.2. 做 pipeline
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#training-set-fitting">
-         17.1.1.2.3. 用整個 training set 做 fitting.
+         18.1.1.2.3. 用整個 training set 做 fitting.
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#testing-set-predict">
-         17.1.1.2.4. 對 testing set 做 predict
+         18.1.1.2.4. 對 testing set 做 predict
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id3">
-         17.1.1.2.5. 效果評估
+         18.1.1.2.5. 效果評估
         </a>
        </li>
       </ul>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id4">
-       17.1.1.3. 最完整流程整理
+       18.1.1.3. 最完整流程整理
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id5">
-         17.1.1.3.1. 分 train/test
+         18.1.1.3.1. 分 train/test
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id6">
-         17.1.1.3.2. 做 pipeline
+         18.1.1.3.2. 做 pipeline
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#hyper-parameter-tunning">
-         17.1.1.3.3. 做 hyper-parameter tunning
+         18.1.1.3.3. 做 hyper-parameter tunning
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id7">
-         17.1.1.3.4. 用整個 training set 做 fitting.
+         18.1.1.3.4. 用整個 training set 做 fitting.
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id8">
-         17.1.1.3.5. 用 testing set 做 predict
+         18.1.1.3.5. 用 testing set 做 predict
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id9">
-         17.1.1.3.6. 效果評估
+         18.1.1.3.6. 效果評估
         </a>
        </li>
       </ul>
@@ -424,95 +436,95 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#knn-multi-class">
-     17.1.2. KNN (multi_class)
+     18.1.2. KNN (multi_class)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id10">
-       17.1.2.1. 讀資料集
+       18.1.2.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fit-model-predict">
-       17.1.2.2. fit model &amp; predict
+       18.1.2.2. fit model &amp; predict
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#overfitting-exploration">
-       17.1.2.3. overfitting exploration
+       18.1.2.3. overfitting exploration
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logistic-binary">
-     17.1.3. Logistic (binary)
+     18.1.3. Logistic (binary)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id11">
-       17.1.3.1. 讀資料集
+       18.1.3.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fit-predict-and-evaluate">
-       17.1.3.2. fit, predict, and evaluate
+       18.1.3.2. fit, predict, and evaluate
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decisiontree-binary">
-     17.1.4. DecisionTree (binary)
+     18.1.4. DecisionTree (binary)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#svc-binary">
-     17.1.5. SVC (binary)
+     18.1.5. SVC (binary)
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression">
-   17.2. Regression
+   18.2. Regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gapminder-data">
-     17.2.1. Gapminder Data
+     18.2.1. Gapminder Data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-regression">
-     17.2.2. Linear Regression
+     18.2.2. Linear Regression
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id12">
-       17.2.2.1. train/test
+       18.2.2.1. train/test
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#cv">
-       17.2.2.2. CV
+       18.2.2.2. CV
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lasso-regression">
-     17.2.3. Lasso Regression
+     18.2.3. Lasso Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ridge-regression">
-     17.2.4. Ridge Regression
+     18.2.4. Ridge Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#elastic-net">
-     17.2.5. Elastic net
+     18.2.5. Elastic net
     </a>
    </li>
   </ul>
@@ -539,84 +551,84 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification">
-   17.1. Classification
+   18.1. Classification
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#knn-binary">
-     17.1.1. KNN (binary)
+     18.1.1. KNN (binary)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       17.1.1.1. 讀資料集
+       18.1.1.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       17.1.1.2. 最簡單流程
+       18.1.1.2. 最簡單流程
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#train-test">
-         17.1.1.2.1. 分 train/test
+         18.1.1.2.1. 分 train/test
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#pipeline">
-         17.1.1.2.2. 做 pipeline
+         18.1.1.2.2. 做 pipeline
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#training-set-fitting">
-         17.1.1.2.3. 用整個 training set 做 fitting.
+         18.1.1.2.3. 用整個 training set 做 fitting.
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#testing-set-predict">
-         17.1.1.2.4. 對 testing set 做 predict
+         18.1.1.2.4. 對 testing set 做 predict
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id3">
-         17.1.1.2.5. 效果評估
+         18.1.1.2.5. 效果評估
         </a>
        </li>
       </ul>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id4">
-       17.1.1.3. 最完整流程整理
+       18.1.1.3. 最完整流程整理
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id5">
-         17.1.1.3.1. 分 train/test
+         18.1.1.3.1. 分 train/test
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id6">
-         17.1.1.3.2. 做 pipeline
+         18.1.1.3.2. 做 pipeline
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#hyper-parameter-tunning">
-         17.1.1.3.3. 做 hyper-parameter tunning
+         18.1.1.3.3. 做 hyper-parameter tunning
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id7">
-         17.1.1.3.4. 用整個 training set 做 fitting.
+         18.1.1.3.4. 用整個 training set 做 fitting.
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id8">
-         17.1.1.3.5. 用 testing set 做 predict
+         18.1.1.3.5. 用 testing set 做 predict
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#id9">
-         17.1.1.3.6. 效果評估
+         18.1.1.3.6. 效果評估
         </a>
        </li>
       </ul>
@@ -625,95 +637,95 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#knn-multi-class">
-     17.1.2. KNN (multi_class)
+     18.1.2. KNN (multi_class)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id10">
-       17.1.2.1. 讀資料集
+       18.1.2.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fit-model-predict">
-       17.1.2.2. fit model &amp; predict
+       18.1.2.2. fit model &amp; predict
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#overfitting-exploration">
-       17.1.2.3. overfitting exploration
+       18.1.2.3. overfitting exploration
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logistic-binary">
-     17.1.3. Logistic (binary)
+     18.1.3. Logistic (binary)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id11">
-       17.1.3.1. 讀資料集
+       18.1.3.1. 讀資料集
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fit-predict-and-evaluate">
-       17.1.3.2. fit, predict, and evaluate
+       18.1.3.2. fit, predict, and evaluate
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decisiontree-binary">
-     17.1.4. DecisionTree (binary)
+     18.1.4. DecisionTree (binary)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#svc-binary">
-     17.1.5. SVC (binary)
+     18.1.5. SVC (binary)
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression">
-   17.2. Regression
+   18.2. Regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gapminder-data">
-     17.2.1. Gapminder Data
+     18.2.1. Gapminder Data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-regression">
-     17.2.2. Linear Regression
+     18.2.2. Linear Regression
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id12">
-       17.2.2.1. train/test
+       18.2.2.1. train/test
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#cv">
-       17.2.2.2. CV
+       18.2.2.2. CV
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lasso-regression">
-     17.2.3. Lasso Regression
+     18.2.3. Lasso Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ridge-regression">
-     17.2.4. Ridge Regression
+     18.2.4. Ridge Regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#elastic-net">
-     17.2.5. Elastic net
+     18.2.5. Elastic net
     </a>
    </li>
   </ul>
@@ -728,7 +740,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="supervised-learning-with-scikit-learn">
-<h1><span class="section-number">17. </span>Supervised Learning with scikit-learn<a class="headerlink" href="#supervised-learning-with-scikit-learn" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">18. </span>Supervised Learning with scikit-learn<a class="headerlink" href="#supervised-learning-with-scikit-learn" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -743,11 +755,11 @@
 </div>
 </div>
 <div class="section" id="classification">
-<h2><span class="section-number">17.1. </span>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.1. </span>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="knn-binary">
-<h3><span class="section-number">17.1.1. </span>KNN (binary)<a class="headerlink" href="#knn-binary" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.1.1. </span>KNN (binary)<a class="headerlink" href="#knn-binary" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id1">
-<h4><span class="section-number">17.1.1.1. </span>讀資料集<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.1.1. </span>讀資料集<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vote_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/house-votes-84.csv&quot;</span><span class="p">)</span>
@@ -1072,7 +1084,7 @@ memory usage: 32.6+ KB
 </ul>
 </div>
 <div class="section" id="id2">
-<h4><span class="section-number">17.1.1.2. </span>最簡單流程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.1.2. </span>最簡單流程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>先來講最簡單的流程</p>
 <ul>
@@ -1102,7 +1114,7 @@ memory usage: 32.6+ KB
 </li>
 </ul>
 <div class="section" id="train-test">
-<h5><span class="section-number">17.1.1.2.1. </span>分 train/test<a class="headerlink" href="#train-test" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.2.1. </span>分 train/test<a class="headerlink" href="#train-test" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 分 train/test</span>
@@ -1159,7 +1171,7 @@ republican% in testing set is: 0.4714285714285714
 </div>
 </div>
 <div class="section" id="pipeline">
-<h5><span class="section-number">17.1.1.2.2. </span>做 pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.2.2. </span>做 pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>pipeline 包括 preprocessing + model，那這邊只做 model</p></li>
 </ul>
@@ -1337,7 +1349,7 @@ KNeighborsClassifier(...)
 </div>
 </div>
 <div class="section" id="training-set-fitting">
-<h5><span class="section-number">17.1.1.2.3. </span>用整個 training set 做 fitting.<a class="headerlink" href="#training-set-fitting" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.2.3. </span>用整個 training set 做 fitting.<a class="headerlink" href="#training-set-fitting" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1367,7 +1379,7 @@ KNeighborsClassifier(...)
 </div>
 </div>
 <div class="section" id="testing-set-predict">
-<h5><span class="section-number">17.1.1.2.4. </span>對 testing set 做 predict<a class="headerlink" href="#testing-set-predict" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.2.4. </span>對 testing set 做 predict<a class="headerlink" href="#testing-set-predict" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -1501,7 +1513,7 @@ KNeighborsClassifier(...)
 </ul>
 </div>
 <div class="section" id="id3">
-<h5><span class="section-number">17.1.1.2.5. </span>效果評估<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.2.5. </span>效果評估<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span>
@@ -1646,7 +1658,7 @@ weighted avg       0.90      0.90      0.90        70
 </div>
 </div>
 <div class="section" id="id4">
-<h4><span class="section-number">17.1.1.3. </span>最完整流程整理<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.1.3. </span>最完整流程整理<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>來講最完整的流程</p>
 <ul>
@@ -1676,7 +1688,7 @@ weighted avg       0.90      0.90      0.90        70
 </li>
 </ul>
 <div class="section" id="id5">
-<h5><span class="section-number">17.1.1.3.1. </span>分 train/test<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.3.1. </span>分 train/test<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 分 train/test</span>
@@ -1697,7 +1709,7 @@ weighted avg       0.90      0.90      0.90        70
 </div>
 </div>
 <div class="section" id="id6">
-<h5><span class="section-number">17.1.1.3.2. </span>做 pipeline<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.3.2. </span>做 pipeline<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>對 knn 這種依賴 euclidean distance 的演算法，必須先做 normalization，再開始算距離，所以 pipeline寫成這樣：</p></li>
 </ul>
@@ -1724,7 +1736,7 @@ weighted avg       0.90      0.90      0.90        70
 </div>
 </div>
 <div class="section" id="hyper-parameter-tunning">
-<h5><span class="section-number">17.1.1.3.3. </span>做 hyper-parameter tunning<a class="headerlink" href="#hyper-parameter-tunning" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.3.3. </span>做 hyper-parameter tunning<a class="headerlink" href="#hyper-parameter-tunning" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>先來做 grid_search</p></li>
 </ul>
@@ -2317,13 +2329,13 @@ GridSearchCV(estimator=SVC(),
 </div>
 </div>
 <div class="section" id="id7">
-<h5><span class="section-number">17.1.1.3.4. </span>用整個 training set 做 fitting.<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.3.4. </span>用整個 training set 做 fitting.<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>剛剛的 grid_cv 物件，再找完最佳參數後，就已經幫你把整個 training set 給 fit 完了</p></li>
 </ul>
 </div>
 <div class="section" id="id8">
-<h5><span class="section-number">17.1.1.3.5. </span>用 testing set 做 predict<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.3.5. </span>用 testing set 做 predict<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_label_test</span> <span class="o">=</span> <span class="n">grid_cv</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -2334,7 +2346,7 @@ GridSearchCV(estimator=SVC(),
 </div>
 </div>
 <div class="section" id="id9">
-<h5><span class="section-number">17.1.1.3.6. </span>效果評估<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">18.1.1.3.6. </span>效果評估<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 評估結果</span>
@@ -2364,9 +2376,9 @@ weighted avg       0.87      0.87      0.87        70
 </div>
 </div>
 <div class="section" id="knn-multi-class">
-<h3><span class="section-number">17.1.2. </span>KNN (multi_class)<a class="headerlink" href="#knn-multi-class" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.1.2. </span>KNN (multi_class)<a class="headerlink" href="#knn-multi-class" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id10">
-<h4><span class="section-number">17.1.2.1. </span>讀資料集<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.2.1. </span>讀資料集<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>要來引入數字辨認資料集</p></li>
 </ul>
@@ -2419,7 +2431,7 @@ weighted avg       0.87      0.87      0.87        70
 </ul>
 </div>
 <div class="section" id="fit-model-predict">
-<h4><span class="section-number">17.1.2.2. </span>fit model &amp; predict<a class="headerlink" href="#fit-model-predict" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.2.2. </span>fit model &amp; predict<a class="headerlink" href="#fit-model-predict" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 切資料</span>
@@ -2485,7 +2497,7 @@ weighted avg       0.98      0.98      0.98       360
 </div>
 </div>
 <div class="section" id="overfitting-exploration">
-<h4><span class="section-number">17.1.2.3. </span>overfitting exploration<a class="headerlink" href="#overfitting-exploration" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.2.3. </span>overfitting exploration<a class="headerlink" href="#overfitting-exploration" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>最後，我們來玩點新的，看看 overfitting 的狀況</p></li>
 </ul>
@@ -2530,9 +2542,9 @@ weighted avg       0.98      0.98      0.98       360
 </div>
 </div>
 <div class="section" id="logistic-binary">
-<h3><span class="section-number">17.1.3. </span>Logistic (binary)<a class="headerlink" href="#logistic-binary" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.1.3. </span>Logistic (binary)<a class="headerlink" href="#logistic-binary" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id11">
-<h4><span class="section-number">17.1.3.1. </span>讀資料集<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.3.1. </span>讀資料集<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diabetes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/diabetes.csv&quot;</span><span class="p">)</span>
@@ -2737,7 +2749,7 @@ memory usage: 54.1 KB
 </div>
 </div>
 <div class="section" id="fit-predict-and-evaluate">
-<h4><span class="section-number">17.1.3.2. </span>fit, predict, and evaluate<a class="headerlink" href="#fit-predict-and-evaluate" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.3.2. </span>fit, predict, and evaluate<a class="headerlink" href="#fit-predict-and-evaluate" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 切資料</span>
@@ -3368,7 +3380,7 @@ weighted avg       0.74      0.74      0.74       308
 </div>
 </div>
 <div class="section" id="decisiontree-binary">
-<h3><span class="section-number">17.1.4. </span>DecisionTree (binary)<a class="headerlink" href="#decisiontree-binary" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.1.4. </span>DecisionTree (binary)<a class="headerlink" href="#decisiontree-binary" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 切資料</span>
@@ -3458,7 +3470,7 @@ weighted avg       0.72      0.73      0.71       308
 </div>
 </div>
 <div class="section" id="svc-binary">
-<h3><span class="section-number">17.1.5. </span>SVC (binary)<a class="headerlink" href="#svc-binary" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.1.5. </span>SVC (binary)<a class="headerlink" href="#svc-binary" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import necessary modules</span>
@@ -3525,9 +3537,9 @@ weighted avg       0.96      0.95      0.95       131
 </div>
 </div>
 <div class="section" id="regression">
-<h2><span class="section-number">17.2. </span>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.2. </span>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="gapminder-data">
-<h3><span class="section-number">17.2.1. </span>Gapminder Data<a class="headerlink" href="#gapminder-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.2.1. </span>Gapminder Data<a class="headerlink" href="#gapminder-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -3667,9 +3679,9 @@ memory usage: 11.0+ KB
 </div>
 </div>
 <div class="section" id="linear-regression">
-<h3><span class="section-number">17.2.2. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.2.2. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id12">
-<h4><span class="section-number">17.2.2.1. </span>train/test<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.2.2.1. </span>train/test<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -3708,7 +3720,7 @@ Root Mean Squared Error: 3.405248115733344
 </div>
 </div>
 <div class="section" id="cv">
-<h4><span class="section-number">17.2.2.2. </span>CV<a class="headerlink" href="#cv" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.2.2.2. </span>CV<a class="headerlink" href="#cv" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
@@ -3737,7 +3749,7 @@ Average 5-Fold CV Score: 0.8529382494240787
 </div>
 </div>
 <div class="section" id="lasso-regression">
-<h3><span class="section-number">17.2.3. </span>Lasso Regression<a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.2.3. </span>Lasso Regression<a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Lasso</span>
@@ -3798,7 +3810,7 @@ Root Mean Squared Error: 3.2266824659707334
 </div>
 </div>
 <div class="section" id="ridge-regression">
-<h3><span class="section-number">17.2.4. </span>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.2.4. </span>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">display_plot</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">,</span> <span class="n">cv_scores_std</span><span class="p">):</span>
@@ -3864,7 +3876,7 @@ Root Mean Squared Error: 3.2266824659707334
 </div>
 </div>
 <div class="section" id="elastic-net">
-<h3><span class="section-number">17.2.5. </span>Elastic net<a class="headerlink" href="#elastic-net" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.2.5. </span>Elastic net<a class="headerlink" href="#elastic-net" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import necessary modules</span>
@@ -3955,13 +3967,13 @@ Tuned ElasticNet MSE: 8.594868215979249
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">16. </span>Hierarchical Clustering</p>
+            <p class="prev-next-title"><span class="section-number">17. </span>Hierarchical Clustering</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../statquest_trees/classification_tree.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">18. </span>Classification Trees</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>Classification Trees</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

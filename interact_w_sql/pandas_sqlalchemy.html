@@ -1,0 +1,2671 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14. Pandas + SQLAlchemy &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="15. K-Means" href="../clustering/KMeans.html" />
+    <link rel="prev" title="13. Introduction to Seaborn" href="../datacamp_seaborn/intro_seaborn.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Numpy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch2_numpy/official_beginner/official_beginner.html">
+   1. Beginner (Official)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pandas
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/official_getting_started/getting_started.html">
+   2. Getting Started (official)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch3_pandas/regex.html">
+   3. Regular Expression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Matplotlib
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/datacamp_matplotlib_intro.html">
+   4. Intro to matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.00-matplotlib_intro.html">
+   5. Matplotlib 簡介與常用技巧
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.01-Simple-Line-Plots.html">
+   6. Simple Line Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.02-Simple-Scatter-Plots.html">
+   7. Simple Scatter Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.03-Errorbars.html">
+   8. Error bars &amp; Error region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.05-Histograms-and-Density.html">
+   9. Histograms and Density
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.06-Legends.html">
+   10. Legends
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.07-Colorbars.html">
+   11. Colorbars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch4_matplotlib/04.08-Multiple-Subplots.html">
+   12. Multiple Subplots
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Seaborn
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_seaborn/intro_seaborn.html">
+   13. Introduction to Seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  SQL
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   14. Pandas + SQLAlchemy
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/KMeans.html">
+   15. K-Means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/GMM.html">
+   16. Gaussian Mixture Model (GMM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering/HC.html">
+   17. Hierarchical Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  supervised learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datacamp_su/datacamp_su.html">
+   18. Supervised Learning with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statquest_trees/classification_tree.html">
+   19. Classification Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sklearn_guide/rf_permutation_imp.html">
+   20. Permutation Importance vs Random Forest Feature Importance (MDI)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/interact_w_sql/pandas_sqlalchemy.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Finteract_w_sql/pandas_sqlalchemy.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/interact_w_sql/pandas_sqlalchemy.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#packages">
+   14.1. packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   14.2. 連線
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   14.3. [增]
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pd-dataframe-to-sql">
+     14.3.1. 用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pd.DataFrame.to_sql()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sql">
+     14.3.2. 用 sql 語句來做
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read">
+   14.4. [查] Read
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pd-read-sql">
+     14.4.1. 用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pd.read_sql()
+      </span>
+     </code>
+     查整張表
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     14.4.2. 用 sql 語句 (推薦)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#order-by">
+       14.4.2.1. order by
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#limit">
+       14.4.2.2. limit
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#like">
+       14.4.2.3. like
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#count">
+       14.4.2.4. count(*)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#distinct">
+       14.4.2.5. distinct
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#min-max-sum-avg">
+       14.4.2.6. min, max, sum, avg
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#having">
+       14.4.2.7. having
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#logic-operators">
+       14.4.2.8. logic operators
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update">
+   14.5. [改] Update
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#delete">
+   14.6. [刪] Delete
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Pandas + SQLAlchemy</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#packages">
+   14.1. packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   14.2. 連線
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   14.3. [增]
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pd-dataframe-to-sql">
+     14.3.1. 用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pd.DataFrame.to_sql()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sql">
+     14.3.2. 用 sql 語句來做
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read">
+   14.4. [查] Read
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pd-read-sql">
+     14.4.1. 用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pd.read_sql()
+      </span>
+     </code>
+     查整張表
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     14.4.2. 用 sql 語句 (推薦)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#order-by">
+       14.4.2.1. order by
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#limit">
+       14.4.2.2. limit
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#like">
+       14.4.2.3. like
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#count">
+       14.4.2.4. count(*)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#distinct">
+       14.4.2.5. distinct
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#min-max-sum-avg">
+       14.4.2.6. min, max, sum, avg
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#having">
+       14.4.2.7. having
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#logic-operators">
+       14.4.2.8. logic operators
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update">
+   14.5. [改] Update
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#delete">
+   14.6. [刪] Delete
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="pandas-sqlalchemy">
+<h1><span class="section-number">14. </span>Pandas + SQLAlchemy<a class="headerlink" href="#pandas-sqlalchemy" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>這邊先講結論</p></li>
+<li><p>連線</p>
+<ul>
+<li><p>一率用 sqlalchemy 的 <code class="docutils literal notranslate"><span class="pre">create_engine</span></code> 來定義連線 engine，各種資料庫都是 (mysql, mssql, …)。例如： <code class="docutils literal notranslate"><span class="pre">engine</span> <span class="pre">=</span> <span class="pre">create_engine(&quot;mysql+pymysql://root:my-secret-pw&#64;localhost:3307/mydev&quot;)</span></code></p></li>
+<li><p>用 conn 來建立連線，例如 <code class="docutils literal notranslate"><span class="pre">conn</span> <span class="pre">=</span> <span class="pre">engine.connect()</span></code></p></li>
+</ul>
+</li>
+<li><p>可以直接用 raw sql 的語句，但記得在前面加上 sqlalchemy.sql 裡的 text()，才不會讓 sql 的特殊符號被影響到。例如 <code class="docutils literal notranslate"><span class="pre">sql_string</span> <span class="pre">=</span> <span class="pre">&quot;select</span> <span class="pre">*</span> <span class="pre">from</span> <span class="pre">table_A</span> <span class="pre">where</span> <span class="pre">col_1</span> <span class="pre">like</span> <span class="pre">'C%';&quot;</span></code>，那 <code class="docutils literal notranslate"><span class="pre">%</span></code> 在 sql alchemy 中會被當作特殊字元，且沒有逃脫符號可以幫你忙，所以正確做法是這樣： <code class="docutils literal notranslate"><span class="pre">sql_string2</span> <span class="pre">=</span> <span class="pre">text(sql_string)</span></code>，再拿 sql_string2 去做事。</p></li>
+<li><p>raw sql 的寫法，就直接用在 CRUD 中，例如：</p>
+<ul>
+<li><p>“改”, “刪”，例如 <code class="docutils literal notranslate"><span class="pre">conn.execute(&quot;update</span> <span class="pre">table_A</span> <span class="pre">set</span> <span class="pre">col_1</span> <span class="pre">=</span> <span class="pre">17;&quot;)</span></code></p></li>
+<li><p>“讀”，不會用 <code class="docutils literal notranslate"><span class="pre">conn.execute(sql_string2)</span></code> 的作法，因為他回傳的不是我想要的 pandas dataframe。會用 <code class="docutils literal notranslate"><span class="pre">pd.read_sql(sql_string2,</span> <span class="pre">engine)</span></code> 這種方式來做。得到的就會是 pd.DataFrame。但不變的是，我還是用 raw sql 語句，只是丟給不同 function 來做而已。</p></li>
+<li><p>CRUD 裡面的 “增”，你可以用懶人法 <code class="docutils literal notranslate"><span class="pre">pd.DataFrame.to_sql()</span></code>直接傳上去，缺點就是沒有 schema，所以他自動幫你生的 schema 就是文字和數字而已，沒有 datetime。如果要更細緻的做，就直接用 raw sql 語句，做法就是和剛剛一樣： <code class="docutils literal notranslate"><span class="pre">conn.execute(sql_string)</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="packages">
+<h2><span class="section-number">14.1. </span>packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.sql</span> <span class="kn">import</span> <span class="n">text</span>
+<span class="kn">import</span> <span class="nn">pymysql</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">14.2. </span>連線<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;mysql+pymysql://root:my-secret-pw@localhost:3307/mydev&quot;</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">14.3. </span>[增]<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pd-dataframe-to-sql">
+<h3><span class="section-number">14.3.1. </span>用 <code class="docutils literal notranslate"><span class="pre">pd.DataFrame.to_sql()</span></code><a class="headerlink" href="#pd-dataframe-to-sql" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>這是最簡單的方式，也是之前在 R 的時候使用的方式</p></li>
+<li><p>簡單來說，就是不管 sql table schema，全都用 文字, 數字 的形式來存。犧牲 datetime 的格式。</p></li>
+<li><p>有關時間的操作，都是從 sql 拉到 local 變成 dataframe 後，再自己轉成時間格式來處理</p></li>
+<li><p>之後可以再查查看，應該有機會也可以定義 時間, ENUM, SET 等格式。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hank&quot;</span><span class="p">,</span><span class="s2">&quot;mike&quot;</span><span class="p">,</span><span class="s2">&quot;pink&quot;</span><span class="p">,</span><span class="s2">&quot;shark&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">185</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="mi">153</span><span class="p">,</span> <span class="mi">198</span><span class="p">],</span>
+    <span class="s2">&quot;blood_type&quot;</span><span class="p">:[</span><span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">user2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>username</th>
+      <th>height</th>
+      <th>blood_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>hank</td>
+      <td>185</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>mike</td>
+      <td>172</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>pink</td>
+      <td>153</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>shark</td>
+      <td>198</td>
+      <td>O</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user2</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;user2&quot;</span><span class="p">,</span> <span class="c1"># table name</span>
+    <span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">,</span>
+    <span class="n">if_exists</span> <span class="o">=</span> <span class="s2">&quot;replace&quot;</span><span class="p">,</span> <span class="c1"># &#39;fail&#39;, &#39;replace&#39; 就是 overwrite, &#39;append&#39;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;select * from user2&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>username</th>
+      <th>height</th>
+      <th>blood_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>hank</td>
+      <td>185</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>mike</td>
+      <td>172</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>pink</td>
+      <td>153</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>shark</td>
+      <td>198</td>
+      <td>O</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;pinpin&quot;</span><span class="p">,</span><span class="s2">&quot;mimi&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">],</span>
+    <span class="s2">&quot;blood_type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">new</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s2">&quot;user2&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;select * from user2&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>username</th>
+      <th>height</th>
+      <th>blood_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>hank</td>
+      <td>185</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>mike</td>
+      <td>172</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>pink</td>
+      <td>153</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>shark</td>
+      <td>198</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>pinpin</td>
+      <td>160</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>mimi</td>
+      <td>170</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="sql">
+<h3><span class="section-number">14.3.2. </span>用 sql 語句來做<a class="headerlink" href="#sql" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>這種作法對熟悉 sql 的人來說蠻直覺的，因為就完全使用 sql 的語句來做</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">CREATE TABLE IF NOT EXISTS employee(</span>
+<span class="s1">  id INT NOT NULL AUTO_INCREMENT,</span>
+<span class="s1">  first_name VARCHAR(100) NOT NULL,</span>
+<span class="s1">  last_name VARCHAR(100) NOT NULL,</span>
+<span class="s1">  title VARCHAR(100) DEFAULT NULL,</span>
+<span class="s1">  salary DOUBLE DEFAULT NULL,</span>
+<span class="s1">  hire_date DATE NOT NULL,</span>
+<span class="s1">  notes TEXT,</span>
+<span class="s1">  PRIMARY KEY (id)</span>
+<span class="s1">);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sqlalchemy.engine.cursor.LegacyCursorResult at 0x11adf54c0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;select * from employee&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>title</th>
+      <th>salary</th>
+      <th>hire_date</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">INSERT INTO employee (first_name, last_name, title, salary, hire_date) VALUES </span>
+<span class="s1">    (&#39;Robin&#39;, &#39;Jackman&#39;, &#39;Software Engineer&#39;, 5500, &#39;2001-10-12&#39;),</span>
+<span class="s1">    (&#39;Taylor&#39;, &#39;Edward&#39;, &#39;Software Architect&#39;, 7200, &#39;2002-09-21&#39;),</span>
+<span class="s1">    (&#39;Vivian&#39;, &#39;Dickens&#39;, &#39;Database Administrator&#39;, 6000, &#39;2012-08-29&#39;),</span>
+<span class="s1">    (&#39;Harry&#39;, &#39;Clifford&#39;, &#39;Database Administrator&#39;, 6800, &#39;2015-12-10&#39;),</span>
+<span class="s1">    (&#39;Eliza&#39;, &#39;Clifford&#39;, &#39;Software Engineer&#39;, 4750, &#39;1998-10-19&#39;),</span>
+<span class="s1">    (&#39;Nancy&#39;, &#39;Newman&#39;, &#39;Software Engineer&#39;, 5100, &#39;2007-01-23&#39;),</span>
+<span class="s1">    (&#39;Melinda&#39;, &#39;Clifford&#39;, &#39;Project Manager&#39;, 8500, &#39;2013-10-29&#39;),</span>
+<span class="s1">    (&#39;Jack&#39;, &#39;Chan&#39;, &#39;Test Engineer&#39;, 6500, &#39;2018-09-07&#39;),</span>
+<span class="s1">    (&#39;Harley&#39;, &#39;Gilbert&#39;, &#39;Software Architect&#39;, 8000, &#39;2000-07-17&#39;);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sqlalchemy.engine.cursor.LegacyCursorResult at 0x107a25fa0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;select * from employee&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>title</th>
+      <th>salary</th>
+      <th>hire_date</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Robin</td>
+      <td>Jackman</td>
+      <td>Software Engineer</td>
+      <td>5500.0</td>
+      <td>2001-10-12</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Taylor</td>
+      <td>Edward</td>
+      <td>Software Architect</td>
+      <td>7200.0</td>
+      <td>2002-09-21</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Vivian</td>
+      <td>Dickens</td>
+      <td>Database Administrator</td>
+      <td>6000.0</td>
+      <td>2012-08-29</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Harry</td>
+      <td>Clifford</td>
+      <td>Database Administrator</td>
+      <td>6800.0</td>
+      <td>2015-12-10</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Eliza</td>
+      <td>Clifford</td>
+      <td>Software Engineer</td>
+      <td>4750.0</td>
+      <td>1998-10-19</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>Nancy</td>
+      <td>Newman</td>
+      <td>Software Engineer</td>
+      <td>5100.0</td>
+      <td>2007-01-23</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>Melinda</td>
+      <td>Clifford</td>
+      <td>Project Manager</td>
+      <td>8500.0</td>
+      <td>2013-10-29</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>Jack</td>
+      <td>Chan</td>
+      <td>Test Engineer</td>
+      <td>6500.0</td>
+      <td>2018-09-07</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>Harley</td>
+      <td>Gilbert</td>
+      <td>Software Architect</td>
+      <td>8000.0</td>
+      <td>2000-07-17</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>這邊補充一些 sql 語句</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 寫明 欄位名稱 和 值，如果該表有其他欄位沒被提到，就用 NULL 或 default 帶入</span>
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">INSERT INTO person(name, phone, age) VALUES (&quot;ABC&quot;, &quot;1234&quot;, 20);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">INSERT INTO person(name, phone, age) VALUES </span>
+<span class="s1">    (&quot;ABC&quot;, &quot;1234&quot;, 20),</span>
+<span class="s1">    (&quot;DEF&quot;, &quot;5678&quot;, 21);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># 沒寫明欄位名稱，那就是默認要照該表所有欄位順序來做</span>
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">INSERT INTO person VALUES (&quot;ABC&quot;, &quot;1234&quot;, 20);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">INSERT INTO person VALUES </span>
+<span class="s1">    (&quot;ABC&quot;, &quot;1234&quot;, 20),</span>
+<span class="s1">    (&quot;DEF&quot;, &quot;5678&quot;, 21);</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="read">
+<h2><span class="section-number">14.4. </span>[查] Read<a class="headerlink" href="#read" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pd-read-sql">
+<h3><span class="section-number">14.4.1. </span>用 <code class="docutils literal notranslate"><span class="pre">pd.read_sql()</span></code> 查整張表<a class="headerlink" href="#pd-read-sql" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;employee&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>title</th>
+      <th>salary</th>
+      <th>hire_date</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Robin</td>
+      <td>Jackman</td>
+      <td>Software Engineer</td>
+      <td>5500.0</td>
+      <td>2001-10-12</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Taylor</td>
+      <td>Edward</td>
+      <td>Software Architect</td>
+      <td>7200.0</td>
+      <td>2002-09-21</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Vivian</td>
+      <td>Dickens</td>
+      <td>Database Administrator</td>
+      <td>6000.0</td>
+      <td>2012-08-29</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Harry</td>
+      <td>Clifford</td>
+      <td>Database Administrator</td>
+      <td>6800.0</td>
+      <td>2015-12-10</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Eliza</td>
+      <td>Clifford</td>
+      <td>Software Engineer</td>
+      <td>4750.0</td>
+      <td>1998-10-19</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>Nancy</td>
+      <td>Newman</td>
+      <td>Software Engineer</td>
+      <td>5100.0</td>
+      <td>2007-01-23</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>Melinda</td>
+      <td>Clifford</td>
+      <td>Project Manager</td>
+      <td>8500.0</td>
+      <td>2013-10-29</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>Jack</td>
+      <td>Chan</td>
+      <td>Test Engineer</td>
+      <td>6500.0</td>
+      <td>2018-09-07</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>Harley</td>
+      <td>Gilbert</td>
+      <td>Software Architect</td>
+      <td>8000.0</td>
+      <td>2000-07-17</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3><span class="section-number">14.4.2. </span>用 sql 語句 (推薦)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>一樣，繼續用 <code class="docutils literal notranslate"><span class="pre">pd.read_sql()</span></code> 就好，你丟 sql 字串進去就可以了</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">SELECT *</span>
+<span class="s1">FROM employee</span>
+<span class="s1">WHERE salary &gt; 5000 and last_name = &quot;Clifford&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>title</th>
+      <th>salary</th>
+      <th>hire_date</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>Harry</td>
+      <td>Clifford</td>
+      <td>Database Administrator</td>
+      <td>6800.0</td>
+      <td>2015-12-10</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>Melinda</td>
+      <td>Clifford</td>
+      <td>Project Manager</td>
+      <td>8500.0</td>
+      <td>2013-10-29</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>既然可以下 sql 指令，那各種 order by, filter, group_by, aggregate 的整令，當然就都可以下了</p></li>
+</ul>
+<div class="section" id="order-by">
+<h4><span class="section-number">14.4.2.1. </span>order by<a class="headerlink" href="#order-by" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select * from employee</span>
+<span class="s1">order by salary;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>title</th>
+      <th>salary</th>
+      <th>hire_date</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5</td>
+      <td>Eliza</td>
+      <td>Clifford</td>
+      <td>Software Engineer</td>
+      <td>4750.0</td>
+      <td>1998-10-19</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>Nancy</td>
+      <td>Newman</td>
+      <td>Software Engineer</td>
+      <td>5100.0</td>
+      <td>2007-01-23</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Robin</td>
+      <td>Jackman</td>
+      <td>Software Engineer</td>
+      <td>5500.0</td>
+      <td>2001-10-12</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Vivian</td>
+      <td>Dickens</td>
+      <td>Database Administrator</td>
+      <td>6000.0</td>
+      <td>2012-08-29</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>Jack</td>
+      <td>Chan</td>
+      <td>Test Engineer</td>
+      <td>6500.0</td>
+      <td>2018-09-07</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4</td>
+      <td>Harry</td>
+      <td>Clifford</td>
+      <td>Database Administrator</td>
+      <td>6800.0</td>
+      <td>2015-12-10</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2</td>
+      <td>Taylor</td>
+      <td>Edward</td>
+      <td>Software Architect</td>
+      <td>7200.0</td>
+      <td>2002-09-21</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>9</td>
+      <td>Harley</td>
+      <td>Gilbert</td>
+      <td>Software Architect</td>
+      <td>8000.0</td>
+      <td>2000-07-17</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>7</td>
+      <td>Melinda</td>
+      <td>Clifford</td>
+      <td>Project Manager</td>
+      <td>8500.0</td>
+      <td>2013-10-29</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select * from employee</span>
+<span class="s1">order by salary desc;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>title</th>
+      <th>salary</th>
+      <th>hire_date</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7</td>
+      <td>Melinda</td>
+      <td>Clifford</td>
+      <td>Project Manager</td>
+      <td>8500.0</td>
+      <td>2013-10-29</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>Harley</td>
+      <td>Gilbert</td>
+      <td>Software Architect</td>
+      <td>8000.0</td>
+      <td>2000-07-17</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Taylor</td>
+      <td>Edward</td>
+      <td>Software Architect</td>
+      <td>7200.0</td>
+      <td>2002-09-21</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Harry</td>
+      <td>Clifford</td>
+      <td>Database Administrator</td>
+      <td>6800.0</td>
+      <td>2015-12-10</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>Jack</td>
+      <td>Chan</td>
+      <td>Test Engineer</td>
+      <td>6500.0</td>
+      <td>2018-09-07</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3</td>
+      <td>Vivian</td>
+      <td>Dickens</td>
+      <td>Database Administrator</td>
+      <td>6000.0</td>
+      <td>2012-08-29</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1</td>
+      <td>Robin</td>
+      <td>Jackman</td>
+      <td>Software Engineer</td>
+      <td>5500.0</td>
+      <td>2001-10-12</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>6</td>
+      <td>Nancy</td>
+      <td>Newman</td>
+      <td>Software Engineer</td>
+      <td>5100.0</td>
+      <td>2007-01-23</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5</td>
+      <td>Eliza</td>
+      <td>Clifford</td>
+      <td>Software Engineer</td>
+      <td>4750.0</td>
+      <td>1998-10-19</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select * from employee</span>
+<span class="s1">order by salary desc, first_name;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>title</th>
+      <th>salary</th>
+      <th>hire_date</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7</td>
+      <td>Melinda</td>
+      <td>Clifford</td>
+      <td>Project Manager</td>
+      <td>8500.0</td>
+      <td>2013-10-29</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9</td>
+      <td>Harley</td>
+      <td>Gilbert</td>
+      <td>Software Architect</td>
+      <td>8000.0</td>
+      <td>2000-07-17</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Taylor</td>
+      <td>Edward</td>
+      <td>Software Architect</td>
+      <td>7200.0</td>
+      <td>2002-09-21</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Harry</td>
+      <td>Clifford</td>
+      <td>Database Administrator</td>
+      <td>6800.0</td>
+      <td>2015-12-10</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>Jack</td>
+      <td>Chan</td>
+      <td>Test Engineer</td>
+      <td>6500.0</td>
+      <td>2018-09-07</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3</td>
+      <td>Vivian</td>
+      <td>Dickens</td>
+      <td>Database Administrator</td>
+      <td>6000.0</td>
+      <td>2012-08-29</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1</td>
+      <td>Robin</td>
+      <td>Jackman</td>
+      <td>Software Engineer</td>
+      <td>5500.0</td>
+      <td>2001-10-12</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>6</td>
+      <td>Nancy</td>
+      <td>Newman</td>
+      <td>Software Engineer</td>
+      <td>5100.0</td>
+      <td>2007-01-23</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5</td>
+      <td>Eliza</td>
+      <td>Clifford</td>
+      <td>Software Engineer</td>
+      <td>4750.0</td>
+      <td>1998-10-19</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="limit">
+<h4><span class="section-number">14.4.2.2. </span>limit<a class="headerlink" href="#limit" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;select * from employee limit 3;&quot;</span><span class="p">),</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>title</th>
+      <th>salary</th>
+      <th>hire_date</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Robin</td>
+      <td>Jackman</td>
+      <td>Software Engineer</td>
+      <td>5500.0</td>
+      <td>2001-10-12</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Taylor</td>
+      <td>Edward</td>
+      <td>Software Architect</td>
+      <td>7200.0</td>
+      <td>2002-09-21</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Vivian</td>
+      <td>Dickens</td>
+      <td>Database Administrator</td>
+      <td>6000.0</td>
+      <td>2012-08-29</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="like">
+<h4><span class="section-number">14.4.2.3. </span>like<a class="headerlink" href="#like" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>就是 R 的 <code class="docutils literal notranslate"><span class="pre">str_detect()</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 常用語法</span>
+<span class="n">sql_string1</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s2">&quot;select * from employee where last_name like &#39;C%&#39;;&quot;</span><span class="p">)</span> <span class="c1"># C開頭的，%表隨意字元不限字數</span>
+<span class="n">sql_string2</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s2">&quot;select * from employee where last_name like &#39;</span><span class="si">%i</span><span class="s2">%&#39;;&quot;</span><span class="p">)</span> <span class="c1"># 中間出現過 i 的</span>
+<span class="n">sql_string3</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s2">&quot;select * from employee where last_name like &#39;</span><span class="si">%a</span><span class="s2">n&#39;;&quot;</span><span class="p">)</span> <span class="c1"># an 結尾的</span>
+<span class="n">sql_string4</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s2">&quot;select * from employee where last_name like &#39;__an&#39;;&quot;</span><span class="p">)</span> <span class="c1"># 知道長度是4，結尾是 an</span>
+<span class="n">sql_string5</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s2">&quot;select * from employee where last_name like &#39;J______&#39;;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string1</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>title</th>
+      <th>salary</th>
+      <th>hire_date</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>Harry</td>
+      <td>Clifford</td>
+      <td>Database Administrator</td>
+      <td>6800.0</td>
+      <td>2015-12-10</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>Eliza</td>
+      <td>Clifford</td>
+      <td>Software Engineer</td>
+      <td>4750.0</td>
+      <td>1998-10-19</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>Melinda</td>
+      <td>Clifford</td>
+      <td>Project Manager</td>
+      <td>8500.0</td>
+      <td>2013-10-29</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8</td>
+      <td>Jack</td>
+      <td>Chan</td>
+      <td>Test Engineer</td>
+      <td>6500.0</td>
+      <td>2018-09-07</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="count">
+<h4><span class="section-number">14.4.2.4. </span>count(*)<a class="headerlink" href="#count" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 整張 table 有幾列</span>
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select count(*) from employee;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count(*)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># title 為 Software Engineer 的table，列數有幾列</span>
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select count(*) from employee where title=&quot;Software Engineer&quot;;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count(*)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 各種 title 各有幾列</span>
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select title, count(*) from employee</span>
+<span class="s1">group by title;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>count(*)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Database Administrator</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Project Manager</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Software Architect</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Software Engineer</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Test Engineer</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="distinct">
+<h4><span class="section-number">14.4.2.5. </span>distinct<a class="headerlink" href="#distinct" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 有哪些 title?</span>
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select distinct(title) from employee;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Software Engineer</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Software Architect</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Database Administrator</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Project Manager</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Test Engineer</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 有多少種 title</span>
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select count(distinct(title)) from employee;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count(distinct(title))</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="min-max-sum-avg">
+<h4><span class="section-number">14.4.2.6. </span>min, max, sum, avg<a class="headerlink" href="#min-max-sum-avg" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平均薪水, 最低薪水, 最高薪水, 薪水總合 各是多少</span>
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select min(salary), max(salary), sum(salary), avg(salary) from employee;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min(salary)</th>
+      <th>max(salary)</th>
+      <th>sum(salary)</th>
+      <th>avg(salary)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4750.0</td>
+      <td>8500.0</td>
+      <td>58350.0</td>
+      <td>6483.333333</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 換個名稱比較好讀</span>
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select min(salary) as min_salary, </span>
+<span class="s1">    max(salary) as max_salary, </span>
+<span class="s1">    sum(salary) as sum_salary, </span>
+<span class="s1">    avg(salary) as avg_salary</span>
+<span class="s1">from employee;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min_salary</th>
+      <th>max_salary</th>
+      <th>sum_salary</th>
+      <th>avg_salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4750.0</td>
+      <td>8500.0</td>
+      <td>58350.0</td>
+      <td>6483.333333</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 各種 title 的薪水比較</span>
+<span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select title,</span>
+<span class="s1">    count(*) as n,</span>
+<span class="s1">    min(salary) as min_salary, </span>
+<span class="s1">    max(salary) as max_salary, </span>
+<span class="s1">    sum(salary) as sum_salary, </span>
+<span class="s1">    avg(salary) as avg_salary</span>
+<span class="s1">from employee</span>
+<span class="s1">group by title</span>
+<span class="s1">order by avg_salary desc;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>n</th>
+      <th>min_salary</th>
+      <th>max_salary</th>
+      <th>sum_salary</th>
+      <th>avg_salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Project Manager</td>
+      <td>1</td>
+      <td>8500.0</td>
+      <td>8500.0</td>
+      <td>8500.0</td>
+      <td>8500.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Software Architect</td>
+      <td>2</td>
+      <td>7200.0</td>
+      <td>8000.0</td>
+      <td>15200.0</td>
+      <td>7600.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Test Engineer</td>
+      <td>1</td>
+      <td>6500.0</td>
+      <td>6500.0</td>
+      <td>6500.0</td>
+      <td>6500.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Database Administrator</td>
+      <td>2</td>
+      <td>6000.0</td>
+      <td>6800.0</td>
+      <td>12800.0</td>
+      <td>6400.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Software Engineer</td>
+      <td>3</td>
+      <td>4750.0</td>
+      <td>5500.0</td>
+      <td>15350.0</td>
+      <td>5116.666667</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="having">
+<h4><span class="section-number">14.4.2.7. </span>having<a class="headerlink" href="#having" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>這邊只有一個觀念：想在 group_by+summarise 後，想對結果的資料表做篩選，那要用 having，不能用 where</p></li>
+<li><p>所以，having就是 group by 後，拿來做篩選用的 where。</p></li>
+<li><p>結論：</p>
+<ul>
+<li><p>要這樣寫：  <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">title,</span> <span class="pre">count(*)</span> <span class="pre">as</span> <span class="pre">n</span> <span class="pre">from</span> <span class="pre">employee</span> <span class="pre">group</span> <span class="pre">by</span> <span class="pre">title</span> <span class="pre">having</span> <span class="pre">n&gt;1;</span></code></p></li>
+<li><p>不能這樣寫： <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">title,</span> <span class="pre">count(*)</span> <span class="pre">as</span> <span class="pre">n</span> <span class="pre">from</span> <span class="pre">employee</span> <span class="pre">group</span> <span class="pre">by</span> <span class="pre">title</span> <span class="pre">where</span> <span class="pre">n&gt;1;</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select title, count(*) as n from employee group by title having n&gt;1;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_string</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Database Administrator</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Software Architect</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Software Engineer</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="logic-operators">
+<h4><span class="section-number">14.4.2.8. </span>logic operators<a class="headerlink" href="#logic-operators" title="Permalink to this headline">¶</a></h4>
+<p><img alt="image.png" src="interact_w_sql/attachment:e95dd848-67c6-4fbb-8e0a-7ecf281ebdcb.png" /></p>
+</div>
+</div>
+</div>
+<div class="section" id="update">
+<h2><span class="section-number">14.5. </span>[改] Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>因為 pandas 只有做 讀 和 寫 的 wrapper，分別是 <code class="docutils literal notranslate"><span class="pre">pd.DataFrame.read_sql()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">pd.DataFrame.to_sql()</span></code></p></li>
+<li><p>對於 update 和 delete，之前在 R 裡面是用 <code class="docutils literal notranslate"><span class="pre">dbSendUpdate(sql)</span></code>，就是直接執行 sql 指令</p></li>
+<li><p>在 python，就要先建立連線 <code class="docutils literal notranslate"><span class="pre">conn</span> <span class="pre">=</span> <span class="pre">engine.connect()</span></code>，建立後，就可以 execute 原生的 sql 語句 <code class="docutils literal notranslate"><span class="pre">conn.execute(sql_string)</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">update user2</span>
+<span class="s1">set username = &#39;hank2&#39;</span>
+<span class="s1">where height = 185</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sqlalchemy.engine.cursor.LegacyCursorResult at 0x11ae9bd90&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;select * from user2&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>username</th>
+      <th>height</th>
+      <th>blood_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>hank2</td>
+      <td>185</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>mike</td>
+      <td>172</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>pink</td>
+      <td>153</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>shark</td>
+      <td>198</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>pinpin</td>
+      <td>160</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>mimi</td>
+      <td>170</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="delete">
+<h2><span class="section-number">14.6. </span>[刪] Delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>刪除 table 中的所有列 (但表和 schema 還在)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">delete from user2</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># 刪除所有列</span>
+<span class="c1"># delete from user2</span>
+
+<span class="c1"># 刪除某些列</span>
+<span class="c1"># delete from user2 where xxx</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sqlalchemy.engine.cursor.LegacyCursorResult at 0x11ae70550&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;select * from user2&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>username</th>
+      <th>height</th>
+      <th>blood_type</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>刪除整張表</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_string</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">drop table user2</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sqlalchemy.engine.cursor.LegacyCursorResult at 0x11af145e0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pd.read_sql(&quot;select * from user2&quot;, engine)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python_ds_env",
+            path: "./interact_w_sql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python_ds_env'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../datacamp_seaborn/intro_seaborn.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">13. </span>Introduction to Seaborn</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../clustering/KMeans.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>K-Means</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
