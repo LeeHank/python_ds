@@ -3,7 +3,7 @@
 
 # # K-Means
 
-# In[1]:
+# In[3]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()  # for plot styling
 import numpy as np
 import pandas as pd
+import os
 
 
 # ## Toy Example 直接走一次
@@ -886,8 +887,91 @@ clf.score(X_valid_extended, y_valid)
 
 # ### [影像分割] 
 
-# In[ ]:
+# * 這邊先介紹影像分割裡面最簡單的應用：顏色分割
+# * 首先來看，我們有一張圖長這樣：
+
+# In[36]:
 
 
+from matplotlib.image import imread
 
+image = plt.imread("images/ladybug.png")
+print(image.shape)
+plt.imshow(image)
+plt.axis('off')
+
+
+# * 可以看到，這是張 (533, 800, 3) 的圖片
+# * 現在，我把每個 pixel，當作一個 sample，然後他對應的 RGB，當作是他的 feature
+# * 那這張影像，就可轉成 machine learning 常見的 tabular data 的樣子 (533x800, 3):
+
+# In[20]:
+
+
+X = image.reshape(-1, 3)
+X
+
+
+# * 那對任兩個像素來說，如果他們之間的距離越近 (R, G, B 三個 feature 的 euclidean distance 越近)，就越能分在一組
+# * 所以，如果我將這張圖做 KMeans，分成 2 個 cluster，那等於，我想把原本這張圖的顏色，降到兩種就好
+# * 作法如下：
+
+# In[28]:
+
+
+from sklearn.cluster import KMeans
+kmeans = KMeans(n_clusters=2, random_state=42)
+kmeans.fit(X)
+
+# 每個像素所屬的組別
+print(kmeans.predict(X))
+
+# 兩個 cluster 的 center
+kmeans.cluster_centers_
+
+
+# * 從上面可以看到，第一個像素，被分到第 1 個 cluster，而第 1 個 cluster 的 center 是 [0.86, 0.80, 0.10]，其實就是 RGB，就是第一個 cluster 的代表色
+# * 那，把原本的每個像素，都換成他所屬 cluster 的代表色，就可以將原圖分成兩類了：
+
+# In[35]:
+
+
+segmented_img = kmeans.cluster_centers_[kmeans.predict(X)]
+segmented_img = segmented_img.reshape(image.shape)
+plt.imshow(segmented_img);
+plt.axis("off");
+
+
+# * 如此一來，就順利將圖形分成兩種顏色了。
+# * 我們可以進一步看一下 cluster 數量所造成的影像：
+
+# In[37]:
+
+
+segmented_imgs = []
+n_colors = (10, 8, 6, 4, 2)
+for n_clusters in n_colors:
+    kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(X)
+    segmented_img = kmeans.cluster_centers_[kmeans.labels_]
+    segmented_imgs.append(segmented_img.reshape(image.shape))
+
+
+# In[38]:
+
+
+plt.figure(figsize=(10,5))
+plt.subplots_adjust(wspace=0.05, hspace=0.1)
+
+plt.subplot(231)
+plt.imshow(image)
+plt.title("Original image")
+plt.axis('off')
+
+for idx, n_clusters in enumerate(n_colors):
+    plt.subplot(232 + idx)
+    plt.imshow(segmented_imgs[idx])
+    plt.title("{} colors".format(n_clusters))
+    plt.axis('off')
+
+plt.show()
 

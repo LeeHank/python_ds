@@ -29,6 +29,10 @@ parts:
     numbered: true
     chapters:
       - file: datacamp_seaborn/intro_seaborn
+  - caption: SQL
+    numbered: true
+    chapters:
+      - file: interact_w_sql/pandas_sqlalchemy
   - caption: Clustering
     numbered: true
     chapters:
@@ -45,3 +49,6 @@ parts:
       - file: datacamp_su/datacamp_su
       - file: statquest_trees/classification_tree
       - file: sklearn_guide/rf_permutation_imp
+# build book
+# cd mybook
+# jupyter-book build .
